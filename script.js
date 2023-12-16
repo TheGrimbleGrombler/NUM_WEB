@@ -1,12 +1,13 @@
-import Decimal from './break_eternity.js';
+const Decimal = window.Decimal;
 
-var x = Decimal().fromString("1e100")
+var x = new Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
 
 function updateText() {
-  x.equals(x.mult(100));
+  x.equals(x.mul());
   StardustDisplay.innerHTML = String(x);
 }
+var s = E(100)
 
 setInterval(updateText, 16);
 
