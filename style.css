@@ -28,9 +28,13 @@ video {
   width: 500px; /* Set the width of the container */
   border: 0px solid #000000; /* Just for visualization */
   text-align: left; /* Align the text to the right */
+  position: absolute;
+  top: 50px; /* specify the vertical position */
+  left: 100px; /* specify the horizontal position */
 }
 
 .number {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
 }
+
