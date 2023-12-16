@@ -49,6 +49,4 @@ video {
        image-rendering: pixelated;
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
-       position: absolute;
-       top: <link>16px</link>;
      }
