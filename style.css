@@ -23,3 +23,13 @@ video {
   height: auto;
   max-width: 100%;
 }
+
+.number-container {
+  width: 500px; /* Set the width of the container */
+  border: 1px solid #000000; /* Just for visualization */
+  text-align: right; /* Align the text to the right */
+}
+
+.number {
+  display: block; /* Make the number a block element so it takes up the full width of the container */
+}
