@@ -8,7 +8,12 @@ function E(n) {
 let buyables = {
   syphon: {cost: E("1"), amount: E("0")},
   collector: {cost: E("100"), amount: E("0")},
-  field: {cost: E("100"), amount: E("0")}
+  field: {cost: E("2000"), amount: E("0")}
+
+};
+let upgrades = {
+  incrementallist: {cost: E("25000"), bought: false, effect: 1, display: "Boosts"},
+  //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 
 };
 let player = {
@@ -35,7 +40,7 @@ function updateText() {
   SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " Collectors, Producing " + String(buyables.collector.amount) + " syphons/s";
   CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
-  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " Collectors, Producing " + String(buyables.field.amount) + " collectors/s";
+  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " Fields, Producing " + String(buyables.field.amount) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
 }
 
@@ -43,6 +48,7 @@ setInterval(updateText, 16);
 
 function gainstardust(){
   
+  buyables.collector.amount = buyables.collector.amount.add(buyables.field.amount.div(E("60")))
   buyables.syphon.amount = buyables.syphon.amount.add(buyables.collector.amount.div(E("60")))
   var gain = E("0")
   gain = gain.add(buyables.syphon.amount)
@@ -63,13 +69,13 @@ document.getElementById('CollectorButton').addEventListener('click', function() 
   if (player.stardust.gte(buyables.collector.cost)) {
     player.stardust = player.stardust.sub(buyables.collector.cost)
     buyables.collector.amount = buyables.collector.amount.add(E("1"))
-    buyables.collector.cost = buyables.collector.cost.mul(E("2"))
+    buyables.collector.cost = buyables.collector.cost.mul(E("3"))
 }});
 document.getElementById('FieldButton').addEventListener('click', function() {
   if (player.stardust.gte(buyables.field.cost)) {
     player.stardust = player.stardust.sub(buyables.field.cost)
     buyables.field.amount = buyables.field.amount.add(E("1"))
-    buyables.field.cost = buyables.field.cost.mul(E("2"))
+    buyables.field.cost = buyables.field.cost.mul(E("10"))
 }});
 
 
