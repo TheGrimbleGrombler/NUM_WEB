@@ -6,13 +6,13 @@ function E(n) {
   
 }
 let buyables = {
-  syphon: {cost: E("1"), amount: E("0")},
-  collector: {cost: E("100"), amount: E("0")},
-  field: {cost: E("2000"), amount: E("0")}
+  syphon: {cost: E("1"), amount: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(buyables.syphon.amount.log2())} else {return buyables.syphon.amount}}},
+  collector: {cost: E("100"), amount: E("0"), effect: function() {return buyables.collector.amount}},
+  field: {cost: E("2000"), amount: E("0"), effect: function() {return buyables.field.amount}}
 
 };
 let upgrades = {
-  incrementallist: {cost: E("25000"), bought: false, effect: 1, display: "Boosts"},
+  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log2()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 
 };
@@ -32,6 +32,7 @@ var FieldButton = document.getElementById("FieldButton");
 
 function updateText() {
 
+  gainbuyables()
   gainstardust()
   
   
@@ -45,13 +46,20 @@ function updateText() {
 }
 
 setInterval(updateText, 16);
-
-function gainstardust(){
+function gainbuyables(){
   
-  buyables.collector.amount = buyables.collector.amount.add(buyables.field.amount.div(E("60")))
-  buyables.syphon.amount = buyables.syphon.amount.add(buyables.collector.amount.div(E("60")))
+  
+  buyables.collector.amount = buyables.collector.amount.add(buyables.field.effect().div(E("60")))
+  buyables.syphon.amount = buyables.syphon.amount.add(buyables.collector.effect().div(E("60")))
+  
+  
+}
+function gainstardust(){
   var gain = E("0")
-  gain = gain.add(buyables.syphon.amount)
+  
+  var temp = buyables.syphon.amount
+  if (upgrades.incrementallist.bought == true) {temp = temp.mul(temp.log2())}
+  gain = gain.add(temp)
   
   
   var gain = gain.div(60)
