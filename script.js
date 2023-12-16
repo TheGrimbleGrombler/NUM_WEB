@@ -102,6 +102,12 @@ function openTab(tabName) {
 }
 
 
+document.getElementById('tab1button').addEventListener('click', function() {
+  openTab("tab1")
+});
+document.getElementById('tab2button').addEventListener('click', function() {
+  openTab("tab2")
+});
 
 
 
