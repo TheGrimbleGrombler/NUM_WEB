@@ -6,7 +6,7 @@ function E(n) {
   
 }
 let buyables = {
-  syphon: {cost: 1, amount: 0}
+  syphon: {cost: E("1"), amount: E("0")}
 
 }
 let player = {
@@ -16,6 +16,7 @@ let player = {
 
 var x = new Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
+var SyphonDisplay = document.getElementById("SyphonDisplay");
 
 function updateText() {
 
@@ -23,6 +24,7 @@ function updateText() {
   
   
   StardustDisplay.innerHTML = String(player.stardust);
+  SyphonDisplay.innerHTML = String(buyables.syphon.amount);
 }
 
 setInterval(updateText, 16);
