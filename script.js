@@ -6,14 +6,14 @@ function E(n) {
   
 }
 let buyables = {
-  syphon: {cost: E("1"), amount: E("0")}
+  syphon: {cost: E("1"), amount: E("0")},
   syphon2: {cost: E("100"), amount: E("0")}
 
-}
+};
 let player = {
   stardust: E("1")
 
-}
+};
 
 var x = new Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -28,7 +28,7 @@ function updateText() {
   
   
   StardustDisplay.innerHTML = String(player.stardust);
-  SyphonDisplay.innerHTML = String(buyables.syphon.amount);
+  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " Syphons, "
   SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
   SyphonDisplay2.innerHTML = String(buyables.syphon2.amount);
   SyphonButton2.innerHTML = "Cost: " + String(buyables.syphon2.cost) + " Stardust";
