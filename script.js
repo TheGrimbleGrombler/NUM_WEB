@@ -7,7 +7,8 @@ function E(n) {
 }
 let buyables = {
   syphon: {cost: E("1"), amount: E("0")},
-  collector: {cost: E("100"), amount: E("0")}
+  collector: {cost: E("100"), amount: E("0")},
+  field: {cost: E("100"), amount: E("0")}
 
 };
 let player = {
@@ -21,6 +22,8 @@ var SyphonDisplay = document.getElementById("SyphonDisplay");
 var SyphonButton = document.getElementById("SyphonButton");
 var CollectorDisplay = document.getElementById("CollectorDisplay");
 var CollectorButton = document.getElementById("CollectorButton");
+var FieldDisplay = document.getElementById("FieldDisplay");
+var FieldButton = document.getElementById("FieldButton");
 
 function updateText() {
 
@@ -32,6 +35,8 @@ function updateText() {
   SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " Collectors, Producing " + String(buyables.collector.amount) + " syphons/s";
   CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
+  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " Collectors, Producing " + String(buyables.field.amount) + " collectors/s";
+  FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
 }
 
 setInterval(updateText, 16);
@@ -59,6 +64,12 @@ document.getElementById('CollectorButton').addEventListener('click', function() 
     player.stardust = player.stardust.sub(buyables.collector.cost)
     buyables.collector.amount = buyables.collector.amount.add(E("1"))
     buyables.collector.cost = buyables.collector.cost.mul(E("2"))
+}});
+document.getElementById('FieldButton').addEventListener('click', function() {
+  if (player.stardust.gte(buyables.field.cost)) {
+    player.stardust = player.stardust.sub(buyables.field.cost)
+    buyables.field.amount = buyables.field.amount.add(E("1"))
+    buyables.field.cost = buyables.field.cost.mul(E("2"))
 }});
 
 
