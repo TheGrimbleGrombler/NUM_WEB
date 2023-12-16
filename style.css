@@ -29,8 +29,6 @@ video {
   border: 0px solid #000000; /* Just for visualization */
   text-align: left; /* Align the text to the right */
   position: absolute;
-  top: 50px; /* specify the vertical position */
-  left: 100px; /* specify the horizontal position */
 }
 
 .number {
