@@ -1,5 +1,3 @@
-import Decimal from "<link>Break_Eternity.js</link>";
-
 var x = new Decimal("1e100");
 var StardustDisplay = document.getElementById("StardustDisplay");
 
