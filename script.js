@@ -86,7 +86,20 @@ document.getElementById('FieldButton').addEventListener('click', function() {
     buyables.field.cost = buyables.field.cost.mul(E("10"))
 }});
 
-
+function openTab(tabName) {
+  // Get all elements with class "tabcontent"
+  var tabContents = document.getElementsByClassName("tabcontent");
+  
+  // Loop through the tab content elements
+  for (var i = 0; i < tabContents.length; i++) {
+    // Hide the tab content that doesn't match the selected tab
+    if (tabContents[i].id === tabName) {
+      tabContents[i].style.display = "block";
+    } else {
+      tabContents[i].style.display = "none";
+    }
+  }
+}
 
 
 
