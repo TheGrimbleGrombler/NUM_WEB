@@ -1,4 +1,6 @@
-var x = new Decimal("1e100");
+import Decimal from './break_eternity.js';
+
+var x = Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
 
 function updateText() {
