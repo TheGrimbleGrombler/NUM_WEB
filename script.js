@@ -1,4 +1,3 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+import "(global, factory)" from "break_eternity.js"
 
-console.log("Hello, world!");
+x = E(1)
