@@ -13,7 +13,7 @@ let buyables = {
 };
 let upgrades = {
   incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
-  gravity: {cost: E("500000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
+  Gravity: {cost: E("500000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
@@ -162,6 +162,12 @@ document.getElementById('IncrementallistButton').addEventListener('mouseover', f
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.incrementallist.cost) + " Stardust"
 });
 
+document.getElementById('GravityButton').addEventListener('mouseover', function(event) {
+    if (upgrades.Gravity.bought == true) {UpgradeName.innerHTML = "Gravity (Bought)"} else {UpgradeName.innerHTML = "Gravity (Unbought)"}
+    UpgradeEffect.innerHTML = String(upgrades.Gravity.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.Gravity.cost) + " Stardust"
+    if (unlockedsubtabs[]) {}
+});
 
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
