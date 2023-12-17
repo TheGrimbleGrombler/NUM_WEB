@@ -12,9 +12,9 @@ let buyables = {
 
 };
 let upgrades = {
-  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
-  Gravity: {cost: E("200000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
-  MEM: {cost: E("2e6"), bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "TBD"},
+  incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
+  Gravity: {cost: E("200000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
+  MEM: {cost: E("2e6"), costtype: "gravitational_waves", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "TBD"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
@@ -190,6 +190,21 @@ document.getElementById('MEMButton').addEventListener('mouseover', function(even
 });
 
 
+function buy(n) {
+  var c = upgrades[name].cost
+  var ct = upgrades[name].costtype
+  var b = upgrades[name].bought
+  upgrades[name]
+  
+  
+  
+  
+  
+}
+
+
+
+buy("incrementallist")
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
   if (player.stardust.gte(upgrades.incrementallist.cost)) {
       if (upgrades.incrementallist.bought == false) {
