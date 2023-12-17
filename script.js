@@ -165,7 +165,6 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
     if (upgrades.Gravity.bought == true) {UpgradeName.innerHTML = "Gravity (Bought)"} else {UpgradeName.innerHTML = "Gravity (Unbought)"}
     UpgradeEffect.innerHTML = String(upgrades.Gravity.effect());
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Gravity.cost) + " Stardust"
-    if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true}
 });
 
 
@@ -176,6 +175,13 @@ document.getElementById('IncrementallistButton').addEventListener('click', funct
     upgrades.incrementallist.bought = true
 }}});
 
+document.getElementById('GravityButton').addEventListener('click', function() {
+  if (player.stardust.gte(upgrades.Gravity.cost)) {
+      if (upgrades.Gravity.bought == false) {
+    player.stardust = player.stardust.sub(upgrades.Gravity.cost)
+    upgrades.Gravity.bought = true
+    if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true}
+}}});
 
 
 updateText();
