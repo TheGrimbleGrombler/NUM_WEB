@@ -191,26 +191,20 @@ document.getElementById('MEMButton').addEventListener('mouseover', function(even
 
 
 function buy(n) {
-  var c = upgrades[name].cost
-  var ct = upgrades[name].costtype
-  var b = upgrades[name].bought
-  upgrades[name]
-  
-  
-  
-  
-  
+  var c = upgrades[n].cost
+  var ct = upgrades[n].costtype
+  var b = upgrades[n].bought
+  if (b == false) {
+     if (player[ct].gte(c)) {
+      player[ct] = player[ct].sub(c)
+      b = true
+    }
+  }
 }
 
-
-
-buy("incrementallist")
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
-  if (player.stardust.gte(upgrades.incrementallist.cost)) {
-      if (upgrades.incrementallist.bought == false) {
-    player.stardust = player.stardust.sub(upgrades.incrementallist.cost)
-    upgrades.incrementallist.bought = true
-}}});
+  buy("incrementallist")  
+});
 
 document.getElementById('GravityButton').addEventListener('click', function() {
   if (player.stardust.gte(upgrades.Gravity.cost)) {
