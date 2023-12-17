@@ -8,13 +8,13 @@ function E(n) {
 let buyables = {
   syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
   collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
-  field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.field.amount}}
+  field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
 
 };
 let upgrades = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
   Gravity: {cost: E("200000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
-  MEM: {cost: E("2e6"), costtype: "gravitational_waves", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "TBD"},
+  MEM: {cost: E("2e6"), costtype: "gravitational_waves", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "Squares the effect of fields, Currently: ^"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
@@ -185,7 +185,7 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
 
 document.getElementById('MEMButton').addEventListener('mouseover', function(event) {
     if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "More Efficient Tactics (Bought)"} else {UpgradeName.innerHTML = "More Efficient Tactics (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.MEM.effect());
+    UpgradeEffect.innerHTML = String(upgrades.MEM.display) + String(upgrades.MEM.effect());
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.MEM.cost) + " Stardust"
 });
 
@@ -198,6 +198,9 @@ function buy(n) {
      if (player[ct].gte(c)) {
       player[ct] = player[ct].sub(c)
       upgrades[n].bought = true
+       
+       if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
+       
     }
   }
 }
