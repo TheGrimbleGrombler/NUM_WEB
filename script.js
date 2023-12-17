@@ -6,13 +6,13 @@ function E(n) {
   
 }
 let buyables = {
-  syphon: {cost: E("1"), amount: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(buyables.syphon.amount.log2())} else {return buyables.syphon.amount}}},
-  collector: {cost: E("100"), amount: E("0"), effect: function() {return buyables.collector.amount}},
-  field: {cost: E("2000"), amount: E("0"), effect: function() {return buyables.field.amount}}
+  syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
+  collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.collector.amount}},
+  field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.field.amount}}
 
 };
 let upgrades = {
-  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log2()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
+  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 
 };
@@ -42,11 +42,11 @@ function updateText() {
   
   
   StardustDisplay.innerHTML = "You have " + String(player.stardust) + " Stardust";
-  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " Syphons, Boosting Stardust gain by +" + String(buyables.syphon.amount) + "/s";
+  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " (" + String(buyables.syphon.manuals) +") Syphons, Boosting Stardust gain by +" + String(buyables.syphon.amount) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
-  CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " Collectors, Producing " + String(buyables.collector.amount) + " syphons/s";
+  CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " (" + String(buyables.collector.manuals) +") Collectors, Producing " + String(buyables.collector.amount) + " syphons/s";
   CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
-  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " Fields, Producing " + String(buyables.field.amount) + " collectors/s";
+  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.amount) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
 }
 
@@ -63,7 +63,7 @@ function gainstardust(){
   var gain = E("0")
   
   var temp = buyables.syphon.amount
-  if (upgrades.incrementallist.bought == true) {temp = temp.mul(temp.log2())}
+  if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
   gain = gain.add(temp)
   
   
@@ -76,11 +76,13 @@ document.getElementById('SyphonButton').addEventListener('click', function() {
   if (player.stardust.gte(buyables.syphon.cost)) {
     player.stardust = player.stardust.sub(buyables.syphon.cost)
     buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
+    buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
     buyables.syphon.cost = buyables.syphon.cost.mul(E("2"))
 }});
 document.getElementById('CollectorButton').addEventListener('click', function() {
   if (player.stardust.gte(buyables.collector.cost)) {
     player.stardust = player.stardust.sub(buyables.collector.cost)
+    buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
     buyables.collector.amount = buyables.collector.amount.add(E("1"))
     buyables.collector.cost = buyables.collector.cost.mul(E("3"))
 }});
@@ -88,6 +90,7 @@ document.getElementById('FieldButton').addEventListener('click', function() {
   if (player.stardust.gte(buyables.field.cost)) {
     player.stardust = player.stardust.sub(buyables.field.cost)
     buyables.field.amount = buyables.field.amount.add(E("1"))
+    buyables.field.manuals = buyables.field.manuals.add(E("1"))
     buyables.field.cost = buyables.field.cost.mul(E("10"))
 }});
 

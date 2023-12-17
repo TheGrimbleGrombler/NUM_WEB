@@ -26,7 +26,7 @@ video {
 }
 
 .number-container {
-  width: 500px; /* Set the width of the container */
+  width: 1000px; /* Set the width of the container */
   border: 0px solid #000000; /* Just for visualization */
   text-align: left; /* Align the text to the right */
   position: absolute;
