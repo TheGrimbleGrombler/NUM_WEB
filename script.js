@@ -14,8 +14,13 @@ let buyables = {
 let upgrades = {
   incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
-
 };
+let unlockedsubtabs = {
+  main: true,
+  gravity: true
+  
+  
+}
 let player = {
   stardust: E("1")
 
@@ -109,12 +114,32 @@ function openTab(tabName) {
   }
 }
 
+function openSubtab(tabName) {
+  // Get all elements with class "tabcontent"
+  var tabContents = document.getElementsByClassName("subtabcontent");
+  
+  // Loop through the tab content elements
+  for (var i = 0; i < tabContents.length; i++) {
+    // Hide the tab content that doesn't match the selected tab
+    if (tabContents[i].id === tabName) {
+      tabContents[i].style.display = "block";
+    } else {
+      tabContents[i].style.display = "none";
+    }
+  }
+}
 
 document.getElementById('tab1button').addEventListener('click', function() {
   openTab("tab1")
 });
 document.getElementById('tab2button').addEventListener('click', function() {
   openTab("tab2")
+});
+document.getElementById('subtab1button').addEventListener('click', function() {
+  openSubtab("subtab1")
+});
+document.getElementById('subtab2button').addEventListener('click', function() {
+  openSubtab("subtab2")
 });
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
