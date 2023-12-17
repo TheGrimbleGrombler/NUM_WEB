@@ -49,11 +49,11 @@ function updateText() {
   
   
   StardustDisplay.innerHTML = "You have " + String(player.stardust) + " Stardust";
-  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " (" + String(buyables.syphon.manuals) +") Syphons, Boosting Stardust gain by +" + String(buyables.syphon.amount) + "/s";
+  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " (" + String(buyables.syphon.manuals) +") Syphons, Boosting Stardust gain by +" + String(buyables.syphon.effect()) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
-  CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " (" + String(buyables.collector.manuals) +") Collectors, Producing " + String(buyables.collector.amount) + " syphons/s";
+  CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " (" + String(buyables.collector.manuals) +") Collectors, Producing " + String(buyables.collector.effect()) + " syphons/s";
   CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
-  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.amount) + " collectors/s";
+  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.effect()) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
 }
@@ -86,7 +86,7 @@ function gainstardust(){
   gain = gain.add(temp)
   
   
-  var gain = gain.div(60)
+  var gain = gain.div(E("60"))
   player.stardust = player.stardust.add(gain)
 }
 
@@ -182,6 +182,12 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Gravity.cost) + " Stardust"
 });
 
+document.getElementById('MEMButton').addEventListener('mouseover', function(event) {
+    if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "MEM (Bought)"} else {UpgradeName.innerHTML = "MEM (Unbought)"}
+    UpgradeEffect.innerHTML = String(upgrades.MEM.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.MEM.cost) + " Stardust"
+});
+
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
   if (player.stardust.gte(upgrades.incrementallist.cost)) {
@@ -196,6 +202,13 @@ document.getElementById('GravityButton').addEventListener('click', function() {
     player.stardust = player.stardust.sub(upgrades.Gravity.cost)
     upgrades.Gravity.bought = true
     if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true}
+}}});
+
+document.getElementById('MEMButton').addEventListener('click', function() {
+  if (player.stardust.gte(upgrades.MEM.cost)) {
+      if (upgrades.MEM.bought == false) {
+    player.stardust = player.stardust.sub(upgrades.MEM.cost)
+    upgrades.MEM.bought = true
 }}});
 
 
