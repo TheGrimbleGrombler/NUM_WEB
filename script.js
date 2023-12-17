@@ -17,7 +17,6 @@ let upgrades = {
 };
 let unlockedsubtabs = {
   main: true,
-  gravity: true
   
   
 }
@@ -106,10 +105,20 @@ function openTab(tabName) {
   // Loop through the tab content elements
   for (var i = 0; i < tabContents.length; i++) {
     // Hide the tab content that doesn't match the selected tab
-    if (tabContents[i].id === tabName) {
-      tabContents[i].style.display = "block";
+    if (tabContents[i].class == "subtabbutton") {
+      if (unlockedsubtabs[tabContents[i].innerHTML]==true) {
+        if (tabContents[i].id === tabName) {
+            tabContents[i].style.display = "block";
+          } else {
+            tabContents[i].style.display = "none";
+          }
+        }
     } else {
-      tabContents[i].style.display = "none";
+      if (tabContents[i].id === tabName) {
+        tabContents[i].style.display = "block";
+      } else {
+        tabContents[i].style.display = "none";
+      }
     }
   }
 }
