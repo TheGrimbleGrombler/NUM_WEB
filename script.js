@@ -115,9 +115,11 @@ document.getElementById('tab2button').addEventListener('click', function() {
 });
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
-    UpgradeName.innerHTML = "Incrementallist"
-    UpgradeEffect.innerHTML = String(upgrades.Incrementallist.effect.function())
-    UpgradeCost.innerHTML = String(upgrades.Incrementallist.Cost)
+    if (upgrades.incrementallist.bought == true) {UpgradeName.innerHTML = "Incrementallist (Bought)"} else {UpgradeName.innerHTML = "Incrementallist (Unbought)"}
+    
+  
+    UpgradeEffect.innerHTML = "Multiplies Syphon effect based on Syphons, Currently " + String(upgrades.incrementallist.effect()) + "x."
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.incrementallist.cost) + " Stardust"
 });
 
 updateText();
