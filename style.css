@@ -65,4 +65,7 @@ video {
        image-rendering: pixelated;
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
+       position: relative;
+       top: -2px;
+       left: -8px;
      }
