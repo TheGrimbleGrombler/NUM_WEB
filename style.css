@@ -76,13 +76,13 @@ video {
        background-color: rgb(0,0,255,0.5)
      }
 
-     .small-image-container:after {
-     content: "";
-     position: absolute;
-       top: -0px;
-       left: -0px;
-     width: 120%;
-     height: 120%;
-     background: rgba(0, 0, 0, 0.2); /* This will create a semi-transparent layer to darken the image */
-     pointer-events: none; /* This ensures that the overlay does not interfere with the button's interactivity */
+.small-image-container:after {
+     /*content: "";
+     /*position: absolute;
+     /*  top: -0px;
+     /*  left: -0px;
+     /*width: 120%;
+     /*height: 120%;
+     /*background: rgba(0, 0, 0, 0.2); /* This will create a semi-transparent layer to darken the image */
+     /*pointer-events: none; /* This ensures that the overlay does not interfere with the button's interactivity */
 }

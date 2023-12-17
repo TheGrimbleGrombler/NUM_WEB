@@ -14,6 +14,7 @@ let buyables = {
 let upgrades = {
   incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
   Gravity: {cost: E("200000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
+  MEM: {cost: E("2e6"), bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "TBD"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
@@ -183,7 +184,7 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
 });
 
 document.getElementById('MEMButton').addEventListener('mouseover', function(event) {
-    if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "MEM (Bought)"} else {UpgradeName.innerHTML = "MEM (Unbought)"}
+    if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "More Efficient Tactics (Bought)"} else {UpgradeName.innerHTML = "More Efficient Tactics (Unbought)"}
     UpgradeEffect.innerHTML = String(upgrades.MEM.effect());
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.MEM.cost) + " Stardust"
 });
