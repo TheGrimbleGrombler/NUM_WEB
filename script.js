@@ -17,8 +17,7 @@ let upgrades = {
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
-  Main: true,
-  
+  "Main": true,
   
 }
 let player = {
@@ -166,7 +165,7 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
     if (upgrades.Gravity.bought == true) {UpgradeName.innerHTML = "Gravity (Bought)"} else {UpgradeName.innerHTML = "Gravity (Unbought)"}
     UpgradeEffect.innerHTML = String(upgrades.Gravity.effect());
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Gravity.cost) + " Stardust"
-    if (unlockedsubtabs[]) {}
+    if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true}
 });
 
 
