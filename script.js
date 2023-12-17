@@ -29,6 +29,11 @@ var CollectorDisplay = document.getElementById("CollectorDisplay");
 var CollectorButton = document.getElementById("CollectorButton");
 var FieldDisplay = document.getElementById("FieldDisplay");
 var FieldButton = document.getElementById("FieldButton");
+var UpgradeName = document.getElementById('UpgradeNameDisplay');
+var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
+var UpgradeCost = document.getElementById('UpgradeCostDisplay');
+
+
 
 function updateText() {
 
@@ -109,6 +114,10 @@ document.getElementById('tab2button').addEventListener('click', function() {
   openTab("tab2")
 });
 
-
+document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
+    UpgradeName.innerHTML = "Incrementallist"
+    UpgradeEffect.innerHTML = String(upgrades.Incrementallist.effect.function())
+    UpgradeCost.innerHTML = String(upgrades.Incrementallist.Cost)
+});
 
 updateText();
