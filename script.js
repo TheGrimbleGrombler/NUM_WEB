@@ -21,7 +21,8 @@ let unlockedsubtabs = {
   
 }
 let player = {
-  stardust: E("1")
+  stardust: E("1"),
+  gravitational_waves: E("0")
 
 };
 
