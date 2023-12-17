@@ -12,11 +12,12 @@ let buyables = {
 
 };
 let upgrades = {
-  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
+  incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
+  gravity: {cost: E("500000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Manually bought syphons boost their effect"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
-  main: true,
+  Main: true,
   
   
 }
@@ -114,7 +115,7 @@ function openTab(tabName) {
         // Loop through the tab content elements
         for (var j = 0; j < tabContents2.length; j++) {
           // Hide the tab content that doesn't match the selected tab
-          if (tabContents2[j].id === tabName) {
+          if (unlockedsubtabs[tabContents2[j].id]) {
             tabContents2[j].style.display = "block";
           } else {
             tabContents2[j].style.display = "none";
@@ -157,7 +158,7 @@ document.getElementById('subtab2button').addEventListener('click', function() {
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
     if (upgrades.incrementallist.bought == true) {UpgradeName.innerHTML = "Incrementallist (Bought)"} else {UpgradeName.innerHTML = "Incrementallist (Unbought)"}
-    UpgradeEffect.innerHTML = "Multiplies Syphon effect based on Syphons, Currently " + String(upgrades.incrementallist.effect()) + "x."
+    UpgradeEffect.innerHTML = String(upgrades.incrementallist.display) + ", Currently " + String(upgrades.incrementallist.effect()) + "x."
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.incrementallist.cost) + " Stardust"
 });
 
