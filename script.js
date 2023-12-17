@@ -197,7 +197,7 @@ function buy(n) {
   if (b == false) {
      if (player[ct].gte(c)) {
       player[ct] = player[ct].sub(c)
-      b = true
+      upgrades[n].bought = true
     }
   }
 }
