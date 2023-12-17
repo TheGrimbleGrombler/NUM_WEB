@@ -7,13 +7,13 @@ function E(n) {
 }
 let buyables = {
   syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
-  collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.collector.amount}},
+  collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
   field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.field.amount}}
 
 };
 let upgrades = {
   incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
-  Gravity: {cost: E("000000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
+  Gravity: {cost: E("200000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 let unlockedsubtabs = {
@@ -55,7 +55,7 @@ function updateText() {
   CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
   FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.amount) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
-  Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect ^ " + String(player.gravitational_waves.add(E("1")).log10().log10().add(E("1")));
+  Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
 }
 
 setInterval(updateText, 16);
@@ -64,7 +64,8 @@ function gainbuyables(){
   
   buyables.collector.amount = buyables.collector.amount.add(buyables.field.effect().div(E("60")))
   var temp = buyables.collector.effect()
-  if (player.gravitational_waves.gte(E("1"))) {temp = temp.pow(player.gravitational_waves.add(E("1")).log10().log10().add(E("1")))}
+  if (player.gravitational_waves.gte(E("1"))) {temp = temp}
+  temp = temp.div(E("60"))
   buyables.syphon.amount = buyables.syphon.amount.add(temp)
   
   
@@ -72,7 +73,9 @@ function gainbuyables(){
 function gaingravitationalwaves(){
   
   var gain = E("0")
-  if (upgrade.Gravity.bought == true) {gain = gain.add(1)}
+  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
+  
+  player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
 }
 function gainstardust(){
