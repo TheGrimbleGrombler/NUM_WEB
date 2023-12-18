@@ -20,7 +20,21 @@ let upgrades = {
 };
 
 
-
+function loadfunctions() {
+  
+  var b = buyables
+  var u = upgrades
+  
+  b.syphon.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}
+  b.collector.effect = function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}
+  b.field.effect = function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}
+  
+  u.incrementallist.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}
+  u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
+  u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
+  u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
+  
+}
 
 
 
@@ -284,13 +298,13 @@ function save() {
     player: player,
     unlockedsubtabs: unlockedsubtabs,
     syphoncost: buyables.syphon.cost,
-    syphoneffect: buyables.syphon.effect,
+    syphonamount: buyables.syphon.amount,
     syphonmanuals: buyables.syphon.manuals,
     collectorcost: buyables.collector.cost,
-    collectoreffect: buyables.collector.effect,
+    collectoramount: buyables.collector.amount,
     collectormanuals: buyables.collector.manuals,
     fieldcost: buyables.field.cost,
-    fieldeffect: buyables.field.effect,
+    fieldamount: buyables.field.amount,
     fieldmanuals: buyables.field.manuals,
     incrementallist: upgrades.incrementallist.bought,
     Gravity: upgrades.Gravity.bought,
@@ -305,20 +319,30 @@ function load() {
   const loadedData = JSON.parse(localStorage.getItem('gameData'));
   if (loadedData) {
     player = loadedData.player;
+    
+    player.stardust = E(String(loadedData.player.stardust));
+    player.gravitational_waves = E(String(loadedData.player.gravitational_waves));
+    player.a_particles = E(String(loadedData.player.a_particles));
+    player.b_particles = E(String(loadedData.player.b_particles));
+    player.c_particles = E(String(loadedData.player.c_particles));
+    
+    
     unlockedsubtabs = loadedData.unlockedsubtabs;
     buyables.syphon.cost = loadedData.syphoncost
-    buyables.syphon.effect = loadedData.syphoneffect
+    buyables.syphon.amount = loadedData.syphonamount
     buyables.syphon.manuals = loadedData.syphonmanuals
     buyables.collector.cost = loadedData.collectorcost
-    buyables.collector.effect = loadedData.collectoreffect
+    buyables.collector.amount = loadedData.collectoramount
     buyables.collector.manuals = loadedData.collectormanuals
     buyables.field.cost = loadedData.fieldcost
-    buyables.field.effect = loadedData.fieldeffect
+    buyables.field.amount = loadedData.fieldamount
     buyables.field.manuals = loadedData.fieldmanuals
     upgrades.incrementallist.bought = loadedData.incrementallist
     upgrades.Gravity.bought = loadedData.Gravity
     upgrades.MEM.bought = loadedData.MEM
     upgrades.feedbackloop.bought = loadedData.feedbackloop
+    
+    loadfunctions()
   }
 }
 
