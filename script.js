@@ -18,6 +18,14 @@ let upgrades = {
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
+
+
+
+
+
+
+
+
 let unlockedsubtabs = {
   "Main": true,
   
@@ -281,9 +289,13 @@ function save() {
     collectorcost: buyables.collector.cost,
     collectoreffect: buyables.collector.effect,
     collectormanuals: buyables.collector.manuals,
-    syphoncost: buyables.field.cost,
-    syphoneffect: buyables.syphon.effect,
-    syphonmanuals: buyables.syphon.manuals,
+    fieldcost: buyables.field.cost,
+    fieldeffect: buyables.field.effect,
+    fieldmanuals: buyables.field.manuals,
+    incrementallist: upgrades.incrementallist.bought,
+    Gravity: upgrades.Gravity.bought,
+    MEM: upgrades.MEM.bought,
+    feedbackloop: upgrades.feedbackloop.bought
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -294,6 +306,19 @@ function load() {
   if (loadedData) {
     player = loadedData.player;
     unlockedsubtabs = loadedData.unlockedsubtabs;
+    buyables.syphon.cost = loadedData.syphoncost
+    buyables.syphon.effect = loadedData.syphoneffect
+    buyables.syphon.manuals = loadedData.syphonmanuals
+    buyables.collector.cost = loadedData.collectorcost
+    buyables.collector.effect = loadedData.collectoreffect
+    buyables.collector.manuals = loadedData.collectormanuals
+    buyables.field.cost = loadedData.fieldcost
+    buyables.field.effect = loadedData.fieldeffect
+    buyables.field.manuals = loadedData.fieldmanuals
+    upgrades.incrementallist.bought = loadedData.incrementallist
+    upgrades.Gravity.bought = loadedData.Gravity
+    upgrades.MEM.bought = loadedData.MEM
+    upgrades.feedbackloop.bought = loadedData.feedbackloop
   }
 }
 
