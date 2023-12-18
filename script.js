@@ -23,8 +23,10 @@ let unlockedsubtabs = {
 }
 let player = {
   stardust: E("1"),
-  gravitational_waves: E("0")
-
+  gravitational_waves: E("0"),
+  a_particles: E("0"),
+  b_particles: E("0"),
+  c_particles: E("0"),
 };
 
 var x = new Decimal().fromString("1e100")
@@ -40,6 +42,12 @@ var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
 var UpgradeCost = document.getElementById('UpgradeCostDisplay');
 var Gravitational_WavesDisplay = document.getElementById('Gravitational_WavesDisplay');
 var GlobalResourceMultiplier = E("1e15")
+var AParticleDisplay = document.getElementById('AParticleDisplay');
+var BParticleDisplay = document.getElementById('BParticleDisplay');
+var CParticleDisplay = document.getElementById('CParticleDisplay');
+var APE1D = document.getElementById('AParticleEffect1Display');
+var APE2D = document.getElementById('AParticleEffect2Display');
+var APE3D = document.getElementById('AParticleEffect3Display');
 
 
 function updateText() {
@@ -57,6 +65,9 @@ function updateText() {
   FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.effect()) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
+  AParticleDisplay.innerHTML = "You have " + String(player.a_particles) + " A-Particles, Boosts:"
+  BParticleDisplay.innerHTML = "You have " + String(player.b_particles) + " B-Particles, Boosts:"
+  CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
 }
 
 setInterval(updateText, 16);
