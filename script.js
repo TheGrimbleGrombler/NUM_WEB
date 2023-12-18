@@ -39,7 +39,7 @@ var UpgradeName = document.getElementById('UpgradeNameDisplay');
 var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
 var UpgradeCost = document.getElementById('UpgradeCostDisplay');
 var Gravitational_WavesDisplay = document.getElementById('Gravitational_WavesDisplay');
-
+var GlobalResourceMultiplier = E("100")
 
 
 function updateText() {
@@ -76,6 +76,8 @@ function gaingravitationalwaves(){
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   
+  gain = gain.mul(GlobalResourceMultiplier)
+  
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
 }
@@ -86,6 +88,7 @@ function gainstardust(){
   if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
   gain = gain.add(temp)
   
+  gain = gain.mul(GlobalResourceMultiplier)
   
   var gain = gain.div(E("60"))
   player.stardust = player.stardust.add(gain)
