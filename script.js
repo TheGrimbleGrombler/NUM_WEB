@@ -299,12 +299,15 @@ function save() {
     unlockedsubtabs: unlockedsubtabs,
     syphoncost: buyables.syphon.cost,
     syphonamount: buyables.syphon.amount,
+    syphoneffect: buyables.syphon.effect,
     syphonmanuals: buyables.syphon.manuals,
     collectorcost: buyables.collector.cost,
     collectoramount: buyables.collector.amount,
+    collectoreffect: buyables.collector.effect,
     collectormanuals: buyables.collector.manuals,
     fieldcost: buyables.field.cost,
     fieldamount: buyables.field.amount,
+    fieldeffect: buyables.field.effect,
     fieldmanuals: buyables.field.manuals,
     incrementallist: upgrades.incrementallist.bought,
     Gravity: upgrades.Gravity.bought,
@@ -328,15 +331,19 @@ function load() {
     
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
-    buyables.syphon.cost = loadedData.syphoncost
-    buyables.syphon.amount = loadedData.syphonamount
-    buyables.syphon.manuals = loadedData.syphonmanuals
-    buyables.collector.cost = loadedData.collectorcost
-    buyables.collector.amount = loadedData.collectoramount
-    buyables.collector.manuals = loadedData.collectormanuals
-    buyables.field.cost = loadedData.fieldcost
-    buyables.field.amount = loadedData.fieldamount
-    buyables.field.manuals = loadedData.fieldmanuals
+    buyables.syphon.cost = E(String(loadedData.syphoncost))
+    buyables.syphon.amount = E(String(loadedData.syphonamount))
+    buyables.syphon.effect = loadedData.syphoneffect
+    buyables.syphon.manuals = E(String(loadedData.syphonmanuals))
+    buyables.collector.cost = E(String(loadedData.collectorcost))
+    buyables.collector.amount = E(String(loadedData.collectoramount))
+    buyables.collector.effect = loadedData.collectoreffect
+    buyables.collector.manuals = E(String(loadedData.collectormanuals))
+    buyables.field.cost = E(String(loadedData.fieldcost))
+    buyables.field.amount = E(String(loadedData.fieldamount))
+    buyables.field.effect = loadedData.fieldeffect
+    buyables.field.manuals = E(String(loadedData.fieldmanuals))
+    
     upgrades.incrementallist.bought = loadedData.incrementallist
     upgrades.Gravity.bought = loadedData.Gravity
     upgrades.MEM.bought = loadedData.MEM
