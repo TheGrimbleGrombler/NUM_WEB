@@ -41,7 +41,7 @@ var UpgradeName = document.getElementById('UpgradeNameDisplay');
 var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
 var UpgradeCost = document.getElementById('UpgradeCostDisplay');
 var Gravitational_WavesDisplay = document.getElementById('Gravitational_WavesDisplay');
-var GlobalResourceMultiplier = E("1e15")
+var GlobalResourceMultiplier = E("1e3")
 var AParticleDisplay = document.getElementById('AParticleDisplay');
 var BParticleDisplay = document.getElementById('BParticleDisplay');
 var CParticleDisplay = document.getElementById('CParticleDisplay');
@@ -75,13 +75,13 @@ function updateText() {
   AParticleDisplay.innerHTML = "You have " + String(player.a_particles) + " A-Particles, Boosts:"
   
   APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10().add(E("1")))
-  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log2().add(E("1")))
+  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log10().pow(E("0.5")).add(E("1")))
   APE3D.innerHTML = ""
   
   BParticleDisplay.innerHTML = "You have " + String(player.b_particles) + " B-Particles, Boosts:"
   
   BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10().add(E("1")))
-  BPE2D.innerHTML = "Gravitational Waves x" + String()
+  BPE2D.innerHTML = "Gravitational Waves x" + String(player.b_particles.log2().add(E("1")))
   BPE3D.innerHTML = ""
   
   CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
@@ -107,6 +107,8 @@ function gaingravitationalwaves(){
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   
+  if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log2().add(E("1")))}
+  
   gain = gain.mul(GlobalResourceMultiplier)
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
@@ -119,6 +121,8 @@ function gainstardust(){
   if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
   gain = gain.add(temp)
   
+  if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
+  
   gain = gain.mul(GlobalResourceMultiplier)
   
   var gain = gain.div(E("60"))
@@ -127,19 +131,19 @@ function gainstardust(){
 function gainparticles(){
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.c_particles >= 1) {gain = gain.mul(player.c_particles.log10().add(E("1")))}
+  if (player.c_particles.gte(E("1"))) {gain = gain.mul(player.c_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.a_particles >= 1) {gain = gain.mul(player.a_particles.log10().add(E("1")))}
+  if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.b_particles >= 1) {gain = gain.mul(player.b_particles.log10().add(E("1")))}
+  if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.b_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
