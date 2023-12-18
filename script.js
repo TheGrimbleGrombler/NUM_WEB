@@ -270,6 +270,26 @@ function buy(n) {
   }
 }
 
+function save() {
+  localStorage.setitem('player', JSON.stringify(player))
+  localStorage.setitem('buyables', JSON.stringify(buyables))
+  localStorage.setitem('upgrades', JSON.stringify(upgrades))
+  localStorage.setitem('unlockedsubtabs', JSON.stringify(unlockedsubtabs))
+  
+  
+  
+}
+
+function load() {
+  player = JSON.parse(localStorage.getitem('player'))
+  buyables = JSON.parse(localStorage.getitem('buyables'))
+  upgrades = JSON.parse(localStorage.getitem('upgrades'))
+  unlockedsubtabs = JSON.parse(localStorage.getitem('unlockedsubtabs'))
+  
+  
+  
+}
+
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
   buy("incrementallist")  
 });
@@ -284,6 +304,14 @@ document.getElementById('MEMButton').addEventListener('click', function() {
 
 document.getElementById('FeedbackButton').addEventListener('click', function() {
   buy("feedbackloop")  
+});
+
+document.getElementById('savebutton').addEventListener('click', function() {
+  save()
+});
+
+document.getElementById('loadbutton').addEventListener('click', function() {
+  load()
 });
 
 updateText();
