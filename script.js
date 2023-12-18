@@ -274,9 +274,16 @@ function buy(n) {
 function save() {
   const dataToSave = {
     player: player,
-    buyables: buyables,
-    upgrades: upgrades,
-    unlockedsubtabs: unlockedsubtabs
+    unlockedsubtabs: unlockedsubtabs,
+    syphoncost: buyables.syphon.cost,
+    syphoneffect: buyables.syphon.effect,
+    syphonmanuals: buyables.syphon.manuals,
+    collectorcost: buyables.collector.cost,
+    collectoreffect: buyables.collector.effect,
+    collectormanuals: buyables.collector.manuals,
+    syphoncost: buyables.field.cost,
+    syphoneffect: buyables.syphon.effect,
+    syphonmanuals: buyables.syphon.manuals,
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -286,8 +293,6 @@ function load() {
   const loadedData = JSON.parse(localStorage.getItem('gameData'));
   if (loadedData) {
     player = loadedData.player;
-    buyables = loadedData.buyables;
-    upgrades = loadedData.upgrades;
     unlockedsubtabs = loadedData.unlockedsubtabs;
   }
 }
