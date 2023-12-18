@@ -39,12 +39,28 @@ video {
 .number {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(255,0,255)
+  color: rgb(255,0,255);
 }
 .numbergreen {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(0,255,0)
+  color: rgb(0,255,0);
+}
+.numberred {
+  font-size: 16px;
+  display: block; /* Make the number a block element so it takes up the full width of the container */
+  color: rgb(255,0,0);
+  text-align: center;
+}
+.numberorange {
+  font-size: 16px;
+  display: block; /* Make the number a block element so it takes up the full width of the container */
+  color: rgb(255,160,0);
+}
+.numberyellow {
+  font-size: 16px;
+  display: block; /* Make the number a block element so it takes up the full width of the container */
+  color: rgb(255,255,0);
 }
 
 
@@ -71,8 +87,8 @@ video {
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
        position: relative;
-       top: -0px;
-       left: -6px;
+       top: -3px;
+       left: -9px;
        background-color: rgb(0,0,255,0.5)
      }
 

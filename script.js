@@ -39,7 +39,7 @@ var UpgradeName = document.getElementById('UpgradeNameDisplay');
 var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
 var UpgradeCost = document.getElementById('UpgradeCostDisplay');
 var Gravitational_WavesDisplay = document.getElementById('Gravitational_WavesDisplay');
-var GlobalResourceMultiplier = E("100")
+var GlobalResourceMultiplier = E("1e15")
 
 
 function updateText() {
