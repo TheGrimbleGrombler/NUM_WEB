@@ -270,24 +270,26 @@ function buy(n) {
   }
 }
 
+// Saving the main object with sub-objects
 function save() {
-  localStorage.setitem('player', JSON.stringify(player))
-  localStorage.setitem('buyables', JSON.stringify(buyables))
-  localStorage.setitem('upgrades', JSON.stringify(upgrades))
-  localStorage.setitem('unlockedsubtabs', JSON.stringify(unlockedsubtabs))
-  
-  
-  
+  const dataToSave = {
+    player: player,
+    buyables: buyables,
+    upgrades: upgrades,
+    unlockedsubtabs: unlockedsubtabs
+  };
+  localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
 
+// Loading the main object with sub-objects
 function load() {
-  player = JSON.parse(localStorage.getitem('player'))
-  buyables = JSON.parse(localStorage.getitem('buyables'))
-  upgrades = JSON.parse(localStorage.getitem('upgrades'))
-  unlockedsubtabs = JSON.parse(localStorage.getitem('unlockedsubtabs'))
-  
-  
-  
+  const loadedData = JSON.parse(localStorage.getItem('gameData'));
+  if (loadedData) {
+    player = loadedData.player;
+    buyables = loadedData.buyables;
+    upgrades = loadedData.upgrades;
+    unlockedsubtabs = loadedData.unlockedsubtabs;
+  }
 }
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
