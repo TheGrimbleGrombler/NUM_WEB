@@ -24,9 +24,9 @@ let unlockedsubtabs = {
 let player = {
   stardust: E("1"),
   gravitational_waves: E("0"),
-  a_particles: E("0"),
-  b_particles: E("0"),
-  c_particles: E("0"),
+  a_particles: E("1"),
+  b_particles: E("1"),
+  c_particles: E("1"),
 };
 
 var x = new Decimal().fromString("1e100")
@@ -57,11 +57,11 @@ var CPE3D = document.getElementById('CParticleEffect3Display');
 
 
 function updateText() {
-
+  
   gainbuyables()
   gainstardust()
   gaingravitationalwaves()
-  
+  gainparticles()
   
   StardustDisplay.innerHTML = "You have " + String(player.stardust) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " (" + String(buyables.syphon.manuals) +") Syphons, Boosting Stardust gain by +" + String(buyables.syphon.effect()) + "/s";
@@ -71,15 +71,23 @@ function updateText() {
   FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.effect()) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
+  
   AParticleDisplay.innerHTML = "You have " + String(player.a_particles) + " A-Particles, Boosts:"
-  APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10())
-  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log2())
+  
+  APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10().add(E("1")))
+  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log2().add(E("1")))
   APE3D.innerHTML = ""
+  
   BParticleDisplay.innerHTML = "You have " + String(player.b_particles) + " B-Particles, Boosts:"
-  BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10())
-  CPE2D.innerHTML = "Gravitational Waves x" + String(player.a_particles.log10().pow(E("0.5")))
+  
+  BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10().add(E("1")))
+  BPE2D.innerHTML = "Gravitational Waves x" + String()
+  BPE3D.innerHTML = ""
+  
   CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
-  CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10())
+  CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
+  CPE2D.innerHTML = " x" + String(player.c_particles.log10().add(E("1")))
+  CPE3D.innerHTML = ""
 }
 
 setInterval(updateText, 16);
@@ -115,6 +123,26 @@ function gainstardust(){
   
   var gain = gain.div(E("60"))
   player.stardust = player.stardust.add(gain)
+}
+function gainparticles(){
+  var gain = E("0")
+  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
+  if (player.c_particles >= 1) {gain = gain.mul(player.c_particles.log10().add(E("1")))}
+  if (upgrades.Gravity.bought == false) {gain = E("0")}
+  player.a_particles = player.a_particles.add(gain.div(E("60")))
+  
+  var gain = E("0")
+  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
+  if (player.a_particles >= 1) {gain = gain.mul(player.a_particles.log10().add(E("1")))}
+  if (upgrades.Gravity.bought == false) {gain = E("0")}
+  player.b_particles = player.b_particles.add(gain.div(E("60")))
+  
+  var gain = E("0")
+  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
+  if (player.b_particles >= 1) {gain = gain.mul(player.b_particles.log10().add(E("1")))}
+  if (upgrades.Gravity.bought == false) {gain = E("0")}
+  player.c_particles = player.c_particles.add(gain.div(E("60")))
+  
 }
 
 
