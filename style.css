@@ -61,6 +61,11 @@ video {
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(255,255,0);
 }
+.numberblue {
+  font-size: 16px;
+  display: block; /* Make the number a block element so it takes up the full width of the container */
+  color: rgb(0,0,255);
+}
 
 
      .image-container {
