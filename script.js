@@ -48,6 +48,12 @@ var CParticleDisplay = document.getElementById('CParticleDisplay');
 var APE1D = document.getElementById('AParticleEffect1Display');
 var APE2D = document.getElementById('AParticleEffect2Display');
 var APE3D = document.getElementById('AParticleEffect3Display');
+var BPE1D = document.getElementById('BParticleEffect1Display');
+var BPE2D = document.getElementById('BParticleEffect2Display');
+var BPE3D = document.getElementById('BParticleEffect3Display');
+var CPE1D = document.getElementById('CParticleEffect1Display');
+var CPE2D = document.getElementById('CParticleEffect2Display');
+var CPE3D = document.getElementById('CParticleEffect3Display');
 
 
 function updateText() {
@@ -66,8 +72,14 @@ function updateText() {
   FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
   AParticleDisplay.innerHTML = "You have " + String(player.a_particles) + " A-Particles, Boosts:"
+  APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10())
+  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log2())
+  APE3D.innerHTML = ""
   BParticleDisplay.innerHTML = "You have " + String(player.b_particles) + " B-Particles, Boosts:"
+  BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10())
+  CPE2D.innerHTML = "Gravitational Waves x" + String(player.a_particles.log10().pow(E("0.5")))
   CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
+  CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10())
 }
 
 setInterval(updateText, 16);
