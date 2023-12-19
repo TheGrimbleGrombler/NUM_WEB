@@ -36,6 +36,12 @@ function loadfunctions() {
   
 }
 
+let generalunlocks = {
+  
+  
+  
+}
+
 
 
 
@@ -287,6 +293,7 @@ function buy(n) {
       upgrades[n].bought = true
        
        if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
+       if (n == "The Unknown") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
        
     }
   }
@@ -312,7 +319,8 @@ function save() {
     incrementallist: upgrades.incrementallist.bought,
     Gravity: upgrades.Gravity.bought,
     MEM: upgrades.MEM.bought,
-    feedbackloop: upgrades.feedbackloop.bought
+    feedbackloop: upgrades.feedbackloop.bought,
+    generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -321,7 +329,6 @@ function save() {
 function load() {
   const loadedData = JSON.parse(localStorage.getItem('gameData'));
   if (loadedData) {
-    player = loadedData.player;
     
     player.stardust = E(String(loadedData.player.stardust));
     player.gravitational_waves = E(String(loadedData.player.gravitational_waves));
@@ -350,6 +357,8 @@ function load() {
     upgrades.feedbackloop.bought = loadedData.feedbackloop
     
     loadfunctions()
+    
+    generalunlocks = loadedData.generalunlocks
   }
 }
 
