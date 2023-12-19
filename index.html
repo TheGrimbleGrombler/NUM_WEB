@@ -18,8 +18,8 @@
     <!-- this is the start of content -->
     
     <!-- Your tab structure -->
-      <button id="savebutton" style="display: inline-block; position: absolute; top: 80px; left: 1080px;  width: 90px; height: 24px;" >SAVE</button>
-      <button id="loadbutton" style="display: inline-block; position: absolute; top: 80px; left: 1180px;  width: 90px; height: 24px;" >LOAD</button>
+      <button id="savebutton" class="buttonwhite" style="display: inline-block; position: absolute; top: 80px; left: 1080px;  width: 90px; height: 24px;" >SAVE</button>
+      <button id="loadbutton" class="buttonwhite" style="display: inline-block; position: absolute; top: 80px; left: 1180px;  width: 90px; height: 24px;" >LOAD</button>
     <div class="tab">
       <div class="number-container">
           <div class="image-container" style="display: inline-block; position: absolute; top: -8px; left: 66px;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Stardust.png?v=1702757014495" style="display: inline-block;"> </div>
@@ -32,15 +32,15 @@
           <button class="buttonblue" id="tab3button" style="display: inline-block; position: absolute; top: 80px; left: 280px;  width: 90px; height: 24px;" >Matter</button>
       </div>
       
-      <button id="tab1button" style="display: inline-block; position: absolute; top: 80px; left: 80px;  width: 90px; height: 24px;" >Stardust</button>
-      <button id="tab2button" style="display: inline-block; position: absolute; top: 80px; left: 180px;  width: 90px; height: 24px;" >Upgrades</button>
+      <button class="buttonpink"  id="tab1button" style="display: inline-block; position: absolute; top: 80px; left: 80px;  width: 90px; height: 24px;" >Stardust</button>
+      <button class="buttonwhite"  id="tab2button" style="display: inline-block; position: absolute; top: 80px; left: 180px;  width: 90px; height: 24px;" >Upgrades</button>
     </div>
     
       <!-- Tab content -->
     <div id="tab1" class="tabcontent">
       
-      <div class="subtabbutton" id="Main"> <button id="subtab1button" style="display: inline-block; position: absolute; top: 120px; left: 80px;  width: 90px; height: 24px;" >Main</button> </div>
-      <div class="subtabbutton" id="Gravity" style="display: none;"> <button id="subtab2button" style="display: inline-block; position: absolute; top: 120px; left: 180px; width: 90px; height: 24px;" >Gravity</button> </div>
+      <div class="subtabbutton buttonpink" id="Main" box-sizing: border-box;> <button id="subtab1button" style="box-sizing: border-box; display: block; position: absolute; top: 120px; left: 80px;  width: 90px; height: 24px;" >Main</button> </div>
+      <div class="subtabbutton buttongreen" id="Gravity" style="display: none; box-sizing: border-box;"> <button id="subtab2button" style="box-sizing: border-box; display: block; position: absolute; top: 120px; left: 180px; width: 90px; height: 24px;" >Gravity</button> </div>
       
       <div id="subtab1" class="subtabcontent">
         
@@ -49,19 +49,19 @@
       <div class="number-container">
           <div class="image-container" style="display: inline-block; position: absolute; top: 142px; left: 66px;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Siphon.png?v=1702757516825" style="display: inline-block;"> </div>
          <span class="number" id="SyphonDisplay" style="display: inline-block; position: absolute; top: 150px; left: 100px;" > 12345 </span>
-         <button id="SyphonButton" style="display: inline-block; position: absolute; top: 142px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
+         <button id="SyphonButton" class="buttonpink" style="display: inline-block; position: absolute; top: 142px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
       </div>
       
       <div class="number-container">
           <div class="image-container" style="display: inline-block; position: absolute; top: 192px; left: 66px;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Collector.png?v=1702765022355" style="display: inline-block;"> </div>
          <span class="number" id="CollectorDisplay" style="display: inline-block; position: absolute; top: 200px; left: 100px;" > 12345 </span>
-         <button id="CollectorButton" style="display: inline-block; position: absolute; top: 192px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
+         <button id="CollectorButton" class="buttonpink" style="display: inline-block; position: absolute; top: 192px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
       </div>
       
       <div class="number-container">
           <div class="image-container" style="display: inline-block; position: absolute; top: 242px; left: 66px;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Field.png?v=1702765474319" style="display: inline-block;"> </div>
          <span class="number" id="FieldDisplay" style="display: inline-block; position: absolute; top: 250px; left: 100px;" > 12345 </span>
-         <button id="FieldButton" style="display: inline-block; position: absolute; top: 242px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
+         <button id="FieldButton" class="buttonpink" style="display: inline-block; position: absolute; top: 242px; left: 800px; width: 200px; height: 32px;">Cost: n Stardust</button>
       </div>
         
         
@@ -108,9 +108,9 @@
     <div id="tab2" class="tabcontent" style="display: none;">
       
       <div class="number-container">
-      <span class="number" id="UpgradeNameDisplay" style="display: inline-block; position: absolute; top: 100px; left: 66px;" >blah blah blah</span>
-      <span class="number" id="UpgradeEffectDisplay" style="display: inline-block; position: absolute; top: 120px; left: 66px;" >blah blah blahx blah blah</span>
-      <span class="number" id="UpgradeCostDisplay" style="display: inline-block; position: absolute; top: 140px; left: 66px;" >blah: blah blah blah blaaah</span>
+      <span class="numberwhite" id="UpgradeNameDisplay" style="display: inline-block; position: absolute; top: 100px; left: 66px;" >blah blah blah</span>
+      <span class="numberwhite" id="UpgradeEffectDisplay" style="display: inline-block; position: absolute; top: 120px; left: 66px;" >blah blah blahx blah blah</span>
+      <span class="numberwhite" id="UpgradeCostDisplay" style="display: inline-block; position: absolute; top: 140px; left: 66px;" >blah: blah blah blah blaaah</span>
       </div>
       
       <div class="number-container">
