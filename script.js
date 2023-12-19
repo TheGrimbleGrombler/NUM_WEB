@@ -41,7 +41,6 @@ function loadfunctions() {
   
   if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   if (isNaN(upgrades.theunknown.bought)) {upgrades.theunknown.bought = false}
-  if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   
   
   
@@ -312,7 +311,7 @@ function buy(n) {
       upgrades[n].bought = true
        
        if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
-       // if (n == "theunknown") { if (generalunlocks["theunknown"]) {} else {generalunlocks["theunknown"] = true; document.getElementById("matterdisplaycontainer").display = "display: block;"} };)
+       if (n == "theunknown") {generalunlocks["theunknown"] = true; document.getElementById("matterdisplaycontainer").style = "display: block;"};
        
     }
   }
