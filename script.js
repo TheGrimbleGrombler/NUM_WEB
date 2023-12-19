@@ -16,6 +16,7 @@ let upgrades = {
   Gravity: {cost: E("200000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
   MEM: {cost: E("2e6"), costtype: "stardust", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "Squares the effect of fields, Currently: ^"},
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
+  theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 
@@ -33,7 +34,7 @@ function loadfunctions() {
   u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
   u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
   u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
-  
+  u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}
 }
 
 let generalunlocks = {
@@ -282,6 +283,11 @@ document.getElementById('FeedbackButton').addEventListener('mouseover', function
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.feedbackloop.cost) + " Stardust"
 });
 
+document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
+    if (upgrades.feedbackloop.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
+    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(upgrades.feedbackloop.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.feedbackloop.cost) + " Stardust"
+});
 
 function buy(n) {
   var c = upgrades[n].cost
@@ -293,7 +299,7 @@ function buy(n) {
       upgrades[n].bought = true
        
        if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
-       if (n == "The Unknown") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
+       if (n == "The Unknown") { if (generalunlocks["The Unknown"]) {} else {generalunlocks["The Unknown"] = true; document.getElementById("matterdisplaycontainer").display = "display: block;"} };
        
     }
   }
@@ -377,6 +383,11 @@ document.getElementById('MEMButton').addEventListener('click', function() {
 document.getElementById('FeedbackButton').addEventListener('click', function() {
   buy("feedbackloop")  
 });
+
+document.getElementById('UnknownButton').addEventListener('click', function() {
+  buy("The Unknown")  
+});
+
 
 document.getElementById('savebutton').addEventListener('click', function() {
   save()
