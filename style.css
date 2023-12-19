@@ -66,6 +66,30 @@ video {
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(0,0,255);
 }
+.buttonblue {
+  border: 2px solid rgb(0,0,255);
+  font-size: 16px;
+  color: rgb(255,255,255);
+  background-color: transparent;
+}
+.buttonred {
+  border: 2px solid rgb(255,0,0);
+  font-size: 16px;
+  color: rgb(255,255,255);
+  background-color: transparent;
+}
+.buttonpink {
+  border: 2px solid rgb(255,0,255);
+  font-size: 16px;
+  color: rgb(255,255,255);
+  background-color: transparent;
+}
+.buttongreen {
+  border: 2px solid rgb(0,255,0);
+  font-size: 16px;
+  color: rgb(255,255,255);
+  background-color: transparent;
+}
 
 
      .image-container {

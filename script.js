@@ -96,6 +96,7 @@ var BPE3D = document.getElementById('BParticleEffect3Display');
 var CPE1D = document.getElementById('CParticleEffect1Display');
 var CPE2D = document.getElementById('CParticleEffect2Display');
 var CPE3D = document.getElementById('CParticleEffect3Display');
+var MatterDisplay = document.getElementById('MatterDisplay');
 
 
 function updateText() {
@@ -130,6 +131,8 @@ function updateText() {
   CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
   CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
   CPE3D.innerHTML = ""
+  
+  MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
 }
 
 setInterval(updateText, 16);
@@ -317,6 +320,14 @@ function buy(n) {
   }
 }
 
+function displayunlocksonload() {
+  if (generalunlocks["theunknown"] = true) {document.getElementById("matterdisplaycontainer").style = "display: block;"};
+  
+  
+  
+  
+}
+
 // Saving the main object with sub-objects
 function save() {
   const dataToSave = {
@@ -380,6 +391,8 @@ function load() {
     loadfunctions()
     
     generalunlocks = loadedData.generalunlocks
+    
+    displayunlocksonload()
   }
 }
 
