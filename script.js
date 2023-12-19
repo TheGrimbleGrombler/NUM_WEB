@@ -16,7 +16,7 @@ let upgrades = {
   Gravity: {cost: E("200000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
   MEM: {cost: E("2e6"), costtype: "stardust", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "Squares the effect of fields, Currently: ^"},
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
-  theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
+  theunknown: {cost: E("500000000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
   //incrementallist: {cost: E("25000"), bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return E("3")} else {return E("1")}}},
 };
 
@@ -57,6 +57,7 @@ let player = {
   a_particles: E("1"),
   b_particles: E("1"),
   c_particles: E("1"),
+  matter: E("0"),
 };
 
 var x = new Decimal().fromString("1e100")
@@ -116,7 +117,7 @@ function updateText() {
   
   CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
   CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
-  CPE2D.innerHTML = " x" + String(player.c_particles.log10().add(E("1")))
+  CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
   CPE3D.innerHTML = ""
 }
 
@@ -284,9 +285,9 @@ document.getElementById('FeedbackButton').addEventListener('mouseover', function
 });
 
 document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
-    if (upgrades.feedbackloop.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(upgrades.feedbackloop.effect());
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.feedbackloop.cost) + " Stardust"
+    if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
+    UpgradeEffect.innerHTML = String(upgrades.theunknown.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
 });
 
 function buy(n) {
@@ -299,7 +300,7 @@ function buy(n) {
       upgrades[n].bought = true
        
        if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
-       if (n == "The Unknown") { if (generalunlocks["The Unknown"]) {} else {generalunlocks["The Unknown"] = true; document.getElementById("matterdisplaycontainer").display = "display: block;"} };
+       if (n == "theunknown") { if (generalunlocks["theunknown"]) {} else {generalunlocks["theunknown"] = true; document.getElementById("matterdisplaycontainer").display = "display: block;"} };
        
     }
   }
@@ -326,6 +327,7 @@ function save() {
     Gravity: upgrades.Gravity.bought,
     MEM: upgrades.MEM.bought,
     feedbackloop: upgrades.feedbackloop.bought,
+    theunknown: upgrades.theunknown.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -341,6 +343,7 @@ function load() {
     player.a_particles = E(String(loadedData.player.a_particles));
     player.b_particles = E(String(loadedData.player.b_particles));
     player.c_particles = E(String(loadedData.player.c_particles));
+    player.matter = E(String(loadedData.player.matter));
     
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
@@ -361,6 +364,7 @@ function load() {
     upgrades.Gravity.bought = loadedData.Gravity
     upgrades.MEM.bought = loadedData.MEM
     upgrades.feedbackloop.bought = loadedData.feedbackloop
+    upgrades.theunknown.bought = loadedData.theunknown
     
     loadfunctions()
     
@@ -385,7 +389,7 @@ document.getElementById('FeedbackButton').addEventListener('click', function() {
 });
 
 document.getElementById('UnknownButton').addEventListener('click', function() {
-  buy("The Unknown")  
+  buy("theunknown")  
 });
 
 
