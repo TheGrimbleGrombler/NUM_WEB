@@ -267,6 +267,9 @@ document.getElementById('tab1button').addEventListener('click', function() {
 document.getElementById('tab2button').addEventListener('click', function() {
   openTab("tab2")
 });
+document.getElementById('tab3button').addEventListener('click', function() {
+  openTab("tab3")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
