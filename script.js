@@ -8,7 +8,9 @@ function E(n) {
 let buyables = {
   syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
   collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
-  field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
+  field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}},
+  
+  weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.field.amount}}
 
 };
 let upgrades = {
@@ -42,6 +44,9 @@ function loadfunctions() {
   if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   if (isNaN(upgrades.theunknown.bought)) {upgrades.theunknown.bought = false}
   if (isNaN(unlockedsubtabs.MassMain)) {unlockedsubtabs.MassMain = generalunlocks.theunknown}
+  if (isNaN(buyables.weight.cost)) {buyables.weight.cost = E("0")}
+  if (isNaN(buyables.weight.amount)) {buyables.weight.amount = E("0")}
+  if (isNaN(buyables.weight.manuals)) {buyables.weight.manuals = E("0")}
   
   
   
@@ -99,6 +104,8 @@ var CPE1D = document.getElementById('CParticleEffect1Display');
 var CPE2D = document.getElementById('CParticleEffect2Display');
 var CPE3D = document.getElementById('CParticleEffect3Display');
 var MatterDisplay = document.getElementById('MatterDisplay');
+var WeightDisplay = document.getElementById("WeightDisplay");
+var WeightButton = document.getElementById("WeightButton");
 
 
 function updateText() {
@@ -135,6 +142,8 @@ function updateText() {
   CPE3D.innerHTML = ""
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
+  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Producing " + String(buyables.weight.effect()) + " collectors/s";
+  WeightButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
 }
 
 setInterval(updateText, 16);
@@ -217,6 +226,14 @@ document.getElementById('FieldButton').addEventListener('click', function() {
     buyables.field.amount = buyables.field.amount.add(E("1"))
     buyables.field.manuals = buyables.field.manuals.add(E("1"))
     buyables.field.cost = buyables.field.cost.mul(E("10"))
+}});
+
+document.getElementById('WeightButton').addEventListener('click', function() {
+  if (player.matter.gte(buyables.weight.cost)) {
+    player.matter = player.matter.sub(buyables.weight.cost)
+    buyables.weight.amount = buyables.weight.amount.add(E("1"))
+    buyables.weight.manuals = buyables.weight.manuals.add(E("1"))
+    buyables.weight.cost = buyables.weight.cost.mul(E("5"))
 }});
 
 function openTab(tabName) {
