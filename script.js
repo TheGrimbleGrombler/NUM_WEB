@@ -34,7 +34,7 @@ function loadfunctions() {
   u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
   u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
   u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
-  u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}
+  u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no matter?"}}
   
   
   
@@ -324,7 +324,7 @@ function buy(n) {
 }
 
 function displayunlocksonload() {
-  if (generalunlocks["theunknown"] = true) {document.getElementById("matterdisplaycontainer").style = "display: block;"};
+  if (generalunlocks.theunknown == true) {document.getElementById("matterdisplaycontainer").style = "display: block;"};
   
   
   
