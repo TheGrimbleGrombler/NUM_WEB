@@ -10,7 +10,7 @@ let buyables = {
   collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
   field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}},
   
-  weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return buyables.field.amount}}
+  weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
 
 };
 let upgrades = {
@@ -142,8 +142,8 @@ function updateText() {
   CPE3D.innerHTML = ""
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
-  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Producing " + String(buyables.weight.effect()) + " collectors/s";
-  WeightButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
+  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyables.weight.effect()) + "x";
+  WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
 }
 
 setInterval(updateText, 16);
@@ -294,6 +294,9 @@ document.getElementById('subtab1button').addEventListener('click', function() {
 });
 document.getElementById('subtab2button').addEventListener('click', function() {
   openSubtab("subtab2")
+});
+document.getElementById('masssubtab1button').addEventListener('click', function() {
+  openSubtab("masssubtab1")
 });
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
