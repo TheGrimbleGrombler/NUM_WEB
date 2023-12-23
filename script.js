@@ -42,12 +42,12 @@ function buyableeffects(n) {
 
 
 let buyables = {
-    syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.field.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}},
-    collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}},
-    field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}},
+    syphon: {cost: E("1"), amount: E("0"), manuals: E("0")},
+    collector: {cost: E("100"), amount: E("0"), manuals: E("0")},
+    field: {cost: E("2000"), amount: E("0"), manuals: E("0")},
   
   weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
-weight.effect
+
 };
 let upgrades = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
@@ -272,7 +272,7 @@ function gainstardust(){
   
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
   
-  if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyables.weight.effect())}
+  if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyableeffects(4))}
   
   if (upgrades.Infusion.effect().gte(E("1"))) {gain = gain.mul(upgrades.Infusion.effect())}
   
@@ -486,7 +486,7 @@ function save() {
     fieldcost: buyables.field.cost,
     fieldamount: buyables.field.amount,
     fieldmanuals: buyables.field.manuals,
-    weightcost: buyables.field.cost,
+    weightcost: buyables.weight.cost,
     weightamount: buyables.weight.amount,
     weightmanuals: buyables.weight.manuals,
     incrementallist: upgrades.incrementallist.bought,
@@ -524,7 +524,7 @@ function load() {
     buyables.field.cost = E(String(loadedData.fieldcost))
     buyables.field.amount = E(String(loadedData.fieldamount))
     buyables.field.manuals = E(String(loadedData.fieldmanuals))
-    buyables.weight.cost = E("10")
+    buyables.weight.cost = E(String(loadedData.weightcost))
     buyables.weight.amount = E(String(loadedData.weightamount))
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
