@@ -41,6 +41,7 @@ function loadfunctions() {
   b.syphon.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}
   b.collector.effect = function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}
   b.field.effect = function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}
+  b.weight.effect = function() {return E("10").pow(buyables.weight.amount)}
   
   u.incrementallist.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}
   u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
@@ -231,6 +232,8 @@ function gainstardust(){
   gain = gain.add(temp)
   
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
+  
+  if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyables.weight.effect())}
   
   gain = gain.mul(GlobalResourceMultiplier)
   
@@ -423,6 +426,10 @@ function save() {
     fieldamount: buyables.field.amount,
     fieldeffect: buyables.field.effect,
     fieldmanuals: buyables.field.manuals,
+    weightcost: buyables.field.cost,
+    weightamount: buyables.weight.amount,
+    weighteffect: buyables.weight.effect,
+    weightmanuals: buyables.weight.manuals,
     incrementallist: upgrades.incrementallist.bought,
     Gravity: upgrades.Gravity.bought,
     MEM: upgrades.MEM.bought,
@@ -459,6 +466,9 @@ function load() {
     buyables.field.amount = E(String(loadedData.fieldamount))
     buyables.field.effect = loadedData.fieldeffect
     buyables.field.manuals = E(String(loadedData.fieldmanuals))
+    buyables.weight.cost = E("10")
+    buyables.weight.amount = E(String(loadedData.weightamount))
+    buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
     upgrades.incrementallist.bought = loadedData.incrementallist
     upgrades.Gravity.bought = loadedData.Gravity
