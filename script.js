@@ -32,6 +32,7 @@ let upgrades = {
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
   
   Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
+  SacredTexts: {cost: E("5"), costtype: "matter", bought: false, effect: function() {return E("0")}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Dynamic."},
 };
 
 
@@ -51,6 +52,7 @@ function loadfunctions() {
   u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
   u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no matter?"}}
   u.Infusion.effect = function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(E("2")).floor()).mul(E("3"))} else {return E("1")}}
+  u.SacredTexts.effect = function() {return E("1")}
   
   
   
@@ -97,6 +99,7 @@ function doreset(tier) {
     buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
     
     upgrades.Infusion.bought = false
+    upgrades.SacredTexts.bought = false
     
     player.matter = E("0")
     
@@ -467,6 +470,7 @@ function save() {
     feedbackloop: upgrades.feedbackloop.bought,
     theunknown: upgrades.theunknown.bought,
     Infusion: upgrades.Infusion.bought,
+    SacredTexts: upgrades.SacredTexts.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -508,6 +512,7 @@ function load() {
     upgrades.feedbackloop.bought = loadedData.feedbackloop
     upgrades.theunknown.bought = loadedData.theunknown
     upgrades.Infusion.bought = loadedData.Infusion
+    upgrades.SacredTexts.bought = loadedData.SacredTexts
     
     loadfunctions()
     
