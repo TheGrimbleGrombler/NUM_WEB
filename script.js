@@ -70,13 +70,16 @@ function doreset(tier) {
   if (tier >= 1) {
     
     let buyables = {
-      syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
+      syphon: ,
       collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
       field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}},
   
       weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
     };
-    
+    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
+    buyables.collector = 
+    buyables.field = 
+
     upgrades.incrementallist.bought = false
     upgrades.Gravity.bought = false
     upgrades.MEM.bought = false
@@ -507,6 +510,10 @@ document.getElementById('loadbutton').addEventListener('click', function() {
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
+  if (getmatteronreset().gte(E("1"))) {
   doreset(1)
+  player.matter = player.matter.add(getmatteronreset())
+  }
 });
+
 updateText();
