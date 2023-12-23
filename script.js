@@ -50,6 +50,7 @@ function loadfunctions() {
   u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
   u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
   u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no matter?"}}
+  u.Infusion.effect = function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.log10().div(2).floor()).mul(E("3"))} else {return E("1")}}
   
   
   
@@ -348,6 +349,9 @@ document.getElementById('tab2button').addEventListener('click', function() {
 document.getElementById('tab3button').addEventListener('click', function() {
   openTab("tab3")
 });
+document.getElementById('purgebutton').addEventListener('click', function() {
+  openTab("tab4")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
@@ -389,9 +393,9 @@ document.getElementById('UnknownButton').addEventListener('mouseover', function(
 });
 
 document.getElementById('InfusionButton').addEventListener('mouseover', function(event) {
-    if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.theunknown.effect());
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
+    if (upgrades.Infusion.bought == true) {UpgradeName.innerHTML = "Infusion (Bought)"} else {UpgradeName.innerHTML = "Infusion (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.Infusion.display + String(upgrades.Infusion.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.Infusion.cost) + " Matter"
 });
 
 function buy(n) {
@@ -404,14 +408,21 @@ function buy(n) {
       upgrades[n].bought = true
        
        if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
-       if (n == "theunknown") {generalunlocks["theunknown"] = true; document.getElementById("matterdisplaycontainer").style = "display: block;"};
+       if (n == "theunknown") {
+         generalunlocks["theunknown"] = true; 
+         document.getElementById("matterdisplaycontainer").style = "display: block;"
+         document.getElementById("matterupgrades1").style = "display: block;"
+       };
        
     }
   }
 }
 
 function displayunlocksonload() {
-  if (generalunlocks.theunknown == true) {document.getElementById("matterdisplaycontainer").style = "display: block;"};
+  if (generalunlocks.theunknown == true) {
+         document.getElementById("matterdisplaycontainer").style = "display: block;"
+         document.getElementById("matterupgrades1").style = "display: block;"
+       };
   
   
   
@@ -444,6 +455,7 @@ function save() {
     MEM: upgrades.MEM.bought,
     feedbackloop: upgrades.feedbackloop.bought,
     theunknown: upgrades.theunknown.bought,
+    Infusion: upgrades.Infusion.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -484,6 +496,7 @@ function load() {
     upgrades.MEM.bought = loadedData.MEM
     upgrades.feedbackloop.bought = loadedData.feedbackloop
     upgrades.theunknown.bought = loadedData.theunknown
+    upgrades.Infusion.bought = loadedData.Infusion
     
     loadfunctions()
     
@@ -511,6 +524,10 @@ document.getElementById('FeedbackButton').addEventListener('click', function() {
 
 document.getElementById('UnknownButton').addEventListener('click', function() {
   buy("theunknown")  
+});
+
+document.getElementById('InfusionButton').addEventListener('click', function() {
+  buy("Infusion")  
 });
 
 
