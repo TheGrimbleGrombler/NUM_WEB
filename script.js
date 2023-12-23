@@ -30,6 +30,8 @@ let upgrades = {
   MEM: {cost: E("2e6"), costtype: "stardust", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "Squares the effect of fields, Currently: ^"},
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
+  
+  Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
 };
 
 
@@ -58,6 +60,7 @@ function loadfunctions() {
   if (isNaN(buyables.weight.cost)) {buyables.weight.cost = E("0")}
   if (isNaN(buyables.weight.amount)) {buyables.weight.amount = E("0")}
   if (isNaN(buyables.weight.manuals)) {buyables.weight.manuals = E("0")}
+  if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
   
   
   
@@ -380,6 +383,12 @@ document.getElementById('FeedbackButton').addEventListener('mouseover', function
 });
 
 document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
+    if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
+    UpgradeEffect.innerHTML = String(upgrades.theunknown.effect());
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
+});
+
+document.getElementById('InfusionButton').addEventListener('mouseover', function(event) {
     if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
     UpgradeEffect.innerHTML = String(upgrades.theunknown.effect());
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
