@@ -5,6 +5,17 @@ function E(n) {
   return new Decimal().fromString(n)
   
 }
+
+
+function fix(n,e) {
+  
+  return n.mul(E("10").pow(E(String(e)))).floor().div(E("10").pow(E(String(e))))
+  
+}
+
+
+
+
 let buyables = {
   syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}},
   collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
@@ -142,12 +153,26 @@ function updateText() {
   CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
   CPE3D.innerHTML = ""
   
-  MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
+  MassResetButton.innerHTML ="Reset all previous progress for " + String(getmatteronreset()) + " Matter"
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyables.weight.effect()) + "x";
   WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
 }
+
+function getmatteronreset() {
+  
+  var gain = E("0")
+  
+  gain = player.stardust.div(E("1e9")).pow(E("0.5"))
+  gain = fix(gain,2)
+  
+  
+  return gain
+  
+}
+
+
 
 setInterval(updateText, 16);
 function gainbuyables(){
