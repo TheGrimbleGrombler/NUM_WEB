@@ -13,7 +13,28 @@ function fix(n,e) {
   
 }
 
-
+function buyableeffects(n) {
+  var temp = E("1")
+  if (n==1) {
+    temp = buyables.syphon.amount
+    if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
+    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+  }
+  if (n==2) {
+    temp = buyables.collector.amount
+    if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
+    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+  }
+  if (n==3) {
+    temp = buyables.collector.amount
+    if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
+    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+  }
+  
+  
+  
+  return temp
+}
 
 
 let buyables = {
