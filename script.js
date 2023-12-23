@@ -183,6 +183,7 @@ var MatterDisplay = document.getElementById('MatterDisplay');
 var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
 var MassResetButton = document.getElementById("MassResetButton");
+var endgametext = document.getElementById("ENDGAME");
 
 
 function updateText() {
@@ -223,6 +224,8 @@ function updateText() {
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
   WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
+  
+  if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
