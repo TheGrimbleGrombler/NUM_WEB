@@ -69,16 +69,10 @@ function doreset(tier) {
   
   if (tier >= 1) {
     
-    let buyables = {
-      syphon: ,
-      collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}},
-      field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}},
-  
-      weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
-    };
     buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
-    buyables.collector = 
-    buyables.field = 
+    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
+    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
+    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
 
     upgrades.incrementallist.bought = false
     upgrades.Gravity.bought = false
@@ -292,7 +286,7 @@ document.getElementById('WeightButton').addEventListener('click', function() {
     player.matter = player.matter.sub(buyables.weight.cost)
     buyables.weight.amount = buyables.weight.amount.add(E("1"))
     buyables.weight.manuals = buyables.weight.manuals.add(E("1"))
-    buyables.weight.cost = buyables.weight.cost.mul(E("5"))
+    buyables.weight.cost = buyables.weight.cost.mul(E("10"))
 }});
 
 function openTab(tabName) {
@@ -511,8 +505,8 @@ document.getElementById('loadbutton').addEventListener('click', function() {
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
   if (getmatteronreset().gte(E("1"))) {
-  doreset(1)
   player.matter = player.matter.add(getmatteronreset())
+  doreset(1)
   }
 });
 
