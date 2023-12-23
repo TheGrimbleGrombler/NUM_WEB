@@ -535,6 +535,21 @@ function purge(x) {
     upgrades.feedbackloop.bought = false
     upgrades.theunknown.bought = false
   }
+  if (x==4) {
+    doreset(1)
+  }
+  if (x==5) {
+    player.matter = E("0");
+  }
+  if (x==6) {
+    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
+  }
+  if (x==7) {
+    upgrades.Infusion.bought = false
+  }
+  if (x==8) {
+    doreset(2)
+  }
   
   
   
@@ -576,6 +591,31 @@ document.getElementById('savebutton').addEventListener('click', function() {
 
 document.getElementById('loadbutton').addEventListener('click', function() {
   load()
+});
+
+document.getElementById('PurgeStardustButton').addEventListener('click', function() {
+  purge(1)
+});
+document.getElementById('PurgeStardustBuyablesButton').addEventListener('click', function() {
+  purge(2)
+});
+document.getElementById('PurgeStardustUpgradesButton').addEventListener('click', function() {
+  purge(3)
+});
+document.getElementById('PurgeStardustLayerButton').addEventListener('click', function() {
+  purge(4)
+});
+document.getElementById('PurgeMatterButton').addEventListener('click', function() {
+  purge(5)
+});
+document.getElementById('PurgeMatterBuyablesButton').addEventListener('click', function() {
+  purge(6)
+});
+document.getElementById('PurgeMatterUpgradesButton').addEventListener('click', function() {
+  purge(7)
+});
+document.getElementById('PurgeMatterLayerButton').addEventListener('click', function() {
+  purge(8)
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
