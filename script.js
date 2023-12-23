@@ -32,7 +32,7 @@ let upgrades = {
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
   
   Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
-  SacredTexts: {cost: E("5"), costtype: "matter", bought: false, effect: function() {return E("0")}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Dynamic."},
+  SacredTexts: {cost: E("10"), costtype: "matter", bought: false, effect: function() {return E("0")}, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
 };
 
 
@@ -64,6 +64,7 @@ function loadfunctions() {
   if (isNaN(buyables.weight.amount)) {buyables.weight.amount = E("0")}
   if (isNaN(buyables.weight.manuals)) {buyables.weight.manuals = E("0")}
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
+  if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
   
   
   
@@ -76,8 +77,8 @@ function doreset(tier) {
   
   if (tier >= 1) {
     
-    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
-    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
+    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.field.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}}
+    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {if (upgrades.SacredTexts.bought == true) { return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
     buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
 
     upgrades.incrementallist.bought = false
@@ -219,10 +220,12 @@ function getmatteronreset() {
 setInterval(updateText, 16);
 function gainbuyables(){
   
-  
-  buyables.collector.amount = buyables.collector.amount.add(buyables.field.effect().div(E("60")))
+  var temp = buyables.field.effect()
+  temp = temp.div(E("60"))
+  buyables.collector.amount = buyables.collector.amount.add(temp)
   var temp = buyables.collector.effect()
   if (player.gravitational_waves.gte(E("1"))) {temp = temp}
+  if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.collector.manuals)}
   temp = temp.div(E("60"))
   buyables.syphon.amount = buyables.syphon.amount.add(temp)
   
@@ -245,6 +248,7 @@ function gainstardust(){
   
   var temp = buyables.syphon.amount
   if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
+  if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
   gain = gain.add(temp)
   
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
@@ -412,6 +416,12 @@ document.getElementById('InfusionButton').addEventListener('mouseover', function
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Infusion.cost) + " Matter"
 });
 
+document.getElementById('SacredTextsButton').addEventListener('mouseover', function(event) {
+    if (upgrades.SacredTexts.bought == true) {UpgradeName.innerHTML = "Sacred Texts (Bought)"} else {UpgradeName.innerHTML = "Sacred Texts (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.SacredTexts.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.SacredTexts.cost) + " Matter"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -553,6 +563,7 @@ function purge(x) {
   }
   if (x==7) {
     upgrades.Infusion.bought = false
+    upgrades.SacredTexts.bought = false
   }
   if (x==8) {
     doreset(2)
@@ -589,6 +600,10 @@ document.getElementById('UnknownButton').addEventListener('click', function() {
 
 document.getElementById('InfusionButton').addEventListener('click', function() {
   buy("Infusion")  
+});
+
+document.getElementById('SacredTextsButton').addEventListener('click', function() {
+  buy("SacredTexts")  
 });
 
 
