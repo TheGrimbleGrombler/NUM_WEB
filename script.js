@@ -23,12 +23,16 @@ function buyableeffects(n) {
   if (n==2) {
     temp = buyables.collector.amount
     if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
-    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.collector.manuals)}
   }
   if (n==3) {
-    temp = buyables.collector.amount
-    if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
-    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+    temp = buyables.field.amount
+    if (upgrades.MEM.bought == true) {temp = temp.pow(upgrades.MEM.effect())}
+    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.field.manuals)}
+  }
+  if (n==4) {
+    temp = E("10")
+    temp = temp.pow(buyables.weight.amount)
   }
   
   
@@ -43,7 +47,7 @@ let buyables = {
     field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}},
   
   weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
-
+weight.effect
 };
 let upgrades = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
@@ -61,11 +65,6 @@ function loadfunctions() {
   
   var b = buyables
   var u = upgrades
-  
-  b.syphon.effect = function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.field.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}
-  b.collector.effect = function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}
-  b.field.effect = function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}
-  b.weight.effect = function() {return E("10").pow(buyables.weight.amount)}
   
   u.incrementallist.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}
   u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
@@ -99,9 +98,9 @@ function doreset(tier) {
   
   if (tier >= 1) {
     
-    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.syphon.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}}
-    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}}
-    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}}
+    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0")}
+    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0")}
+    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0")}
 
     upgrades.incrementallist.bought = false
     upgrades.Gravity.bought = false
@@ -119,7 +118,7 @@ function doreset(tier) {
   
   if (tier >= 2) {
     
-    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
+    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0")}
     
     upgrades.Infusion.bought = false
     upgrades.SacredTexts.bought = false
@@ -194,11 +193,11 @@ function updateText() {
   gainparticles()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
-  SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyables.syphon.effect(),0)) + "/s";
+  SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(fix(buyables.syphon.cost,0)) + " Stardust";
-  CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyables.collector.effect(),0)) + " syphons/s";
+  CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyableeffects(2),0)) + " syphons/s";
   CollectorButton.innerHTML = "Cost: " + String(fix(buyables.collector.cost,0)) + " Stardust";
-  FieldDisplay.innerHTML = "You have " + String(fix(buyables.field.amount,0)) + " (" + String(fix(buyables.field.manuals,0)) +") Fields, Producing " + String(fix(buyables.field.effect(),0)) + " collectors/s";
+  FieldDisplay.innerHTML = "You have " + String(fix(buyables.field.amount,0)) + " (" + String(fix(buyables.field.manuals,0)) +") Fields, Producing " + String(fix(buyableeffects(3),0)) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(fix(buyables.field.cost,0)) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(fix(player.gravitational_waves,0)) + " Gravitational Waves, Collector effect * " + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2));
   
@@ -222,7 +221,7 @@ function updateText() {
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
-  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyables.weight.effect()) + "x";
+  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
   WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
 }
 
@@ -242,10 +241,10 @@ function getmatteronreset() {
 setInterval(updateText, 16);
 function gainbuyables(){
   
-  var temp = buyables.field.effect()
+  var temp = buyableeffects(3)
   temp = temp.div(E("60"))
   buyables.collector.amount = buyables.collector.amount.add(temp)
-  var temp = buyables.collector.effect()
+  var temp = buyableeffects(2)
   if (player.gravitational_waves.gte(E("1"))) {temp = temp}
   temp = temp.div(E("60"))
   buyables.syphon.amount = buyables.syphon.amount.add(temp)
@@ -480,19 +479,15 @@ function save() {
     unlockedsubtabs: unlockedsubtabs,
     syphoncost: buyables.syphon.cost,
     syphonamount: buyables.syphon.amount,
-    syphoneffect: buyables.syphon.effect,
     syphonmanuals: buyables.syphon.manuals,
     collectorcost: buyables.collector.cost,
     collectoramount: buyables.collector.amount,
-    collectoreffect: buyables.collector.effect,
     collectormanuals: buyables.collector.manuals,
     fieldcost: buyables.field.cost,
     fieldamount: buyables.field.amount,
-    fieldeffect: buyables.field.effect,
     fieldmanuals: buyables.field.manuals,
     weightcost: buyables.field.cost,
     weightamount: buyables.weight.amount,
-    weighteffect: buyables.weight.effect,
     weightmanuals: buyables.weight.manuals,
     incrementallist: upgrades.incrementallist.bought,
     Gravity: upgrades.Gravity.bought,
@@ -522,15 +517,12 @@ function load() {
     unlockedsubtabs = loadedData.unlockedsubtabs;
     buyables.syphon.cost = E(String(loadedData.syphoncost))
     buyables.syphon.amount = E(String(loadedData.syphonamount))
-    buyables.syphon.effect = loadedData.syphoneffect
     buyables.syphon.manuals = E(String(loadedData.syphonmanuals))
     buyables.collector.cost = E(String(loadedData.collectorcost))
     buyables.collector.amount = E(String(loadedData.collectoramount))
-    buyables.collector.effect = loadedData.collectoreffect
     buyables.collector.manuals = E(String(loadedData.collectormanuals))
     buyables.field.cost = E(String(loadedData.fieldcost))
     buyables.field.amount = E(String(loadedData.fieldamount))
-    buyables.field.effect = loadedData.fieldeffect
     buyables.field.manuals = E(String(loadedData.fieldmanuals))
     buyables.weight.cost = E("10")
     buyables.weight.amount = E(String(loadedData.weightamount))
