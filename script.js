@@ -77,7 +77,6 @@ function doreset(tier) {
     buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
     buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
     buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
-    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
 
     upgrades.incrementallist.bought = false
     upgrades.Gravity.bought = false
@@ -90,6 +89,16 @@ function doreset(tier) {
     player.a_particles = E("1")
     player.b_particles = E("1")
     player.c_particles = E("1")
+    
+  }
+  
+  if (tier >= 2) {
+    
+    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
+    
+    upgrades.Infusion.bought = false
+    
+    player.matter = E("0")
     
   }
   
@@ -505,6 +514,36 @@ function load() {
     displayunlocksonload()
   }
 }
+
+function purge(x) {
+  if (x==1) {
+    player.stardust = E("1");
+    player.gravitational_waves = E("0");
+    player.a_particles = E("1");
+    player.b_particles = E("1");
+    player.c_particles = E("1");
+  }
+  if (x==2) {
+    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
+    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
+    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
+  }
+  if (x==3) {
+    upgrades.incrementallist.bought = false
+    upgrades.Gravity.bought = false
+    upgrades.MEM.bought = false
+    upgrades.feedbackloop.bought = false
+    upgrades.theunknown.bought = false
+  }
+  
+  
+  
+  
+  
+  
+  
+}
+
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
   buy("incrementallist")  
