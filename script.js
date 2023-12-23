@@ -196,7 +196,7 @@ function getmatteronreset() {
   gain = player.stardust.div(E("1e9")).pow(E("0.5"))
   
   
-  return gain
+  return gain.floor()
   
 }
 
@@ -506,4 +506,7 @@ document.getElementById('loadbutton').addEventListener('click', function() {
   load()
 });
 
+document.getElementById('MassResetButton').addEventListener('click', function() {
+  doreset(1)
+});
 updateText();
