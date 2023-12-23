@@ -18,8 +18,8 @@ function fix(n,e) {
 
 let buyables = {
     syphon: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.field.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}},
-    collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}},
-    field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}},
+    collector: {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}},
+    field: {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}},
   
   weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
 
@@ -42,8 +42,8 @@ function loadfunctions() {
   var u = upgrades
   
   b.syphon.effect = function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.field.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}
-  b.collector.effect = function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}
-  b.field.effect = function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}
+  b.collector.effect = function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}
+  b.field.effect = function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}
   b.weight.effect = function() {return E("10").pow(buyables.weight.amount)}
   
   u.incrementallist.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}
@@ -79,8 +79,8 @@ function doreset(tier) {
   if (tier >= 1) {
     
     buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {if (upgrades.SacredTexts.bought == true) { return buyables.syphon.amount.mul(upgrades.incrementallist.effect()).mul(buyables.syphon.manuals)} else {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())}} else {return buyables.syphon.amount}}}
-    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}}
-    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}}
+    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else { if (upgrades.SacredTexts.bought == false) {  return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))) } else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1"))).mul(buyables.collector.manuals)}}}}
+    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {if (upgrades.SacredTexts.bought == false) { return buyables.field.amount.pow(upgrades.MEM.effect()) } else {return buyables.field.amount.pow(upgrades.MEM.effect()).mul(buyables.field.manuals)}}}}
 
     upgrades.incrementallist.bought = false
     upgrades.Gravity.bought = false
