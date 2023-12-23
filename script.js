@@ -31,7 +31,7 @@ let upgrades = {
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
   
-  Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
+  Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
 };
 
 
@@ -50,7 +50,7 @@ function loadfunctions() {
   u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
   u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
   u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no matter?"}}
-  u.Infusion.effect = function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.log10().div(2).floor()).mul(E("3"))} else {return E("1")}}
+  u.Infusion.effect = function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(E("2")).floor()).mul(E("3"))} else {return E("1")}}
   
   
   
@@ -247,6 +247,8 @@ function gainstardust(){
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
   
   if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyables.weight.effect())}
+  
+  if (upgrades.Infusion.effect().gte(E("1"))) {gain = gain.mul(upgrades.Infusion.effect())}
   
   gain = gain.mul(GlobalResourceMultiplier)
   
