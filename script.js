@@ -106,6 +106,7 @@ var CPE3D = document.getElementById('CParticleEffect3Display');
 var MatterDisplay = document.getElementById('MatterDisplay');
 var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
+var MassResetButton = document.getElementById("MassResetButton");
 
 
 function updateText() {
@@ -140,6 +141,8 @@ function updateText() {
   CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
   CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
   CPE3D.innerHTML = ""
+  
+  MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyables.weight.effect()) + "x";
