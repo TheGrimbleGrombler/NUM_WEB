@@ -127,33 +127,33 @@ function updateText() {
   gaingravitationalwaves()
   gainparticles()
   
-  StardustDisplay.innerHTML = "You have " + String(player.stardust) + " Stardust";
-  SyphonDisplay.innerHTML = "You have " + String(buyables.syphon.amount) + " (" + String(buyables.syphon.manuals) +") Syphons, Boosting Stardust gain by +" + String(buyables.syphon.effect()) + "/s";
-  SyphonButton.innerHTML = "Cost: " + String(buyables.syphon.cost) + " Stardust";
-  CollectorDisplay.innerHTML = "You have " + String(buyables.collector.amount) + " (" + String(buyables.collector.manuals) +") Collectors, Producing " + String(buyables.collector.effect()) + " syphons/s";
-  CollectorButton.innerHTML = "Cost: " + String(buyables.collector.cost) + " Stardust";
-  FieldDisplay.innerHTML = "You have " + String(buyables.field.amount) + " (" + String(buyables.field.manuals) +") Fields, Producing " + String(buyables.field.effect()) + " collectors/s";
-  FieldButton.innerHTML = "Cost: " + String(buyables.field.cost) + " Stardust";
-  Gravitational_WavesDisplay.innerHTML = "You have " + String(player.gravitational_waves) + " Gravitational Waves, Collector effect * " + String(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")));
+  StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
+  SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyables.syphon.effect(),0)) + "/s";
+  SyphonButton.innerHTML = "Cost: " + String(fix(buyables.syphon.cost,0)) + " Stardust";
+  CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyables.collector.effect(),0)) + " syphons/s";
+  CollectorButton.innerHTML = "Cost: " + String(fix(buyables.collector.cost,0)) + " Stardust";
+  FieldDisplay.innerHTML = "You have " + String(fix(buyables.field.amount,0)) + " (" + String(fix(buyables.field.manuals,0)) +") Fields, Producing " + String(fix(buyables.field.effect(),0)) + " collectors/s";
+  FieldButton.innerHTML = "Cost: " + String(fix(buyables.field.cost,0)) + " Stardust";
+  Gravitational_WavesDisplay.innerHTML = "You have " + String(fix(player.gravitational_waves,0)) + " Gravitational Waves, Collector effect * " + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2));
   
-  AParticleDisplay.innerHTML = "You have " + String(player.a_particles) + " A-Particles, Boosts:"
+  AParticleDisplay.innerHTML = "You have " + String(fix(player.a_particles,0)) + " A-Particles, Boosts:"
   
   APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10().add(E("1")))
   APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log10().pow(E("0.5")).add(E("1")))
   APE3D.innerHTML = ""
   
-  BParticleDisplay.innerHTML = "You have " + String(player.b_particles) + " B-Particles, Boosts:"
+  BParticleDisplay.innerHTML = "You have " + String(fix(player.b_particles,0)) + " B-Particles, Boosts:"
   
   BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10().add(E("1")))
   BPE2D.innerHTML = "Gravitational Waves x" + String(player.b_particles.log2().add(E("1")))
   BPE3D.innerHTML = ""
   
-  CParticleDisplay.innerHTML = "You have " + String(player.c_particles) + " C-Particles, Boosts:"
+  CParticleDisplay.innerHTML = "You have " + String(fix(player.c_particles,0)) + " C-Particles, Boosts:"
   CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
   CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
   CPE3D.innerHTML = ""
   
-  MassResetButton.innerHTML ="Reset all previous progress for " + String(getmatteronreset()) + " Matter"
+  MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyables.weight.effect()) + "x";
@@ -165,7 +165,6 @@ function getmatteronreset() {
   var gain = E("0")
   
   gain = player.stardust.div(E("1e9")).pow(E("0.5"))
-  gain = fix(gain,2)
   
   
   return gain
