@@ -76,6 +76,11 @@ function upgradeeffects(n) {
   return temp
 }
 
+
+let achievements = [
+
+]
+
 let buyables = {
     syphon: {cost: E("1"), amount: E("0"), manuals: E("0")},
     collector: {cost: E("100"), amount: E("0"), manuals: E("0")},
