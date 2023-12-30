@@ -90,6 +90,7 @@ let upgrades = {
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
+  automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
 
 
@@ -105,6 +106,7 @@ function loadfunctions() {
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
   if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
+  if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   
   
   
@@ -587,13 +589,8 @@ function save() {
     weightcost: buyables.weight.cost,
     weightamount: buyables.weight.amount,
     weightmanuals: buyables.weight.manuals,
-    incrementallist: upgrades.incrementallist.bought,
-    Gravity: upgrades.Gravity.bought,
-    MEM: upgrades.MEM.bought,
-    feedbackloop: upgrades.feedbackloop.bought,
-    theunknown: upgrades.theunknown.bought,
-    Infusion: upgrades.Infusion.bought,
-    SacredTexts: upgrades.SacredTexts.bought,
+    buyables: buyables,
+    upgrades: upgrades,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -626,13 +623,7 @@ function load() {
     buyables.weight.amount = E(String(loadedData.weightamount))
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
-    upgrades.incrementallist.bought = loadedData.incrementallist
-    upgrades.Gravity.bought = loadedData.Gravity
-    upgrades.MEM.bought = loadedData.MEM
-    upgrades.feedbackloop.bought = loadedData.feedbackloop
-    upgrades.theunknown.bought = loadedData.theunknown
-    upgrades.Infusion.bought = loadedData.Infusion
-    upgrades.SacredTexts.bought = loadedData.SacredTexts
+    upgrades = loadedData.upgrades
     
     loadfunctions()
     
