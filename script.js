@@ -17,7 +17,7 @@ function buyableeffects(n) {
   var temp = E("1")
   if (n==1) {
     temp = buyables.syphon.amount
-    if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
+    if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
     if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
   }
   if (n==2) {
@@ -27,7 +27,7 @@ function buyableeffects(n) {
   }
   if (n==3) {
     temp = buyables.field.amount
-    if (upgrades.MEM.bought == true) {temp = temp.pow(upgrades.MEM.effect())}
+    if (upgrades.MEM.bought == true) {temp = temp.pow(upgradeeffects(3))}
     if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.field.manuals)}
   }
   if (n==4) {
@@ -49,7 +49,7 @@ function upgradeeffects(n) {
     if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}
   }
   if (n==3) {
-    if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
+    if (upgrades.MEM.bought==true) {temp = E("2")}
   }
   if (n==4) {
     if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
@@ -64,7 +64,7 @@ function upgradeeffects(n) {
     temp = E("0")
   }
   if (n==8) {
-    if 
+    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.5"))}
   }
   
   
@@ -81,32 +81,19 @@ let buyables = {
 
 };
 let upgrades = {
-  incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}, display: "Syphons boost their own effect"},
-  Gravity: {cost: E("200000"), costtype: "stardust", bought: false, effect: function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}, display: "Unlock Gravity"},
-  MEM: {cost: E("2e6"), costtype: "stardust", bought: false, effect: function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}, display: "Squares the effect of fields, Currently: ^"},
-  feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, effect: function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
-  theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, effect: function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no mass?"}}, display: "Unlock Mass"},
+  incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, display: "Syphons boost their own effect"},
+  Gravity: {cost: E("200000"), costtype: "stardust", bought: false, display: "Unlock Gravity"},
+  MEM: {cost: E("2e6"), costtype: "stardust", bought: false, display: "Squares the effect of fields, Currently: ^"},
+  feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
+  theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, display: "Unlock Mass"},
   
-  Infusion: {cost: E("3"), costtype: "matter", bought: false, effect: function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))} else {return E("1")}}, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
-  SacredTexts: {cost: E("10"), costtype: "matter", bought: false, effect: function() {return E("0")}, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
+  Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
+  SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
+  gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula, Currently: ^"},
 };
 
 
 function loadfunctions() {
-  
-  var b = buyables
-  var u = upgrades
-  
-  u.incrementallist.effect = function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.log10()} else {return E("1")}}
-  u.Gravity.effect = function() {if (upgrades.Gravity.bought==true) {return "It is done."} else {return "Currently no gravity... Maybe it's better this way."}}
-  u.MEM.effect = function() {if (upgrades.MEM.bought==true) {return E("2")} else {return E("1")}}
-  u.feedbackloop.effect = function() {if (upgrades.feedbackloop.bought==true) {return E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))} else {return E("1")}}
-  u.theunknown.effect = function() {if (upgrades.theunknown.bought==true) {return "Endless growth begins."} else {return "Gravity with no matter?"}}
-  u.Infusion.effect = function() {if (upgrades.Infusion.bought==true) {return E("3").pow(player.matter.add(E("1")).log10().div(E("2")).floor()).mul(E("3"))} else {return E("1")}}
-  u.SacredTexts.effect = function() {return E("1")}
-  
-  
-  
   
   if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   if (isNaN(upgrades.theunknown.bought)) {upgrades.theunknown.bought = false}
@@ -117,6 +104,7 @@ function loadfunctions() {
   if (isNaN(buyables.field.manuals)) {buyables.field.manuals = E("0")}
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
   if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
+  if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
   
   
   
@@ -153,6 +141,7 @@ function doreset(tier) {
     
     upgrades.Infusion.bought = false
     upgrades.SacredTexts.bought = false
+    upgrades.graviton.bought = false
     
     player.matter = E("0")
     
@@ -301,14 +290,14 @@ function gainstardust(){
   var gain = E("0")
   
   var temp = buyables.syphon.amount
-  if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgrades.incrementallist.effect())}
+  if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
   gain = gain.add(temp)
   
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
   
   if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyableeffects(4))}
   
-  if (upgrades.Infusion.effect().gte(E("1"))) {gain = gain.mul(upgrades.Infusion.effect())}
+  if (upgradeeffects(6).gte(E("1"))) {gain = gain.mul(upgradeeffects(6))}
   
   gain = gain.mul(GlobalResourceMultiplier)
   
@@ -435,37 +424,37 @@ document.getElementById('masssubtab1button').addEventListener('click', function(
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
     if (upgrades.incrementallist.bought == true) {UpgradeName.innerHTML = "Incrementallist (Bought)"} else {UpgradeName.innerHTML = "Incrementallist (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.incrementallist.display) + ", Currently " + String(upgrades.incrementallist.effect()) + "x."
+    UpgradeEffect.innerHTML = String(upgrades.incrementallist.display) + ", Currently " + String(upgradeeffects(1)) + "x."
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.incrementallist.cost) + " Stardust"
 });
 
 document.getElementById('GravityButton').addEventListener('mouseover', function(event) {
     if (upgrades.Gravity.bought == true) {UpgradeName.innerHTML = "Gravity (Bought)"} else {UpgradeName.innerHTML = "Gravity (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.Gravity.effect());
+    UpgradeEffect.innerHTML = String(upgradeeffects(2));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Gravity.cost) + " Stardust"
 });
 
 document.getElementById('MEMButton').addEventListener('mouseover', function(event) {
     if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "More Efficient Tactics (Bought)"} else {UpgradeName.innerHTML = "More Efficient Tactics (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.MEM.display) + String(upgrades.MEM.effect());
+    UpgradeEffect.innerHTML = String(upgrades.MEM.display) + String(upgradeeffects(3));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.MEM.cost) + " Stardust"
 });
 
 document.getElementById('FeedbackButton').addEventListener('mouseover', function(event) {
     if (upgrades.feedbackloop.bought == true) {UpgradeName.innerHTML = "Feedback Loop (Bought)"} else {UpgradeName.innerHTML = "Feedback Loop (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(upgrades.feedbackloop.effect());
+    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(upgradeeffects(4));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.feedbackloop.cost) + " Stardust"
 });
 
 document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
     if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.theunknown.effect());
+    UpgradeEffect.innerHTML = String(upgradeeffects(5));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
 });
 
 document.getElementById('InfusionButton').addEventListener('mouseover', function(event) {
     if (upgrades.Infusion.bought == true) {UpgradeName.innerHTML = "Infusion (Bought)"} else {UpgradeName.innerHTML = "Infusion (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.Infusion.display + String(upgrades.Infusion.effect());
+    UpgradeEffect.innerHTML = upgrades.Infusion.display + String(upgradeeffects(6));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Infusion.cost) + " Matter"
 });
 
@@ -587,9 +576,9 @@ function purge(x) {
     player.c_particles = E("1");
   }
   if (x==2) {
-    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgrades.incrementallist.effect())} else {return buyables.syphon.amount}}}
+    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgradeeffects(1))} else {return buyables.syphon.amount}}}
     buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
-    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgrades.MEM.effect())}}}
+    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgradeeffects(3))}}}
   }
   if (x==3) {
     upgrades.incrementallist.bought = false
