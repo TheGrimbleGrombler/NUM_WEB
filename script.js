@@ -365,7 +365,7 @@ function getmatteronreset() {
   
 }
 
-function playtimeupdate() {player.playtime = player.playtime + 1}
+function playtimeupdate() {player.playtime = player.playtime + 1; renderachievements()}
 
 setInterval(updateText, 16);
 setInterval(playtimeupdate, 60);
@@ -754,8 +754,13 @@ function purge(x) {
 }
 
 function renderachievements() {
+
+  for (let i = 0; i <= achievements.length; i++) {
+    
+    document.getElementById(String(achievements[i]) + "Achievement").className = "achievementclaimed"
+    console.log(String(achievements.index(i)) + "Achievement")
+  }
   
-  for i = 1,
   
   
   
