@@ -120,6 +120,7 @@ function loadfunctions() {
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
   if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   if (isNaN(player.playtime)) {player.playtime = 0}
+  if (isNaN(achievements)) {let achievements = []}
   
   
   
@@ -628,6 +629,7 @@ function displayunlocksonload() {
 function save() {
   const dataToSave = {
     player: player,
+    achievements: achievements,
     unlockedsubtabs: unlockedsubtabs,
     syphoncost: buyables.syphon.cost,
     syphonamount: buyables.syphon.amount,
@@ -668,6 +670,8 @@ function load() {
     player.b_particles = E(String(loadedData.player.b_particles));
     player.c_particles = E(String(loadedData.player.c_particles));
     player.matter = E(String(loadedData.player.matter));
+    
+    achievements = loadedData.achievements
     
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
@@ -759,6 +763,15 @@ function timedunlocks() {
       document.getElementById("matterupgrades2").style = "display: block;"
     }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  if (achievements.indexOf("blackhole") !== -1) {if (player.gravitational_waves.gte(E("1.8e308"))){achievements.push("blackhole")}}
   
   
   
