@@ -40,6 +40,37 @@ function buyableeffects(n) {
   return temp
 }
 
+function upgradeeffects(n) {
+  var temp = E("1")
+  if (n==1) {
+    if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.log10()}
+  }
+  if (n==2) {
+    if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}
+  }
+  if (n==3) {
+    if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
+  }
+  if (n==4) {
+    if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
+  }
+  if (n==5) {
+    if (upgrades.theunknown.bought==true) {temp = "Endless growth begins."} else {temp = "Gravity with no matter?"}
+  }
+  if (n==6) {
+    if (upgrades.Infusion.bought==true) {temp = E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))}
+  }
+  if (n==7) {
+    temp = E("0")
+  }
+  if (n==8) {
+    if 
+  }
+  
+  
+  
+  return temp
+}
 
 let buyables = {
     syphon: {cost: E("1"), amount: E("0"), manuals: E("0")},
