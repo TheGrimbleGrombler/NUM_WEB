@@ -97,6 +97,8 @@ let upgrades = {
 
 function loadfunctions() {
   
+  if (isNaN(upgrades.automatons)) {upgrades.automatons = {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"}}
+  
   if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   if (isNaN(upgrades.theunknown.bought)) {upgrades.theunknown.bought = false}
   if (isNaN(unlockedsubtabs.MassMain)) {unlockedsubtabs.MassMain = generalunlocks.theunknown}
@@ -107,6 +109,7 @@ function loadfunctions() {
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
   if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
+  if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   
   
   
@@ -597,6 +600,15 @@ function save() {
     weightmanuals: buyables.weight.manuals,
     buyables: buyables,
     upgrades: upgrades,
+    incrementallist: upgrades.incrementallist.bought,
+    Gravity: upgrades.Gravity.bought,
+    MEM: upgrades.MEM.bought,
+    feedbackloop: upgrades.feedbackloop.bought,
+    theunknown: upgrades.theunknown.bought,
+    Infusion: upgrades.Infusion.bought,
+    SacredTexts: upgrades.SacredTexts.bought,
+    gravitoncatalyst: upgrades.gravitoncatalyst.bought,
+    automatons: upgrades.automatons.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -630,6 +642,16 @@ function load() {
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
     upgrades = loadedData.upgrades
+    
+    upgrades.incrementallist.bought = loadedData.incrementallist,
+    upgrades.Gravity.bought = loadedData.Gravity,
+    upgrades.MEM.bought = loadedData.MEM,
+    upgrades.feedbackloop.bought = loadedData.feedbackloop,
+    upgrades.theunknown.bought = loadedData.theunknown,
+    upgrades.Infusion.bought = loadedData.Infusion,
+    upgrades.SacredTexts.bought = loadedData.SacredTexts,
+    upgrades.gravitoncatalyst.bought = loadedData.gravitoncatalyst,
+    upgrades.automatons.bought = loadedData.automatons,
     
     loadfunctions()
     
@@ -733,7 +755,7 @@ document.getElementById('GravitonCatalystButton').addEventListener('click', func
 });
 
 document.getElementById('AutomatonsButton').addEventListener('click', function() {
-  buy("automatonscatalyst")  
+  buy("automatons")  
 });
 
 
