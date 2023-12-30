@@ -671,7 +671,7 @@ function load() {
     player.c_particles = E(String(loadedData.player.c_particles));
     player.matter = E(String(loadedData.player.matter));
     
-    achievements = loadedData.achievements
+    if (!isNaN(loadedData.achievements)) {achievements = loadedData.achievements}
     
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
@@ -753,7 +753,15 @@ function purge(x) {
   
 }
 
-
+function renderachievements() {
+  
+  for i = 1,
+  
+  
+  
+  
+  
+}
 
 function timedunlocks() {
   
@@ -769,10 +777,10 @@ function timedunlocks() {
   
   
   
-  
-  if (achievements.indexOf('blackhole') >= 0) {
+  //let achievements = []
+  if (achievements.indexOf('BlackHole') >= 0) {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
-      achievements.push("blackhole");
+      achievements.push("BlackHole");
     }
   }
   
@@ -856,5 +864,5 @@ document.getElementById('MassResetButton').addEventListener('click', function() 
   doreset(1)
   }
 });
-load();
 updateText();
+if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
