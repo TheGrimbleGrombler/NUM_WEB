@@ -64,7 +64,7 @@ function upgradeeffects(n) {
     temp = E("0")
   }
   if (n==8) {
-    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.9"))}
+    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
   }
   
   
@@ -211,8 +211,47 @@ function particleeffects(a,b) {
   if (a==1) {
     
     if (b==1) {
-      
-      
+      temp = player.a_particles.log10().add(E("1"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==2) {
+      temp = player.a_particles.log10().pow(E("0.5")).add(E("1"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==3) {
+      temp = E("1")
+    }
+    
+    
+  }  
+  if (a==2) {
+    
+    if (b==1) {
+      temp = player.b_particles.log10().add(E("1"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==2) {
+      temp = player.b_particles.log2().add(E("1"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==3) {
+      temp = E("1")
+    }
+    
+    
+  }  
+  if (a==3) {
+    
+    if (b==1) {
+      temp = player.c_particles.log10().add(E("1"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==2) {
+      temp = player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5"))
+      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+    }
+    if (b==3) {
+      temp = E("1")
     }
     
     
@@ -245,19 +284,19 @@ function updateText() {
   
   AParticleDisplay.innerHTML = "You have " + String(fix(player.a_particles,0)) + " A-Particles, Boosts:"
   
-  APE1D.innerHTML = "B-Particle gain x" + String(player.a_particles.log10().add(E("1")))
-  APE2D.innerHTML = "Stardust gain x" + String(player.a_particles.log10().pow(E("0.5")).add(E("1")))
+  APE1D.innerHTML = "B-Particle gain x" + String(particleeffects(1,1))
+  APE2D.innerHTML = "Stardust gain x" + String(particleeffects(1,2))
   APE3D.innerHTML = ""
   
   BParticleDisplay.innerHTML = "You have " + String(fix(player.b_particles,0)) + " B-Particles, Boosts:"
   
-  BPE1D.innerHTML = "C-Particle gain x" + String(player.b_particles.log10().add(E("1")))
-  BPE2D.innerHTML = "Gravitational Waves x" + String(player.b_particles.log2().add(E("1")))
+  BPE1D.innerHTML = "C-Particle gain x" + String(particleeffects(2,1))
+  BPE2D.innerHTML = "Gravitational Waves x" + String(particleeffects(2,2))
   BPE3D.innerHTML = ""
   
   CParticleDisplay.innerHTML = "You have " + String(fix(player.c_particles,0)) + " C-Particles, Boosts:"
-  CPE1D.innerHTML = "A-Particle gain x" + String(player.c_particles.log10().add(E("1")))
-  CPE2D.innerHTML = "??? x" + String(player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")))
+  CPE1D.innerHTML = "A-Particle gain x" + String(particleeffects(3,1))
+  CPE2D.innerHTML = "??? x" + String(particleeffects(3,2))
   CPE3D.innerHTML = ""
   
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
@@ -266,7 +305,7 @@ function updateText() {
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
   WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
   
-  if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  //if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
@@ -300,7 +339,7 @@ function gaingravitationalwaves(){
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   
-  if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log2().add(E("1")))}
+  if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,2))}
   
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   
@@ -316,7 +355,7 @@ function gainstardust(){
   if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
   gain = gain.add(temp)
   
-  if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().pow(E("0.5")).add(E("1")))}
+  if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,2))}
   
   if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyableeffects(4))}
   
@@ -330,21 +369,21 @@ function gainstardust(){
 function gainparticles(){
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.c_particles.gte(E("1"))) {gain = gain.mul(player.c_particles.log10().add(E("1")))}
+  if (player.c_particles.gte(E("1"))) {gain = gain.mul(particleeffects(3,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().add(E("1")))}
+  if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.b_particles.log10().add(E("1")))}
+  if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
