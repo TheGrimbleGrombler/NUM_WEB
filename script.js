@@ -120,7 +120,7 @@ function loadfunctions() {
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
   if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   if (isNaN(player.playtime)) {player.playtime = 0}
-  if (isNaN(achievements)) {let achievements = []}
+  //if (!Array.isArray(achievements)) {let achievements = []}
   
   
   
@@ -774,8 +774,6 @@ function timedunlocks() {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
       achievements.push("blackhole");
     }
-  } else {
-    console.log("AHHHH");
   }
   
   
@@ -858,5 +856,5 @@ document.getElementById('MassResetButton').addEventListener('click', function() 
   doreset(1)
   }
 });
-
+load();
 updateText();
