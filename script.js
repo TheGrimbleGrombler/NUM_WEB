@@ -770,9 +770,13 @@ function timedunlocks() {
   
   
   
-  
-  if (achievements.indexOf("blackhole") !== -1) {if (player.gravitational_waves.gte(E("1.8e308"))){achievements.push("blackhole")}}
-  
+  if (achievements.indexOf('blackhole') >= 0) {
+    if (player.gravitational_waves.gte(E("1.8e308"))) {
+      achievements.push("blackhole");
+    }
+  } else {
+    console.log("AHHHH");
+  }
   
   
 }
