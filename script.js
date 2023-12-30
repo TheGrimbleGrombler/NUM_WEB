@@ -755,11 +755,11 @@ function purge(x) {
 
 function renderachievements() {
 
-  for (let i = 0; i <= achievements.length; i++) {
-    
-    document.getElementById(String(achievements[i]) + "Achievement").className = "achievementclaimed"
-    console.log(String(achievements.index(i)) + "Achievement")
-  }
+  
+  
+for (let i = 0; i < achievements.length; i++) {
+  document.getElementById(achievements[i] + "Achievement").className = "achievementclaimed";
+}
   
   
   
@@ -783,7 +783,7 @@ function timedunlocks() {
   
   
   //let achievements = []
-  if (achievements.indexOf('BlackHole') >= 0) {
+  if (!achievements.indexOf('BlackHole') >= 0) {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
       achievements.push("BlackHole");
     }
@@ -861,6 +861,9 @@ document.getElementById('PurgeMatterUpgradesButton').addEventListener('click', f
 });
 document.getElementById('PurgeMatterLayerButton').addEventListener('click', function() {
   purge(8)
+});
+document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
