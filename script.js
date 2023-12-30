@@ -65,6 +65,10 @@ function upgradeeffects(n) {
   }
   if (n==8) {
     if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
+    if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("10")).pow(E("0.2")))}
+  }
+  if (n==9) {
+    temp = E("0")
   }
   
   
@@ -97,7 +101,7 @@ let upgrades = {
 
 function loadfunctions() {
   
-  if (isNaN(upgrades.automatons)) {upgrades.automatons = {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"}}
+  //if (isNaN(upgrades.automatons)) {upgrades.automatons = {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"}}
   
   if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   if (isNaN(upgrades.theunknown.bought)) {upgrades.theunknown.bought = false}
@@ -110,12 +114,40 @@ function loadfunctions() {
   if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
   if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
+  if (isNaN(player.playtime)) {player.playtime = 0}
   
   
   
   
   
 }
+
+function Automation() {
+  
+  if (upgrades.automatons.bought) {
+    if (player.stardust.gte(buyables.syphon.cost)) {
+      player.stardust = player.stardust.sub(buyables.syphon.cost)
+      buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
+      buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
+      buyables.syphon.cost = buyables.syphon.cost.mul(E("2"))
+    }
+    if (player.stardust.gte(buyables.collector.cost)) {
+      player.stardust = player.stardust.sub(buyables.collector.cost)
+      buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
+      buyables.collector.amount = buyables.collector.amount.add(E("1"))
+      buyables.collector.cost = buyables.collector.cost.mul(E("3"))
+    }
+    if (player.stardust.gte(buyables.field.cost)) {
+      player.stardust = player.stardust.sub(buyables.field.cost)
+      buyables.field.amount = buyables.field.amount.add(E("1"))
+      buyables.field.manuals = buyables.field.manuals.add(E("1"))
+      buyables.field.cost = buyables.field.cost.mul(E("10"))
+    }
+  }
+  
+  
+}
+
 
 
 function doreset(tier) {
@@ -177,6 +209,7 @@ let player = {
   b_particles: E("1"),
   c_particles: E("1"),
   matter: E("0"),
+  playtime: 0,
 };
 
 var x = new Decimal().fromString("1e100")
@@ -278,6 +311,7 @@ function updateText() {
   gaingravitationalwaves()
   gainparticles()
   timedunlocks()
+  Automation()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -325,9 +359,10 @@ function getmatteronreset() {
   
 }
 
-
+function playtimeupdate() {player.playtime = player.playtime + 1}
 
 setInterval(updateText, 16);
+setInterval(playtimeupdate, 60);
 function gainbuyables(){
   
   var temp = buyableeffects(3)
