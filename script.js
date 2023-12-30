@@ -64,7 +64,7 @@ function upgradeeffects(n) {
     temp = E("0")
   }
   if (n==8) {
-    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.5"))}
+    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.9"))}
   }
   
   
@@ -89,7 +89,7 @@ let upgrades = {
   
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
-  gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula, Currently: ^"},
+  gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
 };
 
 
@@ -141,7 +141,7 @@ function doreset(tier) {
     
     upgrades.Infusion.bought = false
     upgrades.SacredTexts.bought = false
-    upgrades.graviton.bought = false
+    upgrades.gravitoncatalyst.bought = false
     
     player.matter = E("0")
     
@@ -204,6 +204,27 @@ var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
 var MassResetButton = document.getElementById("MassResetButton");
 var endgametext = document.getElementById("ENDGAME");
+
+
+function particleeffects(a,b) {
+  var temp = E("0")
+  if (a==1) {
+    
+    if (b==1) {
+      
+      
+    }
+    
+    
+  }  
+  
+  
+  
+  
+  
+  return temp
+}
+
 
 
 function updateText() {
@@ -281,6 +302,8 @@ function gaingravitationalwaves(){
   
   if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log2().add(E("1")))}
   
+  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  
   gain = gain.mul(GlobalResourceMultiplier)
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
@@ -309,18 +332,21 @@ function gainparticles(){
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   if (player.c_particles.gte(E("1"))) {gain = gain.mul(player.c_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
+  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(player.a_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
+  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
   if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
   if (player.b_particles.gte(E("1"))) {gain = gain.mul(player.b_particles.log10().add(E("1")))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
+  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
 }
@@ -462,6 +488,12 @@ document.getElementById('SacredTextsButton').addEventListener('mouseover', funct
     if (upgrades.SacredTexts.bought == true) {UpgradeName.innerHTML = "Sacred Texts (Bought)"} else {UpgradeName.innerHTML = "Sacred Texts (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.SacredTexts.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.SacredTexts.cost) + " Matter"
+});
+
+document.getElementById('GravitonCatalystButton').addEventListener('mouseover', function(event) {
+    if (upgrades.gravitoncatalyst.bought == true) {UpgradeName.innerHTML = "Graviton Catalyst (Bought)"} else {UpgradeName.innerHTML = "Graviton Catalyst (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.gravitoncatalyst.display + String(upgradeeffects(8));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.gravitoncatalyst.cost) + " Matter"
 });
 
 function buy(n) {
@@ -639,6 +671,10 @@ document.getElementById('InfusionButton').addEventListener('click', function() {
 
 document.getElementById('SacredTextsButton').addEventListener('click', function() {
   buy("SacredTexts")  
+});
+
+document.getElementById('GravitonCatalystButton').addEventListener('click', function() {
+  buy("gravitoncatalyst")  
 });
 
 
