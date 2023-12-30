@@ -90,6 +90,7 @@ let upgrades = {
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
+  
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
 
@@ -106,7 +107,6 @@ function loadfunctions() {
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
   if (isNaN(upgrades.SacredTexts.bought)) {upgrades.SacredTexts.bought = false}
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
-  if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   
   
   
@@ -274,6 +274,7 @@ function updateText() {
   gainstardust()
   gaingravitationalwaves()
   gainparticles()
+  timedunlocks()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -559,13 +560,12 @@ function buy(n) {
 
 function displayunlocksonload() {
   if (generalunlocks.theunknown == true) {
-         document.getElementById("matterdisplaycontainer").style = "display: block;"
-         document.getElementById("matterupgrades1").style = "display: block;"
-       };
+    document.getElementById("matterdisplaycontainer").style = "display: block;"
+    document.getElementById("matterupgrades1").style = "display: block;"
+  };
   if (generalunlocks.matterupgrades2 == true) {
-         document.getElementById("matterdisplaycontainer").style = "display: block;"
-         document.getElementById("matterupgrades2").style = "display: block;"
-       };
+    document.getElementById("matterupgrades2").style = "display: block;"
+  };
   
   
   
