@@ -114,12 +114,14 @@ video {
   box-sizing: border-box;
 }
 .achievement{
-  border: 0px;
   background-color: rgb(127.5,0,0);
+  padding: 0; /* Remove any default padding */
+  border: none; /* Remove any default border */
 }
 .achievementclaimed{
-  border: 0px;
   background-color: rgb(0,127.5,0);
+  padding: 0; /* Remove any default padding */
+  border: none; /* Remove any default border */
 }
 .achievement img {
   width: 100%;
