@@ -538,6 +538,12 @@ document.getElementById('GravitonCatalystButton').addEventListener('mouseover', 
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.gravitoncatalyst.cost) + " Matter"
 });
 
+document.getElementById('AutomatonsButton').addEventListener('mouseover', function(event) {
+    if (upgrades.automatons.bought == true) {UpgradeName.innerHTML = "Automatons (Bought)"} else {UpgradeName.innerHTML = "Automatons (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.automatons.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.automatons.cost) + " Matter"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -682,8 +688,11 @@ function purge(x) {
 
 function timedunlocks() {
   
-  if (!generalunlocks.matterupgrades2==true) {
-    if (player.stardust.gte(E("1e35"))) {generalunlocks.matterupgrades2 = true}
+  if (!generalunlocks.matterupgrades2 == true) {
+    if (player.stardust.gte(E("1e35"))) {
+      generalunlocks["matterupgrades2"] = true
+      document.getElementById("matterupgrades2").style = "display: block;"
+    }
   }
   
   
@@ -721,6 +730,10 @@ document.getElementById('SacredTextsButton').addEventListener('click', function(
 
 document.getElementById('GravitonCatalystButton').addEventListener('click', function() {
   buy("gravitoncatalyst")  
+});
+
+document.getElementById('AutomatonsButton').addEventListener('click', function() {
+  buy("automatonscatalyst")  
 });
 
 
