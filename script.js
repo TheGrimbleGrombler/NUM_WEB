@@ -65,7 +65,7 @@ function upgradeeffects(n) {
   }
   if (n==8) {
     if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
-    if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("10")).pow(E("0.2")))}
+    if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("9")).pow(E("0.2")).sub(E("1")))}
   }
   if (n==9) {
     temp = E("0")
@@ -569,10 +569,10 @@ document.getElementById('SacredTextsButton').addEventListener('mouseover', funct
     UpgradeEffect.innerHTML = upgrades.SacredTexts.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.SacredTexts.cost) + " Matter"
 });
-
+function checkifgravcatiscapped() {if(upgradeeffects(8).gte(E("10"))){return " (softcapped)"}else{return ""}}
 document.getElementById('GravitonCatalystButton').addEventListener('mouseover', function(event) {
     if (upgrades.gravitoncatalyst.bought == true) {UpgradeName.innerHTML = "Graviton Catalyst (Bought)"} else {UpgradeName.innerHTML = "Graviton Catalyst (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.gravitoncatalyst.display + String(upgradeeffects(8));
+    UpgradeEffect.innerHTML = upgrades.gravitoncatalyst.display + String(upgradeeffects(8)) + checkifgravcatiscapped();
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.gravitoncatalyst.cost) + " Matter"
 });
 
