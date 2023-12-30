@@ -560,6 +560,10 @@ function displayunlocksonload() {
          document.getElementById("matterdisplaycontainer").style = "display: block;"
          document.getElementById("matterupgrades1").style = "display: block;"
        };
+  if (generalunlocks.matterupgrades2 == true) {
+         document.getElementById("matterdisplaycontainer").style = "display: block;"
+         document.getElementById("matterupgrades2").style = "display: block;"
+       };
   
   
   
@@ -678,6 +682,18 @@ function purge(x) {
   
   
   
+  
+  
+  
+}
+
+
+
+function timedunlocks() {
+  
+  if (!generalunlocks.matterupgrades2==true) {
+    if (player.stardust.gte(E("1e35"))) {generalunlocks.matterupgrades2 = true}
+  }
   
   
   
