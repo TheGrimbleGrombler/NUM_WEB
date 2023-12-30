@@ -518,6 +518,9 @@ document.getElementById('tab3button').addEventListener('click', function() {
 document.getElementById('purgebutton').addEventListener('click', function() {
   openTab("tab4")
 });
+document.getElementById('achievementbutton').addEventListener('click', function() {
+  openTab("tab5")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
