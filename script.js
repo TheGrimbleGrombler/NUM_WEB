@@ -32,7 +32,7 @@ function buyableeffects(n) {
   }
   if (n==4) {
     temp = E("10")
-    temp = temp.pow(buyables.weight.amount)
+    if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(temp.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
   }
   
   
@@ -86,7 +86,7 @@ let buyables = {
     collector: {cost: E("100"), amount: E("0"), manuals: E("0")},
     field: {cost: E("2000"), amount: E("0"), manuals: E("0")},
   
-  weight: {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
+  weight: {cost: E("1"), amount: E("0"), manuals: E("0")}
 
 };
 let upgrades = {
@@ -322,7 +322,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -788,7 +788,7 @@ function timedunlocks() {
   
   
   //let achievements = []
-  if (!achievements.indexOf('BlackHole') >= 0) {
+  if (achievements.indexOf('BlackHole') == -1) {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
       achievements.push("BlackHole");
     }
