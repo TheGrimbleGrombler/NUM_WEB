@@ -308,7 +308,11 @@ function particleeffects(a,b) {
   return temp
 }
 
-
+function Debug() {
+  
+  document.getElementById("DEBUG").innerHTML = String(achievements)
+  
+}
 
 function updateText() {
   
@@ -318,6 +322,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
+  Debug()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -368,7 +373,7 @@ function getmatteronreset() {
 function playtimeupdate() {player.playtime = player.playtime + 1; renderachievements()}
 
 setInterval(updateText, 16);
-setInterval(playtimeupdate, 60);
+setInterval(playtimeupdate, 1000);
 function gainbuyables(){
   
   var temp = buyableeffects(3)
