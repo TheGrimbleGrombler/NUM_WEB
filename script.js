@@ -116,7 +116,7 @@ let upgrades = {
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
-  dlc: {cost: E("1e35"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
+  dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
@@ -633,7 +633,7 @@ document.getElementById('DiscoveryButton').addEventListener('mouseover', functio
 });
 
 document.getElementById('DLCButton').addEventListener('mouseover', function(event) {
-    if (upgrades.discovery.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
+    if (upgrades.dlc.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.dlc.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.dlc.cost) + " Matter"
 });
@@ -756,7 +756,7 @@ function load() {
     upgrades.gravitoncatalyst.bought = loadedData.gravitoncatalyst,
     upgrades.automatons.bought = loadedData.automatons,
     upgrades.discovery.bought = loadedData.discovery
-    upgrades.dlc.bought = false
+    upgrades.dlc.bought = loadedData.dlc
     
     loadfunctions()
     
