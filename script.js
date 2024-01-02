@@ -103,7 +103,16 @@ function upgradeeffects(n) {
 function getbuyablecost(n) {
   var temp = E("1e99999")
   if (n == 1) {
-    
+    temp = E("1").mul(E("2").pow(buyables.syphon.manuals))
+  }
+  if (n == 2) {
+    temp = E("100").mul(E("3").pow(buyables.collector.manuals))
+  }
+  if (n == 3) {
+    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals))
+  }
+  if (n == 4) {
+    temp = E("1").mul(E("10").pow(buyables.weight.manuals))
   }
   return temp
 }
@@ -122,11 +131,11 @@ function gettimespeed() {
 }
 
 let buyables = {
-    syphon: {cost: E("1"), amount: E("0"), manuals: E("0")},
-    collector: {cost: E("100"), amount: E("0"), manuals: E("0")},
-    field: {cost: E("2000"), amount: E("0"), manuals: E("0")},
+    syphon: {amount: E("0"), manuals: E("0")},
+    collector: {amount: E("0"), manuals: E("0")},
+    field: {amount: E("0"), manuals: E("0")},
   
-  weight: {cost: E("1"), amount: E("0"), manuals: E("0")}
+  weight: {amount: E("0"), manuals: E("0")}
 
 };
 let upgrades = {
@@ -137,7 +146,7 @@ let upgrades = {
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, display: "Unlock Mass"},
   
   spacetimerupture: {cost: E("5e68"), costtype: "stardust", bought: false, display: "100x Stardust gain, Currently: x"},
-  minmax: {cost: E("1e999"), costtype: "stardust", bought: false, display: "+5% Stardust gain for each OoM of Stardust, Currently: x"},
+  minmax: {cost: E("2e71"), costtype: "stardust", bought: false, display: "+5% Stardust gain for each OoM of Stardust, Currently: x"},
   heavier: {cost: E("1e999"), costtype: "stardust", bought: false, display: "+2 to the unsoftcapped weight effect, Currently: +"},
   crushing: {cost: E("1e999"), costtype: "stardust", bought: false, display: "ANOTHER +2 to the unsoftcapped weight effect, Currently: +"},
   replication: {cost: E("1e999"), costtype: "stardust", bought: false, display: "Field cost scales 10% slower, Currently: x"},
@@ -186,23 +195,20 @@ function loadfunctions() {
 function Automation() {
   
   if (upgrades.automatons.bought) {
-    if (player.stardust.gte(buyables.syphon.cost)) {
-      player.stardust = player.stardust.sub(buyables.syphon.cost)
+    if (player.stardust.gte(getbuyablecost(1))) {
+      player.stardust = player.stardust.sub(getbuyablecost(1))
       buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
       buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
-      buyables.syphon.cost = buyables.syphon.cost.mul(E("2"))
     }
-    if (player.stardust.gte(buyables.collector.cost)) {
-      player.stardust = player.stardust.sub(buyables.collector.cost)
+    if (player.stardust.gte(getbuyablecost(2))) {
+      player.stardust = player.stardust.sub(getbuyablecost(2))
       buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
       buyables.collector.amount = buyables.collector.amount.add(E("1"))
-      buyables.collector.cost = buyables.collector.cost.mul(E("3"))
     }
-    if (player.stardust.gte(buyables.field.cost)) {
-      player.stardust = player.stardust.sub(buyables.field.cost)
+    if (player.stardust.gte(getbuyablecost(3))) {
+      player.stardust = player.stardust.sub(getbuyablecost(3))
       buyables.field.amount = buyables.field.amount.add(E("1"))
       buyables.field.manuals = buyables.field.manuals.add(E("1"))
-      buyables.field.cost = buyables.field.cost.mul(E("10"))
     }
   }
   
@@ -388,11 +394,11 @@ function updateText() {
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
-  SyphonButton.innerHTML = "Cost: " + String(fix(buyables.syphon.cost,0)) + " Stardust";
+  SyphonButton.innerHTML = "Cost: " + String(fix(getbuyablecost(1),0)) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyableeffects(2),0)) + " syphons/s";
-  CollectorButton.innerHTML = "Cost: " + String(fix(buyables.collector.cost,0)) + " Stardust";
+  CollectorButton.innerHTML = "Cost: " + String(fix(getbuyablecost(2),0)) + " Stardust";
   FieldDisplay.innerHTML = "You have " + String(fix(buyables.field.amount,0)) + " (" + String(fix(buyables.field.manuals,0)) +") Fields, Producing " + String(fix(buyableeffects(3),0)) + " collectors/s";
-  FieldButton.innerHTML = "Cost: " + String(fix(buyables.field.cost,0)) + " Stardust";
+  FieldButton.innerHTML = "Cost: " + String(fix(getbuyablecost(3),0)) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(fix(player.gravitational_waves,0)) + " Gravitational Waves, Collector effect * " + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2));
   
   AParticleDisplay.innerHTML = "You have " + String(fix(player.a_particles,0)) + " A-Particles, Boosts:"
@@ -416,7 +422,7 @@ function updateText() {
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
-  WeightButton.innerHTML = "Cost: " + String(buyables.weight.cost) + " Matter";
+  WeightButton.innerHTML = "Cost: " + String(getbuyablecost(4)) + " Matter";
   
   //if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
@@ -517,33 +523,29 @@ function gainparticles(){
 
 
 document.getElementById('SyphonButton').addEventListener('click', function() {
-  if (player.stardust.gte(buyables.syphon.cost)) {
-    player.stardust = player.stardust.sub(buyables.syphon.cost)
+  if (player.stardust.gte(getbuyablecost(1))) {
+    player.stardust = player.stardust.sub(getbuyablecost(1))
     buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
     buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
-    buyables.syphon.cost = buyables.syphon.cost.mul(E("2"))
 }});
 document.getElementById('CollectorButton').addEventListener('click', function() {
-  if (player.stardust.gte(buyables.collector.cost)) {
-    player.stardust = player.stardust.sub(buyables.collector.cost)
+  if (player.stardust.gte(getbuyablecost(2))) {
+    player.stardust = player.stardust.sub(getbuyablecost(2))
     buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
     buyables.collector.amount = buyables.collector.amount.add(E("1"))
-    buyables.collector.cost = buyables.collector.cost.mul(E("3"))
 }});
 document.getElementById('FieldButton').addEventListener('click', function() {
-  if (player.stardust.gte(buyables.field.cost)) {
-    player.stardust = player.stardust.sub(buyables.field.cost)
+  if (player.stardust.gte(getbuyablecost(3))) {
+    player.stardust = player.stardust.sub(getbuyablecost(3))
     buyables.field.amount = buyables.field.amount.add(E("1"))
     buyables.field.manuals = buyables.field.manuals.add(E("1"))
-    buyables.field.cost = buyables.field.cost.mul(E("10"))
 }});
 
 document.getElementById('WeightButton').addEventListener('click', function() {
-  if (player.matter.gte(buyables.weight.cost)) {
-    player.matter = player.matter.sub(buyables.weight.cost)
+  if (player.matter.gte(getbuyablecost(4))) {
+    player.matter = player.matter.sub(getbuyablecost(4))
     buyables.weight.amount = buyables.weight.amount.add(E("1"))
     buyables.weight.manuals = buyables.weight.manuals.add(E("1"))
-    buyables.weight.cost = buyables.weight.cost.mul(E("10"))
 }});
 
 function openTab(tabName) {
@@ -758,16 +760,12 @@ function save() {
     player: player,
     achievements: achievements,
     unlockedsubtabs: unlockedsubtabs,
-    syphoncost: buyables.syphon.cost,
     syphonamount: buyables.syphon.amount,
     syphonmanuals: buyables.syphon.manuals,
-    collectorcost: buyables.collector.cost,
     collectoramount: buyables.collector.amount,
     collectormanuals: buyables.collector.manuals,
-    fieldcost: buyables.field.cost,
     fieldamount: buyables.field.amount,
     fieldmanuals: buyables.field.manuals,
-    weightcost: buyables.weight.cost,
     weightamount: buyables.weight.amount,
     weightmanuals: buyables.weight.manuals,
     buyables: buyables,
@@ -809,16 +807,12 @@ function load() {
     
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
-    buyables.syphon.cost = E(String(loadedData.syphoncost))
     buyables.syphon.amount = E(String(loadedData.syphonamount))
     buyables.syphon.manuals = E(String(loadedData.syphonmanuals))
-    buyables.collector.cost = E(String(loadedData.collectorcost))
     buyables.collector.amount = E(String(loadedData.collectoramount))
     buyables.collector.manuals = E(String(loadedData.collectormanuals))
-    buyables.field.cost = E(String(loadedData.fieldcost))
     buyables.field.amount = E(String(loadedData.fieldamount))
     buyables.field.manuals = E(String(loadedData.fieldmanuals))
-    buyables.weight.cost = E(String(loadedData.weightcost))
     buyables.weight.amount = E(String(loadedData.weightamount))
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
