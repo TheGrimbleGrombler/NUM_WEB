@@ -32,7 +32,7 @@ function buyableeffects(n) {
   }
   if (n==4) {
     temp = E("10")
-    if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(temp.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
+    if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
   }
   
   
