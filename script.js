@@ -186,6 +186,7 @@ function loadfunctions() {
   if (isNaN(upgrades.heavier.bought)) {upgrades.heavier.bought = false}
   if (isNaN(upgrades.crushing.bought)) {upgrades.crushing.bought = false}
   if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
+  if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -388,7 +389,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(generalunlocks.dlc)
+  document.getElementById("DEBUG").innerHTML = String(unlockedsubtabs.TributeMain)
   
 }
 
@@ -618,11 +619,17 @@ document.getElementById('purgebutton').addEventListener('click', function() {
 document.getElementById('achievementbutton').addEventListener('click', function() {
   openTab("tab5")
 });
+document.getElementById('tab6button').addEventListener('click', function() {
+  openTab("tab6")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
 document.getElementById('subtab2button').addEventListener('click', function() {
   openSubtab("subtab2")
+});
+document.getElementById('tributesubtab1button').addEventListener('click', function() {
+  openSubtab("tributesubtab1")
 });
 document.getElementById('masssubtab1button').addEventListener('click', function() {
   openSubtab("masssubtab1")
