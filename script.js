@@ -126,7 +126,7 @@ let achievements = [
 
 function gettimespeed() {
   var temp = E("1")
-  //if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
+  if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
   
   
   return temp
@@ -296,6 +296,7 @@ let player = {
   matter: E("0"),
   playtime: 0,
   tributes: E("0"),
+  besttributes: E("0"),
 };
 
 var x = new Decimal().fromString("1e100")
@@ -876,6 +877,7 @@ function load() {
     player.matter = E(String(loadedData.player.matter));
     player.playtime = E(String(loadedData.player.playtime));
     player.tributes = E(String(loadedData.player.tributes));
+    player.besttributes = E(String(loadedData.player.besttributes));
     
     if (!isNaN(loadedData.achievements)) {achievements = loadedData.achievements}
     
