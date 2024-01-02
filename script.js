@@ -112,6 +112,12 @@ let upgrades = {
   feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
   theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, display: "Unlock Mass"},
   
+  spacetimerupture: {cost: E("5e68"), costtype: "stardust", bought: false, display: "100x Stardust gain, Currently: x"},
+  minmax: {cost: E("1e999"), costtype: "stardust", bought: false, display: "+5% Stardust gain for each OoM of Stardust, Currently: x"},
+  heavier: {cost: E("1e999"), costtype: "stardust", bought: false, display: "+2 to the unsoftcapped weight effect, Currently: +"},
+  crushing: {cost: E("1e999"), costtype: "stardust", bought: false, display: "ANOTHER +2 to the unsoftcapped weight effect, Currently: +"},
+  replication: {cost: E("1e999"), costtype: "stardust", bought: false, display: "Field cost scales 10% slower, Currently: x"},
+  
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
@@ -140,6 +146,11 @@ function loadfunctions() {
   if (isNaN(player.playtime)) {player.playtime = 0}
   if (isNaN(upgrades.discovery.bought)) {upgrades.discovery.bought = false}
   if (isNaN(upgrades.dlc.bought)) {upgrades.dlc.bought = false}
+  if (isNaN(upgrades.spacetimerupture.bought)) {upgrades.spacetimerupture.bought = false}
+  if (isNaN(upgrades.minmax.bought)) {upgrades.minmax.bought = false}
+  if (isNaN(upgrades.heavier.bought)) {upgrades.heavier.bought = false}
+  if (isNaN(upgrades.crushing.bought)) {upgrades.crushing.bought = false}
+  if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -189,6 +200,11 @@ function doreset(tier) {
     upgrades.MEM.bought = false
     upgrades.feedbackloop.bought = false
     upgrades.theunknown.bought = false
+    upgrades.spacetimerupture.bought = false
+    upgrades.minmax.bought = false
+    upgrades.heavier.bought = false
+    upgrades.crushing.bought = false
+    upgrades.replication.bought = false
     
     player.stardust = E("1")
     player.gravitational_waves = E("0")
@@ -636,6 +652,36 @@ document.getElementById('DLCButton').addEventListener('mouseover', function(even
     if (upgrades.dlc.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.dlc.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.dlc.cost) + " Matter"
+});
+
+document.getElementById('SpacetimeButton').addEventListener('mouseover', function(event) {
+    if (upgrades.spacetimerupture.bought == true) {UpgradeName.innerHTML = "Spacetime Rupture (Bought)"} else {UpgradeName.innerHTML = "Spacetime Rupture (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.spacetimerupture.display + String(upgradeeffects(12));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.spacetimerupture.cost) + " Stardust"
+});
+
+document.getElementById('MinMaxButton').addEventListener('mouseover', function(event) {
+    if (upgrades.minmax.bought == true) {UpgradeName.innerHTML = "Min-Max (Bought)"} else {UpgradeName.innerHTML = "Min-Max (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.minmax.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.minmax.cost) + " Stardust"
+});
+
+document.getElementById('HeavierButton').addEventListener('mouseover', function(event) {
+    if (upgrades.heavier.bought == true) {UpgradeName.innerHTML = "Heavier (Bought)"} else {UpgradeName.innerHTML = "Heavier (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.heavier.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.heavier.cost) + " Stardust"
+});
+
+document.getElementById('CrushingButton').addEventListener('mouseover', function(event) {
+    if (upgrades.crushing.bought == true) {UpgradeName.innerHTML = "Crushing (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.crushing.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.crushing.cost) + " Stardust"
+});
+
+document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
+    if (upgrades.dlc.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.dlc.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.dlc.cost) + " Stardust"
 });
 
 function buy(n) {
