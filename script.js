@@ -260,6 +260,12 @@ function doreset(tier) {
     
   }
   
+  if (tier >= 3) {
+    
+    player.tributes = E("0")
+    
+  }
+  
 }
 
 
@@ -286,6 +292,7 @@ let player = {
   c_particles: E("1"),
   matter: E("0"),
   playtime: 0,
+  tributes: E("0"),
 };
 
 var x = new Decimal().fromString("1e100")
@@ -837,6 +844,8 @@ function load() {
     player.b_particles = E(String(loadedData.player.b_particles));
     player.c_particles = E(String(loadedData.player.c_particles));
     player.matter = E(String(loadedData.player.matter));
+    player.playtime = E(String(loadedData.player.playtime));
+    player.tributes = E(String(loadedData.player.tributes));
     
     if (!isNaN(loadedData.achievements)) {achievements = loadedData.achievements}
     
@@ -924,6 +933,18 @@ function purge(x) {
   if (x==8) {
     doreset(2)
   }
+  if (x==9) {
+    player.tributes = E("0")
+  }
+  if (x==10) {
+    
+  }
+  if (x==11) {
+    
+  }
+  if (x==12) {
+    doreset(3)
+  }
   
   
   
@@ -972,6 +993,11 @@ function timedunlocks() {
   if (achievements.indexOf('BlackHole') == -1) {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
       achievements.push("BlackHole");
+    }
+  }
+  if (achievements.indexOf('TheNextStep') == -1) {
+    if (player.tributes.gte(E("1"))) {
+      achievements.push("TheNextStep");
     }
   }
   
@@ -1076,8 +1102,23 @@ document.getElementById('PurgeMatterUpgradesButton').addEventListener('click', f
 document.getElementById('PurgeMatterLayerButton').addEventListener('click', function() {
   purge(8)
 });
+document.getElementById('PurgeTributesButton').addEventListener('click', function() {
+  purge(9)
+});
+document.getElementById('PurgeTributeBuyablesButton').addEventListener('click', function() {
+  purge(10)
+});
+document.getElementById('PurgeTributeUpgradesButton').addEventListener('click', function() {
+  purge(11)
+});
+document.getElementById('PurgeTributeLayerButton').addEventListener('click', function() {
+  purge(12)
+});
 document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
+});
+document.getElementById('TheNextStepAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "The Next Step - Perform a tribute reset."
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
