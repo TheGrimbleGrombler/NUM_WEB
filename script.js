@@ -393,6 +393,7 @@ function updateText() {
   timedunlocks()
   Automation()
   Debug()
+  displayupgrades()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -758,16 +759,31 @@ function displayunlocksonload() {
 function displayupgrades() {
   
   displayupgrade("Incrementallist","incrementallist")
+  displayupgrade("Gravity","Gravity")
+  displayupgrade("MEM","MEM")
+  displayupgrade("Feedback","feedbackloop")
+  displayupgrade("Unknown","theunknown")
+  displayupgrade("Infusion","Infusion")
+  displayupgrade("SacredTexts","SacredTexts")
+  displayupgrade("GravitonCatalyst","gravitoncatalyst")
+  displayupgrade("Automatons","automatons")
+  displayupgrade("Discovery","discovery")
+  displayupgrade("DLC","dlc")
+  displayupgrade("Spacetime","spacetimerupture")
+  displayupgrade("MinMax","minmax")
+  displayupgrade("Heavier","heavier")
+  displayupgrade("Crushing","crushing")
+  displayupgrade("Replication","replication")
   
 }
-function displayupgrade(idname,upname,given) {
+function displayupgrade(idname,upname) {
   if (upgrades[upname].bought == true) {
-    document.getElementById(idname + "Button").className = given + " outlinegreen";
+    document.getElementById(idname + "Button").className = "outlinegreen";
   } else {
     if (player[upgrades[upname].costtype].gte(upgrades[upname].cost)) {
-      document.getElementById(idname + "Button").className = given + " outlineyellow";
+      document.getElementById(idname + "Button").className = "outlineyellow";
     } else {
-      document.getElementById(idname + "Button").className = given + " outlinered";
+      document.getElementById(idname + "Button").className = "outlinered";
     }
   }
 }

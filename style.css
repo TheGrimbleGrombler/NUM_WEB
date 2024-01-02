@@ -27,7 +27,6 @@ video {
 
 .number-container {
   width: 1000px; /* Set the width of the container */
-  border: 0px solid #000000; /* Just for visualization */
   text-align: left; /* Align the text to the right */
   position: absolute;
 }
@@ -177,7 +176,7 @@ video {
        image-rendering: crisp-edges;
        position: relative;
        top: -3px;
-       left: -9px;
+       left: -8px;
        background-color: rgb(0,0,255,0.5)
      }
 
