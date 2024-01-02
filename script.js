@@ -837,6 +837,12 @@ function timedunlocks() {
       document.getElementById("matterupgrades2").style = "display: block;"
     }
   }
+  if (!generalunlocks.matterupgrades2 == true) {
+    if (player.stardust.gte(E("1e35"))) {
+      generalunlocks["matterupgrades2"] = true
+      document.getElementById("matterupgrades2").style = "display: block;"
+    }
+  }
   
   
   
