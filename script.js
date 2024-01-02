@@ -187,6 +187,7 @@ function loadfunctions() {
   if (isNaN(upgrades.crushing.bought)) {upgrades.crushing.bought = false}
   if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
   if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
+  if (isNaN(player.tributes)) {player.tributes = E("0")}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -327,6 +328,7 @@ var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
 var MassResetButton = document.getElementById("MassResetButton");
 var endgametext = document.getElementById("ENDGAME");
+var TributeDisplay = document.getElementById('TributeDisplay');
 
 
 function particleeffects(a,b) {
@@ -401,7 +403,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
@@ -435,6 +437,8 @@ function updateText() {
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
   WeightButton.innerHTML = "Cost: " + String(getbuyablecost(4)) + " Matter";
+  
+  TributeDisplay.innerHTML ="You have " + String(player.tributes) + " Tributes"
   
   //if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
@@ -767,7 +771,9 @@ function displayunlocksonload() {
     document.getElementById("stardustupgrades2").style = "display: block;"
   };
   if (generalunlocks.tribute == true) {
+    unlockedsubtabs.TributeMain = true
     document.getElementById("tributedisplaycontainer").style = "display: block;"
+    document.getElementById("tributesubtab1").style = "display: block;"
   };
   
   
@@ -996,7 +1002,9 @@ function timedunlocks() {
   }
   if (player.stardust.gte(E("1e80"))) {
     generalunlocks["tribute"] = true
+    unlockedsubtabs.TributeMain = true
     document.getElementById("tributedisplaycontainer").style = "display: block;"
+    document.getElementById("tributesubtab1").style = "display: block;"
   }
   
   
