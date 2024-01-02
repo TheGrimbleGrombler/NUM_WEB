@@ -6,6 +6,7 @@ function E(n) {
   
 }
 
+var timespeed = E("1")
 
 function fix(n,e) {
   
@@ -29,6 +30,7 @@ function buyableeffects(n) {
     temp = buyables.field.amount
     if (upgrades.MEM.bought == true) {temp = temp.pow(upgradeeffects(3))}
     if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.field.manuals)}
+    temp = temp.mul(timespeed)
   }
   if (n==4) {
     temp = E("10")
@@ -335,7 +337,7 @@ function Debug() {
 }
 
 function updateText() {
-  
+  var timespeed = gettimespeed()
   gainbuyables()
   gainstardust()
   gaingravitationalwaves()
@@ -398,9 +400,10 @@ function gainbuyables(){
   
   var temp = buyableeffects(3)
   temp = temp.div(E("60"))
+  temp = temp.mul(timespeed)
   buyables.collector.amount = buyables.collector.amount.add(temp)
   var temp = buyableeffects(2)
-  if (player.gravitational_waves.gte(E("1"))) {temp = temp}
+  temp = temp.mul(timespeed)
   temp = temp.div(E("60"))
   buyables.syphon.amount = buyables.syphon.amount.add(temp)
   
@@ -414,6 +417,8 @@ function gaingravitationalwaves(){
   if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,2))}
   
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  
+  gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
   
@@ -433,6 +438,8 @@ function gainstardust(){
   
   if (upgradeeffects(6).gte(E("1"))) {gain = gain.mul(upgradeeffects(6))}
   
+  gain = gain.mul(timespeed)
+  
   gain = gain.mul(GlobalResourceMultiplier)
   
   var gain = gain.div(E("60"))
@@ -444,6 +451,7 @@ function gainparticles(){
   if (player.c_particles.gte(E("1"))) {gain = gain.mul(particleeffects(3,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  gain = gain.mul(timespeed)
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -451,6 +459,7 @@ function gainparticles(){
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  gain = gain.mul(timespeed)
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -458,6 +467,7 @@ function gainparticles(){
   if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  gain = gain.mul(timespeed)
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
 }
