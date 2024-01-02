@@ -327,6 +327,7 @@ var MatterDisplay = document.getElementById('MatterDisplay');
 var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
 var MassResetButton = document.getElementById("MassResetButton");
+var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
 
@@ -391,7 +392,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(unlockedsubtabs.TributeMain)
+  document.getElementById("DEBUG").innerHTML = String(gettributesonreset())
   
 }
 
@@ -403,7 +404,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   displayupgrades()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
@@ -433,6 +434,7 @@ function updateText() {
   CPE3D.innerHTML = ""
   
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
+  TributeResetButton.innerHTML ="Reset all previous progress for " + String(fix(gettributesonreset(),0)) + " Tributes"
   
   MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
@@ -440,7 +442,7 @@ function updateText() {
   
   TributeDisplay.innerHTML ="You have " + String(player.tributes) + " Tributes"
   
-  //if (player.matter.gte(E("10000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (player.stardust.gte(E("1e80")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
@@ -451,6 +453,17 @@ function getmatteronreset() {
   
   
   return gain.floor()
+  
+}
+
+function gettributesonreset() {
+  
+  var gain = E("0")
+  
+  gain = player.stardust.div(E("1e80")).log10().div(E("100")).add(E("1")).floor()
+  
+  
+  return gain
   
 }
 
@@ -1150,5 +1163,13 @@ document.getElementById('MassResetButton').addEventListener('click', function() 
   doreset(1)
   }
 });
+
+document.getElementById('TributeResetButton').addEventListener('click', function() {
+  if (gettributesonreset().gte(E("1"))) {
+  player.tributes = player.tributes.add(gettributesonreset())
+  doreset(2)
+  }
+});
+
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
