@@ -33,7 +33,7 @@ function buyableeffects(n) {
     temp = temp.mul(timespeed)
   }
   if (n==4) {
-    temp = E("10")
+    temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15))
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
   }
   
@@ -96,6 +96,15 @@ function upgradeeffects(n) {
   
   
   
+  return temp
+}
+
+
+function getbuyablecost(n) {
+  var temp = E("1e99999")
+  if (n == 1) {
+    
+  }
   return temp
 }
 
