@@ -91,7 +91,7 @@ let achievements = [
 
 function gettimespeed() {
   var temp = E("1")
-  if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
+  //if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
   
   
   return temp
@@ -658,6 +658,9 @@ function displayunlocksonload() {
   if (generalunlocks.matterupgrades2 == true) {
     document.getElementById("matterupgrades2").style = "display: block;"
   };
+  if (generalunlocks.dlc == true) {
+    document.getElementById("matterupgrades2").style = "display: block;"
+  };
   
   
   
@@ -693,6 +696,8 @@ function save() {
     SacredTexts: upgrades.SacredTexts.bought,
     gravitoncatalyst: upgrades.gravitoncatalyst.bought,
     automatons: upgrades.automatons.bought,
+    discovery: upgrades.discovery.bought,
+    dlc: upgrades.dlc.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -727,7 +732,7 @@ function load() {
     buyables.weight.amount = E(String(loadedData.weightamount))
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
     
-    upgrades = loadedData.upgrades
+    //upgrades = loadedData.upgrades
     
     upgrades.incrementallist.bought = loadedData.incrementallist,
     upgrades.Gravity.bought = loadedData.Gravity,
@@ -738,6 +743,8 @@ function load() {
     upgrades.SacredTexts.bought = loadedData.SacredTexts,
     upgrades.gravitoncatalyst.bought = loadedData.gravitoncatalyst,
     upgrades.automatons.bought = loadedData.automatons,
+    upgrades.discovery.bought = loadedData.discovery
+    upgrades.dlc.bought = loadedData.dlc
     
     loadfunctions()
     
@@ -866,6 +873,14 @@ document.getElementById('GravitonCatalystButton').addEventListener('click', func
 
 document.getElementById('AutomatonsButton').addEventListener('click', function() {
   buy("automatons")  
+});
+
+document.getElementById('DiscoveryButton').addEventListener('click', function() {
+  buy("discovery")  
+});
+
+document.getElementById('DLCButton').addEventListener('click', function() {
+  buy("dlc")  
 });
 
 
