@@ -296,6 +296,8 @@ let player = {
   matter: E("0"),
   playtime: 0,
   tributes: E("0"),
+  beststardust: E("0"),
+  bestmatter: E("0"),
   besttributes: E("0"),
 };
 
@@ -332,6 +334,11 @@ var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
 
+function checkbest() {
+  if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
+  if (player.matter.gte(player.bestmatter)) {player.bestmatter = player.matter}
+  if (player.tributes.gte(player.besttributes)) {player.besttributes = player.tributes}
+}
 
 function particleeffects(a,b) {
   var temp = E("0")
@@ -407,6 +414,7 @@ function updateText() {
   Automation()
   Debug()
   displayupgrades()
+  checkbest()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -859,7 +867,10 @@ function save() {
     heavier: upgrades.heavier.bought,
     crushing: upgrades.crushing.bought,
     replication: upgrades.replication.bought,
-    generalunlocks: generalunlocks
+    generalunlocks: generalunlocks,
+    beststardust: player.beststardust,
+    bestmatter: player.bestmatter,
+    besttributes: player.besttributes,
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -877,6 +888,8 @@ function load() {
     player.matter = E(String(loadedData.player.matter));
     player.playtime = E(String(loadedData.player.playtime));
     player.tributes = E(String(loadedData.player.tributes));
+    player.beststardust = E(String(loadedData.player.beststardust));
+    player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
     
     if (!isNaN(loadedData.achievements)) {achievements = loadedData.achievements}
