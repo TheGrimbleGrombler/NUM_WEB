@@ -78,6 +78,21 @@ function upgradeeffects(n) {
   if (n==11) {
     temp = E("0")
   }
+  if (n==12) {
+    if (upgrades.spacetimerupture.bought==true) {temp = E("100")}
+  }
+  if (n==13) {
+    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10().floor())}
+  }
+  if (n==14) {
+    if (upgrades.heavier.bought==true) {temp = E("2")} else {temp = E("0")}
+  }
+  if (n==15) {
+    if (upgrades.crushing.bought==true) {temp = E("2")} else {temp = E("0")}
+  }
+  if (n==16) {
+    if (upgrades.replication.bought==true) {temp = E("0.9")}
+  }
   
   
   
@@ -454,6 +469,9 @@ function gainstardust(){
   
   if (upgradeeffects(6).gte(E("1"))) {gain = gain.mul(upgradeeffects(6))}
   
+  if (upgrades.spacetimerupture.bought==true) {gain = gain.mul(upgradeeffects(12))}
+  if (upgrades.minmax.bought==true) {gain = gain.mul(upgradeeffects(13))}
+  
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
@@ -673,15 +691,15 @@ document.getElementById('HeavierButton').addEventListener('mouseover', function(
 });
 
 document.getElementById('CrushingButton').addEventListener('mouseover', function(event) {
-    if (upgrades.crushing.bought == true) {UpgradeName.innerHTML = "Crushing (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
+    if (upgrades.crushing.bought == true) {UpgradeName.innerHTML = "Crushing (Bought)"} else {UpgradeName.innerHTML = "Crushing (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.crushing.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.crushing.cost) + " Stardust"
 });
 
 document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
-    if (upgrades.dlc.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.dlc.display;
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.dlc.cost) + " Stardust"
+    if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.replication.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
 function buy(n) {
@@ -756,6 +774,11 @@ function save() {
     automatons: upgrades.automatons.bought,
     discovery: upgrades.discovery.bought,
     dlc: upgrades.dlc.bought,
+    spacetimerupture: upgrades.spacetimerupture.bought,
+    minmax: upgrades.minmax.bought,
+    heavier: upgrades.heavier.bought,
+    crushing: upgrades.crushing.bought,
+    replication: upgrades.replication.bought,
     generalunlocks: generalunlocks
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -803,6 +826,11 @@ function load() {
     upgrades.automatons.bought = loadedData.automatons,
     upgrades.discovery.bought = loadedData.discovery
     upgrades.dlc.bought = loadedData.dlc
+    upgrades.spacetimerupture.bought = loadedData.spacetimerupture
+    upgrades.minmax.bought = loadedData.minmax
+    upgrades.heavier.bought = loadedData.heavier
+    upgrades.crushing.bought = loadedData.crushing
+    upgrades.replication.bought = loadedData.replication
     
     loadfunctions()
     
@@ -833,6 +861,11 @@ function purge(x) {
     upgrades.MEM.bought = false
     upgrades.feedbackloop.bought = false
     upgrades.theunknown.bought = false
+    upgrades.spacetimerupture.bought = false
+    upgrades.minmax.bought = false
+    upgrades.heavier.bought = false
+    upgrades.crushing.bought = false
+    upgrades.replication.bought = false
   }
   if (x==4) {
     doreset(1)
@@ -950,6 +983,26 @@ document.getElementById('DiscoveryButton').addEventListener('click', function() 
 
 document.getElementById('DLCButton').addEventListener('click', function() {
   buy("dlc")  
+});
+
+document.getElementById('SpacetimeButton').addEventListener('click', function() {
+  buy("spacetimerupture")  
+});
+
+document.getElementById('MinMaxButton').addEventListener('click', function() {
+  buy("minmax")  
+});
+
+document.getElementById('HeavierButton').addEventListener('click', function() {
+  buy("heavier")  
+});
+
+document.getElementById('CrushingButton').addEventListener('click', function() {
+  buy("crushing")  
+});
+
+document.getElementById('ReplicationButton').addEventListener('click', function() {
+  buy("replication")  
 });
 
 
