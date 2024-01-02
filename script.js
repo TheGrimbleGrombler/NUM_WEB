@@ -70,6 +70,12 @@ function upgradeeffects(n) {
   if (n==9) {
     temp = E("0")
   }
+  if (n==10) {
+    if (upgrades.discovery.bought==true) {temp = E("3")}
+  }
+  if (n==11) {
+    temp = E("0")
+  }
   
   
   
@@ -83,10 +89,10 @@ let achievements = [
 
 function gettimespeed() {
   var temp = E("1")
+  if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
   
   
-  
-  
+  return temp
 }
 
 let buyables = {
@@ -108,6 +114,7 @@ let upgrades = {
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
+  dlc: {cost: E("1e35"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
@@ -129,6 +136,8 @@ function loadfunctions() {
   if (isNaN(upgrades.gravitoncatalyst.bought)) {upgrades.gravitoncatalyst.bought = false}
   if (isNaN(upgrades.automatons.bought)) {upgrades.automatons.bought = false}
   if (isNaN(player.playtime)) {player.playtime = 0}
+  if (isNaN(upgrades.discovery.bought)) {upgrades.discovery.bought = false}
+  if (isNaN(upgrades.dlc.bought)) {upgrades.dlc.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -194,6 +203,8 @@ function doreset(tier) {
     upgrades.Infusion.bought = false
     upgrades.SacredTexts.bought = false
     upgrades.gravitoncatalyst.bought = false
+    upgrades.discovery.bought = false
+    upgrades.dlc.bought = false
     
     player.matter = E("0")
     
@@ -619,6 +630,10 @@ function buy(n) {
          generalunlocks["theunknown"] = true; 
          document.getElementById("matterdisplaycontainer").style = "display: block;"
          document.getElementById("matterupgrades1").style = "display: block;"
+       };
+       if (n == "dlc") {
+         generalunlocks["dlc"] = true; 
+         document.getElementById("stardustupgrades2").style = "display: block;"
        };
        
     }
