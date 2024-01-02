@@ -282,6 +282,7 @@ let generalunlocks = {
 let unlockedsubtabs = {
   "Main": true,
   "MassMain": true,
+  "TributeMain": true,
   
 }
 let player = {
@@ -758,6 +759,9 @@ function displayunlocksonload() {
   if (generalunlocks.dlc == true) {
     document.getElementById("stardustupgrades2").style = "display: block;"
   };
+  if (generalunlocks.tribute == true) {
+    document.getElementById("tributedisplaycontainer").style = "display: block;"
+  };
   
   
   
@@ -982,6 +986,10 @@ function timedunlocks() {
       generalunlocks["dlc"] = true
       document.getElementById("stardustupgrades2").style = "display: block;"
     }
+  }
+  if (player.stardust.gte(E("1e80"))) {
+    generalunlocks["tribute"] = true
+    document.getElementById("tributedisplaycontainer").style = "display: block;"
   }
   
   
