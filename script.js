@@ -332,7 +332,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(achievements)
+  document.getElementById("DEBUG").innerHTML = String(generalunlocks.dlc)
   
 }
 
@@ -344,7 +344,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -671,7 +671,7 @@ function displayunlocksonload() {
     document.getElementById("matterupgrades2").style = "display: block;"
   };
   if (generalunlocks.dlc == true) {
-    document.getElementById("dlc").style = "display: block;"
+    document.getElementById("stardustupgrades2").style = "display: block;"
   };
   
   
@@ -756,11 +756,13 @@ function load() {
     upgrades.gravitoncatalyst.bought = loadedData.gravitoncatalyst,
     upgrades.automatons.bought = loadedData.automatons,
     upgrades.discovery.bought = loadedData.discovery
-    upgrades.dlc.bought = loadedData.dlc
+    upgrades.dlc.bought = false
     
     loadfunctions()
     
     generalunlocks = loadedData.generalunlocks
+    
+    
     
     displayunlocksonload()
   }
@@ -837,10 +839,10 @@ function timedunlocks() {
       document.getElementById("matterupgrades2").style = "display: block;"
     }
   }
-  if (!generalunlocks.matterupgrades2 == true) {
-    if (player.stardust.gte(E("1e35"))) {
-      generalunlocks["matterupgrades2"] = true
-      document.getElementById("matterupgrades2").style = "display: block;"
+  if (generalunlocks.dlc !== true) {
+    if (upgrades.dlc.bought == true) {
+      generalunlocks["dlc"] = true
+      document.getElementById("stardustupgrades2").style = "display: block;"
     }
   }
   
@@ -849,7 +851,7 @@ function timedunlocks() {
   
   
   
-  //let achievements = []
+  //achievements
   if (achievements.indexOf('BlackHole') == -1) {
     if (player.gravitational_waves.gte(E("1.8e308"))) {
       achievements.push("BlackHole");
