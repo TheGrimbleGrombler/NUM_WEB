@@ -81,6 +81,14 @@ let achievements = [
 
 ]
 
+function gettimespeed() {
+  var temp = E("1")
+  
+  
+  
+  
+}
+
 let buyables = {
     syphon: {cost: E("1"), amount: E("0"), manuals: E("0")},
     collector: {cost: E("100"), amount: E("0"), manuals: E("0")},
@@ -99,6 +107,7 @@ let upgrades = {
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
   gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
+  discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
