@@ -626,6 +626,18 @@ document.getElementById('AutomatonsButton').addEventListener('mouseover', functi
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.automatons.cost) + " Matter"
 });
 
+document.getElementById('DiscoveryButton').addEventListener('mouseover', function(event) {
+    if (upgrades.discovery.bought == true) {UpgradeName.innerHTML = "Discovery (Bought)"} else {UpgradeName.innerHTML = "Discovery (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.discovery.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.discovery.cost) + " Matter"
+});
+
+document.getElementById('DLCButton').addEventListener('mouseover', function(event) {
+    if (upgrades.discovery.bought == true) {UpgradeName.innerHTML = "DLC (Bought)"} else {UpgradeName.innerHTML = "DLC (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.dlc.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.dlc.cost) + " Matter"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -659,7 +671,7 @@ function displayunlocksonload() {
     document.getElementById("matterupgrades2").style = "display: block;"
   };
   if (generalunlocks.dlc == true) {
-    document.getElementById("matterupgrades2").style = "display: block;"
+    document.getElementById("dlc").style = "display: block;"
   };
   
   
@@ -786,6 +798,9 @@ function purge(x) {
   if (x==7) {
     upgrades.Infusion.bought = false
     upgrades.SacredTexts.bought = false
+    upgrades.GravitonCatalyst.bought = false
+    upgrades.discovery.bought = false
+    upgrades.dlc.bought = false
   }
   if (x==8) {
     doreset(2)
