@@ -90,6 +90,15 @@ video {
   background-color: transparent;
   box-sizing: border-box;
 }
+.outlinered {
+  border: 4px solid rgb(255,0,0);
+}
+.outlineyellow {
+  border: 4px solid rgb(255,255,0);
+}
+.outlinegreen {
+  border: 4px solid rgb(0,255,0);
+}
 .buttonyellow {
   border: 2px solid rgb(255,255,0);
   font-size: 16px;

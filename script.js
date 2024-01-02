@@ -755,6 +755,23 @@ function displayunlocksonload() {
   
   
 }
+function displayupgrades() {
+  
+  displayupgrade("Incrementallist","incrementallist")
+  
+}
+function displayupgrade(idname,upname,given) {
+  if (upgrades[upname].bought == true) {
+    document.getElementById(idname + "Button").className = given + " outlinegreen";
+  } else {
+    if (player[upgrades[upname].costtype].gte(upgrades[upname].cost)) {
+      document.getElementById(idname + "Button").className = given + " outlineyellow";
+    } else {
+      document.getElementById(idname + "Button").className = given + " outlinered";
+    }
+  }
+}
+
 
 // Saving the main object with sub-objects
 function save() {
