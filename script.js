@@ -82,16 +82,18 @@ function upgradeeffects(n) {
     if (upgrades.spacetimerupture.bought==true) {temp = E("100")}
   }
   if (n==13) {
-    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10().floor())}
+    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10())}
   }
   if (n==14) {
-    if (upgrades.heavier.bought==true) {temp = E("2")} else {temp = E("0")}
+    temp = E("0")
+    if (upgrades.heavier.bought==true) {temp = E("2")}
   }
   if (n==15) {
-    if (upgrades.crushing.bought==true) {temp = E("2")} else {temp = E("0")}
+    temp = E("0")
+    if (upgrades.crushing.bought==true) {temp = E("2")}
   }
   if (n==16) {
-    if (upgrades.replication.bought==true) {temp = E("0.9")}
+    if (upgrades.replication.bought==true) {temp = E("0.3")}
   }
   
   
@@ -147,9 +149,9 @@ let upgrades = {
   
   spacetimerupture: {cost: E("5e68"), costtype: "stardust", bought: false, display: "100x Stardust gain, Currently: x"},
   minmax: {cost: E("2e71"), costtype: "stardust", bought: false, display: "+5% Stardust gain for each OoM of Stardust, Currently: x"},
-  heavier: {cost: E("1e999"), costtype: "stardust", bought: false, display: "+2 to the unsoftcapped weight effect, Currently: +"},
-  crushing: {cost: E("1e999"), costtype: "stardust", bought: false, display: "ANOTHER +2 to the unsoftcapped weight effect, Currently: +"},
-  replication: {cost: E("1e999"), costtype: "stardust", bought: false, display: "Field cost scales 10% slower, Currently: x"},
+  heavier: {cost: E("1e73"), costtype: "stardust", bought: false, display: "+2 to the unsoftcapped weight effect, Currently: +"},
+  crushing: {cost: E("1e76"), costtype: "stardust", bought: false, display: "ANOTHER +2 to the unsoftcapped weight effect, Currently: +"},
+  replication: {cost: E("2e78"), costtype: "stardust", bought: false, display: "Field cost scales 70% slower, Currently: x"},
   
   Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
   SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
@@ -691,25 +693,25 @@ document.getElementById('SpacetimeButton').addEventListener('mouseover', functio
 
 document.getElementById('MinMaxButton').addEventListener('mouseover', function(event) {
     if (upgrades.minmax.bought == true) {UpgradeName.innerHTML = "Min-Max (Bought)"} else {UpgradeName.innerHTML = "Min-Max (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.minmax.display;
+    UpgradeEffect.innerHTML = upgrades.minmax.display + String(upgradeeffects(13));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.minmax.cost) + " Stardust"
 });
 
 document.getElementById('HeavierButton').addEventListener('mouseover', function(event) {
     if (upgrades.heavier.bought == true) {UpgradeName.innerHTML = "Heavier (Bought)"} else {UpgradeName.innerHTML = "Heavier (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.heavier.display;
+    UpgradeEffect.innerHTML = upgrades.heavier.display + String(upgradeeffects(14));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.heavier.cost) + " Stardust"
 });
 
 document.getElementById('CrushingButton').addEventListener('mouseover', function(event) {
     if (upgrades.crushing.bought == true) {UpgradeName.innerHTML = "Crushing (Bought)"} else {UpgradeName.innerHTML = "Crushing (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.crushing.display;
+    UpgradeEffect.innerHTML = upgrades.crushing.display + String(upgradeeffects(15));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.crushing.cost) + " Stardust"
 });
 
 document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
     if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.replication.display;
+    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
