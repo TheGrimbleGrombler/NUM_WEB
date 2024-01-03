@@ -412,7 +412,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   checkbest()
   
