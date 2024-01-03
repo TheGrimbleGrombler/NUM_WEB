@@ -400,7 +400,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(gettributesonreset())
+  document.getElementById("DEBUG").innerHTML = String(player.besttributes)
   
 }
 
@@ -412,7 +412,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   displayupgrades()
   checkbest()
   
