@@ -159,6 +159,9 @@ let upgrades = {
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
   dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
+  Scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling x0.5"},
+  Scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling x0.5 again"},
+  
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
 
