@@ -760,6 +760,18 @@ document.getElementById('ReplicationButton').addEventListener('mouseover', funct
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
+document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
+    if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
+});
+
+document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
+    if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -800,6 +812,9 @@ function displayunlocksonload() {
     document.getElementById("tributedisplaycontainer").style = "display: block;"
     document.getElementById("tributesubtab1").style = "display: block;"
   };
+  if (generalunlocks.tributeupgrades1 == true) {
+    document.getElementById("tributeupgrades1").style = "display: block;"
+  };
   
   
   
@@ -823,6 +838,8 @@ function displayupgrades() {
   displayupgrade("Heavier","heavier")
   displayupgrade("Crushing","crushing")
   displayupgrade("Replication","replication")
+  displayupgrade("Scaler1","scaler1")
+  displayupgrade("Scaler2","scaler2")
   
 }
 function displayupgrade(idname,upname) {
@@ -926,6 +943,8 @@ function load() {
     upgrades.heavier.bought = loadedData.heavier
     upgrades.crushing.bought = loadedData.crushing
     upgrades.replication.bought = loadedData.replication
+    upgrades.scaler1.bought = loadedData.scaler1
+    upgrades.scaler2.bought = loadedData.scaler2
     
     loadfunctions()
     
@@ -1037,6 +1056,10 @@ function timedunlocks() {
     document.getElementById("tributedisplaycontainer").style = "display: block;"
     document.getElementById("tributesubtab1").style = "display: block;"
   }
+  if (player.tributes.gte(E("1"))) {
+    generalunlocks["tributeupgrades1"] = true
+    document.getElementById("tributeupgrades1").style = "display: block;"
+  }
   
   
   
@@ -1121,6 +1144,14 @@ document.getElementById('CrushingButton').addEventListener('click', function() {
 
 document.getElementById('ReplicationButton').addEventListener('click', function() {
   buy("replication")  
+});
+
+document.getElementById('Scaler1Button').addEventListener('click', function() {
+  buy("scaler1")  
+});
+
+document.getElementById('Scaler2Button').addEventListener('click', function() {
+  buy("scaler2")  
 });
 
 
