@@ -111,14 +111,13 @@ function upgradeeffects(n) {
 function getbuyablecost(n) {
   var temp = E("1e99999")
   if (n == 1) {
-    temp = E("1").mul(E("2").pow(buyables.syphon.manuals))
-    if 
+    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 2) {
-    temp = E("100").mul(E("3").pow(buyables.collector.manuals))
+    temp = E("100").mul(E("3").pow(buyables.collector.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 3) {
-    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals))
+    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 4) {
     temp = E("1").mul(E("10").pow(buyables.weight.manuals))
