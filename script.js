@@ -95,6 +95,12 @@ function upgradeeffects(n) {
   if (n==16) {
     if (upgrades.replication.bought==true) {temp = E("0.3")}
   }
+  if (n==17) {
+    if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
+  }
+  if (n==18) {
+    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
+  }
   
   
   
@@ -106,6 +112,7 @@ function getbuyablecost(n) {
   var temp = E("1e99999")
   if (n == 1) {
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals))
+    if 
   }
   if (n == 2) {
     temp = E("100").mul(E("3").pow(buyables.collector.manuals))
@@ -159,8 +166,8 @@ let upgrades = {
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
   dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
-  Scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling x0.5"},
-  Scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling x0.5 again"},
+  scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
+  scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
@@ -191,6 +198,8 @@ function loadfunctions() {
   if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
   if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
   if (isNaN(player.tributes)) {player.tributes = E("0")}
+  if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
+  if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -760,16 +769,16 @@ document.getElementById('ReplicationButton').addEventListener('mouseover', funct
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
-document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
-    if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
+document.getElementById('Scaler1Button').addEventListener('mouseover', function(event) {
+    if (upgrades.scaler1.bought == true) {UpgradeName.innerHTML = "Scaler 1 (Bought)"} else {UpgradeName.innerHTML = "Scaler 2 (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.scaler1.display + " Currently: x" + String(upgradeeffects(17));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler1.cost) + " Tributes"
 });
 
-document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
-    if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
+document.getElementById('Scaler2Button').addEventListener('mouseover', function(event) {
+    if (upgrades.scaler2.bought == true) {UpgradeName.innerHTML = "Scaler 2 (Bought)"} else {UpgradeName.innerHTML = "Scaler 2 (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.scaler2.display + " Currently: x" + String(upgradeeffects(18));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler2.cost) + " Tributes"
 });
 
 function buy(n) {
