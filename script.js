@@ -231,15 +231,39 @@ function Automation() {
         
       }
     }
-    if (player.stardust.gte(getbuyablecost(2))) {
-      player.stardust = player.stardust.sub(getbuyablecost(2))
-      buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
+    if (player.stardust.gte(getbuyablecost(2,E("1")))) {
+      
+      if (player.stardust.gte(getbuyablecost(2,E("10")))) {
+        
+        player.stardust = player.stardust.sub(getbuyablecost(2,E("10")))
+        buyables.collector.amount = buyables.collector.amount.add(E("10"))
+        buyables.collector.manuals = buyables.collector.manuals.add(E("10"))
+        
+      } else {
+        
+      player.stardust = player.stardust.sub(getbuyablecost(2,E("1")))
       buyables.collector.amount = buyables.collector.amount.add(E("1"))
+      buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
+        
+      }
+      
     }
-    if (player.stardust.gte(getbuyablecost(3))) {
-      player.stardust = player.stardust.sub(getbuyablecost(3))
-      buyables.field.amount = buyables.field.amount.add(E("1"))
-      buyables.field.manuals = buyables.field.manuals.add(E("1"))
+    if (player.stardust.gte(getbuyablecost(3,E("1")))) {
+      
+      if (player.stardust.gte(getbuyablecost(3,E("10")))) {
+        
+        player.stardust = player.stardust.sub(getbuyablecost(3,E("10")))
+        buyables.field.amount = buyables.field.amount.add(E("10"))
+        buyables.field.manuals = buyables.field.manuals.add(E("10"))
+        
+      } else {
+        
+        player.stardust = player.stardust.sub(getbuyablecost(3,E("1")))
+        buyables.field.amount = buyables.field.amount.add(E("1"))
+        buyables.field.manuals = buyables.field.manuals.add(E("1"))
+        
+      }
+      
     }
   }
   
@@ -356,10 +380,12 @@ var CPE3D = document.getElementById('CParticleEffect3Display');
 var MatterDisplay = document.getElementById('MatterDisplay');
 var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
+var automation1button = document.getElementById("automation1button");
 var MassResetButton = document.getElementById("MassResetButton");
 var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
+var automation1 = true
 
 function checkbest() {
   if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
@@ -1224,6 +1250,10 @@ document.getElementById('PurgeTributeUpgradesButton').addEventListener('click', 
 });
 document.getElementById('PurgeTributeLayerButton').addEventListener('click', function() {
   purge(12)
+});
+document.getElementById('automation1button').addEventListener('click', function() {
+  automation1 = !automation1
+  automation1button.innerHTML = "Automation: " + String(automation1)
 });
 document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
