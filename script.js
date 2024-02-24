@@ -6,6 +6,8 @@ function E(n) {
   
 }
 
+var automation1button = document.getElementById("automation1button");
+
 var timespeed = E("1")
 
 function fix(n,e) {
@@ -215,7 +217,8 @@ function loadfunctions() {
 function Automation() {
   
   if (upgrades.automatons.bought) {
-    if (player.stardust.gte(getbuyablecost(1,E("1")))) {
+    if (automation1 == true) {
+      if (player.stardust.gte(getbuyablecost(1,E("1")))) {
       
       if (player.stardust.gte(getbuyablecost(1,E("10")))) {
         
@@ -231,7 +234,7 @@ function Automation() {
         
       }
     }
-    if (player.stardust.gte(getbuyablecost(2,E("1")))) {
+      if (player.stardust.gte(getbuyablecost(2,E("1")))) {
       
       if (player.stardust.gte(getbuyablecost(2,E("10")))) {
         
@@ -248,7 +251,7 @@ function Automation() {
       }
       
     }
-    if (player.stardust.gte(getbuyablecost(3,E("1")))) {
+      if (player.stardust.gte(getbuyablecost(3,E("1")))) {
       
       if (player.stardust.gte(getbuyablecost(3,E("10")))) {
         
@@ -264,6 +267,7 @@ function Automation() {
         
       }
       
+    }
     }
   }
   
@@ -380,7 +384,6 @@ var CPE3D = document.getElementById('CParticleEffect3Display');
 var MatterDisplay = document.getElementById('MatterDisplay');
 var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
-var automation1button = document.getElementById("automation1button");
 var MassResetButton = document.getElementById("MassResetButton");
 var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
