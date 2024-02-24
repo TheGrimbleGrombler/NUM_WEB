@@ -112,7 +112,7 @@ function upgradeeffects(n) {
 
 function getbuyablecost(n,m) {
   var temp = E("1e99999")
-  var modifier = E("1")
+  var modifier = E("0")
   if (m > 0) {
     modifier = m
   }
@@ -127,7 +127,7 @@ function getbuyablecost(n,m) {
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 4) {
-    temp = E("1").mul(E("10").pow(buyables.weight.manuals.add(modifier)))
+    temp = E("10").pow(buyables.weight.manuals.add(modifier))
   }
   return temp
 }
