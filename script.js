@@ -108,19 +108,24 @@ function upgradeeffects(n) {
 }
 
 
-function getbuyablecost(n) {
+function getbuyablecost(n,m) {
   var temp = E("1e99999")
+  var modifier = E("1")
+  if (m > 0) {
+    modifier = m
+  }
+  
   if (n == 1) {
-    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 2) {
-    temp = E("100").mul(E("3").pow(buyables.collector.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 3) {
-    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
   }
   if (n == 4) {
-    temp = E("1").mul(E("10").pow(buyables.weight.manuals))
+    temp = E("1").mul(E("10").pow(buyables.weight.manuals.add(modifier)))
   }
   return temp
 }
@@ -210,10 +215,21 @@ function loadfunctions() {
 function Automation() {
   
   if (upgrades.automatons.bought) {
-    if (player.stardust.gte(getbuyablecost(1))) {
+    if (player.stardust.gte(getbuyablecost(1,E("1")))) {
+      
+      if (player.stardust.gte(getbuyablecost(1,E("10")))) {
+        
+        player.stardust = player.stardust.sub(getbuyablecost(1,E("10")))
+        buyables.syphon.amount = buyables.syphon.amount.add(E("10"))
+        buyables.syphon.manuals = buyables.syphon.manuals.add(E("10"))
+        
+      } else {
+        
       player.stardust = player.stardust.sub(getbuyablecost(1))
       buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
       buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
+        
+      }
     }
     if (player.stardust.gte(getbuyablecost(2))) {
       player.stardust = player.stardust.sub(getbuyablecost(2))
@@ -895,6 +911,8 @@ function save() {
     heavier: upgrades.heavier.bought,
     crushing: upgrades.crushing.bought,
     replication: upgrades.replication.bought,
+    scaler1: upgrades.scaler1.bought,
+    scaler2: upgrades.scaler2.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
