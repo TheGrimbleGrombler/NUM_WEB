@@ -379,6 +379,9 @@ function doreset(tier) {
       buyables.field.amount = E("1")
       buyables.field.manuals = E("1")
     }
+    if (player.tributemilestone >= 2) {
+      upgrades.incrementallist.bought = true
+    }
   }
   
   
@@ -641,6 +644,8 @@ function gainstardust(){
   
   if (upgrades.spacetimerupture.bought==true) {gain = gain.mul(upgradeeffects(12))}
   if (upgrades.minmax.bought==true) {gain = gain.mul(upgradeeffects(13))}
+  
+  if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
   
   gain = gain.mul(timespeed)
   
