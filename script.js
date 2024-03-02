@@ -518,6 +518,7 @@ function updateText() {
   displayupgrades()
   checkbest()
   
+  
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(fix(getbuyablecost(1),0)) + " Stardust";
@@ -951,7 +952,8 @@ function displayupgrades() {
 
 function milestones() {
   
-  
+  if (player.tributemilestone < 1) {if (player.tribute.gte(E("1"))) {player.tributemilestone = 1}}
+  if (player.tributemilestone < 2) {if (player.tribute.gte(E("3"))) {player.tributemilestone = 2}}
   
 }
 
