@@ -105,7 +105,7 @@ function upgradeeffects(n) {
     if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
   }
   if (n==19) {
-    if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.05")}
+    if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
   }
   
   
@@ -176,7 +176,7 @@ let upgrades = {
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
   dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
-  scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.05, Buy Scaler 1 first."},
+  scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
   scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   
