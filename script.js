@@ -37,7 +37,7 @@ function buyableeffects(n) {
   if (n==4) {
     temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15))
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
-    if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(E("1.05"))}
+    if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
   }
   
   
@@ -824,13 +824,13 @@ document.getElementById('ReplicationButton').addEventListener('mouseover', funct
 
 document.getElementById('ScramboblingCromjomblesButton').addEventListener('mouseover', function(event) {
     if (upgrades.scramboblingcromjombles.bought == true) {UpgradeName.innerHTML = "Scrambobling Cromjombles (Bought)"} else {UpgradeName.innerHTML = "Scrambobling Cromjombles (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.scramboblingcromjombles.display + " Currently: x" + String(upgradeeffects(17));
+    UpgradeEffect.innerHTML = upgrades.scramboblingcromjombles.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scramboblingcromjombles.cost) + " Tributes"
 });
 
 document.getElementById('Scaler1Button').addEventListener('mouseover', function(event) {
     if (upgrades.scaler1.bought == true) {UpgradeName.innerHTML = "Scaler 1 (Bought)"} else {UpgradeName.innerHTML = "Scaler 1 (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.scaler1.display;
+    UpgradeEffect.innerHTML = upgrades.scaler1.display + " Currently: x" + String(upgradeeffects(17));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler1.cost) + " Tributes"
 });
 
@@ -906,7 +906,7 @@ function displayupgrades() {
   displayupgrade("Heavier","heavier")
   displayupgrade("Crushing","crushing")
   displayupgrade("Replication","replication")
-  displayupgrade("Scrambobling Cromjombles","scramboblingcromjombles")
+  displayupgrade("ScramboblingCromjombles","scramboblingcromjombles")
   displayupgrade("Scaler1","scaler1")
   displayupgrade("Scaler2","scaler2")
   
@@ -1146,12 +1146,12 @@ function timedunlocks() {
     }
   }
   if (achievements.indexOf('TheNextStep') == -1) {
-    if (player.tributes.gte(E("1"))) {
+    if (player.besttributes.gte(E("1"))) {
       achievements.push("TheNextStep");
     }
   }
   if (achievements.indexOf('Overload') == -1) {
-    if (upgrad) {
+    if (buyables.syphon.manuals.gte(E("10000"))) {
       achievements.push("Overload");
     }
   }
@@ -1224,6 +1224,10 @@ document.getElementById('ReplicationButton').addEventListener('click', function(
   buy("replication")  
 });
 
+document.getElementById('ScramboblingCromjomblesButton').addEventListener('click', function() {
+  buy("scramboblingcromjombles")  
+});
+
 document.getElementById('Scaler1Button').addEventListener('click', function() {
   buy("scaler1")  
 });
@@ -1286,6 +1290,9 @@ document.getElementById('BlackHoleAchievement').addEventListener('mouseover', fu
 });
 document.getElementById('TheNextStepAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "The Next Step - Perform a tribute reset."
+});
+document.getElementById('OverloadAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Overload - Obtain 10,000 (1e4) 'manually' bought syphons."
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
