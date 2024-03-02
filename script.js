@@ -897,6 +897,12 @@ document.getElementById('Scaler2Button').addEventListener('mouseover', function(
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler2.cost) + " Tributes"
 });
 
+document.getElementById('TaxEvasionButton').addEventListener('mouseover', function(event) {
+    if (upgrades.taxevasion.bought == true) {UpgradeName.innerHTML = "Tax Evasion (Bought)"} else {UpgradeName.innerHTML = "Tax Evasion (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.taxevasion.display + " Currently: x" + String(upgradeeffects(20));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.taxevasion.cost) + " Tributes"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -966,6 +972,7 @@ function displayupgrades() {
   displayupgrade("ScramboblingCromjombles","scramboblingcromjombles")
   displayupgrade("Scaler1","scaler1")
   displayupgrade("Scaler2","scaler2")
+  displayupgrade("TaxEvasion","taxevasion")
   
 }
 
@@ -1030,6 +1037,7 @@ function save() {
     scramboblingcromjombles: upgrades.scramboblingcromjombles.bought,
     scaler1: upgrades.scaler1.bought,
     scaler2: upgrades.scaler2.bought,
+    taxevasion: upgrades.taxevasion.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1089,6 +1097,7 @@ function load() {
     upgrades.scramboblingcromjombles.bought = loadedData.scramboblingcromjombles
     upgrades.scaler1.bought = loadedData.scaler1
     upgrades.scaler2.bought = loadedData.scaler2
+    upgrades.taxevasion.bought = loadedData.taxevasion
     
     loadfunctions()
     
@@ -1299,6 +1308,10 @@ document.getElementById('Scaler1Button').addEventListener('click', function() {
 
 document.getElementById('Scaler2Button').addEventListener('click', function() {
   buy("scaler2")  
+});
+
+document.getElementById('TaxEvasionButton').addEventListener('click', function() {
+  buy("taxevasion")  
 });
 
 
