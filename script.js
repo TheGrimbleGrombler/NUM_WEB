@@ -948,6 +948,13 @@ function displayupgrades() {
   displayupgrade("Scaler2","scaler2")
   
 }
+
+function milestones() {
+  
+  
+  
+}
+
 function displayupgrade(idname,upname) {
   if (upgrades[upname].bought == true) {
     document.getElementById(idname + "Button").className = "outlinegreen";
