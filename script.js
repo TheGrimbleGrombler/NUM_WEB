@@ -224,38 +224,37 @@ function Automation() {
   
   if (upgrades.automatons.bought) {
     
-    
     function auto(a,b,c) {
     var a1 = buyables[String(a)].manuals
     if (a1.gte(E("1")) == true) {
-      if (player.stardust.gte(getbuyablecost(1,a1.div(E("1"))))) {
+      if (player.stardust.gte(getbuyablecost(c,a1.div(E("1"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("1"))))
-        buyables[String(a)].amount = buyables.syphon.amount.add(a1.div(E("1")))
-        buyables[String(a)].manuals = buyables.syphon.manuals.add(a1.div(E("1")))
+        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("1")))
+        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("1")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(1,a1.div(E("10"))))) {
+      if (player.stardust.gte(getbuyablecost(c,a1.div(E("10"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("10"))))
-        buyables[String(a)].amount = buyables.syphon.amount.add(a1.div(E("10")))
-        buyables[String(a)].manuals = buyables.syphon.manuals.add(a1.div(E("10")))
+        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("10")))
+        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("10")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(1,a1.div(E("100"))))) {
+      if (player.stardust.gte(getbuyablecost(c,a1.div(E("100"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("100"))))
-        buyables[String(a)].amount = buyables.syphon.amount.add(a1.div(E("100")))
-        buyables[String(a)].manuals = buyables.syphon.manuals.add(a1.div(E("100")))
+        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("100")))
+        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("100")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(1,E("10").pow(a1.log(10).floor())))) {
+      if (player.stardust.gte(getbuyablecost(c,E("10").pow(a1.log(10).floor())))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,E("10").pow(a1.log(10).floor())))
-        buyables[String(a)].amount = buyables.syphon.amount.add(E("10").pow(a1.log(10).floor()))
-        buyables[String(a)].manuals = buyables.syphon.manuals.add(E("10").pow(a1.log(10).floor()))
+        buyables[String(a)].amount = buyables[String(a)].amount.add(E("10").pow(a1.log(10).floor()))
+        buyables[String(a)].manuals = buyables[String(a)].manuals.add(E("10").pow(a1.log(10).floor()))
       }
     }
     }
     
     
-    if (automation1 == true) {
+    if (false == true) {
       if (player.stardust.gte(getbuyablecost(1,E("1")))) {
       
       if (player.stardust.gte(getbuyablecost(1,E("10")))) {
@@ -306,6 +305,11 @@ function Automation() {
       }
       
     }
+    }
+    if (automation1 == true) {
+    auto("syphon","stardust",1)
+    auto("collector","stardust",2)
+    auto("field","stardust",3)
     }
   }
   
@@ -395,6 +399,7 @@ let player = {
   beststardust: E("0"),
   bestmatter: E("0"),
   besttributes: E("0"),
+  tributemilestone: 3,
 };
 
 var x = new Decimal().fromString("1e100")
