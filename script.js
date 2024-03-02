@@ -368,6 +368,20 @@ function doreset(tier) {
     
   }
   
+  
+  //retainments
+  if (tier <= 2) {
+    if (player.tributemilestone >= 1) {
+      buyables.syphon.amount = E("1")
+      buyables.syphon.manuals = E("1")
+      buyables.collector.amount = E("1")
+      buyables.collector.manuals = E("1")
+      buyables.field.amount = E("1")
+      buyables.field.manuals = E("1")
+    }
+  }
+  
+  
 }
 
 
@@ -399,7 +413,7 @@ let player = {
   beststardust: E("0"),
   bestmatter: E("0"),
   besttributes: E("0"),
-  tributemilestone: 3,
+  tributemilestone: 0,
 };
 
 var x = new Decimal().fromString("1e100")
@@ -517,7 +531,7 @@ function updateText() {
   //Debug()
   displayupgrades()
   checkbest()
-  
+  milestones()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -952,8 +966,14 @@ function displayupgrades() {
 
 function milestones() {
   
-  if (player.tributemilestone < 1) {if (player.tribute.gte(E("1"))) {player.tributemilestone = 1}}
-  if (player.tributemilestone < 2) {if (player.tribute.gte(E("3"))) {player.tributemilestone = 2}}
+  if (player.tributemilestone < 1) {if (player.besttributes.gte(E("1"))) {player.tributemilestone = 1}}
+  if (player.tributemilestone < 2) {if (player.besttributes.gte(E("3"))) {player.tributemilestone = 2}}
+
+  if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 3) {document.getElementById("tributemilestone3").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 4) {document.getElementById("tributemilestone4").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 5) {document.getElementById("tributemilestone5").className = "milestonebreached numberwhite"}
   
 }
 
@@ -1131,12 +1151,6 @@ function purge(x) {
   if (x==12) {
     doreset(3)
   }
-  
-  
-  
-  
-  
-  
   
 }
 
