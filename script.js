@@ -37,6 +37,7 @@ function buyableeffects(n) {
   if (n==4) {
     temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15))
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
+    if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(E("1.05"))}
   }
   
   
@@ -102,6 +103,9 @@ function upgradeeffects(n) {
   }
   if (n==18) {
     if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
+  }
+  if (n==19) {
+    if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.05")}
   }
   
   
@@ -172,7 +176,7 @@ let upgrades = {
   discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
   dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
-  ScramboblingCromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
+  scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.05, Buy Scaler 1 first."},
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
   scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   
@@ -205,6 +209,7 @@ function loadfunctions() {
   if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
   if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
   if (isNaN(player.tributes)) {player.tributes = E("0")}
+  if (isNaN(upgrades.scramboblingcromjombles.bought)) {upgrades.scramboblingcromjombles.bought = false}
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
@@ -321,6 +326,9 @@ function doreset(tier) {
   if (tier >= 3) {
     
     player.tributes = E("0")
+    upgrades.scramboblingcromjombles.bought = false
+    upgrades.scaler1.bought = false
+    upgrades.scaler2.bought = false
     
   }
   
@@ -469,7 +477,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   checkbest()
   
@@ -814,9 +822,15 @@ document.getElementById('ReplicationButton').addEventListener('mouseover', funct
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
+document.getElementById('ScramboblingCromjomblesButton').addEventListener('mouseover', function(event) {
+    if (upgrades.scramboblingcromjombles.bought == true) {UpgradeName.innerHTML = "Scrambobling Cromjombles (Bought)"} else {UpgradeName.innerHTML = "Scrambobling Cromjombles (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.scramboblingcromjombles.display + " Currently: x" + String(upgradeeffects(17));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.scramboblingcromjombles.cost) + " Tributes"
+});
+
 document.getElementById('Scaler1Button').addEventListener('mouseover', function(event) {
-    if (upgrades.scaler1.bought == true) {UpgradeName.innerHTML = "Scaler 1 (Bought)"} else {UpgradeName.innerHTML = "Scaler 2 (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.scaler1.display + " Currently: x" + String(upgradeeffects(17));
+    if (upgrades.scaler1.bought == true) {UpgradeName.innerHTML = "Scaler 1 (Bought)"} else {UpgradeName.innerHTML = "Scaler 1 (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.scaler1.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler1.cost) + " Tributes"
 });
 
@@ -892,6 +906,7 @@ function displayupgrades() {
   displayupgrade("Heavier","heavier")
   displayupgrade("Crushing","crushing")
   displayupgrade("Replication","replication")
+  displayupgrade("Scrambobling Cromjombles","scramboblingcromjombles")
   displayupgrade("Scaler1","scaler1")
   displayupgrade("Scaler2","scaler2")
   
@@ -941,6 +956,7 @@ function save() {
     heavier: upgrades.heavier.bought,
     crushing: upgrades.crushing.bought,
     replication: upgrades.replication.bought,
+    scramboblingcromjombles: upgrades.scramboblingcromjombles.bought,
     scaler1: upgrades.scaler1.bought,
     scaler2: upgrades.scaler2.bought,
     generalunlocks: generalunlocks,
@@ -999,6 +1015,7 @@ function load() {
     upgrades.heavier.bought = loadedData.heavier
     upgrades.crushing.bought = loadedData.crushing
     upgrades.replication.bought = loadedData.replication
+    upgrades.scramboblingcromjombles.bought = loadedData.scramboblingcromjombles
     upgrades.scaler1.bought = loadedData.scaler1
     upgrades.scaler2.bought = loadedData.scaler2
     
@@ -1131,6 +1148,11 @@ function timedunlocks() {
   if (achievements.indexOf('TheNextStep') == -1) {
     if (player.tributes.gte(E("1"))) {
       achievements.push("TheNextStep");
+    }
+  }
+  if (achievements.indexOf('Overload') == -1) {
+    if (upgrad) {
+      achievements.push("Overload");
     }
   }
   
