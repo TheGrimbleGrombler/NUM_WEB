@@ -35,7 +35,7 @@ function buyableeffects(n) {
     temp = temp.mul(timespeed)
   }
   if (n==4) {
-    temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15))
+    temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15)).add(upgradeeffects(21))
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
   }
@@ -110,6 +110,9 @@ function upgradeeffects(n) {
   if (n==20) {
     if (upgrades.taxevasion.bought==true) {temp = E("1.13")}
   }
+  if (n==21) {
+    if (upgrades.realityshift.bought==true) {temp = E("10")} else {temp = E("0")}
+  }
   
   
   
@@ -183,6 +186,7 @@ let upgrades = {
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
   scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
+  realityshift: {cost: E("8"), costtype: "tributes", bought: false, display: "Unsoftcapped weight effect +10!!!"},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
@@ -217,6 +221,7 @@ function loadfunctions() {
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
   if (isNaN(upgrades.taxevasion.bought)) {upgrades.taxevasion.bought = false}
+  if (isNaN(upgrades.realityshift.bought)) {upgrades.realityshift.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -1065,7 +1070,7 @@ function save() {
     scaler1: upgrades.scaler1.bought,
     scaler2: upgrades.scaler2.bought,
     taxevasion: upgrades.taxevasion.bought,
-    realityshift: upgrades.taxevasion.bought,
+    realityshift: upgrades.realityshift.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1126,6 +1131,7 @@ function load() {
     upgrades.scaler1.bought = loadedData.scaler1
     upgrades.scaler2.bought = loadedData.scaler2
     upgrades.taxevasion.bought = loadedData.taxevasion
+    upgrades.realityshift.bought = loadedData.realityshift
     
     loadfunctions()
     
@@ -1340,6 +1346,10 @@ document.getElementById('Scaler2Button').addEventListener('click', function() {
 
 document.getElementById('TaxEvasionButton').addEventListener('click', function() {
   buy("taxevasion")  
+});
+
+document.getElementById('RealityShiftButton').addEventListener('click', function() {
+  buy("realityshift")  
 });
 
 
