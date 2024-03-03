@@ -963,6 +963,12 @@ document.getElementById('MechanizedButton').addEventListener('mouseover', functi
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.mechanized.cost) + " Tributes"
 });
 
+document.getElementById('SlothButton').addEventListener('mouseover', function(event) {
+    if (upgrades.sloth.bought == true) {UpgradeName.innerHTML = "Sloth (Bought)"} else {UpgradeName.innerHTML = "Sloth (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.sloth.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.sloth.cost) + " Tributes"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -1035,6 +1041,7 @@ function displayupgrades() {
   displayupgrade("TaxEvasion","taxevasion")
   displayupgrade("RealityShift","realityshift")
   displayupgrade("Mechanized","mechanized")
+  displayupgrade("Mechanized","sloth")
   
 }
 
