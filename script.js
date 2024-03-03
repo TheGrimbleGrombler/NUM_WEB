@@ -103,7 +103,7 @@ function upgradeeffects(n) {
     if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
   }
   if (n==18) {
-    if (upgrades.scaler2.bought==true) {temp = E("0.995").pow(player.beststardust.add(E("10")).log10())}
+    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
   }
   if (n==19) {
     if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
@@ -1243,6 +1243,11 @@ function timedunlocks() {
       achievements.push("Overload");
     }
   }
+  if (achievements.indexOf('Empowered') == -1) {
+    if (buyables.syphon.manuals.gte(E("100000"))) {
+      achievements.push("Empowered");
+    }
+  }
   
   
 }
@@ -1397,6 +1402,9 @@ document.getElementById('TheNextStepAchievement').addEventListener('mouseover', 
 });
 document.getElementById('OverloadAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Overload - Obtain 10,000 (1e4) 'manually' bought syphons."
+});
+document.getElementById('EmpoweredAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Empowered - Obtain 100,000 (1e5) 'manually' bought syphons."
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
