@@ -630,7 +630,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   checkbest()
   milestones()
@@ -671,7 +671,7 @@ function updateText() {
   
   TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
   
-  if (player.besttributes.gte(E("25")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (Labors.TL7 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
