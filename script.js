@@ -404,6 +404,13 @@ function doreset(tier) {
     if (player.tributemilestone >= 2) {
       upgrades.incrementallist.bought = true
     }
+    if (player.tributemilestone >= 4) {
+      upgrades.SacredTexts.bought = true
+    }
+    if (player.tributemilestone >= 6) {
+      upgrades.Gravity.bought = true
+      upgrades.gravitoncatalyst.bought = true
+    }
   }
   
   
@@ -1012,12 +1019,14 @@ function milestones() {
   if (player.tributemilestone < 1) {if (player.besttributes.gte(E("1"))) {player.tributemilestone = 1}}
   if (player.tributemilestone < 2) {if (player.besttributes.gte(E("2"))) {player.tributemilestone = 2}}
   if (player.tributemilestone < 3) {if (player.besttributes.gte(E("4"))) {player.tributemilestone = 3}}
+  if (player.tributemilestone < 4) {if (player.besttributes.gte(E("10"))) {player.tributemilestone = 4}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 3) {document.getElementById("tributemilestone3").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 4) {document.getElementById("tributemilestone4").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 5) {document.getElementById("tributemilestone5").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 6) {document.getElementById("tributemilestone6").className = "milestonebreached numberwhite"}
   
 }
 
