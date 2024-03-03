@@ -668,6 +668,7 @@ function gettributesonreset() {
   
   gain = player.stardust.div(E("1e80")).log10().div(E("80")).add(E("1")).floor()
   
+  if (Labors.TL6 == true) {gain = gain.mul(E("5"))}
   
   return gain
   
