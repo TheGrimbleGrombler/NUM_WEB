@@ -771,6 +771,9 @@ document.getElementById('subtab2button').addEventListener('click', function() {
 document.getElementById('tributesubtab1button').addEventListener('click', function() {
   openSubtab("tributesubtab1")
 });
+document.getElementById('tributesubtab2button').addEventListener('click', function() {
+  openSubtab("tributesubtab2")
+});
 document.getElementById('masssubtab1button').addEventListener('click', function() {
   openSubtab("masssubtab1")
 });
@@ -1227,7 +1230,7 @@ function timedunlocks() {
   if (player.besttributes.gte(E("25"))) {
     generalunlocks["Labors1"] = true
     unlockedsubtabs.TributeLabors = true
-    document.getElementById("tributeupgrades1").style = "display: block;"
+    document.getElementById("tributesubtab2button").style = "display: block;"
   }
   
   
