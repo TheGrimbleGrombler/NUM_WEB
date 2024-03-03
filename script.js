@@ -1083,8 +1083,8 @@ function load() {
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
     
-    if (!isNaN(loadedData.achievements)) {achievements = loadedData.achievements}
-    
+    if (!isNaN(loadedData.achievements)) {}
+    achievements = loadedData.achievements
     
     unlockedsubtabs = loadedData.unlockedsubtabs;
     buyables.syphon.amount = E(String(loadedData.syphonamount))
