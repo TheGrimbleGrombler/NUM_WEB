@@ -117,6 +117,9 @@ function upgradeeffects(n) {
   if (n==22) {
     if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = E("2")}
   }
+  if (n==23) {
+    if (upgrades.tomfoolery.bought==true) {temp = E("1e80")}
+  }
   
   
   
@@ -210,6 +213,7 @@ let upgrades = {
   scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
   gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
+  tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
 };
 
 
@@ -246,6 +250,7 @@ function loadfunctions() {
   if (isNaN(upgrades.mechanized.bought)) {upgrades.mechanized.bought = false}
   if (isNaN(upgrades.sloth.bought)) {upgrades.sloth.bought = false}
   if (isNaN(upgrades.gazeehlingjoombahmbalaeze.bought)) {upgrades.gazeehlingjoombahmbalaeze.bought = false}
+  if (isNaN(upgrades.tomfoolery.bought)) {upgrades.tomfoolery.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -716,6 +721,8 @@ function gainstardust(){
   
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
+  if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
+  
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
@@ -1001,8 +1008,14 @@ document.getElementById('SlothButton').addEventListener('mouseover', function(ev
 
 document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('mouseover', function(event) {
     if (upgrades.gazeehlingjoombahmbalaeze.bought == true) {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Bought)"} else {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.gazeehlingjoombahmbalaeze.display + " Currently: " + String(upgradeeffects(22));
+    UpgradeEffect.innerHTML = upgrades.gazeehlingjoombahmbalaeze.display + " Currently: ^" + String(upgradeeffects(22));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.gazeehlingjoombahmbalaeze.cost) + " Tributes"
+});
+
+document.getElementById('TomfooleryButton').addEventListener('mouseover', function(event) {
+    if (upgrades.tomfoolery.bought == true) {UpgradeName.innerHTML = "Tomfoolery (Bought)"} else {UpgradeName.innerHTML = "Tomfoolery (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.tomfoolery.display + " Currently: +" + String(upgradeeffects(23));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.tomfoolery.cost) + " Tributes"
 });
 
 function buy(n) {
@@ -1079,6 +1092,7 @@ function displayupgrades() {
   displayupgrade("Mechanized","mechanized")
   displayupgrade("Sloth","sloth")
   displayupgrade("GazeehlingJoombahmbalaeze","gazeehlingjoombahmbalaeze")
+  displayupgrade("Tomfoolery","tomfoolery")
   
 }
 
@@ -1157,6 +1171,7 @@ function save() {
     mechanized: upgrades.mechanized.bought,
     sloth: upgrades.sloth.bought,
     gazeehlingjoombahmbalaeze: upgrades.gazeehlingjoombahmbalaeze.bought,
+    tomfoolery: upgrades.tomfoolery.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1227,6 +1242,7 @@ function load() {
     upgrades.mechanized.bought = loadedData.mechanized
     upgrades.sloth.bought = loadedData.sloth
     upgrades.gazeehlingjoombahmbalaeze.bought = loadedData.gazeehlingjoombahmbalaeze
+    upgrades.tomfoolery.bought = loadedData.tomfoolery
     
     Labors.TL1 = loadedData.tl1
     Labors.TL2 = loadedData.tl2
@@ -1509,6 +1525,10 @@ document.getElementById('SlothButton').addEventListener('click', function() {
 
 document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('click', function() {
   buy("gazeehlingjoombahmbalaeze")
+});
+
+document.getElementById('TomfooleryButton').addEventListener('click', function() {
+  buy("tomfoolery")
 });
 
 document.getElementById('Labor1').addEventListener('click', function() {
