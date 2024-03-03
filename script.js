@@ -129,16 +129,30 @@ function getbuyablecost(n,m) {
   }
   
   if (n == 1) {
-    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
   }
   if (n == 2) {
-    temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
   }
   if (n == 3) {
-    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(upgradeeffects(17)).mul(upgradeeffects(18))))
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
   }
   if (n == 4) {
-    temp = E("10").pow(buyables.weight.manuals.add(modifier))
+    var scaling = E("1")
+    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
   }
   return temp
 }
@@ -586,6 +600,8 @@ function getmatteronreset() {
   
   gain = player.stardust.div(E("1e9")).pow(E("0.5"))
   
+  if (Labors.TL3 == true) {gain = gain.pow(E("1.5"))}
+  if (player.labor == 3) {gain = E("0")}
   
   return gain.floor()
   
