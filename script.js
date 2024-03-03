@@ -198,13 +198,14 @@ let upgrades = {
   dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
   
   scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
-  scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
-  scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
-  mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
   taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
   realityshift: {cost: E("8"), costtype: "tributes", bought: false, display: "Unsoftcapped weight effect +10!!!"},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
+  scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
+  mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
+  scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
+  sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
 };
 
 
@@ -239,6 +240,7 @@ function loadfunctions() {
   if (isNaN(upgrades.taxevasion.bought)) {upgrades.taxevasion.bought = false}
   if (isNaN(upgrades.realityshift.bought)) {upgrades.realityshift.bought = false}
   if (isNaN(upgrades.mechanized.bought)) {upgrades.mechanized.bought = false}
+  if (isNaN(upgrades.sloth.bought)) {upgrades.sloth.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -964,7 +966,7 @@ document.getElementById('MechanizedButton').addEventListener('mouseover', functi
 });
 
 document.getElementById('SlothButton').addEventListener('mouseover', function(event) {
-    if (upgrades.sloth.bought == true) {UpgradeName.innerHTML = "Sloth (Bought)"} else {UpgradeName.innerHTML = "Sloth (Unbought)"}
+    if (upgrades.sloth.bought == true) {UpgradeName.innerHTML = "Sloth Totem (Bought)"} else {UpgradeName.innerHTML = "Sloth Totem (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.sloth.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.sloth.cost) + " Tributes"
 });
@@ -1041,7 +1043,7 @@ function displayupgrades() {
   displayupgrade("TaxEvasion","taxevasion")
   displayupgrade("RealityShift","realityshift")
   displayupgrade("Mechanized","mechanized")
-  displayupgrade("Mechanized","sloth")
+  displayupgrade("Sloth","sloth")
   
 }
 
@@ -1114,6 +1116,7 @@ function save() {
     taxevasion: upgrades.taxevasion.bought,
     realityshift: upgrades.realityshift.bought,
     mechanized: upgrades.mechanized.bought,
+    sloth: upgrades.sloth.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1182,6 +1185,7 @@ function load() {
     upgrades.taxevasion.bought = loadedData.taxevasion
     upgrades.realityshift.bought = loadedData.realityshift
     upgrades.mechanized.bought = loadedData.mechanized
+    upgrades.sloth.bought = loadedData.sloth
     
     Labors.TL1 = loadedData.tl1
     Labors.TL2 = loadedData.tl2
@@ -1456,6 +1460,10 @@ document.getElementById('RealityShiftButton').addEventListener('click', function
 
 document.getElementById('MechanizedButton').addEventListener('click', function() {
   buy("mechanized")  
+});
+
+document.getElementById('SlothButton').addEventListener('click', function() {
+  buy("sloth")
 });
 
 document.getElementById('Labor1').addEventListener('click', function() {
