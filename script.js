@@ -7,6 +7,7 @@ function E(n) {
 }
 
 var automation1button = document.getElementById("automation1button");
+var automation2button = document.getElementById("automation2button");
 
 var timespeed = E("1")
 
@@ -239,28 +240,28 @@ function Automation() {
     function auto(a,b,c) {
     var a1 = buyables[String(a)].manuals
     if (a1.gte(E("1")) == true) {
-      if (player.stardust.gte(getbuyablecost(c,a1.div(E("1"))))) {
+      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("1"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("1"))))
         buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("1")))
         buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("1")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(c,a1.div(E("10"))))) {
+      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("10"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("10"))))
         buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("10")))
         buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("10")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(c,a1.div(E("100"))))) {
+      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("100"))))) {
         player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("100"))))
         buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("100")))
         buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("100")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player.stardust.gte(getbuyablecost(c,E("10").pow(a1.log(10).floor())))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c,E("10").pow(a1.log(10).floor())))
-        buyables[String(a)].amount = buyables[String(a)].amount.add(E("10").pow(a1.log(10).floor()))
-        buyables[String(a)].manuals = buyables[String(a)].manuals.add(E("10").pow(a1.log(10).floor()))
+      if (player[String(b)].gte(getbuyablecost(c,E("1")))) {
+        player[String(b)] = player[String(b)].sub(getbuyablecost(c,E("1")))
+        buyables[String(a)].amount = buyables[String(a)].amount.add(E("1"))
+        buyables[String(a)].manuals = buyables[String(a)].manuals.add(E("1"))
       }
     }
     }
@@ -318,10 +319,14 @@ function Automation() {
       
     }
     }
+    
     if (automation1 == true) {
     auto("syphon","stardust",1)
     auto("collector","stardust",2)
     auto("field","stardust",3)
+    }
+    if (automation2 == true) {
+    auto("weight","matter",4)
     }
   }
   
@@ -1432,6 +1437,10 @@ document.getElementById('PurgeTributeLayerButton').addEventListener('click', fun
 document.getElementById('automation1button').addEventListener('click', function() {
   automation1 = !automation1
   automation1button.innerHTML = "Automation: " + String(automation1)
+});
+document.getElementById('automation2button').addEventListener('click', function() {
+  automation2 = !automation2
+  automation2button.innerHTML = "Automation: " + String(automation2)
 });
 document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
