@@ -114,6 +114,9 @@ function upgradeeffects(n) {
   if (n==21) {
     if (upgrades.realityshift.bought==true) {temp = E("10")} else {temp = E("0")}
   }
+  if (n==22) {
+    if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = E("2")}
+  }
   
   
   
@@ -206,6 +209,7 @@ let upgrades = {
   mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
   scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
+  gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
 };
 
 
@@ -241,6 +245,7 @@ function loadfunctions() {
   if (isNaN(upgrades.realityshift.bought)) {upgrades.realityshift.bought = false}
   if (isNaN(upgrades.mechanized.bought)) {upgrades.mechanized.bought = false}
   if (isNaN(upgrades.sloth.bought)) {upgrades.sloth.bought = false}
+  if (isNaN(upgrades.gazeehlingjoombahmbalaeze.bought)) {upgrades.gazeehlingjoombahmbalaeze.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -506,11 +511,13 @@ function particleeffects(a,b) {
       temp = player.a_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==2) {
       temp = player.a_particles.log10().pow(E("0.5")).add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==3) {
       temp = E("1")
@@ -524,11 +531,13 @@ function particleeffects(a,b) {
       temp = player.b_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==2) {
       temp = player.b_particles.log2().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==3) {
       temp = E("1")
@@ -542,11 +551,13 @@ function particleeffects(a,b) {
       temp = player.c_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==2) {
       temp = player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
+      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==3) {
       temp = E("1")
@@ -988,6 +999,12 @@ document.getElementById('SlothButton').addEventListener('mouseover', function(ev
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.sloth.cost) + " Tributes"
 });
 
+document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('mouseover', function(event) {
+    if (upgrades.gazeehlingjoombahmbalaeze.bought == true) {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Bought)"} else {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.gazeehlingjoombahmbalaeze.display + " Currently: " + String(upgradeeffects(22));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.gazeehlingjoombahmbalaeze.cost) + " Tributes"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -1061,6 +1078,7 @@ function displayupgrades() {
   displayupgrade("RealityShift","realityshift")
   displayupgrade("Mechanized","mechanized")
   displayupgrade("Sloth","sloth")
+  displayupgrade("GazeehlingJoombahmbalaeze","gazeehlingjoombahmbalaeze")
   
 }
 
@@ -1138,6 +1156,7 @@ function save() {
     realityshift: upgrades.realityshift.bought,
     mechanized: upgrades.mechanized.bought,
     sloth: upgrades.sloth.bought,
+    gazeehlingjoombahmbalaeze: upgrades.gazeehlingjoombahmbalaeze.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1207,6 +1226,7 @@ function load() {
     upgrades.realityshift.bought = loadedData.realityshift
     upgrades.mechanized.bought = loadedData.mechanized
     upgrades.sloth.bought = loadedData.sloth
+    upgrades.gazeehlingjoombahmbalaeze.bought = loadedData.gazeehlingjoombahmbalaeze
     
     Labors.TL1 = loadedData.tl1
     Labors.TL2 = loadedData.tl2
@@ -1485,6 +1505,10 @@ document.getElementById('MechanizedButton').addEventListener('click', function()
 
 document.getElementById('SlothButton').addEventListener('click', function() {
   buy("sloth")
+});
+
+document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('click', function() {
+  buy("gazeehlingjoombahmbalaeze")
 });
 
 document.getElementById('Labor1').addEventListener('click', function() {
