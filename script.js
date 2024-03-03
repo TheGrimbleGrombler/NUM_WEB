@@ -132,26 +132,26 @@ function getbuyablecost(n,m) {
     var scaling = E("1")
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
-    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
   }
   if (n == 2) {
     var scaling = E("1")
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
-    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
   }
   if (n == 3) {
     var scaling = E("1")
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
-    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
   }
   if (n == 4) {
     var scaling = E("1")
-    if (Labors.TL2 == true) {scaling = scaling.mul(E("5"))}
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
   }
   return temp
@@ -676,6 +676,8 @@ function gainstardust(){
   if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
   
   if (upgrades.taxevasion.bought==true) {gain = gain.pow(upgradeeffects(20))}
+  
+  if (Labors.TL2 == true) {gain = gain.pow(E("1.5"))}
   
   gain = gain.mul(timespeed)
   
