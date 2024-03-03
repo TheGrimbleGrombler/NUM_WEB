@@ -176,8 +176,6 @@ let achievements = [
 function gettimespeed() {
   var temp = E("1")
   if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
-  if (player.labor == 6) {temp = temp.mul(E("0.00000000000001"))}
-  if (Labors.TL6 == true) {temp = temp.pow(E("2"))}
   
   
   return temp
@@ -261,6 +259,8 @@ function loadfunctions() {
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
+  if (isNaN(Labors.TL4)) {Labors.TL4 = false}
+  if (isNaN(Labors.TL5)) {Labors.TL5 = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -472,6 +472,8 @@ let Labors = {
   TL1: false,
   TL2: false,
   TL3: false,
+  TL4: false,
+  TL5: false,
 }
 
 var x = new Decimal().fromString("1e100")
@@ -729,13 +731,14 @@ function gainstardust(){
   
   if (upgrades.taxevasion.bought==true) {
     gain = gain.pow(upgradeeffects(20))
-    if ()
-  
+    if (Labors.TL4 == true) {gain = gain.pow(upgradeeffects(20))}
   }
   
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
   if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
+  
+  if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   
   gain = gain.mul(timespeed)
   
@@ -1200,6 +1203,8 @@ function save() {
     tl1: Labors.TL1,
     tl2: Labors.TL2,
     tl3: Labors.TL3,
+    tl4: Labors.TL4,
+    tl5: Labors.TL5,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -1267,6 +1272,8 @@ function load() {
     Labors.TL1 = loadedData.tl1
     Labors.TL2 = loadedData.tl2
     Labors.TL3 = loadedData.tl3
+    Labors.TL4 = loadedData.tl4
+    Labors.TL5 = loadedData.tl5
     
     loadfunctions()
     
@@ -1419,7 +1426,7 @@ function timedunlocks() {
 
 function calibratelabors() {
       var temp = 0
-      while (temp < 3) {
+      while (temp < 6) {
         temp += 1
         var temp2 = document.getElementById('Labor' + String(temp))
         if (player.labor == temp) {
@@ -1561,6 +1568,18 @@ document.getElementById('Labor2').addEventListener('click', function() {
 
 document.getElementById('Labor3').addEventListener('click', function() {
   togglelabor(3)
+});
+
+document.getElementById('Labor4').addEventListener('click', function() {
+  togglelabor(4)
+});
+
+document.getElementById('Labor5').addEventListener('click', function() {
+  togglelabor(5)
+});
+
+document.getElementById('Labor6').addEventListener('click', function() {
+  togglelabor(6)
 });
 
 
