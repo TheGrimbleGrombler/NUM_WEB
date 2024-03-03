@@ -922,6 +922,12 @@ document.getElementById('TaxEvasionButton').addEventListener('mouseover', functi
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.taxevasion.cost) + " Tributes"
 });
 
+document.getElementById('RealityShiftButton').addEventListener('mouseover', function(event) {
+    if (upgrades.realityshift.bought == true) {UpgradeName.innerHTML = "Reality Shift (Bought)"} else {UpgradeName.innerHTML = "Reality Shift (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.realityshift.display + " Currently: +" + String(upgradeeffects(21));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.realityshift.cost) + " Tributes"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -992,6 +998,7 @@ function displayupgrades() {
   displayupgrade("Scaler1","scaler1")
   displayupgrade("Scaler2","scaler2")
   displayupgrade("TaxEvasion","taxevasion")
+  displayupgrade("RealityShift","realityshift")
   
 }
 
@@ -1058,6 +1065,7 @@ function save() {
     scaler1: upgrades.scaler1.bought,
     scaler2: upgrades.scaler2.bought,
     taxevasion: upgrades.taxevasion.bought,
+    realityshift: upgrades.taxevasion.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
