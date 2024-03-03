@@ -651,6 +651,8 @@ function gaingravitationalwaves(){
   
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   
+  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
+  
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
@@ -691,6 +693,7 @@ function gainparticles(){
   if (player.c_particles.gte(E("1"))) {gain = gain.mul(particleeffects(3,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
@@ -699,6 +702,7 @@ function gainparticles(){
   if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
@@ -707,6 +711,7 @@ function gainparticles(){
   if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,1))}
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
+  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
@@ -1020,6 +1025,8 @@ function milestones() {
   if (player.tributemilestone < 2) {if (player.besttributes.gte(E("2"))) {player.tributemilestone = 2}}
   if (player.tributemilestone < 3) {if (player.besttributes.gte(E("4"))) {player.tributemilestone = 3}}
   if (player.tributemilestone < 4) {if (player.besttributes.gte(E("10"))) {player.tributemilestone = 4}}
+  if (player.tributemilestone < 5) {if (player.besttributes.gte(E("15"))) {player.tributemilestone = 5}}
+  if (player.tributemilestone < 6) {if (player.besttributes.gte(E("20"))) {player.tributemilestone = 6}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
