@@ -235,8 +235,6 @@ function loadfunctions() {
 
 function Automation() {
   
-  if (upgrades.automatons.bought) {
-    
     function auto(a,b,c) {
     var a1 = buyables[String(a)].manuals
     if (a1.gte(E("1")) == true) {
@@ -258,77 +256,26 @@ function Automation() {
         buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("100")))
       }
     var a1 = buyables[String(a)].manuals
-      if (player[String(b)].gte(getbuyablecost(c,E("1")))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c,E("1")))
+      if (player[String(b)].gte(getbuyablecost(c))) {
+        player[String(b)] = player[String(b)].sub(getbuyablecost(c))
         buyables[String(a)].amount = buyables[String(a)].amount.add(E("1"))
         buyables[String(a)].manuals = buyables[String(a)].manuals.add(E("1"))
       }
     }
     }
-    
-    
-    if (false == true) {
-      if (player.stardust.gte(getbuyablecost(1,E("1")))) {
-      
-      if (player.stardust.gte(getbuyablecost(1,E("10")))) {
-        
-        player.stardust = player.stardust.sub(getbuyablecost(1,E("10")))
-        buyables.syphon.amount = buyables.syphon.amount.add(E("10"))
-        buyables.syphon.manuals = buyables.syphon.manuals.add(E("10"))
-        
-      } else {
-        
-      player.stardust = player.stardust.sub(getbuyablecost(1))
-      buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
-      buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
-        
-      }
-    }
-      if (player.stardust.gte(getbuyablecost(2,E("1")))) {
-      
-      if (player.stardust.gte(getbuyablecost(2,E("10")))) {
-        
-        player.stardust = player.stardust.sub(getbuyablecost(2,E("10")))
-        buyables.collector.amount = buyables.collector.amount.add(E("10"))
-        buyables.collector.manuals = buyables.collector.manuals.add(E("10"))
-        
-      } else {
-        
-      player.stardust = player.stardust.sub(getbuyablecost(2,E("1")))
-      buyables.collector.amount = buyables.collector.amount.add(E("1"))
-      buyables.collector.manuals = buyables.collector.manuals.add(E("1"))
-        
-      }
-      
-    }
-      if (player.stardust.gte(getbuyablecost(3,E("1")))) {
-      
-      if (player.stardust.gte(getbuyablecost(3,E("10")))) {
-        
-        player.stardust = player.stardust.sub(getbuyablecost(3,E("10")))
-        buyables.field.amount = buyables.field.amount.add(E("10"))
-        buyables.field.manuals = buyables.field.manuals.add(E("10"))
-        
-      } else {
-        
-        player.stardust = player.stardust.sub(getbuyablecost(3,E("1")))
-        buyables.field.amount = buyables.field.amount.add(E("1"))
-        buyables.field.manuals = buyables.field.manuals.add(E("1"))
-        
-      }
-      
-    }
-    }
-    
+  
+  if (upgrades.automatons.bought) {
     if (automation1 == true) {
-    auto("syphon","stardust",1)
-    auto("collector","stardust",2)
-    auto("field","stardust",3)
-    }
-    if (automation2 == true) {
-    auto("weight","matter",4)
+      auto("syphon","stardust",1)
+      auto("collector","stardust",2)
+      auto("field","stardust",3)
     }
   }
+    if (upgrades.mechanized.bought) {
+      if (automation2 == true) {
+        auto("weight","matter",4)
+      }
+    }
   
   if (player.tributemilestone >= 3) {
     buy("incrementallist") 
@@ -487,8 +434,8 @@ var MassResetButton = document.getElementById("MassResetButton");
 var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
-var automation1 = false
-var automation2 = false
+var automation1 = true
+var automation2 = true
 
 function checkbest() {
   if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
@@ -1440,7 +1387,7 @@ document.getElementById('automation1button').addEventListener('click', function(
 });
 document.getElementById('automation2button').addEventListener('click', function() {
   automation2 = !automation2
-  automation2button.innerHTML = "Automation: " + String(automation2)
+  document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
 });
 document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
