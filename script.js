@@ -40,6 +40,7 @@ function buyableeffects(n) {
     if (Labors.TL5 == true) {temp = temp.add(E("25"))}
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
+    if (player.labor == 5) {temp = E("0")}
   }
   
   
@@ -419,6 +420,13 @@ function doreset(tier) {
       buyables.weight.amount = E("1")
       buyables.weight.manuals = E("1")
     }
+    
+    if (player.labor == 5) {
+      buyables.weight.amount = E("0")
+      buyables.weight.manuals = E("0")
+      upgrades.SacredTexts.bought = false
+      upgrades.gravitoncatalyst.bought = false
+    }
   }
   
   if (tier == 2) {
@@ -657,6 +665,7 @@ function getmatteronreset() {
   if (player.labor == 3) {gain = gain.pow(E("0.25"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
+  if (player.labor == 7) {gain = E("0")}
   
   return gain.floor()
   
@@ -1134,6 +1143,7 @@ function milestones() {
   if (player.tributemilestone < 6) {if (player.besttributes.gte(E("20"))) {player.tributemilestone = 6}}
   if (player.tributemilestone < 7) {if (player.besttributes.gte(E("75"))) {player.tributemilestone = 7}}
   if (player.tributemilestone < 8) {if (player.besttributes.gte(E("125"))) {player.tributemilestone = 8}}
+  if (player.tributemilestone < 9) {if (player.besttributes.gte(E("2500"))) {player.tributemilestone = 9}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
@@ -1143,6 +1153,7 @@ function milestones() {
   if (player.tributemilestone >= 6) {document.getElementById("tributemilestone6").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 7) {document.getElementById("tributemilestone7").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 8) {document.getElementById("tributemilestone8").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 9) {document.getElementById("tributemilestone9").className = "milestonebreached numberwhite"}
   
 }
 
@@ -1394,6 +1405,10 @@ function timedunlocks() {
     generalunlocks["Labors1"] = true
     unlockedsubtabs.TributeLabors = true
     document.getElementById("tributesubtab2button").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
+  }
+  if () {
+    generalunlocks["LaborGroup2"] = true
+    document.getElementById("LaborGroup2").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
   
   
