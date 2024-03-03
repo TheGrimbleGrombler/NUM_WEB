@@ -318,6 +318,18 @@ function Automation() {
     }
   }
   
+  if (player.tributemilestone >= 3) {
+    buy("incrementallist") 
+    buy("Gravity")  
+    buy("MEM")
+    buy("feedbackloop") 
+    buy("theunknown")  
+    buy("spacetimerupture") 
+    buy("minmax")   
+    buy("heavier") 
+    buy("crushing") 
+    buy("replication")   
+  }
   
 }
 
@@ -986,7 +998,8 @@ function displayupgrades() {
 function milestones() {
   
   if (player.tributemilestone < 1) {if (player.besttributes.gte(E("1"))) {player.tributemilestone = 1}}
-  if (player.tributemilestone < 2) {if (player.besttributes.gte(E("3"))) {player.tributemilestone = 2}}
+  if (player.tributemilestone < 2) {if (player.besttributes.gte(E("2"))) {player.tributemilestone = 2}}
+  if (player.tributemilestone < 3) {if (player.besttributes.gte(E("4"))) {player.tributemilestone = 3}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
