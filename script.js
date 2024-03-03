@@ -652,6 +652,8 @@ function gainstardust(){
   
   if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
   
+  if (upgrades.taxevasion.bought==true) {gain = gain.pow(upgradeeffects(20))}
+  
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
