@@ -386,6 +386,13 @@ function doreset(tier) {
   
   if (tier == 2) {
     if (player.labor > 0) {
+      
+      if (Labors["TL" + String(player.labor)] == true) {
+        if (achievements.indexOf('Why') == -1) {
+          achievements.push("Why");
+        }
+      }
+      
       Labors["TL" + String(player.labor)] = true
       player.labor = 0
     }
@@ -1340,6 +1347,7 @@ function calibratelabors() {
 }
 
 function togglelabor(n) {
+  
     if (player.labor == 0) {
       player.labor = 0
       doreset(2)
@@ -1522,6 +1530,9 @@ document.getElementById('EmpoweredAchievement').addEventListener('mouseover', fu
 });
 document.getElementById('BoundlessAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Boundless - Have infinite stardust."
+});
+document.getElementById('WhyAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Why????? - Secret #1"
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
