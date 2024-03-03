@@ -56,6 +56,7 @@ function buyableeffects(n) {
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
     if (player.labor == 5) {temp = E("1")}
     if (player.labor == 7) {temp = E("1")}
+    if (Labors.TL7 == true) {temp = temp.pow(E("1.05"))}
   }
   
   
@@ -771,6 +772,7 @@ function gainstardust(){
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
+  if (player.labor == 7) { gain = gain.pow(E("0.755")) }
   
   gain = gain.mul(timespeed)
   
