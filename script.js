@@ -254,6 +254,12 @@ function loadfunctions() {
 
 function Automation() {
   
+  
+    if (player.tributemilestone >= 8) {
+      player.matter = player.matter.add(getmatteronreset().div(E("6000")))
+    }
+  
+  
     function auto(a,b,c) {
     var a1 = buyables[String(a)].manuals
     if (a1.gte(E("1")) == true) {
@@ -392,6 +398,8 @@ function doreset(tier) {
       upgrades.gravitoncatalyst.bought = true
     }
     if (player.tributemilestone >= 7) {
+      buyables.weight.amount = E("1")
+      buyables.weight.manuals = E("1")
     }
   }
   
@@ -1065,6 +1073,7 @@ function milestones() {
   if (player.tributemilestone < 5) {if (player.besttributes.gte(E("15"))) {player.tributemilestone = 5}}
   if (player.tributemilestone < 6) {if (player.besttributes.gte(E("20"))) {player.tributemilestone = 6}}
   if (player.tributemilestone < 7) {if (player.besttributes.gte(E("75"))) {player.tributemilestone = 7}}
+  if (player.tributemilestone < 8) {if (player.besttributes.gte(E("125"))) {player.tributemilestone = 8}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
@@ -1073,6 +1082,7 @@ function milestones() {
   if (player.tributemilestone >= 5) {document.getElementById("tributemilestone5").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 6) {document.getElementById("tributemilestone6").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 7) {document.getElementById("tributemilestone7").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 8) {document.getElementById("tributemilestone8").className = "milestonebreached numberwhite"}
   
 }
 
