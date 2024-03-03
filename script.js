@@ -107,6 +107,9 @@ function upgradeeffects(n) {
   if (n==19) {
     if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
   }
+  if (n==20) {
+    if (upgrades.taxevasion.bought==true) {temp = E("1.13")}
+  }
   
   
   
@@ -179,6 +182,7 @@ let upgrades = {
   scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
   scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
+  taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
   
   automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
 };
@@ -212,6 +216,7 @@ function loadfunctions() {
   if (isNaN(upgrades.scramboblingcromjombles.bought)) {upgrades.scramboblingcromjombles.bought = false}
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
+  if (isNaN(upgrades.taxevasion.bought)) {upgrades.taxevasion.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -899,7 +904,7 @@ document.getElementById('Scaler2Button').addEventListener('mouseover', function(
 
 document.getElementById('TaxEvasionButton').addEventListener('mouseover', function(event) {
     if (upgrades.taxevasion.bought == true) {UpgradeName.innerHTML = "Tax Evasion (Bought)"} else {UpgradeName.innerHTML = "Tax Evasion (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.taxevasion.display + " Currently: x" + String(upgradeeffects(20));
+    UpgradeEffect.innerHTML = upgrades.taxevasion.display + " Currently: ^" + String(upgradeeffects(20));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.taxevasion.cost) + " Tributes"
 });
 
