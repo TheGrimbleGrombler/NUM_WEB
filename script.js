@@ -601,7 +601,7 @@ function getmatteronreset() {
   gain = player.stardust.div(E("1e9")).pow(E("0.5"))
   
   if (Labors.TL3 == true) {gain = gain.pow(E("1.5"))}
-  if (player.labor == 3) {gain = E("0")}
+  if (player.labor == 3) {gain = gain.pow(E("0.25"))}
   
   return gain.floor()
   
@@ -677,7 +677,7 @@ function gainstardust(){
   
   if (upgrades.taxevasion.bought==true) {gain = gain.pow(upgradeeffects(20))}
   
-  if (Labors.TL2 == true) {gain = gain.pow(E("1.5"))}
+  if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
   gain = gain.mul(timespeed)
   
