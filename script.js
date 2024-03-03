@@ -22,7 +22,10 @@ function buyableeffects(n) {
   if (n==1) {
     temp = buyables.syphon.amount
     if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
-    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.syphon.manuals)}
+    if (upgrades.SacredTexts.bought == true) {
+      if 
+      temp = temp.mul(buyables.syphon.manuals)
+    }
   }
   if (n==2) {
     temp = buyables.collector.amount
@@ -74,6 +77,7 @@ function upgradeeffects(n) {
   if (n==8) {
     if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
     if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("9")).pow(E("0.2")).sub(E("1")))}
+    if (player.labor = 7) {temp = E("1")}
   }
   if (n==9) {
     temp = E("0")
@@ -263,6 +267,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL4)) {Labors.TL4 = false}
   if (isNaN(Labors.TL5)) {Labors.TL5 = false}
   if (isNaN(Labors.TL6)) {Labors.TL6 = false}
+  if (isNaN(Labors.TL7)) {Labors.TL7 = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -484,6 +489,7 @@ let Labors = {
   TL4: false,
   TL5: false,
   TL6: false,
+  TL7: false,
 }
 
 var x = new Decimal().fromString("1e100")
@@ -1222,6 +1228,7 @@ function save() {
     tl4: Labors.TL4,
     tl5: Labors.TL5,
     tl6: Labors.TL6,
+    tl7: Labors.TL7,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -1292,6 +1299,7 @@ function load() {
     Labors.TL4 = loadedData.tl4
     Labors.TL5 = loadedData.tl5
     Labors.TL6 = loadedData.tl6
+    Labors.TL7 = loadedData.tl7
     
     loadfunctions()
     
@@ -1406,7 +1414,7 @@ function timedunlocks() {
     unlockedsubtabs.TributeLabors = true
     document.getElementById("tributesubtab2button").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
-  if () {
+  if (player.tributemilestone >= 9) {
     generalunlocks["LaborGroup2"] = true
     document.getElementById("LaborGroup2").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
@@ -1448,7 +1456,7 @@ function timedunlocks() {
 
 function calibratelabors() {
       var temp = 0
-      while (temp < 6) {
+      while (temp < 7) {
         temp += 1
         var temp2 = document.getElementById('Labor' + String(temp))
         if (player.labor == temp) {
@@ -1602,6 +1610,10 @@ document.getElementById('Labor5').addEventListener('click', function() {
 
 document.getElementById('Labor6').addEventListener('click', function() {
   togglelabor(6)
+});
+
+document.getElementById('Labor7').addEventListener('click', function() {
+  togglelabor(7)
 });
 
 
