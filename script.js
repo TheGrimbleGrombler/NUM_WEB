@@ -600,7 +600,7 @@ function getmatteronreset() {
   
   gain = player.stardust.div(E("1e9")).pow(E("0.5"))
   
-  if (Labors.TL3 == true) {gain = gain.pow(E("1.5"))}
+  if (Labors.TL3 == true) {gain = gain.pow(E("1.35"))}
   if (player.labor == 3) {gain = gain.pow(E("0.25"))}
   
   return gain.floor()
@@ -1313,6 +1313,11 @@ function timedunlocks() {
       achievements.push("Empowered");
     }
   }
+  if (achievements.indexOf('Boundless') == -1) {
+    if (player.beststardust.gte(E("1.8e308"))) {
+      achievements.push("Boundless");
+    }
+  }
   
   
 }
@@ -1514,6 +1519,9 @@ document.getElementById('OverloadAchievement').addEventListener('mouseover', fun
 });
 document.getElementById('EmpoweredAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Empowered - Obtain 100,000 (1e5) 'manually' bought syphons."
+});
+document.getElementById('BoundlessAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Boundless - Have infinite stardust."
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
