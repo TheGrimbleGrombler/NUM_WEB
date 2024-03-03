@@ -23,19 +23,30 @@ function buyableeffects(n) {
     temp = buyables.syphon.amount
     if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
     if (upgrades.SacredTexts.bought == true) {
-      if 
-      temp = temp.mul(buyables.syphon.manuals)
+      if (player.labor != 7) {
+        temp = temp.mul(buyables.syphon.manuals)
+      }
     }
+    temp = temp.mul(timespeed)
   }
   if (n==2) {
     temp = buyables.collector.amount
     if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
-    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.collector.manuals)}
+    if (upgrades.SacredTexts.bought == true) {
+      if (player.labor != 7) {
+        temp = temp.mul(buyables.collector.manuals)
+      }
+    }
+    temp = temp.mul(timespeed)
   }
   if (n==3) {
     temp = buyables.field.amount
     if (upgrades.MEM.bought == true) {temp = temp.pow(upgradeeffects(3))}
-    if (upgrades.SacredTexts.bought == true) {temp = temp.mul(buyables.field.manuals)}
+    if (upgrades.SacredTexts.bought == true) {
+      if (player.labor != 7) {
+        temp = temp.mul(buyables.field.manuals)
+      }
+    }
     temp = temp.mul(timespeed)
   }
   if (n==4) {
@@ -43,7 +54,8 @@ function buyableeffects(n) {
     if (Labors.TL5 == true) {temp = temp.add(E("25"))}
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
-    if (player.labor == 5) {temp = E("0")}
+    if (player.labor == 5) {temp = E("1")}
+    if (player.labor == 7) {temp = E("1")}
   }
   
   
@@ -77,7 +89,7 @@ function upgradeeffects(n) {
   if (n==8) {
     if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
     if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("9")).pow(E("0.2")).sub(E("1")))}
-    if (player.labor = 7) {temp = E("1")}
+    if (player.labor == 7) {temp = E("1")}
   }
   if (n==9) {
     temp = E("0")
@@ -605,7 +617,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(Labors.TL2)
+  document.getElementById("DEBUG").innerHTML = String(player.labor)
   
 }
 
