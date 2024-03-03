@@ -37,6 +37,7 @@ function buyableeffects(n) {
   }
   if (n==4) {
     temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15)).add(upgradeeffects(21))
+    if (Labors.TL5 == true) {temp = temp.add(E("25"))}
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
   }
@@ -139,6 +140,7 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
   }
   if (n == 2) {
@@ -146,6 +148,7 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
   }
   if (n == 3) {
@@ -153,11 +156,13 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(17))
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
   }
   if (n == 4) {
     var scaling = E("1")
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
   }
   return temp
@@ -171,6 +176,8 @@ let achievements = [
 function gettimespeed() {
   var temp = E("1")
   if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
+  if (player.labor == 6) {temp = temp.mul(E("0.00000000000001"))}
+  if (Labors.TL6 == true) {temp = temp.pow(E("2"))}
   
   
   return temp
@@ -644,6 +651,8 @@ function getmatteronreset() {
   
   if (Labors.TL3 == true) {gain = gain.pow(E("1.35"))}
   if (player.labor == 3) {gain = gain.pow(E("0.25"))}
+  if (player.labor == 4) {gain = E("0")}
+  if (player.labor == 5) {gain = E("0")}
   
   return gain.floor()
   
@@ -695,6 +704,7 @@ function gaingravitationalwaves(){
   gain = gain.mul(GlobalResourceMultiplier)
   
   if (player.labor == 1) {gain = E("0")}
+  if (player.labor == 5) {gain = E("0")}
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
@@ -717,7 +727,11 @@ function gainstardust(){
   
   if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
   
-  if (upgrades.taxevasion.bought==true) {gain = gain.pow(upgradeeffects(20))}
+  if (upgrades.taxevasion.bought==true) {
+    gain = gain.pow(upgradeeffects(20))
+    if ()
+  
+  }
   
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
@@ -737,6 +751,8 @@ function gainparticles(){
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
+  if (player.labor == 4) {gain = E("0")}
+  if (player.labor == 5) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
@@ -747,6 +763,8 @@ function gainparticles(){
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
+  if (player.labor == 4) {gain = E("0")}
+  if (player.labor == 5) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
@@ -757,6 +775,8 @@ function gainparticles(){
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
+  if (player.labor == 4) {gain = E("0")}
+  if (player.labor == 5) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
