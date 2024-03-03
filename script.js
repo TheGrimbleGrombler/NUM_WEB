@@ -549,11 +549,11 @@ function updateText() {
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
   TributeResetButton.innerHTML ="Reset all previous progress for " + String(fix(gettributesonreset(),0)) + " Tributes"
   
-  MatterDisplay.innerHTML ="You have " + String(player.matter) + " Matter"
-  WeightDisplay.innerHTML = "You have " + String(buyables.weight.amount) + " (" + String(buyables.weight.manuals) +") Weights, Multiplying stardust gain by " + String(buyableeffects(4)) + "x";
-  WeightButton.innerHTML = "Cost: " + String(getbuyablecost(4)) + " Matter";
+  MatterDisplay.innerHTML ="You have " + String(fix(player.matter,0)) + " Matter"
+  WeightDisplay.innerHTML = "You have " + String(fix(buyables.weight.amount,0)) + " (" + String(fix(buyables.weight.manuals,0)) +") Weights, Multiplying stardust gain by " + String(fix(buyableeffects(4),0)) + "x";
+  WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
   
-  TributeDisplay.innerHTML ="You have " + String(player.tributes) + " Tributes"
+  TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
   
   if (player.besttributes.gte(E("25")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
