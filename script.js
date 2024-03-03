@@ -261,6 +261,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
   if (isNaN(Labors.TL4)) {Labors.TL4 = false}
   if (isNaN(Labors.TL5)) {Labors.TL5 = false}
+  if (isNaN(Labors.TL6)) {Labors.TL6 = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -474,6 +475,7 @@ let Labors = {
   TL3: false,
   TL4: false,
   TL5: false,
+  TL6: false,
 }
 
 var x = new Decimal().fromString("1e100")
@@ -740,7 +742,7 @@ function gainstardust(){
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
-  if (player.labor == 6) { gain = gain.pow(E("0.05")) }
+  if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   
   gain = gain.mul(timespeed)
   
@@ -1207,6 +1209,7 @@ function save() {
     tl3: Labors.TL3,
     tl4: Labors.TL4,
     tl5: Labors.TL5,
+    tl6: Labors.TL6,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -1276,6 +1279,7 @@ function load() {
     Labors.TL3 = loadedData.tl3
     Labors.TL4 = loadedData.tl4
     Labors.TL5 = loadedData.tl5
+    Labors.TL6 = loadedData.tl6
     
     loadfunctions()
     
