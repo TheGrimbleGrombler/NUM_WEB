@@ -739,6 +739,8 @@ function gainstardust(){
   if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
+  if (player.labor == 5) { gain = gain.pow(E("0.5")) }
+  if (player.labor == 6) { gain = gain.pow(E("0.05")) }
   
   gain = gain.mul(timespeed)
   
