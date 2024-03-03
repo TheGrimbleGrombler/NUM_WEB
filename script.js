@@ -370,6 +370,12 @@ function doreset(tier) {
     }
   }
   
+  if (tier == 2) {
+    if (player.labor > 0) {
+      Labors["TL" + String(player.labor)] = true
+      player.labor = 0
+    }
+  }
   
 }
 
@@ -459,10 +465,12 @@ function particleeffects(a,b) {
     if (b==1) {
       temp = player.a_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==2) {
       temp = player.a_particles.log10().pow(E("0.5")).add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==3) {
       temp = E("1")
@@ -475,10 +483,12 @@ function particleeffects(a,b) {
     if (b==1) {
       temp = player.b_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==2) {
       temp = player.b_particles.log2().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==3) {
       temp = E("1")
@@ -491,10 +501,12 @@ function particleeffects(a,b) {
     if (b==1) {
       temp = player.c_particles.log10().add(E("1"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==2) {
       temp = player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
+      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
     }
     if (b==3) {
       temp = E("1")
@@ -512,7 +524,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(player.besttributes)
+  document.getElementById("DEBUG").innerHTML = String(Labors.TL2)
   
 }
 
@@ -524,10 +536,11 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   displayupgrades()
   checkbest()
   milestones()
+  calibratelabors()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -615,11 +628,15 @@ function gaingravitationalwaves(){
   
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   
+  if (Labors.TL1 == true) {gain = gain.pow(upgradeeffects(8))}
+  
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
+  
+  if (player.labor == 1) {gain = E("0")}
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
@@ -659,6 +676,7 @@ function gainparticles(){
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
+  if (player.labor == 1) {gain = E("0")}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -668,6 +686,7 @@ function gainparticles(){
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
+  if (player.labor == 1) {gain = E("0")}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -677,6 +696,7 @@ function gainparticles(){
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   gain = gain.mul(timespeed)
+  if (player.labor == 1) {gain = E("0")}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
 }
@@ -1279,16 +1299,7 @@ function timedunlocks() {
   
 }
 
-
-function togglelabor(n) {
-    if (player.labor == 0) {
-      player.labor = n
-      doreset(2)
-    } else {
-      player.labor = 0
-      doreset(2)
-    }
-  
+function calibratelabors() {
       var temp = 0
       while (temp < 3) {
         temp += 1
@@ -1303,6 +1314,20 @@ function togglelabor(n) {
           }
         }
       }
+}
+
+function togglelabor(n) {
+    if (player.labor == 0) {
+      player.labor = 0
+      doreset(2)
+      player.labor = n
+    } else {
+      player.labor = 0
+      doreset(2)
+      player.labor = 0
+    }
+  
+    calibratelabors()
   
 }
 
