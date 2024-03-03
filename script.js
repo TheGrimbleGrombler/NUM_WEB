@@ -103,7 +103,7 @@ function upgradeeffects(n) {
     if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
   }
   if (n==18) {
-    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
+    if (upgrades.scaler2.bought==true) {temp = E("0.995").pow(player.beststardust.add(E("10")).log10())}
   }
   if (n==19) {
     if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
@@ -185,7 +185,7 @@ let upgrades = {
   
   scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
-  scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
+  scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
   mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
   taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
   realityshift: {cost: E("8"), costtype: "tributes", bought: false, display: "Unsoftcapped weight effect +10!!!"},
