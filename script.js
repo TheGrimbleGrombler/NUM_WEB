@@ -185,6 +185,7 @@ let upgrades = {
   scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
   scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
   scaler2: {cost: E("1e100"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
+  mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
   taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
   realityshift: {cost: E("8"), costtype: "tributes", bought: false, display: "Unsoftcapped weight effect +10!!!"},
   
@@ -222,6 +223,7 @@ function loadfunctions() {
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
   if (isNaN(upgrades.taxevasion.bought)) {upgrades.taxevasion.bought = false}
   if (isNaN(upgrades.realityshift.bought)) {upgrades.realityshift.bought = false}
+  if (isNaN(upgrades.mechanized.bought)) {upgrades.mechanized.bought = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -480,7 +482,8 @@ var MassResetButton = document.getElementById("MassResetButton");
 var TributeResetButton = document.getElementById("TributeResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
-var automation1 = true
+var automation1 = false
+var automation2 = false
 
 function checkbest() {
   if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
@@ -600,7 +603,7 @@ function updateText() {
   
   TributeDisplay.innerHTML ="You have " + String(player.tributes) + " Tributes"
   
-  if (player.stardust.gte(E("1e80")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (player.besttributes.gte(E("25")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
@@ -618,7 +621,7 @@ function gettributesonreset() {
   
   var gain = E("0")
   
-  gain = player.stardust.div(E("1e80")).log10().div(E("100")).add(E("1")).floor()
+  gain = player.stardust.div(E("1e80")).log10().div(E("80")).add(E("1")).floor()
   
   
   return gain
@@ -945,6 +948,12 @@ document.getElementById('RealityShiftButton').addEventListener('mouseover', func
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.realityshift.cost) + " Tributes"
 });
 
+document.getElementById('MechanizedButton').addEventListener('mouseover', function(event) {
+    if (upgrades.mechanized.bought == true) {UpgradeName.innerHTML = "Mechanized (Bought)"} else {UpgradeName.innerHTML = "Mechanized (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.mechanized.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.mechanized.cost) + " Tributes"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -1016,6 +1025,7 @@ function displayupgrades() {
   displayupgrade("Scaler2","scaler2")
   displayupgrade("TaxEvasion","taxevasion")
   displayupgrade("RealityShift","realityshift")
+  displayupgrade("Mechanized","mechanized")
   
 }
 
@@ -1087,6 +1097,7 @@ function save() {
     scaler2: upgrades.scaler2.bought,
     taxevasion: upgrades.taxevasion.bought,
     realityshift: upgrades.realityshift.bought,
+    mechanized: upgrades.mechanized.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1148,6 +1159,7 @@ function load() {
     upgrades.scaler2.bought = loadedData.scaler2
     upgrades.taxevasion.bought = loadedData.taxevasion
     upgrades.realityshift.bought = loadedData.realityshift
+    upgrades.mechanized.bought = loadedData.mechanized
     
     loadfunctions()
     
@@ -1366,6 +1378,10 @@ document.getElementById('TaxEvasionButton').addEventListener('click', function()
 
 document.getElementById('RealityShiftButton').addEventListener('click', function() {
   buy("realityshift")  
+});
+
+document.getElementById('MechanizedButton').addEventListener('click', function() {
+  buy("mechanized")  
 });
 
 
