@@ -948,7 +948,7 @@ function displayunlocksonload() {
   if (generalunlocks.tribute == true) {
     unlockedsubtabs.TributeMain = true
     document.getElementById("tributedisplaycontainer").style = "display: block;"
-    document.getElementById("tributesubtab1").style = "display: block;"
+    //document.getElementById("tributesubtab1").style = "display: block;"
   };
   if (generalunlocks.tributeupgrades1 == true) {
     document.getElementById("tributeupgrades1").style = "display: block;"
@@ -1221,7 +1221,7 @@ function timedunlocks() {
     generalunlocks["tribute"] = true
     unlockedsubtabs.TributeMain = true
     document.getElementById("tributedisplaycontainer").style = "display: block;"
-    document.getElementById("tributesubtab1").style = "display: block;"
+    //document.getElementById("tributesubtab1").style = "display: block;"
   }
   if (player.besttributes.gte(E("1"))) {
     generalunlocks["tributeupgrades1"] = true
@@ -1230,7 +1230,7 @@ function timedunlocks() {
   if (player.besttributes.gte(E("25"))) {
     generalunlocks["Labors1"] = true
     unlockedsubtabs.TributeLabors = true
-    document.getElementById("tributesubtab2button").style = "display: block;"
+    document.getElementById("tributesubtab2button").style = "display: inline-block;"
   }
   
   
