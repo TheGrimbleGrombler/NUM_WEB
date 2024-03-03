@@ -225,6 +225,9 @@ function loadfunctions() {
   if (isNaN(upgrades.taxevasion.bought)) {upgrades.taxevasion.bought = false}
   if (isNaN(upgrades.realityshift.bought)) {upgrades.realityshift.bought = false}
   if (isNaN(upgrades.mechanized.bought)) {upgrades.mechanized.bought = false}
+  if (isNaN(Labors.TL1)) {Labors.TL1 = false}
+  if (isNaN(Labors.TL2)) {Labors.TL2 = false}
+  if (isNaN(Labors.TL3)) {Labors.TL3 = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -402,6 +405,11 @@ let player = {
   tributemilestone: 0,
   labor: 0,
 };
+let Labors = {
+  TL1: false,
+  TL2: false,
+  TL3: false,
+}
 
 var x = new Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -1059,6 +1067,10 @@ function save() {
     bestmatter: player.bestmatter,
     besttributes: player.besttributes,
     labor: player.labor,
+    tl1: Labors.TL1,
+    tl2: Labors.TL2,
+    tl3: Labors.TL3,
+    
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -1118,6 +1130,10 @@ function load() {
     upgrades.taxevasion.bought = loadedData.taxevasion
     upgrades.realityshift.bought = loadedData.realityshift
     upgrades.mechanized.bought = loadedData.mechanized
+    
+    Labors.TL1 = loadedData.tl1
+    Labors.TL2 = loadedData.tl2
+    Labors.TL3 = loadedData.tl3
     
     loadfunctions()
     
@@ -1230,7 +1246,7 @@ function timedunlocks() {
   if (player.besttributes.gte(E("25"))) {
     generalunlocks["Labors1"] = true
     unlockedsubtabs.TributeLabors = true
-    document.getElementById("tributesubtab2button").style = "display: inline-block;"
+    document.getElementById("tributesubtab2button").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
   
   
@@ -1261,6 +1277,19 @@ function timedunlocks() {
   }
   
   
+}
+
+
+function togglelabor(n) {
+    if (player.labor == 0) {
+      player.labor = n
+      doreset(2)
+    }
+  if (player.labor == n) {
+    player.labor = 0
+    doreset(2)
+  } else {
+  }
 }
 
 
@@ -1350,6 +1379,18 @@ document.getElementById('RealityShiftButton').addEventListener('click', function
 
 document.getElementById('MechanizedButton').addEventListener('click', function() {
   buy("mechanized")  
+});
+
+document.getElementById('Labor1').addEventListener('click', function() {
+  togglelabor(1)
+});
+
+document.getElementById('Labor2').addEventListener('click', function() {
+  togglelabor(2)
+});
+
+document.getElementById('Labor3').addEventListener('click', function() {
+  togglelabor(3)
 });
 
 
