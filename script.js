@@ -308,6 +308,13 @@ function Automation() {
     buy("crushing") 
     buy("replication")   
   }
+  if (upgrades.sloth.bought == true) {
+    buy("Infusion")  
+    buy("SacredTexts")  
+    buy("gravitoncatalyst")  
+    buy("discovery")  
+    buy("dlc")  
+  }
   
 }
 
@@ -383,6 +390,8 @@ function doreset(tier) {
     if (player.tributemilestone >= 6) {
       upgrades.Gravity.bought = true
       upgrades.gravitoncatalyst.bought = true
+    }
+    if (player.tributemilestone >= 7) {
     }
   }
   
@@ -1055,6 +1064,7 @@ function milestones() {
   if (player.tributemilestone < 4) {if (player.besttributes.gte(E("10"))) {player.tributemilestone = 4}}
   if (player.tributemilestone < 5) {if (player.besttributes.gte(E("15"))) {player.tributemilestone = 5}}
   if (player.tributemilestone < 6) {if (player.besttributes.gte(E("20"))) {player.tributemilestone = 6}}
+  if (player.tributemilestone < 7) {if (player.besttributes.gte(E("75"))) {player.tributemilestone = 7}}
 
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
@@ -1062,6 +1072,7 @@ function milestones() {
   if (player.tributemilestone >= 4) {document.getElementById("tributemilestone4").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 5) {document.getElementById("tributemilestone5").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 6) {document.getElementById("tributemilestone6").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 7) {document.getElementById("tributemilestone7").className = "milestonebreached numberwhite"}
   
 }
 
@@ -1563,6 +1574,21 @@ document.getElementById('TributeResetButton').addEventListener('click', function
   doreset(2)
   }
 });
+
+document.onkeydown = function (e) {
+   if (e.key == "t") {
+    if (gettributesonreset().gte(E("1"))) {
+    player.tributes = player.tributes.add(gettributesonreset())
+    doreset(2)
+    }
+  }
+   if (e.key == "m") {
+    if (getmatteronreset().gte(E("1"))) {
+    player.matter = player.matter.add(getmatteronreset())
+    doreset(1)
+    }
+  }
+};
 
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
