@@ -400,6 +400,7 @@ let player = {
   bestmatter: E("0"),
   besttributes: E("0"),
   tributemilestone: 0,
+  labor: 0,
 };
 
 var x = new Decimal().fromString("1e100")
@@ -1054,6 +1055,7 @@ function save() {
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
     besttributes: player.besttributes,
+    labor: player.labor,
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -1074,6 +1076,7 @@ function load() {
     player.beststardust = E(String(loadedData.player.beststardust));
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
+    player.labor = String(loadedData.player.labor);
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
@@ -1217,8 +1220,13 @@ function timedunlocks() {
     document.getElementById("tributedisplaycontainer").style = "display: block;"
     document.getElementById("tributesubtab1").style = "display: block;"
   }
-  if (player.tributes.gte(E("1"))) {
+  if (player.besttributes.gte(E("1"))) {
     generalunlocks["tributeupgrades1"] = true
+    document.getElementById("tributeupgrades1").style = "display: block;"
+  }
+  if (player.besttributes.gte(E("25"))) {
+    generalunlocks["Labors1"] = true
+    unlockedsubtabs.TributeLabors = true
     document.getElementById("tributeupgrades1").style = "display: block;"
   }
   
