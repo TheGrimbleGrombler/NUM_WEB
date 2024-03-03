@@ -1284,12 +1284,26 @@ function togglelabor(n) {
     if (player.labor == 0) {
       player.labor = n
       doreset(2)
+    } else {
+      player.labor = 0
+      doreset(2)
     }
-  if (player.labor == n) {
-    player.labor = 0
-    doreset(2)
-  } else {
-  }
+  
+      var temp = 0
+      while (temp < 3) {
+        temp += 1
+        var temp2 = document.getElementById('Labor' + String(temp))
+        if (player.labor == temp) {
+          temp2.className = "laboryellow numberwhite"
+        } else {
+          if (Labors["TL" + String(temp)] == true) {
+            temp2.className = "milestonebreached numberwhite"
+          } else {
+            temp2.className = "milestone numberwhite"
+          }
+        }
+      }
+  
 }
 
 
