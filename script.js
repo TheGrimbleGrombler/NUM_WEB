@@ -1360,7 +1360,11 @@ function load() {
 function getrankreq(modifier) {
   var temp = E("1e5")
   
-  temp = temp.mul(E("1e50").pow(player.matterrank.add(modifier)))
+  temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier)))
+  
+  if (player.matterrank.gte(E("100"))) {temp = temp.pow(player.matterrank.div(E("100")))}
+  if (player.matterrank.gte(E("1000"))) {temp = temp.pow(player.matterrank.div(E("1000")))}
+  if (player.matterrank.gte(E("1000000"))) {temp = temp.pow(player.matterrank.div(E("1000000")))}
   
   return temp
 }
@@ -1378,6 +1382,14 @@ function renderrank() {
   if (generalunlocks["MatterRanks"] == true) {
     var mr = document.getElementById("MatterRank1")
     mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Cost in matter (+1): <br>" + String(getrankreq(E("0"))) + "<br> Stardust effect: <br>x" + String(getrankeffect())
+  }
+}
+
+function buymatterrank(modifier) {
+  var cost = getrankreq(modifier)
+  if (player.matter.gte(cost)) {
+    player.matter = player.matter.sub(cost)
+    player.matterrank = player.matterrank.add(E("1").add(modifier))
   }
 }
 
@@ -1522,6 +1534,11 @@ function timedunlocks() {
   if (achievements.indexOf('Boundless') == -1) {
     if (player.beststardust.gte(E("1.8e308"))) {
       achievements.push("Boundless");
+    }
+  }
+  if (achievements.indexOf('Ranked') == -1) {
+    if (player.beststardust.gte(E("1.8e308"))) {
+      achievements.push("Ranked");
     }
   }
   
@@ -1778,8 +1795,15 @@ document.getElementById('EmpoweredAchievement').addEventListener('mouseover', fu
 document.getElementById('BoundlessAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Boundless - Have infinite stardust."
 });
+document.getElementById('RankedAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Ranked - Get your first matter rank, The scaling on these is insane later."
+});
 document.getElementById('WhyAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Why????? - Secret #1"
+});
+
+document.getElementById('MatterRank1').addEventListener('click', function() {
+  buymatterrank(E("0"))
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {
