@@ -699,7 +699,7 @@ function getmatteronreset() {
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 7) {gain = E("0")}
-  if (player.labor == 8) {gain = E("0")}
+  if (player.labor == 8) {gain = gain.pow(E("0.5"))}
   
   return gain.floor()
   
