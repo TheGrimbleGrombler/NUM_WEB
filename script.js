@@ -291,6 +291,8 @@ function loadfunctions() {
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
+  if (player.matterrank == 0) {player.matterrank = E("0")}
+  //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -634,7 +636,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(player.labor)
+  document.getElementById("DEBUG").innerHTML = String(player.matterrank)
   
 }
 
@@ -646,7 +648,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   displayupgrades()
   checkbest()
   milestones()
@@ -786,12 +788,12 @@ function gainstardust(){
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
   if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
+  //if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   if (player.labor == 7) { gain = gain.pow(E("0.755")) }
-  if (player.matterrank.gte(E("1"))) {gain = gain.mul(getra)}
   
   gain = gain.mul(timespeed)
   
@@ -1372,7 +1374,7 @@ function getrankreq(modifier) {
 
 function getrankeffect() {
   var temp = E("1")
-  var modifier = E("1e20")
+  var modifier = E("1e2")
   
   temp = temp.mul(modifier.pow(player.matterrank))
   
