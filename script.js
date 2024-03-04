@@ -791,6 +791,7 @@ function gainstardust(){
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   if (player.labor == 7) { gain = gain.pow(E("0.755")) }
+  if (player.matterrank.gte(E("1"))) {gain = gain.mul(getra)}
   
   gain = gain.mul(timespeed)
   
