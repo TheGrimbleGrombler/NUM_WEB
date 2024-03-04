@@ -503,6 +503,7 @@ let player = {
   besttributes: E("0"),
   tributemilestone: 0,
   labor: 0,
+  matterrank: 0,
 };
 let Labors = {
   TL1: false,
@@ -649,6 +650,7 @@ function updateText() {
   checkbest()
   milestones()
   calibratelabors()
+  renderrank()
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -1253,12 +1255,13 @@ function save() {
     bestmatter: player.bestmatter,
     besttributes: player.besttributes,
     labor: player.labor,
+    matterrank: player.matterrank,
     tl1: Labors.TL1,
     tl2: Labors.TL2,
     tl3: Labors.TL3,
     tl4: Labors.TL4,
     tl5: Labors.TL5,
-    tl6: Labors.TL6,
+    tl6: Labors.TL6, 
     tl7: Labors.TL7,
     tl8: Labors.TL8,
     tl9: Labors.TL9,
@@ -1287,6 +1290,7 @@ function load() {
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
     player.labor = String(loadedData.player.labor);
+    player.matterrank = String(loadedData.player.matterrank);
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
@@ -1349,6 +1353,17 @@ function load() {
     
     
     displayunlocksonload()
+  }
+}
+
+function getrankreq(modifier) {
+  
+}
+
+function renderrank() {
+  if (generalunlocks["MatterRanks"] == true) {
+    var mr = document.getElementById("MatterRank")
+    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Increase this for: <br>" + )
   }
 }
 
@@ -1461,7 +1476,7 @@ function timedunlocks() {
   }
   if (Labors.TL8 == true) {
     generalunlocks["MatterRanks"] = true
-    document.getElementById("MatterRank").style = "display: block; position: absolute; top: 500px; left: 785px; width: 250px; height: 100px;"
+    document.getElementById("MatterRank").style = "display: block"
   }
   
   
