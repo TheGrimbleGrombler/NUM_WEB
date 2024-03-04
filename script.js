@@ -504,7 +504,7 @@ let player = {
   besttributes: E("0"),
   tributemilestone: 0,
   labor: 0,
-  matterrank: 0,
+  matterrank: E("0"),
 };
 let Labors = {
   TL1: false,
@@ -1537,7 +1537,7 @@ function timedunlocks() {
     }
   }
   if (achievements.indexOf('Ranked') == -1) {
-    if (player.beststardust.gte(E("1.8e308"))) {
+    if (player.matterrank.gte(E("1"))) {
       achievements.push("Ranked");
     }
   }
