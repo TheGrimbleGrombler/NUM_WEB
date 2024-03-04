@@ -159,6 +159,7 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
   }
   if (n == 2) {
@@ -167,6 +168,7 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
   }
   if (n == 3) {
@@ -175,12 +177,14 @@ function getbuyablecost(n,m) {
     scaling = scaling.mul(upgradeeffects(18))
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
   }
   if (n == 4) {
     var scaling = E("1")
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
   }
   return temp
@@ -281,6 +285,11 @@ function loadfunctions() {
   if (isNaN(Labors.TL5)) {Labors.TL5 = false}
   if (isNaN(Labors.TL6)) {Labors.TL6 = false}
   if (isNaN(Labors.TL7)) {Labors.TL7 = false}
+  if (isNaN(Labors.TL8)) {Labors.TL8 = false}
+  if (isNaN(Labors.TL9)) {Labors.TL9 = false}
+  if (isNaN(Labors.TL10)) {Labors.TL10 = false}
+  if (isNaN(Labors.TL11)) {Labors.TL11 = false}
+  if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -503,6 +512,11 @@ let Labors = {
   TL5: false,
   TL6: false,
   TL7: false,
+  TL8: false,
+  TL9: false,
+  TL10: false,
+  TL11: false,
+  TL12: false,
 }
 
 var x = new Decimal().fromString("1e100")
@@ -685,6 +699,7 @@ function getmatteronreset() {
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 7) {gain = E("0")}
+  if (player.labor == 8) {gain = E("0")}
   
   return gain.floor()
   
@@ -738,6 +753,7 @@ function gaingravitationalwaves(){
   
   if (player.labor == 1) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
+  //if (player.labor == 8) {gain = E("0")}
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
@@ -790,6 +806,7 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
+  //if (player.labor == 8) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
@@ -802,6 +819,7 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
+  //if (player.labor == 8) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
@@ -814,6 +832,7 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
+  if (player.labor == 8) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
@@ -1243,6 +1262,11 @@ function save() {
     tl5: Labors.TL5,
     tl6: Labors.TL6,
     tl7: Labors.TL7,
+    tl8: Labors.TL8,
+    tl9: Labors.TL9,
+    tl10: Labors.TL10,
+    tl11: Labors.TL11,
+    tl12: Labors.TL12,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -1314,6 +1338,11 @@ function load() {
     Labors.TL5 = loadedData.tl5
     Labors.TL6 = loadedData.tl6
     Labors.TL7 = loadedData.tl7
+    Labors.TL8 = loadedData.tl8
+    Labors.TL9 = loadedData.tl9
+    Labors.TL10 = loadedData.tl10
+    Labors.TL11 = loadedData.tl11
+    Labors.TL12 = loadedData.tl12
     
     loadfunctions()
     
@@ -1628,6 +1657,26 @@ document.getElementById('Labor6').addEventListener('click', function() {
 
 document.getElementById('Labor7').addEventListener('click', function() {
   togglelabor(7)
+});
+
+document.getElementById('Labor8').addEventListener('click', function() {
+  togglelabor(8)
+});
+
+document.getElementById('Labor9').addEventListener('click', function() {
+  togglelabor(9)
+});
+
+document.getElementById('Labor10').addEventListener('click', function() {
+  togglelabor(10)
+});
+
+document.getElementById('Labor11').addEventListener('click', function() {
+  togglelabor(11)
+});
+
+document.getElementById('Labor12').addEventListener('click', function() {
+  togglelabor(12)
 });
 
 
