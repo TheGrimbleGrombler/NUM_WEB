@@ -699,7 +699,6 @@ function getmatteronreset() {
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 7) {gain = E("0")}
-  if (player.labor == 8) {gain = gain.pow(E("0.5"))}
   
   return gain.floor()
   
@@ -806,7 +805,7 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
-  //if (player.labor == 8) {gain = E("0")}
+  if (player.labor == 8) {gain = gain.pow(E("0.03125"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
@@ -819,7 +818,6 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
-  //if (player.labor == 8) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
@@ -832,7 +830,7 @@ function gainparticles(){
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
-  if (player.labor == 8) {gain = E("0")}
+  if (player.labor == 8) {gain = gain.pow(E("0.0000001"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
@@ -1499,7 +1497,7 @@ function timedunlocks() {
 
 function calibratelabors() {
       var temp = 0
-      while (temp < 7) {
+      while (temp < 12) {
         temp += 1
         var temp2 = document.getElementById('Labor' + String(temp))
         if (player.labor == temp) {
