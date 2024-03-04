@@ -290,6 +290,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL10)) {Labors.TL10 = false}
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
+  if (isNaN(player.matterrank)) {player.matterrank = E("0")}
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -1357,13 +1358,26 @@ function load() {
 }
 
 function getrankreq(modifier) {
+  var temp = E("1e5")
   
+  temp = temp.mul(E("1e50").pow(player.matterrank.add(modifier)))
+  
+  return temp
+}
+
+function getrankeffect() {
+  var temp = E("1")
+  var modifier = E("1e20")
+  
+  temp = temp.mul(modifier.pow(player.matterrank))
+  
+  return temp
 }
 
 function renderrank() {
   if (generalunlocks["MatterRanks"] == true) {
-    var mr = document.getElementById("MatterRank")
-    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Increase this for: <br>" + )
+    var mr = document.getElementById("MatterRank1")
+    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Cost in matter (+1): <br>" + String(getrankreq(E("0"))) + "<br> Stardust effect: <br>x" + String(getrankeffect())
   }
 }
 
