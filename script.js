@@ -1459,6 +1459,10 @@ function timedunlocks() {
     generalunlocks["LaborGroup2"] = true
     document.getElementById("LaborGroup2").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
+  if (Labors.TL8 == true) {
+    generalunlocks["MatterRanks"] = true
+    document.getElementById("MatterRank").style = "display: block; position: absolute; top: 500px; left: 785px; width: 250px; height: 100px;"
+  }
   
   
   
