@@ -824,7 +824,8 @@ function gainstardust(){
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   if (player.labor == 7) { gain = gain.pow(E("0.755")) }
   if (player.labor == 9) { gain = gain.pow(E("0.755")) }
-  if (player.labor == 10) { gain = gain.pow(E("0.29")) }
+  if (player.labor == 10) { gain = gain.pow(E("0.19")) }
+  if (player.labor == 11) { gain = gain.pow(E("0.09")) }
   
   gain = gain.mul(timespeed)
   
@@ -1396,11 +1397,15 @@ function load() {
 function getrankreq(modifier) {
   var temp = E("1e5")
   
-  temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier)))
+  var scalingmult = E("1")
   
-  if (player.matterrank.gte(E("100"))) {temp = temp.pow(player.matterrank.div(E("100")))}
-  if (player.matterrank.gte(E("1000"))) {temp = temp.pow(player.matterrank.div(E("1000")))}
-  if (player.matterrank.gte(E("1000000"))) {temp = temp.pow(player.matterrank.div(E("1000000")))}
+  if (Labors.TL10 == true) {scalingmult = scalingmult.mul(E("0.8"))}
+  
+  temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier).mul(scalingmult)))
+  
+  if (player.matterrank.gte(E("100"))) {temp = temp.pow(player.matterrank.div(E("100").mul(scalingmult)))}
+  if (player.matterrank.gte(E("1000"))) {temp = temp.pow(player.matterrank.div(E("1000").mul(scalingmult)))}
+  if (player.matterrank.gte(E("1000000"))) {temp = temp.pow(player.matterrank.div(E("1000000").mul(scalingmult)))}
   
   return temp
 }
