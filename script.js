@@ -291,6 +291,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
+  //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -1291,7 +1292,7 @@ function load() {
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
     player.labor = String(loadedData.player.labor);
-    player.matterrank = loadedData.player.matterrank;
+    player.matterrank = E(String(loadedData.player.matterrank));
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
