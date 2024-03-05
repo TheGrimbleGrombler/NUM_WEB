@@ -699,7 +699,7 @@ function updateText() {
   gainparticles()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   checkbest()
   milestones()
@@ -741,7 +741,7 @@ function updateText() {
   
   TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
   
-  if (Labors.TL7 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
@@ -849,7 +849,6 @@ function gainstardust(){
   if (player.labor == 9) { gain = gain.pow(E("0.755")) }
   if (player.labor == 10) { gain = gain.pow(E("0.19")) }
   if (player.labor == 11) { gain = gain.pow(E("0.09")) }
-  if (player.labor == 12) { gain = gain.pow(E("0.09")) }
   
   gain = gain.mul(timespeed)
   
@@ -871,7 +870,7 @@ function gainparticles(){
   if (player.labor == 12) {gain = gain.pow(E("0.03125"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -884,7 +883,7 @@ function gainparticles(){
   if (player.labor == 5) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -899,7 +898,7 @@ function gainparticles(){
   if (player.labor == 12) {gain = gain.pow(E("0.0000001"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
 }
