@@ -1239,7 +1239,7 @@ function displayupgrades() {
 }
 
 function milestones() {
-  
+  //group 1 below
   if (player.tributemilestone < 1) {if (player.besttributes.gte(E("1"))) {player.tributemilestone = 1}}
   if (player.tributemilestone < 2) {if (player.besttributes.gte(E("2"))) {player.tributemilestone = 2}}
   if (player.tributemilestone < 3) {if (player.besttributes.gte(E("4"))) {player.tributemilestone = 3}}
@@ -1249,7 +1249,11 @@ function milestones() {
   if (player.tributemilestone < 7) {if (player.besttributes.gte(E("75"))) {player.tributemilestone = 7}}
   if (player.tributemilestone < 8) {if (player.besttributes.gte(E("125"))) {player.tributemilestone = 8}}
   if (player.tributemilestone < 9) {if (player.besttributes.gte(E("2500"))) {player.tributemilestone = 9}}
-
+  //group 2 below
+  if (player.tributemilestone < 10) {if (player.besttributes.gte(E("5000"))) {player.tributemilestone = 10}}
+  if (player.tributemilestone < 11) {if (player.besttributes.gte(E("15000"))) {player.tributemilestone = 11}}
+  if (player.tributemilestone < 12) {if (player.besttributes.gte(E("25000"))) {player.tributemilestone = 12}}
+  //group 1 classname stuff below
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 3) {document.getElementById("tributemilestone3").className = "milestonebreached numberwhite"}
@@ -1259,6 +1263,13 @@ function milestones() {
   if (player.tributemilestone >= 7) {document.getElementById("tributemilestone7").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 8) {document.getElementById("tributemilestone8").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 9) {document.getElementById("tributemilestone9").className = "milestonebreached numberwhite"}
+  //group 2 classname stuff below
+  if (player.tributemilestone >= 10) {document.getElementById("tributemilestone10").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 11) {document.getElementById("tributemilestone11").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 12) {document.getElementById("tributemilestone12").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 13) {document.getElementById("tributemilestone13").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 14) {document.getElementById("tributemilestone14").className = "milestonebreached numberwhite"}
+  if (player.tributemilestone >= 15) {document.getElementById("tributemilestone15").className = "milestonebreached numberwhite"}
   
 }
 
@@ -1428,6 +1439,7 @@ function getrankreq(modifier) {
   var scalingmult = E("1")
   
   if (Labors.TL10 == true) {scalingmult = scalingmult.mul(E("0.8"))}
+  if (player.tributemilestone >= 11) {scalingmult = scalingmult.mul(E("0.7"))}
   
   temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier).mul(scalingmult)))
   
@@ -1572,6 +1584,10 @@ function timedunlocks() {
   if (Labors.TL8 == true) {
     generalunlocks["MatterRanks"] = true
     document.getElementById("MatterRank").style = "display: block"
+  }
+  if (Labors.TL12 == true) {
+    generalunlocks["tributemilestonegroup2"] = true
+    document.getElementById("tributemilestonegroup2").style = "display: block"
   }
   
   
