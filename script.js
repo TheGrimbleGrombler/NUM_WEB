@@ -25,7 +25,9 @@ function buyableeffects(n) {
     if (upgrades.SacredTexts.bought == true) {
       if (player.labor != 7) {
         if (player.labor != 9) {
-        temp = temp.mul(buyables.syphon.manuals)
+          if (player.labor != 12) {
+            temp = temp.mul(buyables.syphon.manuals)
+          }
         }
       }
     }
@@ -37,7 +39,9 @@ function buyableeffects(n) {
     if (upgrades.SacredTexts.bought == true) {
       if (player.labor != 7) {
         if (player.labor != 9) {
-        temp = temp.mul(buyables.collector.manuals)
+          if (player.labor != 12) {
+            temp = temp.mul(buyables.collector.manuals)
+          }
         }
       }
     }
@@ -49,7 +53,9 @@ function buyableeffects(n) {
     if (upgrades.SacredTexts.bought == true) {
       if (player.labor != 7) {
         if (player.labor != 9) {
-        temp = temp.mul(buyables.field.manuals)
+          if (player.labor != 12) {
+            temp = temp.mul(buyables.field.manuals)
+          }
         }
       }
     }
@@ -64,6 +70,7 @@ function buyableeffects(n) {
     if (player.labor == 7) {temp = E("1")}
     if (player.labor == 9) {temp = E("1")}
     if (Labors.TL7 == true) {temp = temp.pow(E("1.05"))}
+    if (player.labor == 12) {temp = E("1")}
   }
   
   
@@ -77,6 +84,7 @@ function upgradeeffects(n) {
     if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.log10()}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==2) {
     if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}
@@ -85,11 +93,13 @@ function upgradeeffects(n) {
     if (upgrades.MEM.bought==true) {temp = E("2")}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==4) {
     if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==5) {
     if (upgrades.theunknown.bought==true) {temp = "Endless growth begins."} else {temp = "Gravity with no matter?"}
@@ -98,6 +108,7 @@ function upgradeeffects(n) {
     if (upgrades.Infusion.bought==true) {temp = E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==7) {
     temp = E("0")
@@ -109,6 +120,7 @@ function upgradeeffects(n) {
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
     if (Labors.TL9 == true) {temp = temp.mul(E("2"))}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==9) {
     temp = E("0")
@@ -117,6 +129,7 @@ function upgradeeffects(n) {
     if (upgrades.discovery.bought==true) {temp = E("3")}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==11) {
     temp = E("0")
@@ -125,28 +138,33 @@ function upgradeeffects(n) {
     if (upgrades.spacetimerupture.bought==true) {temp = E("100")}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==13) {
     if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10())}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==14) {
     temp = E("0")
     if (upgrades.heavier.bought==true) {temp = E("2")}
     if (player.labor == 9) {temp = E("0")}
     if (player.labor == 10) {temp = E("1").sub(temp)}
+    if (player.labor == 12) {temp = E("1").sub(temp)}
   }
   if (n==15) {
     temp = E("0")
     if (upgrades.crushing.bought==true) {temp = E("2")}
     if (player.labor == 9) {temp = E("0")}
     if (player.labor == 10) {temp = E("1").sub(temp)}
+    if (player.labor == 12) {temp = E("1").sub(temp)}
   }
   if (n==16) {
     if (upgrades.replication.bought==true) {temp = E("0.3")}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
+    if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==17) {
     if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
@@ -190,6 +208,7 @@ function getbuyablecost(n,m) {
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
   }
   if (n == 2) {
@@ -199,6 +218,7 @@ function getbuyablecost(n,m) {
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
   }
   if (n == 3) {
@@ -208,6 +228,7 @@ function getbuyablecost(n,m) {
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
   }
   if (n == 4) {
@@ -215,6 +236,7 @@ function getbuyablecost(n,m) {
     if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
   }
   return temp
@@ -734,6 +756,7 @@ function getmatteronreset() {
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 7) {gain = E("0")}
   if (player.labor == 9) {gain = E("0")}
+  if (player.labor == 12) {gain = E("0")}
   
   return gain.floor()
   
@@ -826,6 +849,7 @@ function gainstardust(){
   if (player.labor == 9) { gain = gain.pow(E("0.755")) }
   if (player.labor == 10) { gain = gain.pow(E("0.19")) }
   if (player.labor == 11) { gain = gain.pow(E("0.09")) }
+  if (player.labor == 12) { gain = gain.pow(E("0.09")) }
   
   gain = gain.mul(timespeed)
   
@@ -844,8 +868,10 @@ function gainparticles(){
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 8) {gain = gain.pow(E("0.03125"))}
+  if (player.labor == 12) {gain = gain.pow(E("0.03125"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
   player.a_particles = player.a_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -858,6 +884,7 @@ function gainparticles(){
   if (player.labor == 5) {gain = E("0")}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
   player.b_particles = player.b_particles.add(gain.div(E("60")))
   
   var gain = E("0")
@@ -869,8 +896,10 @@ function gainparticles(){
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 8) {gain = gain.pow(E("0.0000001"))}
+  if (player.labor == 12) {gain = gain.pow(E("0.0000001"))}
   gain = gain.mul(timespeed)
   if (player.labor == 1) {gain = E("0")}
+  if (Labors.TL11 == true) {gain = gain.add(E("1e10"))}
   player.c_particles = player.c_particles.add(gain.div(E("60")))
   
 }
