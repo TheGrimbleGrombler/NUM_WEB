@@ -692,6 +692,15 @@ function Debug() {
   
 }
 
+function vfx() {
+  var elements = document.querySelectorAll('.fire');
+  var sinresult = (Math.sin(tick/25)*63.75)+63.75
+  for (var i = 0; i < elements.length; i++) {
+  elements[i].style.border = '2px solid rgb(255,' + String(sinresult) + ',0)';
+  elements[i].style.boxShadow = '0 0 10px 2px rgba(255,' + String(sinresult) + ',0)'
+  }
+}
+
 function updateText() {
   var timespeed = gettimespeed()
   gainbuyables()
@@ -706,13 +715,9 @@ function updateText() {
   milestones()
   calibratelabors()
   renderrank()
+  vfx()
   tick = tick + 1
   
-  var elements = document.querySelectorAll('fire');
-  
-  elements.forEach(function(element) {
-    element.style.border = '2px solid rgb(255,' + String((Math.sin(tick*90)*63.75)+63.75) + ',0)';
-  });
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
