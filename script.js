@@ -291,8 +291,6 @@ function loadfunctions() {
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
-  if (player.matterrank == 0) {player.matterrank = E("0")}
-  //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
   
@@ -723,7 +721,6 @@ function gettributesonreset() {
 
 function playtimeupdate() {player.playtime = player.playtime + 1; renderachievements()}
 
-setInterval(updateText, 16);
 setInterval(playtimeupdate, 1000);
 function gainbuyables(){
   
@@ -788,7 +785,7 @@ function gainstardust(){
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
   if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
-  //if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
+  if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
@@ -1294,7 +1291,7 @@ function load() {
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
     player.labor = String(loadedData.player.labor);
-    player.matterrank = String(loadedData.player.matterrank);
+    player.matterrank = loadedData.player.matterrank;
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
@@ -1837,6 +1834,6 @@ document.onkeydown = function (e) {
     }
   }
 };
-
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
+setInterval(updateText, 16);
