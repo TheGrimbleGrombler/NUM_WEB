@@ -56,6 +56,7 @@ function buyableeffects(n) {
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
     if (player.labor == 5) {temp = E("1")}
     if (player.labor == 7) {temp = E("1")}
+    if (player.labor == 9) {temp = E("1")}
     if (Labors.TL7 == true) {temp = temp.pow(E("1.05"))}
   }
   
@@ -68,21 +69,25 @@ function upgradeeffects(n) {
   var temp = E("1")
   if (n==1) {
     if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.log10()}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==2) {
     if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}
   }
   if (n==3) {
     if (upgrades.MEM.bought==true) {temp = E("2")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==4) {
     if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==5) {
     if (upgrades.theunknown.bought==true) {temp = "Endless growth begins."} else {temp = "Gravity with no matter?"}
   }
   if (n==6) {
     if (upgrades.Infusion.bought==true) {temp = E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==7) {
     temp = E("0")
@@ -91,32 +96,39 @@ function upgradeeffects(n) {
     if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
     if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("9")).pow(E("0.2")).sub(E("1")))}
     if (player.labor == 7) {temp = E("1")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==9) {
     temp = E("0")
   }
   if (n==10) {
     if (upgrades.discovery.bought==true) {temp = E("3")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==11) {
     temp = E("0")
   }
   if (n==12) {
     if (upgrades.spacetimerupture.bought==true) {temp = E("100")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==13) {
     if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10())}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==14) {
     temp = E("0")
     if (upgrades.heavier.bought==true) {temp = E("2")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==15) {
     temp = E("0")
     if (upgrades.crushing.bought==true) {temp = E("2")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==16) {
     if (upgrades.replication.bought==true) {temp = E("0.3")}
+    if (player.labor == 9) {temp = E("1")}
   }
   if (n==17) {
     if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
@@ -703,6 +715,7 @@ function getmatteronreset() {
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 7) {gain = E("0")}
+  if (player.labor == 9) {gain = E("0")}
   
   return gain.floor()
   
@@ -792,6 +805,7 @@ function gainstardust(){
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   if (player.labor == 7) { gain = gain.pow(E("0.755")) }
+  if (player.labor == 9) { gain = gain.pow(E("0.755")) }
   
   gain = gain.mul(timespeed)
   
@@ -1102,6 +1116,8 @@ function buy(n) {
   var b = upgrades[n].bought
   if (b == false) {
      if (player[ct].gte(c)) {
+      
+      if (player.labor == 9) {return}
       player[ct] = player[ct].sub(c)
       upgrades[n].bought = true
        
