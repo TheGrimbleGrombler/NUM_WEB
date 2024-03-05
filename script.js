@@ -840,6 +840,8 @@ function gainstardust(){
   if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
   
   if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
+  if (player.tributemilestone >= 12) { if (player.labor == 0) { gain = gain.add(E("1e2000").mul(60)) }}
+  if (player.tributemilestone >= 13) { if (player.labor == 0) { gain = gain.add(E("1e3000").mul(60)) }}
   if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
@@ -1253,6 +1255,9 @@ function milestones() {
   if (player.tributemilestone < 10) {if (player.besttributes.gte(E("5000"))) {player.tributemilestone = 10}}
   if (player.tributemilestone < 11) {if (player.besttributes.gte(E("15000"))) {player.tributemilestone = 11}}
   if (player.tributemilestone < 12) {if (player.besttributes.gte(E("25000"))) {player.tributemilestone = 12}}
+  if (player.tributemilestone < 13) {if (player.besttributes.gte(E("75000"))) {player.tributemilestone = 13}}
+  if (player.tributemilestone < 14) {if (player.besttributes.gte(E("150000"))) {player.tributemilestone = 14}}
+  if (player.tributemilestone < 15) {if (player.besttributes.gte(E("300000"))) {player.tributemilestone = 15}}
   //group 1 classname stuff below
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
@@ -1440,6 +1445,7 @@ function getrankreq(modifier) {
   
   if (Labors.TL10 == true) {scalingmult = scalingmult.mul(E("0.8"))}
   if (player.tributemilestone >= 11) {scalingmult = scalingmult.mul(E("0.7"))}
+  if (player.tributemilestone >= 14) {scalingmult = scalingmult.mul(E("0.5"))}
   
   temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier).mul(scalingmult)))
   
