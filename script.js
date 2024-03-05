@@ -856,8 +856,6 @@ function gainstardust(){
   
   gain = gain.mul(GlobalResourceMultiplier)
   
-  gain = gain.pow(gain)
-  
   var gain = gain.div(E("60"))
   player.stardust = player.stardust.add(gain)
 }
