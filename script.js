@@ -14,18 +14,7 @@ var timespeed = E("1")
 
 function fix(n,e) {
   
-  return n.mul(E("10").pow(E(String(e)))).floor().div(E("10").pow(E(String(e))))
-  
-}
-
-function fix2(n,e) {
-  //var factor = E("10").pow(n.log10().sub(E(String(e))).floor()).floor()
-  //return n.div(factor).floor().mul(factor)
-  
-  var power = n.abs().log10().floor()
-  var man = n.div(E("10").pow(power))
-  if (man.gte(E("9.99"))) {man = E("9.99")}
-  return E(String(man) + "e" + String(power))
+  return n.toFixed(2)
   
 }
 
@@ -730,7 +719,7 @@ function updateText() {
   tick = tick + 1
   
   
-  StardustDisplay.innerHTML = "You have " + String(fix2(player.stardust,2)) + " Stardust";
+  StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,2)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(fix(getbuyablecost(1),0)) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyableeffects(2),0)) + " syphons/s";
@@ -1042,7 +1031,7 @@ document.getElementById('masssubtab1button').addEventListener('click', function(
 
 document.getElementById('IncrementallistButton').addEventListener('mouseover', function(event) {
     if (upgrades.incrementallist.bought == true) {UpgradeName.innerHTML = "Incrementallist (Bought)"} else {UpgradeName.innerHTML = "Incrementallist (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.incrementallist.display) + ", Currently " + String(upgradeeffects(1)) + "x."
+    UpgradeEffect.innerHTML = String(upgrades.incrementallist.display) + ", Currently " + String(fix(upgradeeffects(1))) + "x."
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.incrementallist.cost) + " Stardust"
 });
 
@@ -1054,25 +1043,25 @@ document.getElementById('GravityButton').addEventListener('mouseover', function(
 
 document.getElementById('MEMButton').addEventListener('mouseover', function(event) {
     if (upgrades.MEM.bought == true) {UpgradeName.innerHTML = "More Efficient Tactics (Bought)"} else {UpgradeName.innerHTML = "More Efficient Tactics (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.MEM.display) + String(upgradeeffects(3));
+    UpgradeEffect.innerHTML = String(upgrades.MEM.display) + String(fix(upgradeeffects(3)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.MEM.cost) + " Stardust"
 });
 
 document.getElementById('FeedbackButton').addEventListener('mouseover', function(event) {
     if (upgrades.feedbackloop.bought == true) {UpgradeName.innerHTML = "Feedback Loop (Bought)"} else {UpgradeName.innerHTML = "Feedback Loop (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(upgradeeffects(4));
+    UpgradeEffect.innerHTML = String(upgrades.feedbackloop.display) + String(fix(upgradeeffects(4)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.feedbackloop.cost) + " Stardust"
 });
 
 document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
     if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
-    UpgradeEffect.innerHTML = String(upgradeeffects(5));
+    UpgradeEffect.innerHTML = String(fix(upgradeeffects(5)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
 });
 
 document.getElementById('InfusionButton').addEventListener('mouseover', function(event) {
     if (upgrades.Infusion.bought == true) {UpgradeName.innerHTML = "Infusion (Bought)"} else {UpgradeName.innerHTML = "Infusion (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.Infusion.display + String(upgradeeffects(6));
+    UpgradeEffect.innerHTML = upgrades.Infusion.display + String(fix(upgradeeffects(6)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.Infusion.cost) + " Matter"
 });
 
@@ -1084,7 +1073,7 @@ document.getElementById('SacredTextsButton').addEventListener('mouseover', funct
 function checkifgravcatiscapped() {if(upgradeeffects(8).gte(E("10"))){return " (softcapped)"}else{return ""}}
 document.getElementById('GravitonCatalystButton').addEventListener('mouseover', function(event) {
     if (upgrades.gravitoncatalyst.bought == true) {UpgradeName.innerHTML = "Graviton Catalyst (Bought)"} else {UpgradeName.innerHTML = "Graviton Catalyst (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.gravitoncatalyst.display + String(upgradeeffects(8)) + checkifgravcatiscapped();
+    UpgradeEffect.innerHTML = upgrades.gravitoncatalyst.display + String(fix(upgradeeffects(8))) + checkifgravcatiscapped();
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.gravitoncatalyst.cost) + " Matter"
 });
 
@@ -1108,31 +1097,31 @@ document.getElementById('DLCButton').addEventListener('mouseover', function(even
 
 document.getElementById('SpacetimeButton').addEventListener('mouseover', function(event) {
     if (upgrades.spacetimerupture.bought == true) {UpgradeName.innerHTML = "Spacetime Rupture (Bought)"} else {UpgradeName.innerHTML = "Spacetime Rupture (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.spacetimerupture.display + String(upgradeeffects(12));
+    UpgradeEffect.innerHTML = upgrades.spacetimerupture.display + String(fix(upgradeeffects(12)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.spacetimerupture.cost) + " Stardust"
 });
 
 document.getElementById('MinMaxButton').addEventListener('mouseover', function(event) {
     if (upgrades.minmax.bought == true) {UpgradeName.innerHTML = "Min-Max (Bought)"} else {UpgradeName.innerHTML = "Min-Max (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.minmax.display + String(upgradeeffects(13));
+    UpgradeEffect.innerHTML = upgrades.minmax.display + String(fix(upgradeeffects(13)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.minmax.cost) + " Stardust"
 });
 
 document.getElementById('HeavierButton').addEventListener('mouseover', function(event) {
     if (upgrades.heavier.bought == true) {UpgradeName.innerHTML = "Heavier (Bought)"} else {UpgradeName.innerHTML = "Heavier (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.heavier.display + String(upgradeeffects(14));
+    UpgradeEffect.innerHTML = upgrades.heavier.display + String(fix(upgradeeffects(14)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.heavier.cost) + " Stardust"
 });
 
 document.getElementById('CrushingButton').addEventListener('mouseover', function(event) {
     if (upgrades.crushing.bought == true) {UpgradeName.innerHTML = "Crushing (Bought)"} else {UpgradeName.innerHTML = "Crushing (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.crushing.display + String(upgradeeffects(15));
+    UpgradeEffect.innerHTML = upgrades.crushing.display + String(fix(upgradeeffects(15)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.crushing.cost) + " Stardust"
 });
 
 document.getElementById('ReplicationButton').addEventListener('mouseover', function(event) {
     if (upgrades.replication.bought == true) {UpgradeName.innerHTML = "Replication (Bought)"} else {UpgradeName.innerHTML = "Replication (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.replication.display + String(upgradeeffects(16));
+    UpgradeEffect.innerHTML = upgrades.replication.display + String(fix(upgradeeffects(16)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.replication.cost) + " Stardust"
 });
 
@@ -1144,25 +1133,25 @@ document.getElementById('ScramboblingCromjomblesButton').addEventListener('mouse
 
 document.getElementById('Scaler1Button').addEventListener('mouseover', function(event) {
     if (upgrades.scaler1.bought == true) {UpgradeName.innerHTML = "Scaler 1 (Bought)"} else {UpgradeName.innerHTML = "Scaler 1 (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.scaler1.display + " Currently: x" + String(upgradeeffects(17));
+    UpgradeEffect.innerHTML = upgrades.scaler1.display + " Currently: x" + String(fix(upgradeeffects(17)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler1.cost) + " Tributes"
 });
 
 document.getElementById('Scaler2Button').addEventListener('mouseover', function(event) {
     if (upgrades.scaler2.bought == true) {UpgradeName.innerHTML = "Scaler 2 (Bought)"} else {UpgradeName.innerHTML = "Scaler 2 (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.scaler2.display + " Currently: x" + String(upgradeeffects(18));
+    UpgradeEffect.innerHTML = upgrades.scaler2.display + " Currently: x" + String(fix(upgradeeffects(18)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.scaler2.cost) + " Tributes"
 });
 
 document.getElementById('TaxEvasionButton').addEventListener('mouseover', function(event) {
     if (upgrades.taxevasion.bought == true) {UpgradeName.innerHTML = "Tax Evasion (Bought)"} else {UpgradeName.innerHTML = "Tax Evasion (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.taxevasion.display + " Currently: ^" + String(upgradeeffects(20));
+    UpgradeEffect.innerHTML = upgrades.taxevasion.display + " Currently: ^" + String(fix(upgradeeffects(20)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.taxevasion.cost) + " Tributes"
 });
 
 document.getElementById('RealityShiftButton').addEventListener('mouseover', function(event) {
     if (upgrades.realityshift.bought == true) {UpgradeName.innerHTML = "Reality Shift (Bought)"} else {UpgradeName.innerHTML = "Reality Shift (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.realityshift.display + " Currently: +" + String(upgradeeffects(21));
+    UpgradeEffect.innerHTML = upgrades.realityshift.display + " Currently: +" + String(fix(upgradeeffects(21)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.realityshift.cost) + " Tributes"
 });
 
@@ -1180,13 +1169,13 @@ document.getElementById('SlothButton').addEventListener('mouseover', function(ev
 
 document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('mouseover', function(event) {
     if (upgrades.gazeehlingjoombahmbalaeze.bought == true) {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Bought)"} else {UpgradeName.innerHTML = "Gazeehling Joombahmbalaeze (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.gazeehlingjoombahmbalaeze.display + " Currently: ^" + String(upgradeeffects(22));
+    UpgradeEffect.innerHTML = upgrades.gazeehlingjoombahmbalaeze.display + " Currently: ^" + String(fix(upgradeeffects(22)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.gazeehlingjoombahmbalaeze.cost) + " Tributes"
 });
 
 document.getElementById('TomfooleryButton').addEventListener('mouseover', function(event) {
     if (upgrades.tomfoolery.bought == true) {UpgradeName.innerHTML = "Tomfoolery (Bought)"} else {UpgradeName.innerHTML = "Tomfoolery (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.tomfoolery.display + " Currently: +" + String(upgradeeffects(23));
+    UpgradeEffect.innerHTML = upgrades.tomfoolery.display + " Currently: +" + String(fix(upgradeeffects(23)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.tomfoolery.cost) + " Tributes"
 });
 
@@ -1501,7 +1490,7 @@ function getrankeffect() {
 function renderrank() {
   if (generalunlocks["MatterRanks"] == true) {
     var mr = document.getElementById("MatterRank1")
-    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Cost in matter (+1): <br>" + String(getrankreq(E("0"))) + "<br> Stardust effect: <br>x" + String(getrankeffect())
+    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Cost in matter (+1): <br>" + String(getrankreq(E("0"))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
   }
 }
 
