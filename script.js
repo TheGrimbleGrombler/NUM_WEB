@@ -612,7 +612,7 @@ var TributeResetButton = document.getElementById("TributeResetButton");
 var FlareResetButton = document.getElementById("FlareResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
-var TributeDisplay = document.getElementById('FlareDisplay');
+var FlareDisplay = document.getElementById('FlareDisplay');
 var automation1 = true
 var automation2 = true
 
@@ -620,6 +620,7 @@ function checkbest() {
   if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
   if (player.matter.gte(player.bestmatter)) {player.bestmatter = player.matter}
   if (player.tributes.gte(player.besttributes)) {player.besttributes = player.tributes}
+  if (player.flares.gte(player.bestflares)) {player.bestflares = player.flares}
 }
 
 function particleeffects(a,b) {
@@ -770,6 +771,7 @@ function updateText() {
   WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
   
   TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
+  FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
   
   if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
@@ -1056,6 +1058,15 @@ document.getElementById('tributesubtab2button').addEventListener('click', functi
 });
 document.getElementById('flaresubtab1button').addEventListener('click', function() {
   openSubtab("flaresubtab1")
+});
+document.getElementById('flaresubtab2button').addEventListener('click', function() {
+  openSubtab("flaresubtab2")
+});
+document.getElementById('flaresubtab3button').addEventListener('click', function() {
+  openSubtab("flaresubtab3")
+});
+document.getElementById('flaresubtab4button').addEventListener('click', function() {
+  openSubtab("flaresubtab4")
 });
 document.getElementById('masssubtab1button').addEventListener('click', function() {
   openSubtab("masssubtab1")
@@ -1569,6 +1580,7 @@ function purge(x) {
   }
   if (x==6) {
     buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
+    player.matterrank = E("0")
   }
   if (x==7) {
     upgrades.Infusion.bought = false
@@ -1576,6 +1588,7 @@ function purge(x) {
     upgrades.GravitonCatalyst.bought = false
     upgrades.discovery.bought = false
     upgrades.dlc.bought = false
+    upgrades.automatons.bought = false
   }
   if (x==8) {
     doreset(2)
@@ -1587,7 +1600,12 @@ function purge(x) {
     
   }
   if (x==11) {
-    
+    upgrades.scaler1.bought = false
+    upgrades.scramboblingcromjombles.bought = false
+    upgrades.taxevasion.bought = false
+    upgrades.realityshift.bought = false
+    upgrades.scaler2.bought = false
+    upgrades.scaler2.bought = false
   }
   if (x==12) {
     doreset(3)
@@ -1654,6 +1672,9 @@ function timedunlocks() {
   if (player.tributemilestone >= 15) {
     generalunlocks["flare"] = true
     unlockedsubtabs.FlareMain = true
+    unlockedsubtabs.Cinders = true
+    unlockedsubtabs.FlareMilestones = true
+    unlockedsubtabs.FlareLabors = true
     document.getElementById("flaredisplaycontainer").style = "display: block;"
   }
   
