@@ -1292,17 +1292,13 @@ function milestones() {
 }
 
 function displayupgrade(idname,upname) {
-      document.getElementById(idname + "Button").style.boxSizing = "border-box";
   if (upgrades[upname].bought == true) {
-    document.getElementById(idname + "Button").style.boxShadow = "0 0 10px 2px rgba(0, 255, 0, 1)";
-      document.getElementById(idname + "Button").style.border = "150px solid rgb(0,255,0)";
+    document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
   } else {
     if (player[upgrades[upname].costtype].gte(upgrades[upname].cost)) {
-      document.getElementById(idname + "Button").style.boxShadow = "0 0 10px 2px rgba(255, 255, 0, 1)";
-      document.getElementById(idname + "Button").style.border = "150px solid rgb(255,255,0)";
+      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
     } else {
-      document.getElementById(idname + "Button").style.boxShadow = "0 0 10px 2px rgba(255, 0, 0, 1)";
-      document.getElementById(idname + "Button").style.border = "150px solid rgb(255,0,0)";
+      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 0, 0, 1)";
     }
   }
 }
