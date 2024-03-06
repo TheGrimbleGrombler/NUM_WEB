@@ -18,6 +18,12 @@ function fix(n,e) {
   
 }
 
+function fix2(n,e) {
+  var factor = E("10").pow(n.log10().sub(E(String(e))).floor()).floor()
+  return n.div(factor).floor().mul(factor)
+  
+}
+
 function buyableeffects(n) {
   var temp = E("1")
   if (n==1) {
@@ -719,7 +725,7 @@ function updateText() {
   tick = tick + 1
   
   
-  StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,0)) + " Stardust";
+  StardustDisplay.innerHTML = "You have " + String(fix2(player.stardust,2)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(fix(getbuyablecost(1),0)) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyableeffects(2),0)) + " syphons/s";
