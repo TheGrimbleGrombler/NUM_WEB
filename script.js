@@ -19,8 +19,13 @@ function fix(n,e) {
 }
 
 function fix2(n,e) {
-  var factor = E("10").pow(n.log10().sub(E(String(e))).floor()).floor()
-  return n.div(factor).floor().mul(factor)
+  //var factor = E("10").pow(n.log10().sub(E(String(e))).floor()).floor()
+  //return n.div(factor).floor().mul(factor)
+  
+  var power = n.abs().log10().floor()
+  var man = n.div(E("10").pow(power))
+  if (man.gte(E("9.99"))) {man = E("9.99")}
+  return E(String(man) + "e" + String(power))
   
 }
 
