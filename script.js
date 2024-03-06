@@ -612,6 +612,7 @@ var TributeResetButton = document.getElementById("TributeResetButton");
 var FlareResetButton = document.getElementById("FlareResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
+var TributeDisplay = document.getElementById('FlareDisplay');
 var automation1 = true
 var automation2 = true
 
@@ -809,7 +810,7 @@ function getflaresonreset() {
   
   gain = player.tributes.sub(E("400000"))
   if (gain.lte(E("99999"))) {return E("0")}
-  gain = gain.log10().sub(E("5")).mul(E("1000")).floor()
+  gain = gain.log10().sub(E("4")).mul(E("1000")).floor()
   
   return gain
   
@@ -1692,6 +1693,11 @@ function timedunlocks() {
       achievements.push("Ranked");
     }
   }
+  if (achievements.indexOf('Past') == -1) {
+    if (player.bestflares.gte(E("1"))) {
+      achievements.push("Past");
+    }
+  }
   
   
 }
@@ -1948,6 +1954,9 @@ document.getElementById('BoundlessAchievement').addEventListener('mouseover', fu
 });
 document.getElementById('RankedAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Ranked - Get your first matter rank, The scaling on these is insane later."
+});
+document.getElementById('PastAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Back to the Past - Get some flares! d:"
 });
 document.getElementById('WhyAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Why????? - Secret #1"
