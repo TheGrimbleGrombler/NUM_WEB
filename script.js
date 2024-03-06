@@ -586,6 +586,8 @@ let player = {
   flares: E("0"),
   bestflares: E("0"),
   besttributesthisflare: E("0"),
+  cinders: E("0"),
+  catalysts: E("0"),
 };
 let Labors = {
   TL1: false,
@@ -1433,6 +1435,8 @@ function save() {
     besttributes: player.besttributes,
     besttributesthisflare: player.besttributesthisflare,
     labor: player.labor,
+    cinders: player.cinders,
+    catalysts: player.catalysts,
     matterrank: player.matterrank,
     tl1: Labors.TL1,
     tl2: Labors.TL2,
@@ -1446,6 +1450,12 @@ function save() {
     tl10: Labors.TL10,
     tl11: Labors.TL11,
     tl12: Labors.TL12,
+    fl1: Labors.FL1,
+    fl2: Labors.FL2,
+    fl3: Labors.FL3,
+    fl4: Labors.FL4,
+    fl5: Labors.FL5,
+    fl1: Labors.FL6,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -1470,6 +1480,8 @@ function load() {
     player.besttributes = E(String(loadedData.player.besttributes));
     player.bestflares = E(String(loadedData.player.bestflares));
     player.labor = String(loadedData.player.labor);
+    player.cinders = String(loadedData.player.cinders);
+    player.cataylsts = String(loadedData.player.catalysts);
     player.matterrank = E(String(loadedData.player.matterrank));
     player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
     
@@ -1526,6 +1538,12 @@ function load() {
     Labors.TL10 = loadedData.tl10
     Labors.TL11 = loadedData.tl11
     Labors.TL12 = loadedData.tl12
+    Labors.FL1 = loadedData.fl1
+    Labors.FL2 = loadedData.fl2
+    Labors.FL3 = loadedData.fl3
+    Labors.FL4 = loadedData.fl4
+    Labors.FL5 = loadedData.fl5
+    Labors.FL6 = loadedData.fl6
     
     loadfunctions()
     
