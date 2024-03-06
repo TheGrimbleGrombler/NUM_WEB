@@ -322,6 +322,8 @@ function loadfunctions() {
   if (isNaN(upgrades.replication.bought)) {upgrades.replication.bought = false}
   if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
   if (isNaN(player.tributes)) {player.tributes = E("0")}
+  if (isNaN(player.flares)) {player.flares = E("0")}
+  if (isNaN(player.bestflares)) {player.bestflares = E("0")}
   if (isNaN(upgrades.scramboblingcromjombles.bought)) {upgrades.scramboblingcromjombles.bought = false}
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
@@ -559,6 +561,8 @@ let player = {
   tributemilestone: 0,
   labor: 0,
   matterrank: E("0"),
+  flares: E("0"),
+  bestflares: E("0"),
 };
 let Labors = {
   TL1: false,
@@ -605,6 +609,7 @@ var WeightDisplay = document.getElementById("WeightDisplay");
 var WeightButton = document.getElementById("WeightButton");
 var MassResetButton = document.getElementById("MassResetButton");
 var TributeResetButton = document.getElementById("TributeResetButton");
+var FlareResetButton = document.getElementById("FlareResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
 var automation1 = true
@@ -757,6 +762,7 @@ function updateText() {
   
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
   TributeResetButton.innerHTML ="Reset all previous progress for " + String(fix(gettributesonreset(),0)) + " Tributes"
+  FlareResetButton.innerHTML ="Reset all previous progress for " + String(fix(getflaresonreset(),0)) + " Flares"
   
   MatterDisplay.innerHTML ="You have " + String(fix(player.matter,0)) + " Matter"
   WeightDisplay.innerHTML = "You have " + String(fix(buyables.weight.amount,0)) + " (" + String(fix(buyables.weight.manuals,0)) +") Weights, Multiplying stardust gain by " + String(fix(buyableeffects(4),0)) + "x";
@@ -792,6 +798,18 @@ function gettributesonreset() {
   gain = player.stardust.div(E("1e80")).log10().div(E("80")).add(E("1")).floor()
   
   if (Labors.TL6 == true) {gain = gain.mul(E("5"))}
+  
+  return gain
+  
+}
+
+function getflaresonreset() {
+  
+  var gain = E("0")
+  
+  gain = player.tributes.sub(E("400000"))
+  if (gain.lte(E("99999"))) {return E("0")}
+  gain = gain.log10().sub(E("5")).mul(E("1000")).floor()
   
   return gain
   
@@ -1403,9 +1421,11 @@ function load() {
     player.matter = E(String(loadedData.player.matter));
     player.playtime = E(String(loadedData.player.playtime));
     player.tributes = E(String(loadedData.player.tributes));
+    player.flares = E(String(loadedData.player.flares));
     player.beststardust = E(String(loadedData.player.beststardust));
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));
+    player.bestflares = E(String(loadedData.player.bestflares));
     player.labor = String(loadedData.player.labor);
     player.matterrank = E(String(loadedData.player.matterrank));
     
@@ -1951,6 +1971,13 @@ document.getElementById('TributeResetButton').addEventListener('click', function
   }
 });
 
+document.getElementById('FlareResetButton').addEventListener('click', function() {
+  if (getflaresonreset().gte(E("1000"))) {
+  player.flares = player.flares.add(getflaresonreset())
+  doreset(3)
+  }
+});
+
 document.onkeydown = function (e) {
    if (e.key == "t") {
     if (gettributesonreset().gte(E("1"))) {
@@ -1962,6 +1989,12 @@ document.onkeydown = function (e) {
     if (getmatteronreset().gte(E("1"))) {
     player.matter = player.matter.add(getmatteronreset())
     doreset(1)
+    }
+  }
+   if (e.key == "f") {
+    if (getflaresonreset().gte(E("1000"))) {
+    player.flares = player.flares.add(getflaresonreset())
+    doreset(3)
     }
   }
 };
