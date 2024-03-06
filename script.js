@@ -324,6 +324,7 @@ function loadfunctions() {
   if (isNaN(player.tributes)) {player.tributes = E("0")}
   if (isNaN(player.flares)) {player.flares = E("0")}
   if (isNaN(player.bestflares)) {player.bestflares = E("0")}
+  if (isNaN(player.bestributesthisflare)) {player.bestributesthisflare = E("0")}
   if (isNaN(upgrades.scramboblingcromjombles.bought)) {upgrades.scramboblingcromjombles.bought = false}
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
@@ -473,9 +474,29 @@ function doreset(tier) {
   if (tier >= 3) {
     
     player.tributes = E("0")
-    upgrades.scramboblingcromjombles.bought = false
+    player.tributemilestone = 0
+    Labors.TL1 = false
+    Labors.TL2 = false
+    Labors.TL3 = false
+    Labors.TL4 = false
+    Labors.TL5 = false
+    Labors.TL6 = false
+    Labors.TL7 = false
+    Labors.TL8 = false
+    Labors.TL9 = false
+    Labors.TL10= false
+    Labors.TL11= false
+    Labors.TL12= false
     upgrades.scaler1.bought = false
+    upgrades.scramboblingcromjombles.bought = false
+    upgrades.taxevasion.bought = false
+    upgrades.realityshift.bought = false
+    upgrades.mechanized.bought = false
     upgrades.scaler2.bought = false
+    upgrades.sloth.bought = false
+    upgrades.gazeehlingjoombahmbalaeze.bought = false
+    upgrades.tomfoolery.bought = false
+    player.matterrank = E("0")
     
   }
   
@@ -559,10 +580,12 @@ let player = {
   bestmatter: E("0"),
   besttributes: E("0"),
   tributemilestone: 0,
+  flaremilestone: 0,
   labor: 0,
   matterrank: E("0"),
   flares: E("0"),
   bestflares: E("0"),
+  besttributesthisflare: E("0"),
 };
 let Labors = {
   TL1: false,
@@ -577,6 +600,12 @@ let Labors = {
   TL10: false,
   TL11: false,
   TL12: false,
+  FL1: false,
+  FL2: false,
+  FL3: false,
+  FL4: false,
+  FL5: false,
+  FL6: false,
 }
 
 var x = new Decimal().fromString("1e100")
@@ -620,6 +649,7 @@ function checkbest() {
   if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
   if (player.matter.gte(player.bestmatter)) {player.bestmatter = player.matter}
   if (player.tributes.gte(player.besttributes)) {player.besttributes = player.tributes}
+  if (player.tributes.gte(player.bestributesthisflare)) {player.bestributesthisflare = player.tributes}
   if (player.flares.gte(player.bestflares)) {player.bestflares = player.flares}
 }
 
@@ -1307,22 +1337,22 @@ function displayupgrades() {
 
 function milestones() {
   //group 1 below
-  if (player.tributemilestone < 1) {if (player.besttributes.gte(E("1"))) {player.tributemilestone = 1}}
-  if (player.tributemilestone < 2) {if (player.besttributes.gte(E("2"))) {player.tributemilestone = 2}}
-  if (player.tributemilestone < 3) {if (player.besttributes.gte(E("4"))) {player.tributemilestone = 3}}
-  if (player.tributemilestone < 4) {if (player.besttributes.gte(E("10"))) {player.tributemilestone = 4}}
-  if (player.tributemilestone < 5) {if (player.besttributes.gte(E("15"))) {player.tributemilestone = 5}}
-  if (player.tributemilestone < 6) {if (player.besttributes.gte(E("20"))) {player.tributemilestone = 6}}
-  if (player.tributemilestone < 7) {if (player.besttributes.gte(E("75"))) {player.tributemilestone = 7}}
-  if (player.tributemilestone < 8) {if (player.besttributes.gte(E("125"))) {player.tributemilestone = 8}}
-  if (player.tributemilestone < 9) {if (player.besttributes.gte(E("2500"))) {player.tributemilestone = 9}}
+  if (player.tributemilestone < 1) {if (player.bestributesthisflare.gte(E("1"))) {player.tributemilestone = 1}}
+  if (player.tributemilestone < 2) {if (player.bestributesthisflare.gte(E("2"))) {player.tributemilestone = 2}}
+  if (player.tributemilestone < 3) {if (player.bestributesthisflare.gte(E("4"))) {player.tributemilestone = 3}}
+  if (player.tributemilestone < 4) {if (player.bestributesthisflare.gte(E("10"))) {player.tributemilestone = 4}}
+  if (player.tributemilestone < 5) {if (player.bestributesthisflare.gte(E("15"))) {player.tributemilestone = 5}}
+  if (player.tributemilestone < 6) {if (player.bestributesthisflare.gte(E("20"))) {player.tributemilestone = 6}}
+  if (player.tributemilestone < 7) {if (player.bestributesthisflare.gte(E("75"))) {player.tributemilestone = 7}}
+  if (player.tributemilestone < 8) {if (player.bestributesthisflare.gte(E("125"))) {player.tributemilestone = 8}}
+  if (player.tributemilestone < 9) {if (player.bestributesthisflare.gte(E("2500"))) {player.tributemilestone = 9}}
   //group 2 below
-  if (player.tributemilestone < 10) {if (player.besttributes.gte(E("5000"))) {player.tributemilestone = 10}}
-  if (player.tributemilestone < 11) {if (player.besttributes.gte(E("15000"))) {player.tributemilestone = 11}}
-  if (player.tributemilestone < 12) {if (player.besttributes.gte(E("25000"))) {player.tributemilestone = 12}}
-  if (player.tributemilestone < 13) {if (player.besttributes.gte(E("75000"))) {player.tributemilestone = 13}}
-  if (player.tributemilestone < 14) {if (player.besttributes.gte(E("150000"))) {player.tributemilestone = 14}}
-  if (player.tributemilestone < 15) {if (player.besttributes.gte(E("300000"))) {player.tributemilestone = 15}}
+  if (player.tributemilestone < 10) {if (player.bestributesthisflare.gte(E("5000"))) {player.tributemilestone = 10}}
+  if (player.tributemilestone < 11) {if (player.bestributesthisflare.gte(E("15000"))) {player.tributemilestone = 11}}
+  if (player.tributemilestone < 12) {if (player.bestributesthisflare.gte(E("25000"))) {player.tributemilestone = 12}}
+  if (player.tributemilestone < 13) {if (player.bestributesthisflare.gte(E("75000"))) {player.tributemilestone = 13}}
+  if (player.tributemilestone < 14) {if (player.bestributesthisflare.gte(E("150000"))) {player.tributemilestone = 14}}
+  if (player.tributemilestone < 15) {if (player.bestributesthisflare.gte(E("300000"))) {player.tributemilestone = 15}}
   //group 1 classname stuff below
   if (player.tributemilestone >= 1) {document.getElementById("tributemilestone1").className = "milestonebreached numberwhite"}
   if (player.tributemilestone >= 2) {document.getElementById("tributemilestone2").className = "milestonebreached numberwhite"}
@@ -1401,6 +1431,7 @@ function save() {
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
     besttributes: player.besttributes,
+    besttributesthisflare: player.besttributesthisflare,
     labor: player.labor,
     matterrank: player.matterrank,
     tl1: Labors.TL1,
@@ -1440,6 +1471,7 @@ function load() {
     player.bestflares = E(String(loadedData.player.bestflares));
     player.labor = String(loadedData.player.labor);
     player.matterrank = E(String(loadedData.player.matterrank));
+    player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
@@ -1597,15 +1629,30 @@ function purge(x) {
     player.tributes = E("0")
   }
   if (x==10) {
-    
+    player.tributemilestone = 0
+    Labors.TL1 = false
+    Labors.TL2 = false
+    Labors.TL3 = false
+    Labors.TL4 = false
+    Labors.TL5 = false
+    Labors.TL6 = false
+    Labors.TL7 = false
+    Labors.TL8 = false
+    Labors.TL9 = false
+    Labors.TL10= false
+    Labors.TL11= false
+    Labors.TL12= false
   }
   if (x==11) {
     upgrades.scaler1.bought = false
     upgrades.scramboblingcromjombles.bought = false
     upgrades.taxevasion.bought = false
     upgrades.realityshift.bought = false
+    upgrades.mechanized.bought = false
     upgrades.scaler2.bought = false
-    upgrades.scaler2.bought = false
+    upgrades.sloth.bought = false
+    upgrades.gazeehlingjoombahmbalaeze.bought = false
+    upgrades.tomfoolery.bought = false
   }
   if (x==12) {
     doreset(3)
