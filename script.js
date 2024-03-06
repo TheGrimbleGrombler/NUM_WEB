@@ -82,7 +82,7 @@ function buyableeffects(n) {
 function upgradeeffects(n) {
   var temp = E("1")
   if (n==1) {
-    if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.log10()}
+    if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.add(E("10")).log10()}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
     if (player.labor == 12) {temp = E("1").div(temp)}
@@ -142,7 +142,7 @@ function upgradeeffects(n) {
     if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==13) {
-    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.log10())}
+    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.add(E("10")).log10())}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
     if (player.labor == 12) {temp = E("1").div(temp)}
@@ -239,6 +239,10 @@ function getbuyablecost(n,m) {
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
+  }
+  if (n == 5) {
+    var scaling = E("1")
+    temp = E("100").add(E("100").mul(buyables.catalyst.manuals.add(modifier)).pow(buyables.catalyst.manuals.add(E("10")).log10()))
   }
   return temp
 }
@@ -353,6 +357,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
+  if (isNaN(player.cinders)) {player.cinders = E("0")}
   //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
@@ -503,6 +508,7 @@ function doreset(tier) {
     upgrades.gazeehlingjoombahmbalaeze.bought = false
     upgrades.tomfoolery.bought = false
     player.matterrank = E("0")
+    player.besttributesthisflare = E("0")
     
   }
   
@@ -593,7 +599,6 @@ let player = {
   bestflares: E("0"),
   besttributesthisflare: E("0"),
   cinders: E("0"),
-  catalysts: E("0"),
 };
 let Labors = {
   TL1: false,
@@ -814,9 +819,10 @@ function updateText() {
   TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
   
   FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
+  
   CinderDisplay.innerHTML ="Cinders:" + String(fix(player.cinders,0))
-  WeightDisplay.innerHTML = "You have " + String(fix(buyables.weight.amount,0)) + " (" + String(fix(buyables.weight.manuals,0)) +") Weights, Multiplying stardust gain by " + String(fix(buyableeffects(4),0)) + "x";
-  WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
+  CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Multiplying cinder gain by " + String(fix(buyableeffects(5),0)) + "x";
+  CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
   if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
@@ -1449,7 +1455,6 @@ function save() {
     besttributesthisflare: player.besttributesthisflare,
     labor: player.labor,
     cinders: player.cinders,
-    catalysts: player.catalysts,
     matterrank: player.matterrank,
     tl1: Labors.TL1,
     tl2: Labors.TL2,
@@ -1493,8 +1498,7 @@ function load() {
     player.besttributes = E(String(loadedData.player.besttributes));
     player.bestflares = E(String(loadedData.player.bestflares));
     player.labor = String(loadedData.player.labor);
-    player.cinders = E(String(loadedData.player.cinders);
-    player.cataylsts = String(loadedData.player.catalysts);
+    player.cinders = E(String(loadedData.player.cinders));
     player.matterrank = E(String(loadedData.player.matterrank));
     player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
     
