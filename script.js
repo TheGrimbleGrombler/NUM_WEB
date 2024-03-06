@@ -1007,6 +1007,9 @@ document.getElementById('achievementbutton').addEventListener('click', function(
 document.getElementById('tab6button').addEventListener('click', function() {
   openTab("tab6")
 });
+document.getElementById('tab7button').addEventListener('click', function() {
+  openTab("tab7")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
@@ -1018,6 +1021,9 @@ document.getElementById('tributesubtab1button').addEventListener('click', functi
 });
 document.getElementById('tributesubtab2button').addEventListener('click', function() {
   openSubtab("tributesubtab2")
+});
+document.getElementById('flaresubtab1button').addEventListener('click', function() {
+  openSubtab("flaresubtab1")
 });
 document.getElementById('masssubtab1button').addEventListener('click', function() {
   openSubtab("masssubtab1")
@@ -1217,6 +1223,9 @@ function displayunlocksonload() {
   };
   if (generalunlocks.tributeupgrades1 == true) {
     document.getElementById("tributeupgrades1").style = "display: block;"
+  };
+  if (generalunlocks.flares == true) {
+    document.getElementById("flaredisplaycontainer").style = "display: block;"
   };
   
   
@@ -1607,6 +1616,11 @@ function timedunlocks() {
   if (Labors.TL12 == true) {
     generalunlocks["tributemilestonegroup2"] = true
     document.getElementById("tributemilestonegroup2").style = "display: block"
+  }
+  if (player.tributemilestone >= 15) {
+    generalunlocks["flare"] = true
+    unlockedsubtabs.FlareMain = true
+    document.getElementById("flaredisplaycontainer").style = "display: block;"
   }
   
   
