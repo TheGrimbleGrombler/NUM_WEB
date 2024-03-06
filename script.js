@@ -261,7 +261,11 @@ let buyables = {
     collector: {amount: E("0"), manuals: E("0")},
     field: {amount: E("0"), manuals: E("0")},
   
-  weight: {amount: E("0"), manuals: E("0")}
+    weight: {amount: E("0"), manuals: E("0")},
+  
+  
+  
+    catalyst: {amount: E("0"), manuals: E("0")}
 
 };
 let upgrades = {
@@ -306,6 +310,8 @@ function loadfunctions() {
   if (isNaN(unlockedsubtabs.MassMain)) {unlockedsubtabs.MassMain = generalunlocks.theunknown}
   if (isNaN(buyables.weight.amount)) {buyables.weight.amount = E("0")}
   if (isNaN(buyables.weight.manuals)) {buyables.weight.manuals = E("0")}
+  if (isNaN(buyables.catalyst.amount)) {buyables.catalyst.amount = E("0")}
+  if (isNaN(buyables.catalyst.manuals)) {buyables.catalyst.manuals = E("0")}
   if (isNaN(buyables.field.amount)) {buyables.field.amount = E("0")}
   if (isNaN(buyables.field.manuals)) {buyables.field.manuals = E("0")}
   if (isNaN(upgrades.Infusion.bought)) {upgrades.Infusion.bought = false}
@@ -644,6 +650,9 @@ var FlareResetButton = document.getElementById("FlareResetButton");
 var endgametext = document.getElementById("ENDGAME");
 var TributeDisplay = document.getElementById('TributeDisplay');
 var FlareDisplay = document.getElementById('FlareDisplay');
+var CinderDisplay = document.getElementById('CinderDisplay');
+var CatalystDisplay = document.getElementById("CatalystDisplay");
+var CatalystButton = document.getElementById("CatalystButton");
 var automation1 = true
 var automation2 = true
 
@@ -803,7 +812,11 @@ function updateText() {
   WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
   
   TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
+  
   FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
+  CinderDisplay.innerHTML ="Cinders:" + String(fix(player.cinders,0))
+  WeightDisplay.innerHTML = "You have " + String(fix(buyables.weight.amount,0)) + " (" + String(fix(buyables.weight.manuals,0)) +") Weights, Multiplying stardust gain by " + String(fix(buyableeffects(4),0)) + "x";
+  WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
   
   if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
@@ -1480,7 +1493,7 @@ function load() {
     player.besttributes = E(String(loadedData.player.besttributes));
     player.bestflares = E(String(loadedData.player.bestflares));
     player.labor = String(loadedData.player.labor);
-    player.cinders = String(loadedData.player.cinders);
+    player.cinders = E(String(loadedData.player.cinders);
     player.cataylsts = String(loadedData.player.catalysts);
     player.matterrank = E(String(loadedData.player.matterrank));
     player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
@@ -1497,6 +1510,8 @@ function load() {
     buyables.field.manuals = E(String(loadedData.fieldmanuals))
     buyables.weight.amount = E(String(loadedData.weightamount))
     buyables.weight.manuals = E(String(loadedData.weightmanuals))
+    buyables.catalyst.amount = E(String(loadedData.catalystamount))
+    buyables.catalyst.manuals = E(String(loadedData.catalystmanuals))
     
     //upgrades = loadedData.upgrades
     
