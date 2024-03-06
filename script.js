@@ -693,12 +693,22 @@ function Debug() {
 }
 
 function vfx() {
+  var sinresult63 = (Math.sin(tick/25)*63.75)+63.75
+  var sinresult122 = (Math.sin(tick/25)*122)+122
+  var sinresult12 = (Math.sin(tick/25)*5)+7.5
+  
   var elements = document.querySelectorAll('.fire');
-  var sinresult = (Math.sin(tick/25)*63.75)+63.75
   for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb(255,' + String(sinresult) + ',0)';
-  elements[i].style.boxShadow = '0 0 10px 2px rgba(255,' + String(sinresult) + ',0)'
+  elements[i].style.border = '2px solid rgb(255,' + String(sinresult63) + ',0)';
+  elements[i].style.boxShadow = '0 0 10px 2px rgba(255,' + String(sinresult63) + ',0)'
   }
+  
+  var elements = document.querySelectorAll('.aqua');
+  for (var i = 0; i < elements.length; i++) {
+  elements[i].style.border = '2px solid rgb(0,' + String(sinresult122) + ',255)';
+  elements[i].style.boxShadow = '0 0 ' + String(sinresult12) + 'px 2px rgba(0,' + String(sinresult122) + ',255)'
+  }
+  
 }
 
 function updateText() {
@@ -730,19 +740,19 @@ function updateText() {
   
   AParticleDisplay.innerHTML = "You have " + String(fix(player.a_particles,0)) + " A-Particles, Boosts:"
   
-  APE1D.innerHTML = "B-Particle gain x" + String(particleeffects(1,1))
-  APE2D.innerHTML = "Stardust gain x" + String(particleeffects(1,2))
+  APE1D.innerHTML = "B-Particle gain x" + String(fix(particleeffects(1,1)))
+  APE2D.innerHTML = "Stardust gain x" + String(fix(particleeffects(1,2)))
   APE3D.innerHTML = ""
   
   BParticleDisplay.innerHTML = "You have " + String(fix(player.b_particles,0)) + " B-Particles, Boosts:"
   
-  BPE1D.innerHTML = "C-Particle gain x" + String(particleeffects(2,1))
-  BPE2D.innerHTML = "Gravitational Waves x" + String(particleeffects(2,2))
+  BPE1D.innerHTML = "C-Particle gain x" + String(fix(particleeffects(2,1)))
+  BPE2D.innerHTML = "Gravitational Waves x" + String(fix(particleeffects(2,2)))
   BPE3D.innerHTML = ""
   
   CParticleDisplay.innerHTML = "You have " + String(fix(player.c_particles,0)) + " C-Particles, Boosts:"
-  CPE1D.innerHTML = "A-Particle gain x" + String(particleeffects(3,1))
-  CPE2D.innerHTML = "??? x" + String(particleeffects(3,2))
+  CPE1D.innerHTML = "A-Particle gain x" + String(fix(particleeffects(3,1)))
+  CPE2D.innerHTML = "??? x" + String(fix(particleeffects(3,2)))
   CPE3D.innerHTML = ""
   
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
@@ -1003,6 +1013,9 @@ document.getElementById('purgebutton').addEventListener('click', function() {
 });
 document.getElementById('achievementbutton').addEventListener('click', function() {
   openTab("tab5")
+});
+document.getElementById('changelogbutton').addEventListener('click', function() {
+  openTab("tab8")
 });
 document.getElementById('tab6button').addEventListener('click', function() {
   openTab("tab6")
@@ -1490,7 +1503,7 @@ function getrankeffect() {
 function renderrank() {
   if (generalunlocks["MatterRanks"] == true) {
     var mr = document.getElementById("MatterRank1")
-    mr.innerHTML = "Matter Rank: <br>" + String(player.matterrank) + "<br> Cost in matter (+1): <br>" + String(getrankreq(E("0"))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
+    mr.innerHTML = "Matter Rank: <br>" + String(fix(player.matterrank)) + "<br> Cost in matter (+1): <br>" + String(fix(getrankreq(E("0")))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
   }
 }
 
