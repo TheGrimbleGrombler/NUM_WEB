@@ -70,6 +70,7 @@ function buyableeffects(n) {
   }
   if (n==4) {
     temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15)).add(upgradeeffects(21))
+    if (player.flaremilestone >= 1) {temp = temp.add(E("5"))}
     if (Labors.TL5 == true) {temp = temp.add(E("25"))}
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
@@ -198,7 +199,7 @@ function upgradeeffects(n) {
     if (upgrades.tomfoolery.bought==true) {temp = E("1e80")}
   }
   if (n==24) {
-    if (upgrades.I.bought==true) {temp = E("1.1")}
+    if (upgrades.I.bought==true) {temp = E("100")}
   }
   if (n==25) {
     if (upgrades.II.bought==true) {temp = E("1.1")}
@@ -368,10 +369,10 @@ let upgrades = {
   sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
   gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
   tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
-  I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x10 to help you get back on your feet."},
+  I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x100 to help you get back on your feet."},
   II: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  VII: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  IIV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  IV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   V: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   VII: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
@@ -1024,6 +1025,10 @@ function gainstardust(){
   
   if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
   
+  if (upgrades.I.bought==true) {gain = gain.mul(upgradeeffects(24))}
+  
+  if (player.cinders.gte(E("0.000000001"))) {gain = gain.mul(cindereffects[1])}
+  
   if (upgrades.taxevasion.bought==true) {
     gain = gain.pow(upgradeeffects(20))
     if (Labors.TL4 == true) {gain = gain.pow(upgradeeffects(20))}
@@ -1379,7 +1384,7 @@ document.getElementById('TomfooleryButton').addEventListener('mouseover', functi
 
 document.getElementById('1Button').addEventListener('mouseover', function(event) {
     if (upgrades.I.bought == true) {UpgradeName.innerHTML = "I (Bought)"} else {UpgradeName.innerHTML = "I (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.I.display + " Currently: +" + String(fix(upgradeeffects(24)));
+    UpgradeEffect.innerHTML = upgrades.I.display + " Currently: *" + String(fix(upgradeeffects(24)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.I.cost) + " Flares"
 });
 
