@@ -257,8 +257,8 @@ function getbuyablecost(n,m) {
 }
 
 function getcindereffects() {
-  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.125")).clampMin(E("1"))
-  cindereffects[2] = E("1")
+  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
+  cindereffects[2] = player.cinders.sub(E("0.00001")).clampMin(E("0")).mul(E("1e5")).pow(E("0.0625"))
   cindereffects[3] = E("1")
   cindereffects[4] = E("1")
   cindereffects[5] = E("1")
@@ -267,7 +267,7 @@ function getcindereffects() {
   cindereffects[8] = E("1")
   
   document.getElementById("CinderEffect1Display").innerHTML = "Stardust gain ^" + String(fix2(cindereffects[1],5))
-  document.getElementById("CinderEffect2Display").innerHTML = "TBD: " + String(fix2(cindereffects[2],5))
+  document.getElementById("CinderEffect2Display").innerHTML = "Weight effect +" + String(fix2(cindereffects[2],5))
   document.getElementById("CinderEffect3Display").innerHTML = "TBD: " + String(fix2(cindereffects[3],5))
   document.getElementById("CinderEffect4Display").innerHTML = "TBD: " + String(fix2(cindereffects[4],5))
   document.getElementById("CinderEffect5Display").innerHTML = "TBD: " + String(fix2(cindereffects[5],5))
@@ -808,6 +808,7 @@ function updateText() {
   gainstardust()
   gaingravitationalwaves()
   gainparticles()
+  gaincinders()
   timedunlocks()
   Automation()
   //Debug()
@@ -859,7 +860,7 @@ function updateText() {
   
   FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
   
-  CinderDisplay.innerHTML ="Cinders:" + String(fix(player.cinders,0))
+  CinderDisplay.innerHTML ="Cinders: " + String(fix2(player.cinders,10))
   CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Generating cinders: " + String(fix2(buyableeffects(5),10)) + "/s";
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
