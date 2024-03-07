@@ -18,6 +18,12 @@ function fix(n,e) {
   
 }
 
+function fix2(n,e) {
+  
+  return n.toFixed(e)
+  
+}
+
 function buyableeffects(n) {
   var temp = E("1")
   if (n==1) {
@@ -74,7 +80,7 @@ function buyableeffects(n) {
     if (player.labor == 12) {temp = E("1")}
   }
   if (n==5) {
-    temp = E("3").pow(player.catalyst.amount)
+    temp = E("3").pow(buyables.catalyst.amount).sub(E("1")).div(E("1e10"))
   }
   
   
@@ -823,7 +829,7 @@ function updateText() {
   FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
   
   CinderDisplay.innerHTML ="Cinders:" + String(fix(player.cinders,0))
-  CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Multiplying cinder gain by " + String(fix(buyableeffects(5),0)) + "x";
+  CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Generating cinders: " + String(fix2(buyableeffects(5),10)) + "/s";
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
   if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
