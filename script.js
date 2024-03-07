@@ -257,7 +257,23 @@ function getbuyablecost(n,m) {
 }
 
 function getcindereffects() {
-  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.125"))
+  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.125")).clampMin(E("1"))
+  cindereffects[2] = E("1")
+  cindereffects[3] = E("1")
+  cindereffects[4] = E("1")
+  cindereffects[5] = E("1")
+  cindereffects[6] = E("1")
+  cindereffects[7] = E("1")
+  cindereffects[8] = E("1")
+  
+  document.getElementById("CinderEffect1Display").innerHTML = "Stardust gain ^" + String(fix2(cindereffects[1],5))
+  document.getElementById("CinderEffect2Display").innerHTML = "TBD: " + String(fix2(cindereffects[2],5))
+  document.getElementById("CinderEffect3Display").innerHTML = "TBD: " + String(fix2(cindereffects[3],5))
+  document.getElementById("CinderEffect4Display").innerHTML = "TBD: " + String(fix2(cindereffects[4],5))
+  document.getElementById("CinderEffect5Display").innerHTML = "TBD: " + String(fix2(cindereffects[5],5))
+  document.getElementById("CinderEffect6Display").innerHTML = "TBD: " + String(fix2(cindereffects[6],5))
+  document.getElementById("CinderEffect7Display").innerHTML = "TBD: " + String(fix2(cindereffects[7],5))
+  document.getElementById("CinderEffect8Display").innerHTML = "TBD: " + String(fix2(cindereffects[8],5))
 }
 
 let cindereffects = [
@@ -801,6 +817,7 @@ function updateText() {
   calibratelabors()
   renderrank()
   vfx()
+  getcindereffects()
   tick = tick + 1
   
   
@@ -930,6 +947,13 @@ function gaingravitationalwaves(){
   
   player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
   
+}
+function gaincinders(){
+  var gain = E("0")
+  
+  gain = gain.add(buyableeffects(5))
+  
+  player.cinders = player.cinders.add(gain.div(E("60")))
 }
 function gainstardust(){
   var gain = E("0")
