@@ -197,6 +197,33 @@ function upgradeeffects(n) {
   if (n==23) {
     if (upgrades.tomfoolery.bought==true) {temp = E("1e80")}
   }
+  if (n==24) {
+    if (upgrades.I.bought==true) {temp = E("1.1")}
+  }
+  if (n==25) {
+    if (upgrades.II.bought==true) {temp = E("1.1")}
+  }
+  if (n==26) {
+    if (upgrades.IIV.bought==true) {temp = E("1.1")}
+  }
+  if (n==27) {
+    if (upgrades.IV.bought==true) {temp = E("1.1")}
+  }
+  if (n==28) {
+    if (upgrades.V.bought==true) {temp = E("1.1")}
+  }
+  if (n==29) {
+    if (upgrades.VI.bought==true) {temp = E("1.1")}
+  }
+  if (n==30) {
+    if (upgrades.VII.bought==true) {temp = E("1.1")}
+  }
+  if (n==31) {
+    if (upgrades.IIX.bought==true) {temp = E("1.1")}
+  }
+  if (n==32) {
+    if (upgrades.IX.bought==true) {temp = E("1.1")}
+  }
   
   
   
@@ -341,6 +368,16 @@ let upgrades = {
   sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
   gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
   tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
+  I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x10 to help you get back on your feet."},
+  II: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  VII: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  V: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  VII: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  IIX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  IX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
 };
 
 
@@ -384,6 +421,15 @@ function loadfunctions() {
   if (isNaN(upgrades.sloth.bought)) {upgrades.sloth.bought = false}
   if (isNaN(upgrades.gazeehlingjoombahmbalaeze.bought)) {upgrades.gazeehlingjoombahmbalaeze.bought = false}
   if (isNaN(upgrades.tomfoolery.bought)) {upgrades.tomfoolery.bought = false}
+  if (isNaN(upgrades.I.bought)) {upgrades.I.bought = false}
+  if (isNaN(upgrades.II.bought)) {upgrades.II.bought = false}
+  if (isNaN(upgrades.IIV.bought)) {upgrades.IIV.bought = false}
+  if (isNaN(upgrades.IV.bought)) {upgrades.IV.bought = false}
+  if (isNaN(upgrades.V.bought)) {upgrades.V.bought = false}
+  if (isNaN(upgrades.VI.bought)) {upgrades.VI.bought = false}
+  if (isNaN(upgrades.VII.bought)) {upgrades.VII.bought = false}
+  if (isNaN(upgrades.IIX.bought)) {upgrades.IIX.bought = false}
+  if (isNaN(upgrades.IX.bought)) {upgrades.IX.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -1344,15 +1390,15 @@ document.getElementById('2Button').addEventListener('mouseover', function(event)
 });
 
 document.getElementById('3Button').addEventListener('mouseover', function(event) {
-    if (upgrades.VII.bought == true) {UpgradeName.innerHTML = "VII (Bought)"} else {UpgradeName.innerHTML = "VII (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.VII.display + " Currently: +" + String(fix(upgradeeffects(26)));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VII.cost) + " Flares"
+    if (upgrades.IIV.bought == true) {UpgradeName.innerHTML = "IIV (Bought)"} else {UpgradeName.innerHTML = "IIV (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.IIV.display + " Currently: +" + String(fix(upgradeeffects(26)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IIV.cost) + " Flares"
 });
 
 document.getElementById('4Button').addEventListener('mouseover', function(event) {
-    if (upgrades.IV.bought == true) {UpgradeName.innerHTML = "VI (Bought)"} else {UpgradeName.innerHTML = "VI (Unbought)"}
+    if (upgrades.IV.bought == true) {UpgradeName.innerHTML = "IV (Bought)"} else {UpgradeName.innerHTML = "IV (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.IV.display + " Currently: +" + String(fix(upgradeeffects(27)));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VI.cost) + " Flares"
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IV.cost) + " Flares"
 });
 
 document.getElementById('5Button').addEventListener('mouseover', function(event) {
@@ -1361,10 +1407,28 @@ document.getElementById('5Button').addEventListener('mouseover', function(event)
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.V.cost) + " Flares"
 });
 
-document.getElementById('5Button').addEventListener('mouseover', function(event) {
-    if (upgrades.VI.bought == true) {UpgradeName.innerHTML = "V (Bought)"} else {UpgradeName.innerHTML = "V (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.V.display + " Currently: +" + String(fix(upgradeeffects(28)));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.V.cost) + " Flares"
+document.getElementById('6Button').addEventListener('mouseover', function(event) {
+    if (upgrades.VI.bought == true) {UpgradeName.innerHTML = "VI (Bought)"} else {UpgradeName.innerHTML = "VI (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.VI.display + " Currently: +" + String(fix(upgradeeffects(29)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VI.cost) + " Flares"
+});
+
+document.getElementById('7Button').addEventListener('mouseover', function(event) {
+    if (upgrades.VII.bought == true) {UpgradeName.innerHTML = "VII (Bought)"} else {UpgradeName.innerHTML = "VII (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.VII.display + " Currently: +" + String(fix(upgradeeffects(30)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VII.cost) + " Flares"
+});
+
+document.getElementById('8Button').addEventListener('mouseover', function(event) {
+    if (upgrades.IIX.bought == true) {UpgradeName.innerHTML = "IIX (Bought)"} else {UpgradeName.innerHTML = "IIX (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.IIX.display + " Currently: +" + String(fix(upgradeeffects(31)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IIX.cost) + " Flares"
+});
+
+document.getElementById('9Button').addEventListener('mouseover', function(event) {
+    if (upgrades.IX.bought == true) {UpgradeName.innerHTML = "IX (Bought)"} else {UpgradeName.innerHTML = "IX (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.IX.display + " Currently: +" + String(fix(upgradeeffects(32)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IX.cost) + " Flares"
 });
 
 function buy(n) {
@@ -1450,6 +1514,15 @@ function displayupgrades() {
   displayupgrade("Sloth","sloth")
   displayupgrade("GazeehlingJoombahmbalaeze","gazeehlingjoombahmbalaeze")
   displayupgrade("Tomfoolery","tomfoolery")
+  displayupgrade("1","I")
+  displayupgrade("2","II")
+  displayupgrade("3","IIV")
+  displayupgrade("4","IV")
+  displayupgrade("5","V")
+  displayupgrade("6","VI")
+  displayupgrade("7","VII")
+  displayupgrade("8","IIX")
+  displayupgrade("9","IX")
   
 }
 
@@ -1551,6 +1624,15 @@ function save() {
     sloth: upgrades.sloth.bought,
     gazeehlingjoombahmbalaeze: upgrades.gazeehlingjoombahmbalaeze.bought,
     tomfoolery: upgrades.tomfoolery.bought,
+    I: upgrades.I.bought,
+    II: upgrades.II.bought,
+    IIV: upgrades.IIV.bought,
+    IV: upgrades.IV.bought,
+    V: upgrades.V.bought,
+    VI: upgrades.VI.bought,
+    VII: upgrades.VII.bought,
+    IIX: upgrades.IIX.bought,
+    IX: upgrades.IX.bought,
     generalunlocks: generalunlocks,
     beststardust: player.beststardust,
     bestmatter: player.bestmatter,
@@ -1649,6 +1731,15 @@ function load() {
     upgrades.sloth.bought = loadedData.sloth
     upgrades.gazeehlingjoombahmbalaeze.bought = loadedData.gazeehlingjoombahmbalaeze
     upgrades.tomfoolery.bought = loadedData.tomfoolery
+    upgrades.I.bought = loadedData.I
+    upgrades.II.bought = loadedData.II
+    upgrades.IIV.bought = loadedData.IIV
+    upgrades.IV.bought = loadedData.IV
+    upgrades.V.bought = loadedData.V
+    upgrades.VI.bought = loadedData.VI
+    upgrades.VII.bought = loadedData.VII
+    upgrades.IIX.bought = loadedData.IIX
+    upgrades.IX.bought = loadedData.IX
     
     Labors.TL1 = loadedData.tl1
     Labors.TL2 = loadedData.tl2
@@ -2048,6 +2139,42 @@ document.getElementById('GazeehlingJoombahmbalaezeButton').addEventListener('cli
 
 document.getElementById('TomfooleryButton').addEventListener('click', function() {
   buy("tomfoolery")
+});
+
+document.getElementById('1Button').addEventListener('click', function() {
+  buy("I")
+});
+
+document.getElementById('2Button').addEventListener('click', function() {
+  buy("II")
+});
+
+document.getElementById('3Button').addEventListener('click', function() {
+  buy("IIV")
+});
+
+document.getElementById('4Button').addEventListener('click', function() {
+  buy("IV")
+});
+
+document.getElementById('5Button').addEventListener('click', function() {
+  buy("V")
+});
+
+document.getElementById('6Button').addEventListener('click', function() {
+  buy("VI")
+});
+
+document.getElementById('7Button').addEventListener('click', function() {
+  buy("VII")
+});
+
+document.getElementById('8Button').addEventListener('click', function() {
+  buy("IIX")
+});
+
+document.getElementById('9Button').addEventListener('click', function() {
+  buy("IX")
 });
 
 document.getElementById('Labor1').addEventListener('click', function() {
