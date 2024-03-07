@@ -374,6 +374,7 @@ function loadfunctions() {
   if (isNaN(player.flares)) {player.flares = E("0")}
   if (isNaN(player.bestflares)) {player.bestflares = E("0")}
   if (isNaN(player.besttributesthisflare)) {player.besttributesthisflare = E("0")}
+  if (isNaN(player.bestflaresthist4)) {player.bestflaresthist4 = E("0")}
   if (isNaN(upgrades.scramboblingcromjombles.bought)) {upgrades.scramboblingcromjombles.bought = false}
   if (isNaN(upgrades.scaler1.bought)) {upgrades.scaler1.bought = false}
   if (isNaN(upgrades.scaler2.bought)) {upgrades.scaler2.bought = false}
@@ -547,6 +548,7 @@ function doreset(tier) {
     upgrades.tomfoolery.bought = false
     player.matterrank = E("0")
     player.besttributesthisflare = E("0")
+    player.bestflaresthist4 = E("0")
     
   }
   
@@ -636,6 +638,7 @@ let player = {
   flares: E("0"),
   bestflares: E("0"),
   besttributesthisflare: E("0"),
+  bestflaresthist4: E("0"),
   cinders: E("0"),
 };
 let Labors = {
@@ -705,6 +708,7 @@ function checkbest() {
   if (player.tributes.gte(player.besttributes)) {player.besttributes = player.tributes}
   if (player.tributes.gte(player.besttributesthisflare)) {player.besttributesthisflare = player.tributes}
   if (player.flares.gte(player.bestflares)) {player.bestflares = player.flares}
+  if (player.flares.gte(player.bestflaresthist4)) {player.bestflaresthist4 = player.flares}
 }
 
 function particleeffects(a,b) {
@@ -1446,6 +1450,12 @@ function milestones() {
   if (player.tributemilestone >= 14) {document.getElementById("tributemilestone14").className = "milestonebreached numberwhite"} else {document.getElementById("tributemilestone14").className = "milestone numberwhite"}
   if (player.tributemilestone >= 15) {document.getElementById("tributemilestone15").className = "milestonebreached numberwhite"} else {document.getElementById("tributemilestone15").className = "milestone numberwhite"}
   
+  //flare milestones
+  
+  //group 1 below
+  if (player.flaremilestone < 1) {if (player.bestflaresthist4.gte(E("1000"))) {player.flaremilestone = 1}}
+  //group 1 classname stuff below
+  if (player.flaremilestone >= 1) {document.getElementById("flaremilestone1").className = "weakmilestonebreached fire numberwhite"} else {document.getElementById("flaremilestone1").className = "weakmilestone fire numberwhite"}
 }
 
 function displayupgrade(idname,upname) {
@@ -1507,6 +1517,7 @@ function save() {
     bestmatter: player.bestmatter,
     besttributes: player.besttributes,
     besttributesthisflare: player.besttributesthisflare,
+    bestflaresthist4: player.bestflaresthist4,
     labor: player.labor,
     cinders: player.cinders,
     matterrank: player.matterrank,
@@ -1555,6 +1566,7 @@ function load() {
     player.cinders = E(String(loadedData.player.cinders));
     player.matterrank = E(String(loadedData.player.matterrank));
     player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
+    player.bestflaresthist4 = E(String(loadedData.player.bestflaresthist4));
     
     if (!isNaN(loadedData.achievements)) {}
     achievements = loadedData.achievements
@@ -2164,11 +2176,6 @@ document.onkeydown = function (e) {
     player.flares = player.flares.add(getflaresonreset())
     doreset(3)
     }
-  }
-  if (e.key == "r") {
-    player.tributemilestone = 0
-    player.besttributesthisflare = E("0")
-    milestones()
   }
 };
 updateText();
