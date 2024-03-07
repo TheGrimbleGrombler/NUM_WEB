@@ -288,18 +288,18 @@ function getbuyablecost(n,m) {
 function getcindereffects() {
   cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
   cindereffects[2] = player.cinders.sub(E("0.00000001")).clampMin(E("0")).mul(E("1e9")).pow(E("0.0625")).mul(E("20"))
-  cindereffects[3] = E("1")
-  cindereffects[4] = E("1")
-  cindereffects[5] = E("1")
+  cindereffects[3] = player.cinders.mul(E("1e10")).pow(E("0.5")).clampMin(E("1"))
+  cindereffects[4] = player.cinders.mul(E("1e8")).pow(E("0.001")).clampMin(E("1"))
+  cindereffects[5] = E("0.999").pow(player.cinders.mul(E("1e10")).clampMin(E("0")))
   cindereffects[6] = E("1")
   cindereffects[7] = E("1")
   cindereffects[8] = E("1")
   
   document.getElementById("CinderEffect1Display").innerHTML = "Stardust gain ^" + String(fix2(cindereffects[1],5))
   document.getElementById("CinderEffect2Display").innerHTML = "Weight effect +" + String(fix2(cindereffects[2],5))
-  document.getElementById("CinderEffect3Display").innerHTML = "TBD: " + String(fix2(cindereffects[3],5))
-  document.getElementById("CinderEffect4Display").innerHTML = "TBD: " + String(fix2(cindereffects[4],5))
-  document.getElementById("CinderEffect5Display").innerHTML = "TBD: " + String(fix2(cindereffects[5],5))
+  document.getElementById("CinderEffect3Display").innerHTML = "Matter gain x" + String(fix2(cindereffects[3],5))
+  document.getElementById("CinderEffect4Display").innerHTML = "Infusion effect base +" + String(fix2(cindereffects[4],5))
+  document.getElementById("CinderEffect5Display").innerHTML = "Buyable cost scaling ^ " + String(fix2(cindereffects[5],5))
   document.getElementById("CinderEffect6Display").innerHTML = "TBD: " + String(fix2(cindereffects[6],5))
   document.getElementById("CinderEffect7Display").innerHTML = "TBD: " + String(fix2(cindereffects[7],5))
   document.getElementById("CinderEffect8Display").innerHTML = "TBD: " + String(fix2(cindereffects[8],5))
@@ -831,7 +831,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(player.matterrank)
+  document.getElementById("DEBUG").innerHTML = String(player.bestflares)
   
 }
 
@@ -863,7 +863,7 @@ function updateText() {
   gaincinders()
   timedunlocks()
   Automation()
-  //Debug()
+  Debug()
   displayupgrades()
   checkbest()
   milestones()
@@ -1603,6 +1603,8 @@ function save() {
     fieldmanuals: buyables.field.manuals,
     weightamount: buyables.weight.amount,
     weightmanuals: buyables.weight.manuals,
+    catalystamount: buyables.catalyst.amount,
+    catalystmanuals: buyables.catalyst.manuals,
     buyables: buyables,
     upgrades: upgrades,
     incrementallist: upgrades.incrementallist.bought,
@@ -1956,7 +1958,15 @@ function timedunlocks() {
     document.getElementById("tributemilestonegroup2").style = "display: block"
   }
   if (player.tributemilestone >= 15) {
-    generalunlocks["flare"] = true
+    generalunlocks["flares"] = true
+    unlockedsubtabs.FlareMain = true
+    unlockedsubtabs.Cinders = true
+    unlockedsubtabs.FlareMilestones = true
+    unlockedsubtabs.FlareLabors = true
+    document.getElementById("flaredisplaycontainer").style = "display: block;"
+  }
+  if (player.bestflares >= 1) {
+    generalunlocks["flares"] = true
     unlockedsubtabs.FlareMain = true
     unlockedsubtabs.Cinders = true
     unlockedsubtabs.FlareMilestones = true
