@@ -256,6 +256,20 @@ function getbuyablecost(n,m) {
   return temp
 }
 
+function getcindereffects() {
+  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.125"))
+}
+
+let cindereffects = [
+  E("1"),
+  E("1"),
+  E("1"),
+  E("1"),
+  E("1"),
+  E("1"),
+  E("1"),
+  E("1")
+]
 
 let achievements = [
 
