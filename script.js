@@ -117,7 +117,9 @@ function upgradeeffects(n) {
     if (upgrades.theunknown.bought==true) {temp = "Endless growth begins."} else {temp = "Gravity with no matter?"}
   }
   if (n==6) {
-    if (upgrades.Infusion.bought==true) {temp = E("3").pow(player.matter.add(E("1")).log10().div(2).floor()).mul(E("3"))}
+    var base = E("3")
+    if (player.bestflares.gte(E("1000"))) {base = base.add(cindereffects[4])}
+    if (upgrades.Infusion.bought==true) {temp = base.pow(player.matter.add(E("1")).log10().div(2).floor()).mul(base)}
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
     if (player.labor == 12) {temp = E("1").div(temp)}
@@ -288,9 +290,9 @@ function getbuyablecost(n,m) {
 function getcindereffects() {
   cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
   cindereffects[2] = player.cinders.sub(E("0.00000001")).clampMin(E("0")).mul(E("1e9")).pow(E("0.0625")).mul(E("20"))
-  cindereffects[3] = player.cinders.mul(E("1e10")).pow(E("0.5")).clampMin(E("1"))
+  cindereffects[3] = player.cinders.mul(E("1e10")).pow(E("0.25")).clampMin(E("1"))
   cindereffects[4] = player.cinders.mul(E("1e8")).pow(E("0.001")).clampMin(E("1"))
-  cindereffects[5] = E("0.999").pow(player.cinders.mul(E("1e10")).clampMin(E("0")))
+  cindereffects[5] = E("0.9999").pow(player.cinders.mul(E("1e10")).pow(E("0.5")).clampMin(E("1e-100"))).clampMax(E("1"))
   cindereffects[6] = E("1")
   cindereffects[7] = E("1")
   cindereffects[8] = E("1")
@@ -932,6 +934,7 @@ function getmatteronreset() {
   if (player.labor == 7) {gain = E("0")}
   if (player.labor == 9) {gain = E("0")}
   if (player.labor == 12) {gain = E("0")}
+  if (player.bestflares.gte(E("1000"))) {gain = gain.mul(cindereffects[3])}
   
   return gain.floor()
   
