@@ -71,6 +71,7 @@ function buyableeffects(n) {
   if (n==4) {
     temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15)).add(upgradeeffects(21))
     if (player.flaremilestone >= 1) {temp = temp.add(E("5"))}
+    if (cindereffects[2].gte(E("1"))) {temp = temp.add(cindereffects[2])}
     if (Labors.TL5 == true) {temp = temp.add(E("25"))}
     if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
     if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
@@ -286,7 +287,7 @@ function getbuyablecost(n,m) {
 
 function getcindereffects() {
   cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
-  cindereffects[2] = player.cinders.sub(E("0.00001")).clampMin(E("0")).mul(E("1e5")).pow(E("0.0625"))
+  cindereffects[2] = player.cinders.sub(E("0.00000001")).clampMin(E("0")).mul(E("1e9")).pow(E("0.0625")).mul(E("20"))
   cindereffects[3] = E("1")
   cindereffects[4] = E("1")
   cindereffects[5] = E("1")
