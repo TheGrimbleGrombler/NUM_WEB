@@ -1331,6 +1331,42 @@ document.getElementById('TomfooleryButton').addEventListener('mouseover', functi
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.tomfoolery.cost) + " Tributes"
 });
 
+document.getElementById('1Button').addEventListener('mouseover', function(event) {
+    if (upgrades.I.bought == true) {UpgradeName.innerHTML = "I (Bought)"} else {UpgradeName.innerHTML = "I (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.I.display + " Currently: +" + String(fix(upgradeeffects(24)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.I.cost) + " Flares"
+});
+
+document.getElementById('2Button').addEventListener('mouseover', function(event) {
+    if (upgrades.II.bought == true) {UpgradeName.innerHTML = "II (Bought)"} else {UpgradeName.innerHTML = "II (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.II.display + " Currently: +" + String(fix(upgradeeffects(25)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.II.cost) + " Flares"
+});
+
+document.getElementById('3Button').addEventListener('mouseover', function(event) {
+    if (upgrades.VII.bought == true) {UpgradeName.innerHTML = "VII (Bought)"} else {UpgradeName.innerHTML = "VII (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.VII.display + " Currently: +" + String(fix(upgradeeffects(26)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VII.cost) + " Flares"
+});
+
+document.getElementById('4Button').addEventListener('mouseover', function(event) {
+    if (upgrades.IV.bought == true) {UpgradeName.innerHTML = "VI (Bought)"} else {UpgradeName.innerHTML = "VI (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.IV.display + " Currently: +" + String(fix(upgradeeffects(27)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.VI.cost) + " Flares"
+});
+
+document.getElementById('5Button').addEventListener('mouseover', function(event) {
+    if (upgrades.V.bought == true) {UpgradeName.innerHTML = "V (Bought)"} else {UpgradeName.innerHTML = "V (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.V.display + " Currently: +" + String(fix(upgradeeffects(28)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.V.cost) + " Flares"
+});
+
+document.getElementById('5Button').addEventListener('mouseover', function(event) {
+    if (upgrades.VI.bought == true) {UpgradeName.innerHTML = "V (Bought)"} else {UpgradeName.innerHTML = "V (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.V.display + " Currently: +" + String(fix(upgradeeffects(28)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.V.cost) + " Flares"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -1378,6 +1414,9 @@ function displayunlocksonload() {
   };
   if (generalunlocks.flares == true) {
     document.getElementById("flaredisplaycontainer").style = "display: block;"
+  };
+  if (generalunlocks.flareupgrades1 == true) {
+    document.getElementById("flareupgrades1").style = "display: block;"
   };
   
   
@@ -1826,6 +1865,10 @@ function timedunlocks() {
     unlockedsubtabs.FlareMilestones = true
     unlockedsubtabs.FlareLabors = true
     document.getElementById("flaredisplaycontainer").style = "display: block;"
+  }
+  if (player.flaremilestone >= 1) {
+    generalunlocks["flareupgrades1"] = true
+    document.getElementById("flareupgrades1").style = "display: block;"
   }
   
   
