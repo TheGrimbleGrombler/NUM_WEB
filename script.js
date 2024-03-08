@@ -1208,6 +1208,9 @@ document.getElementById('tab6button').addEventListener('click', function() {
 document.getElementById('tab7button').addEventListener('click', function() {
   openTab("tab7")
 });
+document.getElementById('settingsbutton').addEventListener('click', function() {
+  openTab("tab9")
+});
 document.getElementById('subtab1button').addEventListener('click', function() {
   openSubtab("subtab1")
 });
