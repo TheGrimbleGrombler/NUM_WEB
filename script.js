@@ -14,7 +14,7 @@ var timespeed = E("1")
 
 function fix(n,e) {
   
-  return n.toFixed(2)
+  return n.toFixed(5)
   
 }
 
@@ -935,6 +935,8 @@ function getmatteronreset() {
   if (player.labor == 9) {gain = E("0")}
   if (player.labor == 12) {gain = E("0")}
   if (player.bestflares.gte(E("1000"))) {gain = gain.mul(cindereffects[3])}
+  
+  if (gain.gte(E("1e10000"))) {gain = E("1e10000").mul(gain.div(E("1e10000")).pow(E("0.25")))}
   
   return gain.floor()
   
