@@ -205,7 +205,7 @@ function upgradeeffects(n) {
     if (upgrades.I.bought==true) {temp = E("100")}
   }
   if (n==25) {
-    if (upgrades.II.bought==true) {temp = E("1.1")}
+    if (upgrades.II.bought==true) {temp = E("1")}
   }
   if (n==26) {
     if (upgrades.IIV.bought==true) {temp = E("1.1")}
@@ -227,6 +227,12 @@ function upgradeeffects(n) {
   }
   if (n==32) {
     if (upgrades.IX.bought==true) {temp = E("1.1")}
+  }
+  if (n==33) {
+    if (upgrades.starryeyes.bought==true) {temp = E("1")}
+  }
+  if (n==34) {
+    if (upgrades.power.bought==true) {temp = E("2")}
   }
   
   
@@ -382,6 +388,9 @@ let upgrades = {
   IIX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   IX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  
+  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
+  power: {cost: E("1e99999999"), costtype: "stardust", bought: false, display: "Incrementallist effect is tetrated: "},
 };
 
 
@@ -434,6 +443,8 @@ function loadfunctions() {
   if (isNaN(upgrades.VII.bought)) {upgrades.VII.bought = false}
   if (isNaN(upgrades.IIX.bought)) {upgrades.IIX.bought = false}
   if (isNaN(upgrades.IX.bought)) {upgrades.IX.bought = false}
+  if (isNaN(upgrades.starryeyes.bought)) {upgrades.starryeyes.bought = false}
+  if (isNaN(upgrades.power.bought)) {upgrades.power.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -1445,6 +1456,12 @@ document.getElementById('9Button').addEventListener('mouseover', function(event)
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.IX.cost) + " Flares"
 });
 
+document.getElementById('StarryEyesButton').addEventListener('mouseover', function(event) {
+    if (upgrades.IX.bought == true) {UpgradeName.innerHTML = "IX (Bought)"} else {UpgradeName.innerHTML = "IX (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.IX.display + " Currently: +" + String(fix(upgradeeffects(32)));
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IX.cost) + " Flares"
+});
+
 function buy(n) {
   var c = upgrades[n].cost
   var ct = upgrades[n].costtype
@@ -1465,6 +1482,10 @@ function buy(n) {
        if (n == "dlc") {
          generalunlocks["dlc"] = true; 
          document.getElementById("stardustupgrades2").style = "display: block;"
+       };
+       if (n == "II") {
+         generalunlocks["stardustupgrades3"] = true; 
+         document.getElementById("stardustupgrades3").style = "display: block;"
        };
        
     }
@@ -1495,6 +1516,9 @@ function displayunlocksonload() {
   };
   if (generalunlocks.flareupgrades1 == true) {
     document.getElementById("flareupgrades1").style = "display: block;"
+  };
+  if (generalunlocks.stardustupgrades3 == true) {
+    document.getElementById("stardustupgrades3").style = "display: block;"
   };
   
   
@@ -1984,6 +2008,12 @@ function timedunlocks() {
   if (player.flaremilestone >= 1) {
     generalunlocks["flareupgrades1"] = true
     document.getElementById("flareupgrades1").style = "display: block;"
+  }
+  if (generalunlocks.stardustupgrades3 !== true) {
+    if (upgrades.II.bought == true) {
+      generalunlocks["stardustupgrades3"] = true
+      document.getElementById("stardustupgrades3").style = "display: block;"
+    }
   }
   
   
