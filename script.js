@@ -833,7 +833,7 @@ function particleeffects(a,b) {
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(player.bestflares)
+  document.getElementById("DEBUG").innerHTML = String(upgradeeffects(1).tetrate(E("2")))
   
 }
 
