@@ -918,7 +918,7 @@ function updateText() {
   CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Generating cinders: " + String(fix2(buyableeffects(5),10)) + "/s";
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
-  if (Labors.TL12 == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (player.bestflares.gte(E("1000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 }
 
 function getmatteronreset() {
@@ -2367,6 +2367,11 @@ document.onkeydown = function (e) {
     }
   }
 };
+
+document.getElementById('CloseBannerButton').addEventListener('click', function() {
+  document.getElementById('CloseBannerButton').style.display = "none"
+  document.getElementById('Banner').style.display = "none"
+});
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
 setInterval(updateText, 16);
