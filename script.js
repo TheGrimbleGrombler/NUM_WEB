@@ -379,7 +379,7 @@ let upgrades = {
   gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
   tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
   I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x100 to help you get back on your feet."},
-  II: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  II: {cost: E("1600"), costtype: "flares", bought: false, display: "Unlock a few new upgrades here and there. (Not fully implemented)"},
   IIV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   IV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   V: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
@@ -389,8 +389,8 @@ let upgrades = {
   IX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   
-  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
-  power: {cost: E("1e99999999"), costtype: "stardust", bought: false, display: "Incrementallist effect is tetrated: "},
+  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers! (Not fully implemented)"},
+  power: {cost: E("1e99999999"), costtype: "stardust", bought: false, display: "(Not fully implemented) Incrementallist effect is tetrated: "},
 };
 
 
@@ -1278,7 +1278,7 @@ document.getElementById('FeedbackButton').addEventListener('mouseover', function
 
 document.getElementById('UnknownButton').addEventListener('mouseover', function(event) {
     if (upgrades.theunknown.bought == true) {UpgradeName.innerHTML = "The Unknown (Bought)"} else {UpgradeName.innerHTML = "The Unknown (Unbought)"}
-    UpgradeEffect.innerHTML = String(fix(upgradeeffects(5)));
+    UpgradeEffect.innerHTML = String(upgradeeffects(5));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.theunknown.cost) + " Stardust"
 });
 
@@ -1410,7 +1410,7 @@ document.getElementById('1Button').addEventListener('mouseover', function(event)
 
 document.getElementById('2Button').addEventListener('mouseover', function(event) {
     if (upgrades.II.bought == true) {UpgradeName.innerHTML = "II (Bought)"} else {UpgradeName.innerHTML = "II (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.II.display + " Currently: +" + String(fix(upgradeeffects(25)));
+    UpgradeEffect.innerHTML = upgrades.II.display;
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.II.cost) + " Flares"
 });
 
@@ -1457,9 +1457,15 @@ document.getElementById('9Button').addEventListener('mouseover', function(event)
 });
 
 document.getElementById('StarryEyesButton').addEventListener('mouseover', function(event) {
-    if (upgrades.IX.bought == true) {UpgradeName.innerHTML = "IX (Bought)"} else {UpgradeName.innerHTML = "IX (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.IX.display + " Currently: +" + String(fix(upgradeeffects(32)));
-    UpgradeCost.innerHTML = "Cost: " + String(upgrades.IX.cost) + " Flares"
+    if (upgrades.starryeyes.bought == true) {UpgradeName.innerHTML = "Starry Eyes (Bought)"} else {UpgradeName.innerHTML = "Starry Eyes (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.starryeyes.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.starryeyes.cost) + " Stardust"
+});
+
+document.getElementById('PowerButton').addEventListener('mouseover', function(event) {
+    if (upgrades.power.bought == true) {UpgradeName.innerHTML = "Power (Bought)"} else {UpgradeName.innerHTML = "Power (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.power.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.power.cost) + " Stardust"
 });
 
 function buy(n) {
