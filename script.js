@@ -181,10 +181,10 @@ function upgradeeffects(n) {
     if (player.labor == 12) {temp = E("1").div(temp)}
   }
   if (n==17) {
-    if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10())}
+    if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10()).clampMin(E("1e-170"))}
   }
   if (n==18) {
-    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10())}
+    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10()).clampMin(E("1e-60"))}
   }
   if (n==19) {
     if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
