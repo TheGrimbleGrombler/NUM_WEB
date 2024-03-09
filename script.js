@@ -1820,7 +1820,8 @@ function load() {
   }
 }
 
-function getrankreq(modifier) {
+import { getrankreq } from './jswip/ranks.js'
+function getrankreq2(modifier) {
   var temp = E("1e5")
   
   var scalingmult = E("1")
@@ -2449,7 +2450,11 @@ document.getElementById('CloseBannerButton').addEventListener('click', function(
   document.getElementById('CloseBannerButton').style.display = "none"
   document.getElementById('Banner').style.display = "none"
 });
-export function E()
+export { E };
+export { player };
+export { Labors };
+export { generalunlocks };
+export { fix };
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
 setInterval(updateText, 16);
