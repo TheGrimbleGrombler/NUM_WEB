@@ -208,3 +208,54 @@ export function upgradeeffects(n) {
   
   return temp
 }
+
+export function displayupgrades() {
+  
+  displayupgrade("Incrementallist","incrementallist")
+  displayupgrade("Gravity","Gravity")
+  displayupgrade("MEM","MEM")
+  displayupgrade("Feedback","feedbackloop")
+  displayupgrade("Unknown","theunknown")
+  displayupgrade("Infusion","Infusion")
+  displayupgrade("SacredTexts","SacredTexts")
+  displayupgrade("GravitonCatalyst","gravitoncatalyst")
+  displayupgrade("Automatons","automatons")
+  displayupgrade("Discovery","discovery")
+  displayupgrade("DLC","dlc")
+  displayupgrade("Spacetime","spacetimerupture")
+  displayupgrade("MinMax","minmax")
+  displayupgrade("Heavier","heavier")
+  displayupgrade("Crushing","crushing")
+  displayupgrade("Replication","replication")
+  displayupgrade("ScramboblingCromjombles","scramboblingcromjombles")
+  displayupgrade("Scaler1","scaler1")
+  displayupgrade("Scaler2","scaler2")
+  displayupgrade("TaxEvasion","taxevasion")
+  displayupgrade("RealityShift","realityshift")
+  displayupgrade("Mechanized","mechanized")
+  displayupgrade("Sloth","sloth")
+  displayupgrade("GazeehlingJoombahmbalaeze","gazeehlingjoombahmbalaeze")
+  displayupgrade("Tomfoolery","tomfoolery")
+  displayupgrade("1","I")
+  displayupgrade("2","II")
+  displayupgrade("3","IIV")
+  displayupgrade("4","IV")
+  displayupgrade("5","V")
+  displayupgrade("6","VI")
+  displayupgrade("7","VII")
+  displayupgrade("8","IIX")
+  displayupgrade("9","IX")
+  
+}
+
+export function displayupgrade(idname,upname) {
+  if (upgrades[upname].bought == true) {
+    document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
+  } else {
+    if (player[upgrades[upname].costtype].gte(upgrades[upname].cost)) {
+      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
+    } else {
+      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 0, 0, 1)";
+    }
+  }
+}
