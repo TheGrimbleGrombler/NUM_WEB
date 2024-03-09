@@ -878,7 +878,7 @@ function updateText() {
   gaincinders()
   timedunlocks()
   Automation()
-  Debug()
+  //Debug()
   displayupgrades()
   checkbest()
   milestones()
@@ -1838,6 +1838,16 @@ function getrankreq(modifier) {
   return temp
 }
 
+function gettierreq(modifier) {
+  var temp = E("101")
+  
+  var scalingmult = E("1")
+  
+  temp = temp.mul(E("3").pow(player.mattertier))
+  
+  return temp
+}
+
 function getrankeffect() {
   var temp = E("1")
   var modifier = E("1e2")
@@ -1847,10 +1857,23 @@ function getrankeffect() {
   return temp
 }
 
+function gettiereffect() {
+  var temp = E("0.02")
+  var modifier = E("1")
+  
+  temp = modifier.add(temp.mul(player.mattertier))
+  
+  return temp
+}
+
 function renderrank() {
   if (generalunlocks["MatterRanks"] == true) {
     var mr = document.getElementById("MatterRank1")
-    mr.innerHTML = "Matter Rank: <br>" + String(fix(player.matterrank)) + "<br> Cost in matter (+1): <br>" + String(fix(getrankreq(E("0")))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
+    mr.innerHTML = "Matter Rank: <br>" + String(fix(player.matterrank)) + "<br> Cost in matter: <br>" + String(fix(getrankreq(E("0")))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
+  }
+  if (generalunlocks["MatterTiers"] == true) {
+    var mr = document.getElementById("MatterTier1")
+    mr.innerHTML = "Matter Tier: <br>" + String(fix(player.mattertier)) + "<br> Required Matterranks: <br>" + String(fix(gettierreq(E("0")))) + "<br> Stardust effect: <br>^" + String(fix(gettiereffect()))
   }
 }
 
@@ -1859,6 +1882,14 @@ function buymatterrank(modifier) {
   if (player.matter.gte(cost)) {
     player.matter = player.matter.sub(cost)
     player.matterrank = player.matterrank.add(E("1").add(modifier))
+  }
+}
+
+function buymattertier(modifier) {
+  var cost = gettierreq(modifier)
+  if (player.matterrank.gte(cost)) {
+    player.matterrank = E("0")
+    player.mattertier = player.mattertier.add(E("1").add(modifier))
   }
 }
 
@@ -1896,6 +1927,7 @@ function purge(x) {
   if (x==6) {
     buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
     player.matterrank = E("0")
+    player.mattertier = E("0")
   }
   if (x==7) {
     upgrades.Infusion.bought = false
@@ -2417,6 +2449,7 @@ document.getElementById('CloseBannerButton').addEventListener('click', function(
   document.getElementById('CloseBannerButton').style.display = "none"
   document.getElementById('Banner').style.display = "none"
 });
+export function E()
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
 setInterval(updateText, 16);
