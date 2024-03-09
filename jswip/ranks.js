@@ -1,7 +1,7 @@
 const Decimal = window.Decimal;
 import { E } from './script.js'
 import { player } from './script.js'
-import { Labors } from './script.js'
+import { Labors } from './labors.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
 

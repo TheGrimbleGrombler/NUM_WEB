@@ -1,6 +1,7 @@
+const Decimal = window.Decimal;
 import { E } from './script.js'
 import { player } from './script.js'
-import { Labors } from './script.js'
+import { Labors } from './labors.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
 import { upgrades } from './upgrades.js'
@@ -9,7 +10,7 @@ import { buyables } from './buyables.js'
 import { buyableeffects } from './buyables.js'
 import { doreset } from './doreset.js'
 
-function purge(x) {
+export function purge(x) {
   if (x==1) {
     player.stardust = E("1");
     player.gravitational_waves = E("0");

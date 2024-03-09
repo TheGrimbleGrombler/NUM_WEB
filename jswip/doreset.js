@@ -3,8 +3,9 @@ import { player } from './script.js'
 import { Labors } from './script.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
+import { upgrades } from './upgrades.js'
 
-function doreset(tier) {
+export function doreset(tier) {
   
   if (tier >= 1) {
     

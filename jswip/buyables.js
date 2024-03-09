@@ -5,6 +5,8 @@ import { Labors } from './script.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
 import { upgrades } from './upgrades.js'
+import { upgradeeffects } from './upgrades.js'
+import { timespeed } from './script.js'
 
 
 let buyables = {
@@ -20,7 +22,9 @@ let buyables = {
 
 };
 
-function buyableeffects(n) {
+export { buyables }
+
+export function buyableeffects(n) {
   var temp = E("1")
   if (n==1) {
     temp = buyables.syphon.amount
@@ -84,4 +88,70 @@ function buyableeffects(n) {
   
   
   return temp
+}
+
+export function getbuyablecost(n,m) {
+  var temp = E("1e99999")
+  var modifier = E("0")
+  if (m > 0) {
+    modifier = m
+  }
+  
+  if (n == 1) {
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
+    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
+  }
+  if (n == 2) {
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
+    temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
+  }
+  if (n == 3) {
+    var scaling = E("1")
+    scaling = scaling.mul(upgradeeffects(17))
+    scaling = scaling.mul(upgradeeffects(18))
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
+    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
+  }
+  if (n == 4) {
+    var scaling = E("1")
+    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
+    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
+    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
+    temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
+  }
+  if (n == 5) {
+    var scaling = E("1")
+    temp = E("100").add(E("100").mul(buyables.catalyst.manuals.add(modifier)).pow(buyables.catalyst.manuals.add(E("10")).log10()))
+  }
+  return temp
+}
+
+export function gainbuyables(){
+  
+  var temp = buyableeffects(3)
+  temp = temp.div(E("60"))
+  temp = temp.mul(timespeed)
+  buyables.collector.amount = buyables.collector.amount.add(temp)
+  var temp = buyableeffects(2)
+  temp = temp.mul(timespeed)
+  temp = temp.div(E("60"))
+  buyables.syphon.amount = buyables.syphon.amount.add(temp)
+  
+  
 }

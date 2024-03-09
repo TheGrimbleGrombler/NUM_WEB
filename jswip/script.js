@@ -91,7 +91,8 @@ function buyableeffects2(n) {
   return temp
 }
 
-function upgradeeffects(n) {
+import { upgradeeffects } from './upgrades.js'
+function upgradeeffects2(n) {
   var temp = E("1")
   if (n==1) {
     if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.add(E("10")).log10()}
@@ -295,7 +296,10 @@ function getbuyablecost2(n,m) {
   return temp
 }
 
-function getcindereffects() {
+import { getcindereffects } from './cinders.js'
+import { cindereffects } from './cinders.js'
+
+function getcindereffects2() {
   cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
   cindereffects[2] = player.cinders.sub(E("0.00000001")).clampMin(E("0")).mul(E("1e9")).pow(E("0.0625")).mul(E("20"))
   cindereffects[3] = player.cinders.mul(E("1e10")).pow(E("0.25")).clampMin(E("1"))
@@ -314,8 +318,7 @@ function getcindereffects() {
   document.getElementById("CinderEffect7Display").innerHTML = "TBD: " + String(fix2(cindereffects[7],5))
   document.getElementById("CinderEffect8Display").innerHTML = "TBD: " + String(fix2(cindereffects[8],5))
 }
-
-let cindereffects = [
+let cindereffects2 = [
   E("1"),
   E("1"),
   E("1"),
@@ -709,7 +712,9 @@ let player = {
   bestflaresthist4: E("0"),
   cinders: E("0"),
 };
-let Labors = {
+
+import { Labors } from './labors.js'
+let Labors2 = {
   TL1: false,
   TL2: false,
   TL3: false,
@@ -987,7 +992,9 @@ function getflaresonreset() {
 function playtimeupdate() {player.playtime = player.playtime + 1; renderachievements()}
 
 setInterval(playtimeupdate, 1000);
-function gainbuyables(){
+
+import { gainbuyables } from './buyables.js'
+function gainbuyables2(){
   
   var temp = buyableeffects(3)
   temp = temp.div(E("60"))
@@ -2467,6 +2474,8 @@ export { player };
 export { Labors };
 export { generalunlocks };
 export { fix };
+export { fix2 };
+export { timespeed };
 updateText();
 if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
 setInterval(updateText, 16);
