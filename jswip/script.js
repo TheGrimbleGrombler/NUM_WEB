@@ -662,7 +662,7 @@ import { purge } from './purge.js'
 import { renderachievements } from './achievements.js'
 import { milestones } from './milestones.js'
 
-import { timedunlocks }
+import { timedunlocks } from './achievements.js'
 
 import { calibratelabors } from './labors.js'
 import { togglelabor } from './labors.js'
