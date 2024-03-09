@@ -13,6 +13,37 @@ import { buyableeffects } from './buyables.js'
 import { doreset } from './doreset.js'
 import { cindereffects } from './cinders.js'
 import { achievements } from './achievements.js'
+import { unlockedsubtabs } from './script.js'
+
+export function buy(n) {
+  var c = upgrades[n].cost
+  var ct = upgrades[n].costtype
+  var b = upgrades[n].bought
+  if (b == false) {
+     if (player[ct].gte(c)) {
+      
+      if (player.labor == 9) {return}
+      player[ct] = player[ct].sub(c)
+      upgrades[n].bought = true
+       
+       if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
+       if (n == "theunknown") {
+         generalunlocks["theunknown"] = true; 
+         document.getElementById("matterdisplaycontainer").style = "display: block;"
+         document.getElementById("matterupgrades1").style = "display: block;"
+       };
+       if (n == "dlc") {
+         generalunlocks["dlc"] = true; 
+         document.getElementById("stardustupgrades2").style = "display: block;"
+       };
+       if (n == "II") {
+         generalunlocks["stardustupgrades3"] = true; 
+         document.getElementById("stardustupgrades3").style = "display: block;"
+       };
+       
+    }
+  }
+}
 
 export let upgrades = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, display: "Syphons boost their own effect"},

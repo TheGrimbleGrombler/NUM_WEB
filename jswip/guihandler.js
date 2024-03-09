@@ -23,6 +23,7 @@ import { buyableeffects } from './buyables.js'
 import { fix } from './script.js'
 import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
+import { particleeffects } from './gravity.js'
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -691,6 +692,7 @@ document.getElementById('PowerButton').addEventListener('mouseover', function(ev
 });
 
   
+export function guitick() {
   
   StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,2)) + " Stardust";
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
@@ -735,3 +737,4 @@ document.getElementById('PowerButton').addEventListener('mouseover', function(ev
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
   if (player.bestflares.gte(E("1000")) == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+}

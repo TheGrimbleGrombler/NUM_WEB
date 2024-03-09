@@ -246,75 +246,8 @@ function checkbest() {
   if (player.flares.gte(player.bestflaresthist4)) {player.bestflaresthist4 = player.flares}
 }
 
-function particleeffects(a,b) {
-  var temp = E("0")
-  if (a==1) {
-    
-    if (b==1) {
-      temp = player.a_particles.log10().add(E("1"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==2) {
-      temp = player.a_particles.log10().pow(E("0.5")).add(E("1"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==3) {
-      temp = E("1")
-    }
-    
-    
-  }  
-  if (a==2) {
-    
-    if (b==1) {
-      temp = player.b_particles.log10().add(E("1"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==2) {
-      temp = player.b_particles.log2().add(E("1"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==3) {
-      temp = E("1")
-    }
-    
-    
-  }  
-  if (a==3) {
-    
-    if (b==1) {
-      temp = player.c_particles.log10().add(E("1"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==2) {
-      temp = player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5"))
-      if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
-      if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
-      if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
-    }
-    if (b==3) {
-      temp = E("1")
-    }
-    
-    
-  }  
-  
-  
-  
-  
-  
-  return temp
-}
+
+import { particleeffects } from './gravity.js'
 
 function Debug() {
   
@@ -341,6 +274,7 @@ function vfx() {
   
 }
 
+import { guitick } from './guihandler.js'
 function updateText() {
   var timespeed = gettimespeed()
   gainbuyables()
@@ -359,6 +293,8 @@ function updateText() {
   vfx()
   getcindereffects()
   tick = tick + 1
+  
+  guitick()
 }
 
 function getmatteronreset() {
@@ -424,30 +360,8 @@ function gainbuyables2(){
   
   
 }
-function gaingravitationalwaves(){
-  
-  var gain = E("0")
-  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  
-  if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,2))}
-  
-  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
-  
-  if (Labors.TL1 == true) {gain = gain.pow(upgradeeffects(8))}
-  
-  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
-  
-  gain = gain.mul(timespeed)
-  
-  gain = gain.mul(GlobalResourceMultiplier)
-  
-  if (player.labor == 1) {gain = E("0")}
-  if (player.labor == 5) {gain = E("0")}
-  //if (player.labor == 8) {gain = E("0")}
-  
-  player.gravitational_waves = player.gravitational_waves.add(gain.div(E("60")))
-  
-}
+
+import { gaingravitationalwaves } from './gravity.js'
 function gaincinders(){
   var gain = E("0")
   
@@ -504,81 +418,10 @@ function gainstardust(){
   var gain = gain.div(E("60"))
   player.stardust = player.stardust.add(gain)
 }
-function gainparticles(){
-  var gain = E("0")
-  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.c_particles.gte(E("1"))) {gain = gain.mul(particleeffects(3,1))}
-  if (upgrades.Gravity.bought == false) {gain = E("0")}
-  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
-  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
-  if (player.labor == 4) {gain = E("0")}
-  if (player.labor == 5) {gain = E("0")}
-  if (player.labor == 8) {gain = gain.pow(E("0.03125"))}
-  if (player.labor == 12) {gain = gain.pow(E("0.03125"))}
-  gain = gain.mul(timespeed)
-  if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
-  player.a_particles = player.a_particles.add(gain.div(E("60")))
-  
-  var gain = E("0")
-  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,1))}
-  if (upgrades.Gravity.bought == false) {gain = E("0")}
-  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
-  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
-  if (player.labor == 4) {gain = E("0")}
-  if (player.labor == 5) {gain = E("0")}
-  gain = gain.mul(timespeed)
-  if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
-  player.b_particles = player.b_particles.add(gain.div(E("60")))
-  
-  var gain = E("0")
-  if (upgrades.Gravity.bought == true) {gain = gain.add(1)}
-  if (player.b_particles.gte(E("1"))) {gain = gain.mul(particleeffects(2,1))}
-  if (upgrades.Gravity.bought == false) {gain = E("0")}
-  if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
-  if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
-  if (player.labor == 4) {gain = E("0")}
-  if (player.labor == 5) {gain = E("0")}
-  if (player.labor == 8) {gain = gain.pow(E("0.0000001"))}
-  if (player.labor == 12) {gain = gain.pow(E("0.0000001"))}
-  gain = gain.mul(timespeed)
-  if (player.labor == 1) {gain = E("0")}
-  if (Labors.TL11 == true) {gain = gain.add(E("1e100"))}
-  player.c_particles = player.c_particles.add(gain.div(E("60")))
-  
-}
 
-function buy(n) {
-  var c = upgrades[n].cost
-  var ct = upgrades[n].costtype
-  var b = upgrades[n].bought
-  if (b == false) {
-     if (player[ct].gte(c)) {
-      
-      if (player.labor == 9) {return}
-      player[ct] = player[ct].sub(c)
-      upgrades[n].bought = true
-       
-       if (n == "Gravity") { if (unlockedsubtabs["Gravity"]) {} else {unlockedsubtabs["Gravity"] = true} };
-       if (n == "theunknown") {
-         generalunlocks["theunknown"] = true; 
-         document.getElementById("matterdisplaycontainer").style = "display: block;"
-         document.getElementById("matterupgrades1").style = "display: block;"
-       };
-       if (n == "dlc") {
-         generalunlocks["dlc"] = true; 
-         document.getElementById("stardustupgrades2").style = "display: block;"
-       };
-       if (n == "II") {
-         generalunlocks["stardustupgrades3"] = true; 
-         document.getElementById("stardustupgrades3").style = "display: block;"
-       };
-       
-    }
-  }
-}
+import { gainparticles } from './gravity.js'
+
+import { buy } from './upgrades.js'
 
 function displayunlocksonload() {
   if (generalunlocks.theunknown == true) {
@@ -819,118 +662,7 @@ import { purge } from './purge.js'
 import { renderachievements } from './achievements.js'
 import { milestones } from './milestones.js'
 
-function timedunlocks() {
-  
-  if (!generalunlocks.matterupgrades2 == true) {
-    if (player.stardust.gte(E("1e35"))) {
-      generalunlocks["matterupgrades2"] = true
-      document.getElementById("matterupgrades2").style = "display: block;"
-    }
-  }
-  if (generalunlocks.dlc !== true) {
-    if (upgrades.dlc.bought == true) {
-      generalunlocks["dlc"] = true
-      document.getElementById("stardustupgrades2").style = "display: block;"
-    }
-  }
-  if (player.stardust.gte(E("1e80"))) {
-    generalunlocks["tribute"] = true
-    unlockedsubtabs.TributeMain = true
-    document.getElementById("tributedisplaycontainer").style = "display: block;"
-    //document.getElementById("tributesubtab1").style = "display: block;"
-  }
-  if (player.besttributes.gte(E("1"))) {
-    generalunlocks["tributeupgrades1"] = true
-    document.getElementById("tributeupgrades1").style = "display: block;"
-  }
-  if (player.besttributes.gte(E("25"))) {
-    generalunlocks["Labors1"] = true
-    unlockedsubtabs.TributeLabors = true
-    document.getElementById("tributesubtab2button").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
-  }
-  if (player.tributemilestone >= 9) {
-    generalunlocks["LaborGroup2"] = true
-    document.getElementById("LaborGroup2").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
-  }
-  if (Labors.TL8 == true) {
-    generalunlocks["MatterRanks"] = true
-    document.getElementById("MatterRank").style = "display: block"
-  }
-  if (Labors.TL12 == true) {
-    generalunlocks["tributemilestonegroup2"] = true
-    document.getElementById("tributemilestonegroup2").style = "display: block"
-  }
-  if (player.tributemilestone >= 15) {
-    generalunlocks["flares"] = true
-    unlockedsubtabs.FlareMain = true
-    unlockedsubtabs.Cinders = true
-    unlockedsubtabs.FlareMilestones = true
-    unlockedsubtabs.FlareLabors = true
-    document.getElementById("flaredisplaycontainer").style = "display: block;"
-  }
-  if (player.bestflares >= 1) {
-    generalunlocks["flares"] = true
-    unlockedsubtabs.FlareMain = true
-    unlockedsubtabs.Cinders = true
-    unlockedsubtabs.FlareMilestones = true
-    unlockedsubtabs.FlareLabors = true
-    document.getElementById("flaredisplaycontainer").style = "display: block;"
-  }
-  if (player.flaremilestone >= 1) {
-    generalunlocks["flareupgrades1"] = true
-    document.getElementById("flareupgrades1").style = "display: block;"
-  }
-  if (generalunlocks.stardustupgrades3 !== true) {
-    if (upgrades.II.bought == true) {
-      generalunlocks["stardustupgrades3"] = true
-      document.getElementById("stardustupgrades3").style = "display: block;"
-    }
-  }
-  
-  
-  
-  
-  
-  
-  //achievements
-  if (achievements.indexOf('BlackHole') == -1) {
-    if (player.gravitational_waves.gte(E("1.8e308"))) {
-      achievements.push("BlackHole");
-    }
-  }
-  if (achievements.indexOf('TheNextStep') == -1) {
-    if (player.besttributes.gte(E("1"))) {
-      achievements.push("TheNextStep");
-    }
-  }
-  if (achievements.indexOf('Overload') == -1) {
-    if (buyables.syphon.manuals.gte(E("10000"))) {
-      achievements.push("Overload");
-    }
-  }
-  if (achievements.indexOf('Empowered') == -1) {
-    if (buyables.syphon.manuals.gte(E("100000"))) {
-      achievements.push("Empowered");
-    }
-  }
-  if (achievements.indexOf('Boundless') == -1) {
-    if (player.beststardust.gte(E("1.8e308"))) {
-      achievements.push("Boundless");
-    }
-  }
-  if (achievements.indexOf('Ranked') == -1) {
-    if (player.matterrank.gte(E("1"))) {
-      achievements.push("Ranked");
-    }
-  }
-  if (achievements.indexOf('Past') == -1) {
-    if (player.bestflares.gte(E("1"))) {
-      achievements.push("Past");
-    }
-  }
-  
-  
-}
+import { timedunlocks }
 
 import { calibratelabors } from './labors.js'
 import { togglelabor } from './labors.js'
@@ -976,6 +708,8 @@ export { automation2 };
 export { getmatteronreset };
 export { gettributesonreset };
 export { getflaresonreset };
+export { GlobalResourceMultiplier };
+export { unlockedsubtabs };
 
 document.getElementById('CloseBannerButton').addEventListener('click', function() {
   document.getElementById('CloseBannerButton').style.display = "none"
