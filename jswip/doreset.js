@@ -1,9 +1,16 @@
-import { E } from './script.js'
+const Decimal = window.Decimal;
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './script.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
 import { upgrades } from './upgrades.js'
+import { buyables } from './buyables.js'
+import { achievements } from './achievements.js'
 
 export function doreset(tier) {
   

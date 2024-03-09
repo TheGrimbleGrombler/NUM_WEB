@@ -1,5 +1,9 @@
 const Decimal = window.Decimal;
-import { E } from './script.js'
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './labors.js'
 import { fix } from './script.js'
@@ -9,6 +13,7 @@ import { upgradeeffects } from './upgrades.js'
 import { buyables } from './buyables.js'
 import { buyableeffects } from './buyables.js'
 import { doreset } from './doreset.js'
+import { achievements } from './achievements.js'
 
 export function purge(x) {
   if (x==1) {

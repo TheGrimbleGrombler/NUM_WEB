@@ -1,9 +1,14 @@
 const Decimal = window.Decimal;
-import { E } from './script.js'
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './labors.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
+import { achievements } from './achievements.js'
 
 export function getrankreq(modifier) {
   var temp = E("1e5")

@@ -24,314 +24,18 @@ function fix2(n,e) {
   
 }
 
+import { buyables } from './buyables.js'
 import { buyableeffects } from './buyables.js'
-function buyableeffects2(n) {
-  var temp = E("1")
-  if (n==1) {
-    temp = buyables.syphon.amount
-    if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
-    if (upgrades.SacredTexts.bought == true) {
-      if (player.labor != 7) {
-        if (player.labor != 9) {
-          if (player.labor != 12) {
-            temp = temp.mul(buyables.syphon.manuals)
-          }
-        }
-      }
-    }
-    temp = temp.mul(timespeed)
-  }
-  if (n==2) {
-    temp = buyables.collector.amount
-    if (upgrades.Gravity.bought == true) {temp = temp.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}
-    if (upgrades.SacredTexts.bought == true) {
-      if (player.labor != 7) {
-        if (player.labor != 9) {
-          if (player.labor != 12) {
-            temp = temp.mul(buyables.collector.manuals)
-          }
-        }
-      }
-    }
-    temp = temp.mul(timespeed)
-  }
-  if (n==3) {
-    temp = buyables.field.amount
-    if (upgrades.MEM.bought == true) {temp = temp.pow(upgradeeffects(3))}
-    if (upgrades.SacredTexts.bought == true) {
-      if (player.labor != 7) {
-        if (player.labor != 9) {
-          if (player.labor != 12) {
-            temp = temp.mul(buyables.field.manuals)
-          }
-        }
-      }
-    }
-    temp = temp.mul(timespeed)
-  }
-  if (n==4) {
-    temp = E("10").add(upgradeeffects(14)).add(upgradeeffects(15)).add(upgradeeffects(21))
-    if (player.flaremilestone >= 1) {temp = temp.add(E("5"))}
-    if (cindereffects[2].gte(E("1"))) {temp = temp.add(cindereffects[2])}
-    if (Labors.TL5 == true) {temp = temp.add(E("25"))}
-    if (buyables.weight.amount.gte(E("31"))) {temp = temp.pow(E("30")).mul(E("3").pow(buyables.weight.amount.sub(E("30"))))} else {temp = temp.pow(buyables.weight.amount)}
-    if (upgrades.scramboblingcromjombles.bought == true) {temp = temp.pow(upgradeeffects(19))}
-    if (player.labor == 5) {temp = E("1")}
-    if (player.labor == 7) {temp = E("1")}
-    if (player.labor == 9) {temp = E("1")}
-    if (Labors.TL7 == true) {temp = temp.pow(E("1.05"))}
-    if (player.labor == 12) {temp = E("1")}
-  }
-  if (n==5) {
-    temp = E("3").pow(buyables.catalyst.amount).sub(E("1")).div(E("1e10"))
-  }
-  
-  
-  
-  return temp
-}
 
+import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
-function upgradeeffects2(n) {
-  var temp = E("1")
-  if (n==1) {
-    if (upgrades.incrementallist.bought==true) {temp = buyables.syphon.amount.add(E("10")).log10()}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==2) {
-    if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}
-  }
-  if (n==3) {
-    if (upgrades.MEM.bought==true) {temp = E("2")}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==4) {
-    if (upgrades.feedbackloop.bought==true) {temp = E("1.1").pow(buyables.syphon.manuals.add(buyables.collector.manuals).add(buyables.field.manuals))}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==5) {
-    if (upgrades.theunknown.bought==true) {temp = "Endless growth begins."} else {temp = "Gravity with no matter?"}
-  }
-  if (n==6) {
-    var base = E("3")
-    if (player.bestflares.gte(E("1000"))) {base = base.add(cindereffects[4])}
-    if (upgrades.Infusion.bought==true) {temp = base.pow(player.matter.add(E("1")).log10().div(2).floor()).mul(base)}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==7) {
-    temp = E("0")
-  }
-  if (n==8) {
-    if (upgrades.gravitoncatalyst.bought==true) {temp = player.matter.add(E("10")).log10().pow(E("0.75"))}
-    if (temp.gte(E("10"))) {temp = E("10").add(temp.sub(E("9")).pow(E("0.2")).sub(E("1")))}
-    if (player.labor == 7) {temp = E("1")}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (Labors.TL9 == true) {temp = temp.mul(E("2"))}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==9) {
-    temp = E("0")
-  }
-  if (n==10) {
-    if (upgrades.discovery.bought==true) {temp = E("3")}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==11) {
-    temp = E("0")
-  }
-  if (n==12) {
-    if (upgrades.spacetimerupture.bought==true) {temp = E("100")}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==13) {
-    if (upgrades.minmax.bought==true) {temp = E("1.05").pow(player.stardust.add(E("10")).log10())}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==14) {
-    temp = E("0")
-    if (upgrades.heavier.bought==true) {temp = E("2")}
-    if (player.labor == 9) {temp = E("0")}
-    if (player.labor == 10) {temp = E("1").sub(temp)}
-    if (player.labor == 12) {temp = E("1").sub(temp)}
-  }
-  if (n==15) {
-    temp = E("0")
-    if (upgrades.crushing.bought==true) {temp = E("2")}
-    if (player.labor == 9) {temp = E("0")}
-    if (player.labor == 10) {temp = E("1").sub(temp)}
-    if (player.labor == 12) {temp = E("1").sub(temp)}
-  }
-  if (n==16) {
-    if (upgrades.replication.bought==true) {temp = E("0.3")}
-    if (player.labor == 9) {temp = E("1")}
-    if (player.labor == 10) {temp = E("1").div(temp)}
-    if (player.labor == 12) {temp = E("1").div(temp)}
-  }
-  if (n==17) {
-    if (upgrades.scaler1.bought==true) {temp = E("0.97").pow(player.beststardust.add(E("10")).log10()).clampMin(E("1e-170"))}
-  }
-  if (n==18) {
-    if (upgrades.scaler2.bought==true) {temp = E("0.99").pow(player.beststardust.add(E("10")).log10()).clampMin(E("1e-60"))}
-  }
-  if (n==19) {
-    if (upgrades.scramboblingcromjombles.bought==true) {temp = E("1.1")}
-  }
-  if (n==20) {
-    if (upgrades.taxevasion.bought==true) {temp = E("1.13")}
-  }
-  if (n==21) {
-    if (upgrades.realityshift.bought==true) {temp = E("10")} else {temp = E("0")}
-  }
-  if (n==22) {
-    if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = E("2")}
-  }
-  if (n==23) {
-    if (upgrades.tomfoolery.bought==true) {temp = E("1e80")}
-  }
-  if (n==24) {
-    if (upgrades.I.bought==true) {temp = E("100")}
-  }
-  if (n==25) {
-    if (upgrades.II.bought==true) {temp = E("1")}
-  }
-  if (n==26) {
-    if (upgrades.IIV.bought==true) {temp = E("1.1")}
-  }
-  if (n==27) {
-    if (upgrades.IV.bought==true) {temp = E("1.1")}
-  }
-  if (n==28) {
-    if (upgrades.V.bought==true) {temp = E("1.1")}
-  }
-  if (n==29) {
-    if (upgrades.VI.bought==true) {temp = E("1.1")}
-  }
-  if (n==30) {
-    if (upgrades.VII.bought==true) {temp = E("1.1")}
-  }
-  if (n==31) {
-    if (upgrades.IIX.bought==true) {temp = E("1.1")}
-  }
-  if (n==32) {
-    if (upgrades.IX.bought==true) {temp = E("1.1")}
-  }
-  if (n==33) {
-    if (upgrades.starryeyes.bought==true) {temp = E("1")}
-  }
-  if (n==34) {
-    if (upgrades.power.bought==true) {temp = E("2")}
-  }
-  
-  
-  
-  return temp
-}
-
 
 import { getbuyablecost } from './buyables.js'
-function getbuyablecost2(n,m) {
-  var temp = E("1e99999")
-  var modifier = E("0")
-  if (m > 0) {
-    modifier = m
-  }
-  
-  if (n == 1) {
-    var scaling = E("1")
-    scaling = scaling.mul(upgradeeffects(17))
-    scaling = scaling.mul(upgradeeffects(18))
-    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
-    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
-    temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
-  }
-  if (n == 2) {
-    var scaling = E("1")
-    scaling = scaling.mul(upgradeeffects(17))
-    scaling = scaling.mul(upgradeeffects(18))
-    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
-    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
-    temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
-  }
-  if (n == 3) {
-    var scaling = E("1")
-    scaling = scaling.mul(upgradeeffects(17))
-    scaling = scaling.mul(upgradeeffects(18))
-    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
-    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
-    temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
-  }
-  if (n == 4) {
-    var scaling = E("1")
-    if (player.labor == 2) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 5) {scaling = scaling.mul(E("1000"))}
-    if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
-    if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
-    temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
-  }
-  if (n == 5) {
-    var scaling = E("1")
-    temp = E("100").add(E("100").mul(buyables.catalyst.manuals.add(modifier)).pow(buyables.catalyst.manuals.add(E("10")).log10()))
-  }
-  return temp
-}
 
 import { getcindereffects } from './cinders.js'
 import { cindereffects } from './cinders.js'
 
-function getcindereffects2() {
-  cindereffects[1] = player.cinders.mul(E("1e10")).pow(E("0.005")).clampMin(E("1"))
-  cindereffects[2] = player.cinders.sub(E("0.00000001")).clampMin(E("0")).mul(E("1e9")).pow(E("0.0625")).mul(E("20"))
-  cindereffects[3] = player.cinders.mul(E("1e10")).pow(E("0.25")).clampMin(E("1"))
-  cindereffects[4] = player.cinders.mul(E("1e8")).pow(E("0.001")).clampMin(E("1"))
-  cindereffects[5] = E("0.9999").pow(player.cinders.mul(E("1e10")).pow(E("0.5")).clampMin(E("1e-100"))).clampMax(E("1"))
-  cindereffects[6] = E("1")
-  cindereffects[7] = E("1")
-  cindereffects[8] = E("1")
-  
-  document.getElementById("CinderEffect1Display").innerHTML = "Stardust gain ^" + String(fix2(cindereffects[1],5))
-  document.getElementById("CinderEffect2Display").innerHTML = "Weight effect +" + String(fix2(cindereffects[2],5))
-  document.getElementById("CinderEffect3Display").innerHTML = "Matter gain x" + String(fix2(cindereffects[3],5))
-  document.getElementById("CinderEffect4Display").innerHTML = "Infusion effect base +" + String(fix2(cindereffects[4],5))
-  document.getElementById("CinderEffect5Display").innerHTML = "Buyable cost scaling ^ " + String(fix2(cindereffects[5],5))
-  document.getElementById("CinderEffect6Display").innerHTML = "TBD: " + String(fix2(cindereffects[6],5))
-  document.getElementById("CinderEffect7Display").innerHTML = "TBD: " + String(fix2(cindereffects[7],5))
-  document.getElementById("CinderEffect8Display").innerHTML = "TBD: " + String(fix2(cindereffects[8],5))
-}
-let cindereffects2 = [
-  E("1"),
-  E("1"),
-  E("1"),
-  E("1"),
-  E("1"),
-  E("1"),
-  E("1"),
-  E("1")
-]
-
-let achievements = [
-
-]
+import { achievements } from './achievements.js'
 
 function gettimespeed() {
   var temp = E("1")
@@ -340,66 +44,6 @@ function gettimespeed() {
   
   return temp
 }
-
-import { buyables } from './buyables.js'
-let buyables2 = {
-    syphon: {amount: E("0"), manuals: E("0")},
-    collector: {amount: E("0"), manuals: E("0")},
-    field: {amount: E("0"), manuals: E("0")},
-  
-    weight: {amount: E("0"), manuals: E("0")},
-  
-  
-  
-    catalyst: {amount: E("0"), manuals: E("0")}
-
-};
-import { upgrades } from './upgrades.js'
-let upgrades2 = {
-  incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, display: "Syphons boost their own effect"},
-  Gravity: {cost: E("200000"), costtype: "stardust", bought: false, display: "Unlock Gravity"},
-  MEM: {cost: E("2e6"), costtype: "stardust", bought: false, display: "Squares the effect of fields, Currently: ^"},
-  feedbackloop: {cost: E("5e7"), costtype: "stardust", bought: false, display: "Stardust gain x1.1 for each manual buyable level, Currently: x"},
-  theunknown: {cost: E("5e8"), costtype: "stardust", bought: false, display: "Unlock Mass"},
-  
-  spacetimerupture: {cost: E("5e68"), costtype: "stardust", bought: false, display: "100x Stardust gain, Currently: x"},
-  minmax: {cost: E("2e71"), costtype: "stardust", bought: false, display: "+5% Stardust gain for each OoM of Stardust, Currently: x"},
-  heavier: {cost: E("1e73"), costtype: "stardust", bought: false, display: "+2 to the unsoftcapped weight effect, Currently: +"},
-  crushing: {cost: E("1e76"), costtype: "stardust", bought: false, display: "ANOTHER +2 to the unsoftcapped weight effect, Currently: +"},
-  replication: {cost: E("2e78"), costtype: "stardust", bought: false, display: "Field cost scales 70% slower, Currently: x"},
-  
-  Infusion: {cost: E("3"), costtype: "matter", bought: false, display: "Stardust gain x3, then another x3 for every other OoM of matter, Currently: x"},
-  SacredTexts: {cost: E("10"), costtype: "matter", bought: false, display: "Manual levels of all stardust buyables multiply the effect of their buyable, Dynamic."},
-  gravitoncatalyst: {cost: E("10000"), costtype: "matter", bought: false, display: "Gravitational wave gain is EXPONENTIATED based on matter with a generous formula (As well as particles A-C which also have their effects boosted significantly), Currently: ^"},
-  discovery: {cost: E("1e30"), costtype: "matter", bought: false, display: "Triples the speed of time"},
-  dlc: {cost: E("1e31"), costtype: "matter", bought: false, display: "Unlocks more stardust upgrades"},
-  
-  scramboblingcromjombles: {cost: E("1"), costtype: "tributes", bought: false, display: "Weight effect ^1.1, Buy Scaler 1 first."},
-  taxevasion: {cost: E("3"), costtype: "tributes", bought: false, display: "Stardust gain ^1.13."},
-  realityshift: {cost: E("8"), costtype: "tributes", bought: false, display: "Unsoftcapped weight effect +10!!!"},
-  
-  automatons: {cost: E("100000000000000"), costtype: "matter", bought: false, display: "Automates stardust buyables"},
-  scaler1: {cost: E("1"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust."},
-  mechanized: {cost: E("21"), costtype: "tributes", bought: false, display: "Automates matter buyables."},
-  scaler2: {cost: E("25"), costtype: "tributes", bought: false, display: "Stardust buyable cost scaling reduced based on best stardust again."},
-  sloth: {cost: E("50"), costtype: "tributes", bought: false, display: "Automate matter upgrades."},
-  gazeehlingjoombahmbalaeze: {cost: E("250"), costtype: "tributes", bought: false, display: "Particle effects ^2."},
-  tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
-  I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x100 to help you get back on your feet."},
-  II: {cost: E("1600"), costtype: "flares", bought: false, display: "Unlock a few new upgrades here and there. (Not fully implemented)"},
-  IIV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  IV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  V: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  VII: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  IIX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  IX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
-  
-  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers! (Not fully implemented)"},
-  power: {cost: E("1e99999999"), costtype: "stardust", bought: false, display: "(Not fully implemented) Incrementallist effect is tetrated: "},
-};
-
 
 function loadfunctions() {
   
@@ -548,140 +192,13 @@ function Automation() {
   
 }
 
-
-
 import { doreset } from './doreset.js'
-function doreset2(tier) {
-  
-  if (tier >= 1) {
-    
-    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0")}
-    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0")}
-    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0")}
-
-    upgrades.incrementallist.bought = false
-    upgrades.Gravity.bought = false
-    upgrades.MEM.bought = false
-    upgrades.feedbackloop.bought = false
-    upgrades.theunknown.bought = false
-    upgrades.spacetimerupture.bought = false
-    upgrades.minmax.bought = false
-    upgrades.heavier.bought = false
-    upgrades.crushing.bought = false
-    upgrades.replication.bought = false
-    
-    player.stardust = E("1")
-    player.gravitational_waves = E("0")
-    player.a_particles = E("1")
-    player.b_particles = E("1")
-    player.c_particles = E("1")
-    
-  }
-  
-  if (tier >= 2) {
-    
-    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0")}
-    
-    upgrades.Infusion.bought = false
-    upgrades.SacredTexts.bought = false
-    upgrades.gravitoncatalyst.bought = false
-    upgrades.discovery.bought = false
-    upgrades.dlc.bought = false
-    
-    player.matter = E("0")
-    
-  }
-  
-  if (tier >= 3) {
-    
-    player.tributes = E("0")
-    player.tributemilestone = 0
-    Labors.TL1 = false
-    Labors.TL2 = false
-    Labors.TL3 = false
-    Labors.TL4 = false
-    Labors.TL5 = false
-    Labors.TL6 = false
-    Labors.TL7 = false
-    Labors.TL8 = false
-    Labors.TL9 = false
-    Labors.TL10= false
-    Labors.TL11= false
-    Labors.TL12= false
-    upgrades.scaler1.bought = false
-    upgrades.scramboblingcromjombles.bought = false
-    upgrades.taxevasion.bought = false
-    upgrades.realityshift.bought = false
-    upgrades.scaler2.bought = false
-    upgrades.sloth.bought = false
-    upgrades.gazeehlingjoombahmbalaeze.bought = false
-    upgrades.tomfoolery.bought = false
-    player.matterrank = E("0")
-    player.besttributesthisflare = E("0")
-    player.bestflaresthist4 = E("0")
-    
-  }
-  
-  
-  //retainments
-  if (tier <= 2) {
-    if (player.tributemilestone >= 1) {
-      buyables.syphon.amount = E("1")
-      buyables.syphon.manuals = E("1")
-      buyables.collector.amount = E("1")
-      buyables.collector.manuals = E("1")
-      buyables.field.amount = E("1")
-      buyables.field.manuals = E("1")
-    }
-    if (player.tributemilestone >= 2) {
-      upgrades.incrementallist.bought = true
-    }
-    if (player.tributemilestone >= 4) {
-      upgrades.SacredTexts.bought = true
-    }
-    if (player.tributemilestone >= 6) {
-      upgrades.Gravity.bought = true
-      upgrades.gravitoncatalyst.bought = true
-    }
-    if (player.tributemilestone >= 7) {
-      buyables.weight.amount = E("1")
-      buyables.weight.manuals = E("1")
-    }
-    
-    if (player.labor == 5) {
-      buyables.weight.amount = E("0")
-      buyables.weight.manuals = E("0")
-      upgrades.SacredTexts.bought = false
-      upgrades.gravitoncatalyst.bought = false
-    }
-  }
-  
-  if (tier == 2) {
-    if (player.labor > 0) {
-      
-      if (Labors["TL" + String(player.labor)] == true) {
-        if (achievements.indexOf('Why') == -1) {
-          achievements.push("Why");
-        }
-      }
-      
-      Labors["TL" + String(player.labor)] = true
-      player.labor = 0
-    }
-  }
-  
-}
-
 
 let generalunlocks = {
   stardust: true,
   
   
 }
-
-
-
-
 
 let unlockedsubtabs = {
   "Main": true,
@@ -714,26 +231,6 @@ let player = {
 };
 
 import { Labors } from './labors.js'
-let Labors2 = {
-  TL1: false,
-  TL2: false,
-  TL3: false,
-  TL4: false,
-  TL5: false,
-  TL6: false,
-  TL7: false,
-  TL8: false,
-  TL9: false,
-  TL10: false,
-  TL11: false,
-  TL12: false,
-  FL1: false,
-  FL2: false,
-  FL3: false,
-  FL4: false,
-  FL5: false,
-  FL6: false,
-}
 
 var x = new Decimal().fromString("1e100")
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -1833,182 +1330,15 @@ function load() {
 }
 
 import { getrankreq } from './ranks.js'
-function getrankreq2(modifier) {
-  var temp = E("1e5")
-  
-  var scalingmult = E("1")
-  
-  if (Labors.TL10 == true) {scalingmult = scalingmult.mul(E("0.8"))}
-  if (player.tributemilestone >= 11) {scalingmult = scalingmult.mul(E("0.7"))}
-  if (player.tributemilestone >= 14) {scalingmult = scalingmult.mul(E("0.5"))}
-  
-  temp = temp.mul(E("1e100").pow(player.matterrank.add(modifier).mul(scalingmult)))
-  
-  if (player.matterrank.gte(E("100"))) {temp = temp.pow(player.matterrank.div(E("100").mul(scalingmult)))}
-  if (player.matterrank.gte(E("1000"))) {temp = temp.pow(player.matterrank.div(E("1000").mul(scalingmult)))}
-  if (player.matterrank.gte(E("1000000"))) {temp = temp.pow(player.matterrank.div(E("1000000").mul(scalingmult)))}
-  
-  return temp
-}
-
 import { gettierreq } from './ranks.js'
-function gettierreq2(modifier) {
-  var temp = E("101")
-  
-  var scalingmult = E("1")
-  
-  temp = temp.mul(E("3").pow(player.mattertier))
-  
-  return temp
-}
-
 import { getrankeffect } from './ranks.js'
-function getrankeffect2() {
-  var temp = E("1")
-  var modifier = E("1e2")
-  
-  temp = temp.mul(modifier.pow(player.matterrank))
-  
-  return temp
-}
-
 import { gettiereffect } from './ranks.js'
-function gettiereffect2() {
-  var temp = E("0.02")
-  var modifier = E("1")
-  
-  temp = modifier.add(temp.mul(player.mattertier))
-  
-  return temp
-}
-
 import { renderrank } from './ranks.js'
-function renderrank2() {
-  if (generalunlocks["MatterRanks"] == true) {
-    var mr = document.getElementById("MatterRank1")
-    mr.innerHTML = "Matter Rank: <br>" + String(fix(player.matterrank)) + "<br> Cost in matter: <br>" + String(fix(getrankreq(E("0")))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
-  }
-  if (generalunlocks["MatterTiers"] == true) {
-    var mr = document.getElementById("MatterTier1")
-    mr.innerHTML = "Matter Tier: <br>" + String(fix(player.mattertier)) + "<br> Required Matterranks: <br>" + String(fix(gettierreq(E("0")))) + "<br> Stardust effect: <br>^" + String(fix(gettiereffect()))
-  }
-}
-
 import { buymatterrank } from './ranks.js'
-function buymatterrank2(modifier) {
-  var cost = getrankreq(modifier)
-  if (player.matter.gte(cost)) {
-    player.matter = player.matter.sub(cost)
-    player.matterrank = player.matterrank.add(E("1").add(modifier))
-  }
-}
-
 import { buymattertier } from './ranks.js'
-function buymattertier2(modifier) {
-  var cost = gettierreq(modifier)
-  if (player.matterrank.gte(cost)) {
-    player.matterrank = E("0")
-    player.mattertier = player.mattertier.add(E("1").add(modifier))
-  }
-}
 
 import { purge } from './purge.js'
-function purge2(x) {
-  if (x==1) {
-    player.stardust = E("1");
-    player.gravitational_waves = E("0");
-    player.a_particles = E("1");
-    player.b_particles = E("1");
-    player.c_particles = E("1");
-  }
-  if (x==2) {
-    buyables.syphon = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.incrementallist.bought==true) {return buyables.syphon.amount.mul(upgradeeffects(1))} else {return buyables.syphon.amount}}}
-    buyables.collector = {cost: E("100"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.Gravity.bought == false) {return buyables.collector.amount} else {return buyables.collector.amount.mul(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")))}}}
-    buyables.field = {cost: E("2000"), amount: E("0"), manuals: E("0"), effect: function() {if (upgrades.MEM.bought == false) {return buyables.field.amount} else {return buyables.field.amount.pow(upgradeeffects(3))}}}
-  }
-  if (x==3) {
-    upgrades.incrementallist.bought = false
-    upgrades.Gravity.bought = false
-    upgrades.MEM.bought = false
-    upgrades.feedbackloop.bought = false
-    upgrades.theunknown.bought = false
-    upgrades.spacetimerupture.bought = false
-    upgrades.minmax.bought = false
-    upgrades.heavier.bought = false
-    upgrades.crushing.bought = false
-    upgrades.replication.bought = false
-  }
-  if (x==4) {
-    doreset(1)
-  }
-  if (x==5) {
-    player.matter = E("0");
-  }
-  if (x==6) {
-    buyables.weight = {cost: E("1"), amount: E("0"), manuals: E("0"), effect: function() {return E("10").pow(buyables.weight.amount)}}
-    player.matterrank = E("0")
-    player.mattertier = E("0")
-  }
-  if (x==7) {
-    upgrades.Infusion.bought = false
-    upgrades.SacredTexts.bought = false
-    upgrades.GravitonCatalyst.bought = false
-    upgrades.discovery.bought = false
-    upgrades.dlc.bought = false
-    upgrades.automatons.bought = false
-  }
-  if (x==8) {
-    doreset(2)
-  }
-  if (x==9) {
-    player.tributes = E("0")
-  }
-  if (x==10) {
-    player.tributemilestone = 0
-    Labors.TL1 = false
-    Labors.TL2 = false
-    Labors.TL3 = false
-    Labors.TL4 = false
-    Labors.TL5 = false
-    Labors.TL6 = false
-    Labors.TL7 = false
-    Labors.TL8 = false
-    Labors.TL9 = false
-    Labors.TL10= false
-    Labors.TL11= false
-    Labors.TL12= false
-  }
-  if (x==11) {
-    upgrades.scaler1.bought = false
-    upgrades.scramboblingcromjombles.bought = false
-    upgrades.taxevasion.bought = false
-    upgrades.realityshift.bought = false
-    upgrades.mechanized.bought = false
-    upgrades.scaler2.bought = false
-    upgrades.sloth.bought = false
-    upgrades.gazeehlingjoombahmbalaeze.bought = false
-    upgrades.tomfoolery.bought = false
-  }
-  if (x==12) {
-    doreset(3)
-  }
-  
-}
-
-function renderachievements() {
-
-  
-  
-for (let i = 0; i < achievements.length; i++) {
-  document.getElementById(achievements[i] + "Achievement").className = "achievementclaimed";
-}
-  
-  
-  
-  
-  
-  
-}
+import { renderachievements } from './achievements.js'
 
 function timedunlocks() {
   
@@ -2123,38 +1453,8 @@ function timedunlocks() {
   
 }
 
-function calibratelabors() {
-      var temp = 0
-      while (temp < 12) {
-        temp += 1
-        var temp2 = document.getElementById('Labor' + String(temp))
-        if (player.labor == temp) {
-          temp2.className = "laboryellow numberwhite"
-        } else {
-          if (Labors["TL" + String(temp)] == true) {
-            temp2.className = "milestonebreached numberwhite"
-          } else {
-            temp2.className = "milestone numberwhite"
-          }
-        }
-      }
-}
-
-function togglelabor(n) {
-  
-    if (player.labor == 0) {
-      player.labor = 0
-      doreset(2)
-      player.labor = n
-    } else {
-      player.labor = 0
-      doreset(2)
-      player.labor = 0
-    }
-  
-    calibratelabors()
-  
-}
+import { calibratelabors } from './labors.js'
+import { togglelabor } from './labors.js'
 
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
@@ -2476,6 +1776,8 @@ export { generalunlocks };
 export { fix };
 export { fix2 };
 export { timespeed };
-updateText();
-if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
-setInterval(updateText, 16);
+document.addEventListener("DOMContentLoaded", function() {
+  updateText();
+  if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
+  setInterval(updateText, 16);
+});

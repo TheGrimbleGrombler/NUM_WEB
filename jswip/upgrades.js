@@ -1,5 +1,9 @@
 const Decimal = window.Decimal;
-import { E } from './script.js'
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './labors.js'
 import { fix } from './script.js'
@@ -8,8 +12,9 @@ import { buyables } from './buyables.js'
 import { buyableeffects } from './buyables.js'
 import { doreset } from './doreset.js'
 import { cindereffects } from './cinders.js'
+import { achievements } from './achievements.js'
 
-let upgrades = {
+export let upgrades = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, display: "Syphons boost their own effect"},
   Gravity: {cost: E("200000"), costtype: "stardust", bought: false, display: "Unlock Gravity"},
   MEM: {cost: E("2e6"), costtype: "stardust", bought: false, display: "Squares the effect of fields, Currently: ^"},
@@ -203,5 +208,3 @@ export function upgradeeffects(n) {
   
   return temp
 }
-
-export { upgrades }

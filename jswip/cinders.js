@@ -1,4 +1,9 @@
-import { E } from './script.js'
+const Decimal = window.Decimal;
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './labors.js'
 import { fix } from './script.js'
@@ -8,8 +13,9 @@ import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
 import { buyables } from './buyables.js'
 import { buyableeffects } from './buyables.js'
+import { achievements } from './achievements.js'
 
-let cindereffects = [
+export let cindereffects = [
   E("1"),
   E("1"),
   E("1"),
@@ -39,5 +45,3 @@ export function getcindereffects() {
   document.getElementById("CinderEffect7Display").innerHTML = "TBD: " + String(fix2(cindereffects[7],5))
   document.getElementById("CinderEffect8Display").innerHTML = "TBD: " + String(fix2(cindereffects[8],5))
 }
-
-export { cindereffects }

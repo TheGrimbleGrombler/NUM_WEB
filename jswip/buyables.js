@@ -1,5 +1,9 @@
-
-import { E } from './script.js'
+const Decimal = window.Decimal;
+function E(n) {
+  
+  return new Decimal().fromString(n)
+  
+}
 import { player } from './script.js'
 import { Labors } from './script.js'
 import { fix } from './script.js'
@@ -7,9 +11,11 @@ import { generalunlocks } from './script.js'
 import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
 import { timespeed } from './script.js'
+import { cindereffects } from './cinders.js'
+import { achievements } from './achievements.js'
 
 
-let buyables = {
+export let buyables = {
     syphon: {amount: E("0"), manuals: E("0")},
     collector: {amount: E("0"), manuals: E("0")},
     field: {amount: E("0"), manuals: E("0")},
@@ -21,8 +27,6 @@ let buyables = {
     catalyst: {amount: E("0"), manuals: E("0")}
 
 };
-
-export { buyables }
 
 export function buyableeffects(n) {
   var temp = E("1")
