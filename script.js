@@ -458,6 +458,7 @@ function loadfunctions() {
   if (isNaN(Labors.TL11)) {Labors.TL11 = false}
   if (isNaN(Labors.TL12)) {Labors.TL12 = false}
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
+  if (isNaN(player.mattertier)) {player.mattertier = E("0")}
   if (isNaN(player.cinders)) {player.cinders = E("0")}
   //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
@@ -696,6 +697,7 @@ let player = {
   flaremilestone: 0,
   labor: 0,
   matterrank: E("0"),
+  mattertier: E("0"),
   flares: E("0"),
   bestflares: E("0"),
   besttributesthisflare: E("0"),
@@ -1688,6 +1690,7 @@ function save() {
     labor: player.labor,
     cinders: player.cinders,
     matterrank: player.matterrank,
+    mattertier: player.mattertier,
     tl1: Labors.TL1,
     tl2: Labors.TL2,
     tl3: Labors.TL3,
@@ -1732,6 +1735,7 @@ function load() {
     player.labor = String(loadedData.player.labor);
     player.cinders = E(String(loadedData.player.cinders));
     player.matterrank = E(String(loadedData.player.matterrank));
+    player.mattertier = E(String(loadedData.player.mattertier));
     player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
     player.bestflaresthist4 = E(String(loadedData.player.bestflaresthist4));
     
