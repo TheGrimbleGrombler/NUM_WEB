@@ -24,7 +24,8 @@ function fix2(n,e) {
   
 }
 
-function buyableeffects(n) {
+import { buyableeffects } from './buyables.js'
+function buyableeffects2(n) {
   var temp = E("1")
   if (n==1) {
     temp = buyables.syphon.amount
@@ -241,7 +242,8 @@ function upgradeeffects(n) {
 }
 
 
-function getbuyablecost(n,m) {
+import { getbuyablecost } from './buyables.js'
+function getbuyablecost2(n,m) {
   var temp = E("1e99999")
   var modifier = E("0")
   if (m > 0) {
@@ -336,7 +338,8 @@ function gettimespeed() {
   return temp
 }
 
-let buyables = {
+import { buyables } from './buyables.js'
+let buyables2 = {
     syphon: {amount: E("0"), manuals: E("0")},
     collector: {amount: E("0"), manuals: E("0")},
     field: {amount: E("0"), manuals: E("0")},
@@ -348,7 +351,8 @@ let buyables = {
     catalyst: {amount: E("0"), manuals: E("0")}
 
 };
-let upgrades = {
+import { upgrades } from './upgrades.js'
+let upgrades2 = {
   incrementallist: {cost: E("25000"), costtype: "stardust", bought: false, display: "Syphons boost their own effect"},
   Gravity: {cost: E("200000"), costtype: "stardust", bought: false, display: "Unlock Gravity"},
   MEM: {cost: E("2e6"), costtype: "stardust", bought: false, display: "Squares the effect of fields, Currently: ^"},
@@ -543,7 +547,8 @@ function Automation() {
 
 
 
-function doreset(tier) {
+import { doreset } from './doreset.js'
+function doreset2(tier) {
   
   if (tier >= 1) {
     
@@ -1820,7 +1825,7 @@ function load() {
   }
 }
 
-import { getrankreq } from './jswip/ranks.js'
+import { getrankreq } from './ranks.js'
 function getrankreq2(modifier) {
   var temp = E("1e5")
   
@@ -1839,7 +1844,8 @@ function getrankreq2(modifier) {
   return temp
 }
 
-function gettierreq(modifier) {
+import { gettierreq } from './ranks.js'
+function gettierreq2(modifier) {
   var temp = E("101")
   
   var scalingmult = E("1")
@@ -1849,7 +1855,8 @@ function gettierreq(modifier) {
   return temp
 }
 
-function getrankeffect() {
+import { getrankeffect } from './ranks.js'
+function getrankeffect2() {
   var temp = E("1")
   var modifier = E("1e2")
   
@@ -1858,7 +1865,8 @@ function getrankeffect() {
   return temp
 }
 
-function gettiereffect() {
+import { gettiereffect } from './ranks.js'
+function gettiereffect2() {
   var temp = E("0.02")
   var modifier = E("1")
   
@@ -1867,7 +1875,8 @@ function gettiereffect() {
   return temp
 }
 
-function renderrank() {
+import { renderrank } from './ranks.js'
+function renderrank2() {
   if (generalunlocks["MatterRanks"] == true) {
     var mr = document.getElementById("MatterRank1")
     mr.innerHTML = "Matter Rank: <br>" + String(fix(player.matterrank)) + "<br> Cost in matter: <br>" + String(fix(getrankreq(E("0")))) + "<br> Stardust effect: <br>x" + String(fix(getrankeffect()))
@@ -1878,7 +1887,8 @@ function renderrank() {
   }
 }
 
-function buymatterrank(modifier) {
+import { buymatterrank } from './ranks.js'
+function buymatterrank2(modifier) {
   var cost = getrankreq(modifier)
   if (player.matter.gte(cost)) {
     player.matter = player.matter.sub(cost)
@@ -1886,7 +1896,8 @@ function buymatterrank(modifier) {
   }
 }
 
-function buymattertier(modifier) {
+import { buymattertier } from './ranks.js'
+function buymattertier2(modifier) {
   var cost = gettierreq(modifier)
   if (player.matterrank.gte(cost)) {
     player.matterrank = E("0")
@@ -1894,7 +1905,8 @@ function buymattertier(modifier) {
   }
 }
 
-function purge(x) {
+import { purge } from './purge.js'
+function purge2(x) {
   if (x==1) {
     player.stardust = E("1");
     player.gravitational_waves = E("0");
