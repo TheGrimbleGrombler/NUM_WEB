@@ -112,7 +112,7 @@ export function timedunlocks() {
   if (generalunlocks.MatterTiers !== true) {
     if (upgrades.starryeyes.bought == true) {
       generalunlocks["MatterTiers"] = true
-      document.getElementById("MatterTier").style = "display: block;"
+      document.getElementById("MatterTier").style = "display: block"
     }
   }
   
