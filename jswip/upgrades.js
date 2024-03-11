@@ -276,6 +276,8 @@ export function displayupgrades() {
   displayupgrade("7","VII")
   displayupgrade("8","IIX")
   displayupgrade("9","IX")
+  displayupgrade("StarryEyes","starryeyes")
+  displayupgrade("Power","power")
   
 }
 

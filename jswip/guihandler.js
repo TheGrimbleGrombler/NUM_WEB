@@ -284,14 +284,6 @@ document.getElementById('PurgeTributeUpgradesButton').addEventListener('click', 
 document.getElementById('PurgeTributeLayerButton').addEventListener('click', function() {
   purge(12)
 });
-document.getElementById('automation1button').addEventListener('click', function() {
-  automation1 = !automation1
-  document.getElementById('automation1button').innerHTML = "Automation: " + String(automation1)
-});
-document.getElementById('automation2button').addEventListener('click', function() {
-  automation2 = !automation2
-  document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
-});
 document.getElementById('BlackHoleAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Black Hole - Get infinite gravitational waves."
 });
@@ -319,6 +311,10 @@ document.getElementById('WhyAchievement').addEventListener('mouseover', function
 
 document.getElementById('MatterRank1').addEventListener('click', function() {
   buymatterrank(E("0"))
+});
+
+document.getElementById('MatterTier1').addEventListener('click', function() {
+  buymattertier(E("0"))
 });
 
 document.getElementById('MassResetButton').addEventListener('click', function() {

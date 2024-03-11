@@ -451,6 +451,9 @@ function displayunlocksonload() {
   if (generalunlocks.stardustupgrades3 == true) {
     document.getElementById("stardustupgrades3").style = "display: block;"
   };
+  if (generalunlocks.MatterTiers == true) {
+    document.getElementById("MatterTier1").style = "display: block;"
+  };
   
   
   
@@ -714,6 +717,15 @@ export { unlockedsubtabs };
 document.getElementById('CloseBannerButton').addEventListener('click', function() {
   document.getElementById('CloseBannerButton').style.display = "none"
   document.getElementById('Banner').style.display = "none"
+});
+
+document.getElementById('automation1button').addEventListener('click', function() {
+  automation1 = !automation1
+  document.getElementById('automation1button').innerHTML = "Automation: " + String(automation1)
+});
+document.getElementById('automation2button').addEventListener('click', function() {
+  automation2 = !automation2
+  document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
 });
 
 document.addEventListener("DOMContentLoaded", function() {
