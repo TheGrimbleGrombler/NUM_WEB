@@ -15,6 +15,7 @@ import { getmatteronreset } from './script.js'
 import { gettributesonreset } from './script.js'
 import { getflaresonreset } from './script.js'
 import { buymatterrank } from './ranks.js'
+import { buymattertier } from './ranks.js'
 import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
 import { buyables } from './buyables.js'
@@ -196,6 +197,10 @@ document.getElementById('8Button').addEventListener('click', function() {
 
 document.getElementById('9Button').addEventListener('click', function() {
   buy("IX")
+});
+
+document.getElementById('StarryEyesButton').addEventListener('click', function() {
+  buy("starryeyes")
 });
 
 document.getElementById('Labor1').addEventListener('click', function() {
