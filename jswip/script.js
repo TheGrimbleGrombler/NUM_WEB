@@ -402,6 +402,7 @@ function gainstardust(){
   if (player.tributemilestone >= 12) { if (player.labor == 0) { gain = gain.add(E("1e2000").mul(60)) }}
   if (player.tributemilestone >= 13) { if (player.labor == 0) { gain = gain.add(E("1e3000").mul(60)) }}
   if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
+  if (player.mattertier.gte(E("1"))) {gain = gain.pow(gettiereffect())}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
   if (player.labor == 5) { gain = gain.pow(E("0.5")) }
@@ -452,7 +453,9 @@ function displayunlocksonload() {
     document.getElementById("stardustupgrades3").style = "display: block;"
   };
   if (generalunlocks.MatterTiers == true) {
-    document.getElementById("MatterTier1").style = "display: block;"
+    document.getElementById("MatterTier").style = "display: block;"
+  } else {
+    document.getElementById("MatterTier").style = "display: none;"
   };
   
   

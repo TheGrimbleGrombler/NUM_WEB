@@ -29,7 +29,7 @@ export function getrankreq(modifier) {
 }
 
 export function gettierreq(modifier) {
-  var temp = E("101")
+  var temp = E("100")
   
   var scalingmult = E("1")
   

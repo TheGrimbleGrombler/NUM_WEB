@@ -109,11 +109,11 @@ export function timedunlocks() {
       document.getElementById("stardustupgrades3").style = "display: block;"
     }
   }
-  if (generalunlocks.MatterTiers !== true) {
-    if (upgrades.starryeyes.bought == true) {
-      generalunlocks["MatterTiers"] = true
-      document.getElementById("MatterTier").style = "display: block"
-    }
+  if (upgrades.starryeyes.bought == true) {
+    generalunlocks["MatterTiers"] = true
+    document.getElementById("MatterTier").style = "display: block"
+  } else {
+    document.getElementById("MatterTier").style = "display: none;"
   }
   
   
