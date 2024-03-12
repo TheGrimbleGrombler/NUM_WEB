@@ -110,6 +110,7 @@ export function getbuyablecost(n,m) {
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("1").mul(E("2").pow(buyables.syphon.manuals.add(modifier).mul(scaling)))
+    temp = temp.floor()
   }
   if (n == 2) {
     var scaling = E("1")
@@ -120,6 +121,7 @@ export function getbuyablecost(n,m) {
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("100").mul(E("3").pow(buyables.collector.manuals.add(modifier).mul(scaling)))
+    temp = temp.floor()
   }
   if (n == 3) {
     var scaling = E("1")
@@ -130,6 +132,7 @@ export function getbuyablecost(n,m) {
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("2000").mul(E("10").mul(upgradeeffects(16)).pow(buyables.field.manuals.add(modifier).mul(scaling)))
+    temp = temp.floor()
   }
   if (n == 4) {
     var scaling = E("1")
@@ -138,10 +141,12 @@ export function getbuyablecost(n,m) {
     if (player.labor == 8) {scaling = scaling.mul(E("1e1000"))}
     if (player.labor == 12) {scaling = scaling.mul(E("1e1000"))}
     temp = E("10").pow(buyables.weight.manuals.add(modifier).mul(scaling))
+    temp = temp.floor()
   }
   if (n == 5) {
     var scaling = E("1")
     temp = E("100").add(E("100").mul(buyables.catalyst.manuals.add(modifier)).pow(buyables.catalyst.manuals.add(E("10")).log10()))
+    temp = temp.floor()
   }
   return temp
 }

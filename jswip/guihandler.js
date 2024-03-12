@@ -345,7 +345,7 @@ document.getElementById('FlareResetButton').addEventListener('click', function()
 
 
 document.getElementById('SyphonButton').addEventListener('click', function() {
-  if (player.stardust.gte(getbuyablecost(1))) {
+  if (player.stardust.gte(getbuyablecost(1).floor().sub(E("0.1")))) {
     player.stardust = player.stardust.sub(getbuyablecost(1))
     buyables.syphon.amount = buyables.syphon.amount.add(E("1"))
     buyables.syphon.manuals = buyables.syphon.manuals.add(E("1"))
