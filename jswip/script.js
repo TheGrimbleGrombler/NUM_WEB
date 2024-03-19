@@ -688,12 +688,12 @@ document.getElementById('loadbutton').addEventListener('click', function() {
 document.onkeydown = function (e) {
    if (e.key == "t") {
     if (gettributesonreset().gte(E("1"))) {
-    player.tributes = player.tributes.add(gettributesonreset())
       if (gettributesonreset().gte(E("1234"))) {
         if (achievements.indexOf('Arbitrary1') == -1) {
           achievements.push("Arbitrary1");
         }
       }
+    player.tributes = player.tributes.add(gettributesonreset())
     doreset(2)
     }
   }

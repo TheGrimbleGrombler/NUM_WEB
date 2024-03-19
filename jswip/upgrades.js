@@ -87,7 +87,7 @@ export let upgrades = {
   X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   
   starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
-  power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: "(Not fully implemented) Incrementallist effect is tetrated: "},
+  power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: " (CURRENT ENDGAME) Incrementallist effect is tetrated: "},
 };
 
 export function upgradeeffects(n) {
