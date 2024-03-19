@@ -157,6 +157,11 @@ export function timedunlocks() {
       achievements.push("Past");
     }
   }
+  if (achievements.indexOf('Tiered') == -1) {
+    if (player.mattertier.gte(E("1"))) {
+      achievements.push("Tiered");
+    }
+  }
   
   
 }

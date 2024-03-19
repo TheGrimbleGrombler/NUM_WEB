@@ -25,6 +25,7 @@ import { fix } from './script.js'
 import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
 import { particleeffects } from './gravity.js'
+import { achievements } from './achievements.js'
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -314,6 +315,12 @@ document.getElementById('RankedAchievement').addEventListener('mouseover', funct
 document.getElementById('PastAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Back to the Past - Get some flares! d:"
 });
+document.getElementById('TieredAchievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Tiered - Get a matter tier!"
+});
+document.getElementById('Arbitrary1Achievement').addEventListener('mouseover', function() {
+  document.getElementById("AchievementDisplay").innerHTML = "Arbitrary I - Reset for 1234 tributes at once."
+});
 document.getElementById('WhyAchievement').addEventListener('mouseover', function() {
   document.getElementById("AchievementDisplay").innerHTML = "Why????? - Secret #1"
 });
@@ -336,6 +343,11 @@ document.getElementById('MassResetButton').addEventListener('click', function() 
 document.getElementById('TributeResetButton').addEventListener('click', function() {
   if (gettributesonreset().gte(E("1"))) {
   player.tributes = player.tributes.add(gettributesonreset())
+      if (gettributesonreset().gte(E("1234"))) {
+        if (achievements.indexOf('Arbitrary1') == -1) {
+          achievements.push("Arbitrary1");
+        }
+      }
   doreset(2)
   }
 });
