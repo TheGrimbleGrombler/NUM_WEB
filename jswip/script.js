@@ -507,6 +507,8 @@ function save() {
     sloth: upgrades.sloth.bought,
     gazeehlingjoombahmbalaeze: upgrades.gazeehlingjoombahmbalaeze.bought,
     tomfoolery: upgrades.tomfoolery.bought,
+    starryeyes: upgrades.starryeyes.bought,
+    power: upgrades.power.bought,
     I: upgrades.I.bought,
     II: upgrades.II.bought,
     IIV: upgrades.IIV.bought,
@@ -617,6 +619,8 @@ function load() {
     upgrades.sloth.bought = loadedData.sloth
     upgrades.gazeehlingjoombahmbalaeze.bought = loadedData.gazeehlingjoombahmbalaeze
     upgrades.tomfoolery.bought = loadedData.tomfoolery
+    upgrades.starryeyes.bought = loadedData.starryeyes
+    upgrades.power.bought = loadedData.power
     upgrades.I.bought = loadedData.I
     upgrades.II.bought = loadedData.II
     upgrades.IIV.bought = loadedData.IIV

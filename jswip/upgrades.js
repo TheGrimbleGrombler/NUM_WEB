@@ -86,8 +86,8 @@ export let upgrades = {
   IX: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   
-  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers! (Not fully implemented)"},
-  power: {cost: E("1e99999999"), costtype: "stardust", bought: false, display: "(Not fully implemented) Incrementallist effect is tetrated: "},
+  starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
+  power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: "(Not fully implemented) Incrementallist effect is tetrated: "},
 };
 
 export function upgradeeffects(n) {
@@ -97,6 +97,7 @@ export function upgradeeffects(n) {
     if (player.labor == 9) {temp = E("1")}
     if (player.labor == 10) {temp = E("1").div(temp)}
     if (player.labor == 12) {temp = E("1").div(temp)}
+    if (upgrades.power.bought==true) {temp = temp.tetrate(upgradeeffects(34))}
   }
   if (n==2) {
     if (upgrades.Gravity.bought==true) {temp = "It is done."} else {temp = "Currently no gravity... Maybe it's better this way."}

@@ -203,6 +203,10 @@ document.getElementById('StarryEyesButton').addEventListener('click', function()
   buy("starryeyes")
 });
 
+document.getElementById('PowerButton').addEventListener('click', function() {
+  buy("power")
+});
+
 document.getElementById('Labor1').addEventListener('click', function() {
   togglelabor(1)
 });
@@ -688,7 +692,7 @@ document.getElementById('StarryEyesButton').addEventListener('mouseover', functi
 
 document.getElementById('PowerButton').addEventListener('mouseover', function(event) {
     if (upgrades.power.bought == true) {UpgradeName.innerHTML = "Power (Bought)"} else {UpgradeName.innerHTML = "Power (Unbought)"}
-    UpgradeEffect.innerHTML = upgrades.power.display;
+    UpgradeEffect.innerHTML = upgrades.power.display + " Currently: ^^" + String(fix(upgradeeffects(34)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.power.cost) + " Stardust"
 });
 
