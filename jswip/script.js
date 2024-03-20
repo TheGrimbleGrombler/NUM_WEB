@@ -405,7 +405,7 @@ function gainstardust(){
   if (player.mattertier.gte(E("1"))) {gain = gain.pow(gettiereffect())}
   
   if (player.labor == 4) { gain = gain.pow(E("0.9")) }
-  if (player.labor == 5) { gain = gain.pow(E("0.5")) }
+  if (player.labor == 5) { gain = gain.pow(E("0.52")) }
   if (player.labor == 6) { gain = gain.pow(E("0.195")) }
   if (player.labor == 7) { gain = gain.pow(E("0.755")) }
   if (player.labor == 9) { gain = gain.pow(E("0.755")) }
