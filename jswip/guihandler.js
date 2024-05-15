@@ -208,6 +208,10 @@ document.getElementById('PowerButton').addEventListener('click', function() {
   buy("power")
 });
 
+document.getElementById('BreakthroughButton').addEventListener('click', function() {
+  buy("breakthrough")
+});
+
 document.getElementById('Labor1').addEventListener('click', function() {
   togglelabor(1)
 });
@@ -706,6 +710,12 @@ document.getElementById('PowerButton').addEventListener('mouseover', function(ev
     if (upgrades.power.bought == true) {UpgradeName.innerHTML = "Power (Bought)"} else {UpgradeName.innerHTML = "Power (Unbought)"}
     UpgradeEffect.innerHTML = upgrades.power.display + " Currently: ^^" + String(fix(upgradeeffects(34)));
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.power.cost) + " Stardust"
+});
+
+document.getElementById('BreakthroughButton').addEventListener('mouseover', function(event) {
+    if (upgrades.breakthrough.bought == true) {UpgradeName.innerHTML = "Breakthrough (Bought)"} else {UpgradeName.innerHTML = "Breakthrough (Unbought)"}
+    UpgradeEffect.innerHTML = upgrades.breakthrough.display;
+    UpgradeCost.innerHTML = "Cost: " + String(upgrades.breakthrough.cost) + " Stardust"
 });
 
   

@@ -88,6 +88,7 @@ export let upgrades = {
   
   starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
   power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: " (CURRENT ENDGAME) Incrementallist effect is tetrated: "},
+  breakthrough: {cost: E("1e20280"), costtype: "stardust", bought: false, display: " (CURRENT ENDGAME) Unlock more features in the Gravitational Waves menu."},
 };
 
 export function upgradeeffects(n) {

@@ -96,6 +96,7 @@ function loadfunctions() {
   if (isNaN(upgrades.IX.bought)) {upgrades.IX.bought = false}
   if (isNaN(upgrades.starryeyes.bought)) {upgrades.starryeyes.bought = false}
   if (isNaN(upgrades.power.bought)) {upgrades.power.bought = false}
+  if (isNaN(upgrades.power.bought)) {upgrades.power.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
