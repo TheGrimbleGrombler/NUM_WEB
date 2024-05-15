@@ -96,7 +96,7 @@ function loadfunctions() {
   if (isNaN(upgrades.IX.bought)) {upgrades.IX.bought = false}
   if (isNaN(upgrades.starryeyes.bought)) {upgrades.starryeyes.bought = false}
   if (isNaN(upgrades.power.bought)) {upgrades.power.bought = false}
-  if (isNaN(upgrades.power.bought)) {upgrades.power.bought = false}
+  if (isNaN(upgrades.breakthrough.bought)) {upgrades.breakthrough.bought = false}
   if (isNaN(Labors.TL1)) {Labors.TL1 = false}
   if (isNaN(Labors.TL2)) {Labors.TL2 = false}
   if (isNaN(Labors.TL3)) {Labors.TL3 = false}
@@ -510,6 +510,7 @@ function save() {
     tomfoolery: upgrades.tomfoolery.bought,
     starryeyes: upgrades.starryeyes.bought,
     power: upgrades.power.bought,
+    breakthrough: upgrades.breakthrough.bought,
     I: upgrades.I.bought,
     II: upgrades.II.bought,
     IIV: upgrades.IIV.bought,
@@ -622,6 +623,7 @@ function load() {
     upgrades.tomfoolery.bought = loadedData.tomfoolery
     upgrades.starryeyes.bought = loadedData.starryeyes
     upgrades.power.bought = loadedData.power
+    upgrades.breakthrough.bought = loadedData.breakthrough
     upgrades.I.bought = loadedData.I
     upgrades.II.bought = loadedData.II
     upgrades.IIV.bought = loadedData.IIV

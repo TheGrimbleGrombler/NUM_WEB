@@ -87,8 +87,8 @@ export let upgrades = {
   X: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   
   starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
-  power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: " (CURRENT ENDGAME) Incrementallist effect is tetrated: "},
-  breakthrough: {cost: E("1e20280"), costtype: "stardust", bought: false, display: " (CURRENT ENDGAME) Unlock more features in the Gravitational Waves menu."},
+  power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: " Incrementallist effect is tetrated: "},
+  breakthrough: {cost: E("1e20280"), costtype: "stardust", bought: false, display: " (ENDGAME, NON-FUNCTIONAL) Unlock more features in the Gravitational Waves menu."},
 };
 
 export function upgradeeffects(n) {
@@ -280,6 +280,7 @@ export function displayupgrades() {
   displayupgrade("9","IX")
   displayupgrade("StarryEyes","starryeyes")
   displayupgrade("Power","power")
+  displayupgrade("Breakthrough","breakthrough")
   
 }
 
