@@ -252,7 +252,7 @@ import { particleeffects } from './gravity.js'
 
 function Debug() {
   
-  document.getElementById("DEBUG").innerHTML = String(upgradeeffects(1).tetrate(E("2")))
+  document.getElementById("DEBUG").innerHTML = String(E("2").pow(E("1.1579e77")))
   
 }
 
