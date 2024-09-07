@@ -71,6 +71,22 @@ video {
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(255,255,255);
 }
+
+.backgroundwhite {
+  background-color: rgb(51,51,51);
+}
+.backgroundred {
+  background-color: rgb(51,0,0);
+}
+.backgroundgreen {
+  background-color: rgb(0,51,0);
+}
+.backgroundpink {
+  background-color: rgb(51,0,51);
+}
+.backgroundblue {
+  background-color: rgb(0,0,51);
+}
 .centered {
   text-align: center;
 }
@@ -116,7 +132,6 @@ video {
   border: 2px solid rgb(255,255,0);
   font-size: 16px;
   color: rgb(255,255,255);
-  background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 0 10px 2px rgba(255,255,0,0.75);
 }
@@ -124,7 +139,6 @@ video {
   border: 2px solid rgb(255,0,255);
   font-size: 16px;
   color: rgb(255,255,255);
-  background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 0 10px 2px rgba(255,0,255,0.75);
 }
@@ -132,7 +146,6 @@ video {
   border: 2px solid rgb(255,255,255);
   font-size: 16px;
   color: rgb(255,255,255);
-  background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 0 10px 2px rgba(255,255,255);
 }
@@ -140,7 +153,6 @@ video {
   border: 2px solid rgb(0,255,0);
   font-size: 16px;
   color: rgb(255,255,255);
-  background-color: transparent;
   box-sizing: border-box;
   box-shadow: 0 0 10px 2px rgba(0,255,0,0.75);
 }
