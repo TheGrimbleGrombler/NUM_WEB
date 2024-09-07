@@ -39,6 +39,7 @@ var UpgradeName = document.getElementById('UpgradeNameDisplay');
 var UpgradeEffect = document.getElementById('UpgradeEffectDisplay');
 var UpgradeCost = document.getElementById('UpgradeCostDisplay');
 var Gravitational_WavesDisplay = document.getElementById('Gravitational_WavesDisplay');
+var Gravitational_WavesDisplay2 = document.getElementById('Gravitational_WavesDisplay2');
 var AParticleDisplay = document.getElementById('AParticleDisplay');
 var BParticleDisplay = document.getElementById('BParticleDisplay');
 var CParticleDisplay = document.getElementById('CParticleDisplay');
@@ -728,7 +729,8 @@ export function guitick() {
   CollectorButton.innerHTML = "Cost: " + String(fix(getbuyablecost(2),0)) + " Stardust";
   FieldDisplay.innerHTML = "You have " + String(fix(buyables.field.amount,0)) + " (" + String(fix(buyables.field.manuals,0)) +") Fields, Producing " + String(fix(buyableeffects(3),0)) + " collectors/s";
   FieldButton.innerHTML = "Cost: " + String(fix(getbuyablecost(3),0)) + " Stardust";
-  Gravitational_WavesDisplay.innerHTML = "You have " + String(fix(player.gravitational_waves,0)) + " Gravitational Waves, Collector effect * " + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2));
+  Gravitational_WavesDisplay.innerHTML = String(fix(player.gravitational_waves,0));
+  Gravitational_WavesDisplay2.innerHTML = "Collector effect x" + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2))
   
   AParticleDisplay.innerHTML = String(fix(player.a_particles,0))
   
