@@ -47,41 +47,41 @@ export function timedunlocks() {
   if (!generalunlocks.matterupgrades2 == true) {
     if (player.stardust.gte(E("1e35"))) {
       generalunlocks["matterupgrades2"] = true
-      document.getElementById("matterupgrades2").style = "display: block;"
+      document.getElementById("matterupgrades2").style.display = "block"
     }
   }
   if (generalunlocks.dlc !== true) {
     if (upgrades.dlc.bought == true) {
       generalunlocks["dlc"] = true
-      document.getElementById("stardustupgrades2").style = "display: block;"
+      document.getElementById("stardustupgrades2").style.display = "block"
     }
   }
   if (player.stardust.gte(E("1e80"))) {
     generalunlocks["tribute"] = true
     unlockedsubtabs.TributeMain = true
-    document.getElementById("tributedisplaycontainer").style = "display: block;"
+    document.getElementById("tributedisplaycontainer").style.display = "block"
     //document.getElementById("tributesubtab1").style = "display: block;"
   }
   if (player.besttributes.gte(E("1"))) {
     generalunlocks["tributeupgrades1"] = true
-    document.getElementById("tributeupgrades1").style = "display: block;"
+    document.getElementById("tributeupgrades1").style.display = "block"
   }
   if (player.besttributes.gte(E("25"))) {
     generalunlocks["Labors1"] = true
     unlockedsubtabs.TributeLabors = true
-    document.getElementById("tributesubtab2button").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
+    document.getElementById("tributesubtab2button").style.display = "block"// = "display: block; position: absolute; top: 11%; left: 26%;  width: 10%; height: 3%;"
   }
   if (player.tributemilestone >= 9) {
     generalunlocks["LaborGroup2"] = true
-    document.getElementById("LaborGroup2").style = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
+    document.getElementById("LaborGroup2").style.display = "block"// = "display: block; position: absolute; top: 120px; left: 180px;  width: 90px; height: 24px;"
   }
   if (Labors.TL8 == true) {
     generalunlocks["MatterRanks"] = true
-    document.getElementById("MatterRank").style = "display: block"
+    document.getElementById("MatterRank").style.display = "block"
   }
   if (Labors.TL12 == true) {
     generalunlocks["tributemilestonegroup2"] = true
-    document.getElementById("tributemilestonegroup2").style = "display: block"
+    document.getElementById("tributemilestonegroup2").style.display = "block"
   }
   if (player.tributemilestone >= 15) {
     generalunlocks["flares"] = true
@@ -89,7 +89,7 @@ export function timedunlocks() {
     unlockedsubtabs.Cinders = true
     unlockedsubtabs.FlareMilestones = true
     unlockedsubtabs.FlareLabors = true
-    document.getElementById("flaredisplaycontainer").style = "display: block;"
+    document.getElementById("flaredisplaycontainer").style.display = "block"
   }
   if (player.bestflares >= 1) {
     generalunlocks["flares"] = true
@@ -97,23 +97,23 @@ export function timedunlocks() {
     unlockedsubtabs.Cinders = true
     unlockedsubtabs.FlareMilestones = true
     unlockedsubtabs.FlareLabors = true
-    document.getElementById("flaredisplaycontainer").style = "display: block;"
+    document.getElementById("flaredisplaycontainer").style.display = "block"
   }
   if (player.flaremilestone >= 1) {
     generalunlocks["flareupgrades1"] = true
-    document.getElementById("flareupgrades1").style = "display: block;"
+    document.getElementById("flareupgrades1").style.display = "block"
   }
   if (generalunlocks.stardustupgrades3 !== true) {
     if (upgrades.II.bought == true) {
       generalunlocks["stardustupgrades3"] = true
-      document.getElementById("stardustupgrades3").style = "display: block;"
+      document.getElementById("stardustupgrades3").style.display = "block"
     }
   }
   if (upgrades.starryeyes.bought == true) {
     generalunlocks["MatterTiers"] = true
-    document.getElementById("MatterTier").style = "display: block"
+    document.getElementById("MatterTier").style.display = "block"
   } else {
-    document.getElementById("MatterTier").style = "display: none;"
+    document.getElementById("MatterTier").style.display = "none"
   }
   
   
