@@ -32,10 +32,12 @@ video {
   position: absolute;
   font-family: "Lucida Console", Monospace;
   text-align: center;
+  text-overflow: ellipsis;
 }
 .number-container button {
   color: rgb(255,255,255);
   background-color: rgb(55, 0, 55); /* RGB value */
+  text-overflow: ellipsis;
 }
 
 .number {
@@ -44,7 +46,6 @@ video {
   color: rgb(255,0,255);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 .numbergreen {
@@ -53,7 +54,6 @@ video {
   color: rgb(0,255,0);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 .numberred {
@@ -62,7 +62,6 @@ video {
   color: rgb(255,0,0);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 .numberorange {
@@ -71,7 +70,8 @@ video {
   color: rgb(255,160,0);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   text-overflow: ellipsis;
 }
 .numberyellow {
@@ -80,7 +80,8 @@ video {
   color: rgb(255,255,0);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   text-overflow: ellipsis;
 }
 .numberblue {
@@ -89,7 +90,8 @@ video {
   color: rgb(0,0,255);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   text-overflow: ellipsis;
 }
 .numberwhite {
@@ -98,7 +100,8 @@ video {
   color: rgb(255,255,255);
   font-family: "Lucida Console", Monospace;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   text-overflow: ellipsis;
 }
 
@@ -132,6 +135,8 @@ video {
   color: rgb(255,255,255);
   font-family: "Lucida Console", Monospace;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .largenumberorange {
   font-size: 24px;
@@ -139,6 +144,8 @@ video {
   color: rgb(255,160,0);
   font-family: "Lucida Console", Monospace;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .buttonblue {
   border: 2px solid rgb(0,0,255);
