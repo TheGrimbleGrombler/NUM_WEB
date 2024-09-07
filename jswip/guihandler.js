@@ -775,20 +775,5 @@ export function guitick() {
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
   
   document.getElementById('stars').style.backgroundPosition = "0 0, 40px 60px, 130px 270px, 70px 100px";
-  
-}
 
-document.onkeydown = function (e) {
-   if (e.key == "w") {
-     ScrollY += 5
-    }
-   if (e.key == "a") {
-     ScrollY -= 5
-    }
-   if (e.key == "s") {
-     ScrollY -= 5
-    }
-   if (e.key == "d") {
-     ScrollY += 5
-    }
-};
+}

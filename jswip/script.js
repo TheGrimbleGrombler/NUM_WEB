@@ -744,6 +744,26 @@ document.getElementById('automation2button').addEventListener('click', function(
   document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
 });
 
+var ScrollX = 0;
+var ScrollY = 0;
+var ScrollVelX = 0;
+var ScrollVelY = 0;
+document.onkeydown = function (e) {
+   if (e.key == "w") {
+     ScrollY = ScrollY + ScrollVelY
+    }
+   if (e.key == "d") {
+     ScrollX = ScrollX - ScrollVelX
+    }
+   if (e.key == "s") {
+     ScrollY = ScrollY - ScrollVelY
+    }
+   if (e.key == "a") {
+     ScrollX = ScrollX + ScrollVelX
+    }
+  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollX)+"px; left:"+String(250 + ScrollY)+"px; width:32px; height:32px;"
+};
+
 document.addEventListener("DOMContentLoaded", function() {
   updateText();
   if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
