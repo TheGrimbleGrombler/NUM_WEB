@@ -1,6 +1,6 @@
 const Decimal = window.Decimal;
 var tick = 1;
-export { tick }
+export { tick };
 
 function E(n) {
   

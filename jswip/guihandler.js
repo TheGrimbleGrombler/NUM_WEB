@@ -28,6 +28,8 @@ import { particleeffects } from './gravity.js'
 import { achievements } from './achievements.js'
 import { tick } from './script.js'
 
+var time = 1;
+
 
 var StardustDisplay = document.getElementById("StardustDisplay");
 var SyphonDisplay = document.getElementById("SyphonDisplay");
@@ -773,6 +775,7 @@ export function guitick() {
   
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
   
-  starry.style = "display: block; position: absolute; height: 90%; top:10%; left:10%; width:80%; background-position: " + String(tick) + ", 0, 40px 60px, 130px 270px, 70px 100px;"
+  time += 1;
+  starry.style.backgroundPosition = String(time) + " 0, 40px 60px, 130px 270px, 70px 100px;"
   
 }
