@@ -26,6 +26,7 @@ import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
 import { particleeffects } from './gravity.js'
 import { achievements } from './achievements.js'
+import { tick } from './script.js'
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -64,6 +65,11 @@ var FlareDisplay = document.getElementById('FlareDisplay');
 var CinderDisplay = document.getElementById('CinderDisplay');
 var CatalystDisplay = document.getElementById("CatalystDisplay");
 var CatalystButton = document.getElementById("CatalystButton");
+
+var starry = document.getElementById("stars")
+
+
+
 
 document.getElementById('IncrementallistButton').addEventListener('click', function() {
   buy("incrementallist")  
@@ -766,4 +772,7 @@ export function guitick() {
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  
+  starry.style = "display: block; position: absolute; height: 90%; top:10%; left:10%; width:80%; background-position: " + String(tick) + ", 0, 40px 60px, 130px 270px, 70px 100px;"
+  
 }
