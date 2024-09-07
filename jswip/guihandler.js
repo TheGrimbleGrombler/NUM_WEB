@@ -721,7 +721,7 @@ document.getElementById('BreakthroughButton').addEventListener('mouseover', func
   
 export function guitick() {
   
-  StardustDisplay.innerHTML = "You have " + String(fix(player.stardust,2)) + " Stardust";
+  StardustDisplay.innerHTML = String(fix(player.stardust,2));
   SyphonDisplay.innerHTML = "You have " + String(fix(buyables.syphon.amount,0)) + " (" + String(fix(buyables.syphon.manuals,0)) +") Syphons, Boosting Stardust gain by +" + String(fix(buyableeffects(1),0)) + "/s";
   SyphonButton.innerHTML = "Cost: " + String(fix(getbuyablecost(1),0)) + " Stardust";
   CollectorDisplay.innerHTML = "You have " + String(fix(buyables.collector.amount,0)) + " (" + String(fix(buyables.collector.manuals,0)) +") Collectors, Producing " + String(fix(buyableeffects(2),0)) + " syphons/s";
