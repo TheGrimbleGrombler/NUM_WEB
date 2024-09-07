@@ -751,13 +751,13 @@ export function guitick() {
   TributeResetButton.innerHTML ="Reset all previous progress for " + String(fix(gettributesonreset(),0)) + " Tributes"
   FlareResetButton.innerHTML ="Reset all previous progress for " + String(fix(getflaresonreset(),0)) + " Flares"
   
-  MatterDisplay.innerHTML ="You have " + String(fix(player.matter,0)) + " Matter"
+  MatterDisplay.innerHTML =String(fix(player.matter,0))
   WeightDisplay.innerHTML = "You have " + String(fix(buyables.weight.amount,0)) + " (" + String(fix(buyables.weight.manuals,0)) +") Weights, Multiplying stardust gain by " + String(fix(buyableeffects(4),0)) + "x";
   WeightButton.innerHTML = "Cost: " + String(fix(getbuyablecost(4),0)) + " Matter";
   
-  TributeDisplay.innerHTML ="You have " + String(fix(player.tributes,0)) + " Tributes"
+  TributeDisplay.innerHTML =String(fix(player.tributes,0))
   
-  FlareDisplay.innerHTML ="You have " + String(fix(player.flares,0)) + " Flares"
+  FlareDisplay.innerHTML = String(fix(player.flares,0))
   
   CinderDisplay.innerHTML ="Cinders: " + String(fix2(player.cinders,10))
   CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Generating cinders: " + String(fix2(buyableeffects(5),10)) + "/s";
