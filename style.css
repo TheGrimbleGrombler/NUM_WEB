@@ -270,8 +270,8 @@ video {
 
 
      .image-container {
-       width: 32px;
        height: auto;
+        padding: 5px; /* Remove any default padding */
      }
      .image-container img {
        width: 100%;
