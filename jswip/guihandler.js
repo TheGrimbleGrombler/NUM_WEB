@@ -730,19 +730,19 @@ export function guitick() {
   FieldButton.innerHTML = "Cost: " + String(fix(getbuyablecost(3),0)) + " Stardust";
   Gravitational_WavesDisplay.innerHTML = "You have " + String(fix(player.gravitational_waves,0)) + " Gravitational Waves, Collector effect * " + String(fix(player.gravitational_waves.add(E("1")).log10().pow(E("2")).add(E("1")),2));
   
-  AParticleDisplay.innerHTML = "You have " + String(fix(player.a_particles,0)) + " A-Particles, Boosts:"
+  AParticleDisplay.innerHTML = String(fix(player.a_particles,0))
   
   APE1D.innerHTML = "B-Particle gain x" + String(fix(particleeffects(1,1)))
   APE2D.innerHTML = "Stardust gain x" + String(fix(particleeffects(1,2)))
   APE3D.innerHTML = ""
   
-  BParticleDisplay.innerHTML = "You have " + String(fix(player.b_particles,0)) + " B-Particles, Boosts:"
+  BParticleDisplay.innerHTML = String(fix(player.b_particles,0))
   
   BPE1D.innerHTML = "C-Particle gain x" + String(fix(particleeffects(2,1)))
   BPE2D.innerHTML = "Gravitational Waves x" + String(fix(particleeffects(2,2)))
   BPE3D.innerHTML = ""
   
-  CParticleDisplay.innerHTML = "You have " + String(fix(player.c_particles,0)) + " C-Particles, Boosts:"
+  CParticleDisplay.innerHTML = (fix(player.c_particles,0))
   CPE1D.innerHTML = "A-Particle gain x" + String(fix(particleeffects(3,1)))
   CPE2D.innerHTML = "??? x" + String(fix(particleeffects(3,2)))
   CPE3D.innerHTML = ""

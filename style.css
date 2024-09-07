@@ -283,7 +283,7 @@ video {
 
      .small-image-container {
        width: 32px;
-       height: 32px;
+       height: auto;
      }
      .small-image-container img {
        width: 100%;
