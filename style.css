@@ -34,6 +34,14 @@ video {
   text-align: center;
   text-overflow: ellipsis;
 }
+.number-container-hidden {
+  text-align: center; /* Align the text to the right */
+  position: absolute;
+  font-family: "Lucida Console", Monospace;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .number-container button {
   color: rgb(255,255,255);
   background-color: rgb(55, 0, 55); /* RGB value */

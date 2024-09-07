@@ -8,6 +8,11 @@ function E(n) {
   
 }
 
+var ScrollX = 0;
+var ScrollY = 0;
+var ScrollVelX = 0;
+var ScrollVelY = 0;
+
 var automation1button = document.getElementById("automation1button");
 var automation2button = document.getElementById("automation2button");
 
@@ -297,6 +302,12 @@ function updateText() {
   tick = tick + 1
   
   guitick()
+  
+  ScrollX = ScrollX + ScrollVelX
+  ScrollY = ScrollY + ScrollVelY
+  ScrollVelX *= 0.95
+  ScrollVelY *= 0.95
+  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollY)+"px; left:"+String(250 + ScrollX)+"px; width:32px; height:32px;"
 }
 
 function getmatteronreset() {
@@ -744,24 +755,19 @@ document.getElementById('automation2button').addEventListener('click', function(
   document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
 });
 
-var ScrollX = 0;
-var ScrollY = 0;
-var ScrollVelX = 0;
-var ScrollVelY = 0;
 document.onkeydown = function (e) {
    if (e.key == "w") {
-     ScrollY = ScrollY + ScrollVelY
+     ScrollVelY = ScrollVelY + 5
     }
    if (e.key == "d") {
-     ScrollX = ScrollX - ScrollVelX
+     ScrollVelX = ScrollVelX - 5
     }
    if (e.key == "s") {
-     ScrollY = ScrollY - ScrollVelY
+     ScrollVelY = ScrollVelY - 5
     }
    if (e.key == "a") {
-     ScrollX = ScrollX + ScrollVelX
+     ScrollVelX = ScrollVelX + 5
     }
-  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollX)+"px; left:"+String(250 + ScrollY)+"px; width:32px; height:32px;"
 };
 
 document.addEventListener("DOMContentLoaded", function() {
