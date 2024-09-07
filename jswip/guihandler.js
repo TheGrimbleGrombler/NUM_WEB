@@ -26,9 +26,6 @@ import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
 import { particleeffects } from './gravity.js'
 import { achievements } from './achievements.js'
-import { tick } from './script.js'
-
-var time = 1;
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -67,8 +64,6 @@ var FlareDisplay = document.getElementById('FlareDisplay');
 var CinderDisplay = document.getElementById('CinderDisplay');
 var CatalystDisplay = document.getElementById("CatalystDisplay");
 var CatalystButton = document.getElementById("CatalystButton");
-
-var starry = document.getElementById("stars")
 
 
 
@@ -775,7 +770,6 @@ export function guitick() {
   
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
   
-  time += 1;
-  starry.style.backgroundPosition = String(time) + " 0, 40px 60px, 130px 270px, 70px 100px;"
+  document.getElementById('stars').style.backgroundPosition = "0 0, 40px 60px, 130px 270px, 70px 100px";
   
 }
