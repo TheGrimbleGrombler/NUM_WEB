@@ -64,6 +64,8 @@ var FlareDisplay = document.getElementById('FlareDisplay');
 var CinderDisplay = document.getElementById('CinderDisplay');
 var CatalystDisplay = document.getElementById("CatalystDisplay");
 var CatalystButton = document.getElementById("CatalystButton");
+var ScrollX = 0;
+var ScrollY = 0;
 
 
 
@@ -428,6 +430,8 @@ function openTab(tabName) {
       tabContents[i].style.display = "none";
     }
   }
+  ScrollX = 0;
+  ScrollY = 0;
 }
 
 function openSubtab(tabName) {
@@ -773,3 +777,18 @@ export function guitick() {
   document.getElementById('stars').style.backgroundPosition = "0 0, 40px 60px, 130px 270px, 70px 100px";
   
 }
+
+document.onkeydown = function (e) {
+   if (e.key == "w") {
+     ScrollY += 5
+    }
+   if (e.key == "a") {
+     ScrollY -= 5
+    }
+   if (e.key == "s") {
+     ScrollY -= 5
+    }
+   if (e.key == "d") {
+     ScrollY += 5
+    }
+};
