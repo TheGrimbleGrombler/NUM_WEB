@@ -482,6 +482,9 @@ document.getElementById('subtab1button').addEventListener('click', function() {
 document.getElementById('subtab2button').addEventListener('click', function() {
   openSubtab("subtab2")
 });
+document.getElementById('subtab3button').addEventListener('click', function() {
+  openSubtab("subtab3")
+});
 document.getElementById('tributesubtab1button').addEventListener('click', function() {
   openSubtab("tributesubtab1")
 });

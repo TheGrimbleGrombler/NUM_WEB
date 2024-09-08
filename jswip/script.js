@@ -301,9 +301,9 @@ function vfx() {
   //255, 238, 143
   var elements = document.querySelectorAll('.light');
   for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+0.75)*255)+','+String((Math.sin(tick/25)/4+0.75)*238)+','+String((Math.sin(tick/25)/4+0.75)*143)+')';
-  elements[i].style.backgroundColor = 'rgb('+String((Math.sin(tick/25)/4+0.35)*255)+','+String((Math.sin(tick/25)/4+0.35)*238)+','+String((Math.sin(tick/25)/4+0.35)*143)+')';
-  elements[i].style.boxShadow = '0 0 10px 2px rgb('+String((Math.sin(tick/25)/4+0.75)*255)+','+String((Math.sin(tick/25)/4+0.75)*238)+','+String((Math.sin(tick/25)/4+0.75)*143)+')'
+  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+')';
+  elements[i].style.backgroundColor = 'rgb('+String((Math.sin(tick/25)/4+0.5)*255)+','+String((Math.sin(tick/25)/4+0.5)*238)+','+String((Math.sin(tick/25)/4+0.5)*143)+')';
+  elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
   }
   
 }
@@ -530,6 +530,11 @@ function displayunlocksonload() {
     document.getElementById("MatterTier").style.display = "block"
   } else {
     document.getElementById("MatterTier").style.display = "none"
+  };
+  if (generalunlocks.Light == true) {
+    document.getElementById("Light").style.display = "block"
+  } else {
+    document.getElementById("Light").style.display = "none"
   };
   
   

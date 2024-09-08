@@ -115,6 +115,12 @@ export function timedunlocks() {
   } else {
     document.getElementById("MatterTier").style.display = "none"
   }
+  if (upgrades.breakthrough.bought == true) {
+    generalunlocks["Light"] = true
+    document.getElementById("Light").style.display = "block"
+  } else {
+    document.getElementById("Light").style.display = "none"
+  }
   
   
   
