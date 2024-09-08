@@ -27,6 +27,7 @@ export function buynode(n) {
 
 export let nodes = [
   {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",image: novaimg,X:500,Y:500,Connection:null},
+  {cost: E("100"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",image: triangleimg,X:500,Y:750,Connection:1},
 ];
 
 export function nodeeffects(n) {
@@ -43,6 +44,7 @@ export function nodeeffects(n) {
 export function displaynodes() {
   
   displaynode(1)
+  displaynode(2)
   
 }
 
@@ -67,7 +69,13 @@ export function clearnodes() {
 }
 
 export function displaynode(nodeid) {
-  if (nodes[prereq(nodeid)].bought == true) {
+  var pre = nodes[prereq(nodeid)]
+  document.getElementById(String(nodeid)+"Node").div.img.src = nodes[nodeid].image
+  var a = false
+  if (pre == null) {a = true} else {
+    if (pre.bought == true) {a = true}
+  }
+  if (a == true) {
     if (nodes[nodeid].bought == true) {
       document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
     } else {
@@ -78,6 +86,6 @@ export function displaynode(nodeid) {
       }
     }
   } else {
-    
+      document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(56, 56, 56, 0.5)";
   }
 }

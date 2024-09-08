@@ -52,6 +52,8 @@ import { cindereffects } from './cinders.js'
 
 import { achievements } from './achievements.js'
 
+import { displaynodes } from './light.js'
+
 function gettimespeed() {
   var temp = E("1")
   if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
@@ -367,6 +369,7 @@ function updateText() {
   
   scrollgui()
   
+  displaynodes()
   guitick()
   
 }
