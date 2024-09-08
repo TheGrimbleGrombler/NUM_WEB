@@ -77,7 +77,7 @@ export let upgrades = {
   tomfoolery: {cost: E("500"), costtype: "tributes", bought: false, display: "Flat +1e80 increase to stardust gain outside of Labors."},
   I: {cost: E("1000"), costtype: "flares", bought: false, display: "Stardust gain x100 to help you get back on your feet."},
   II: {cost: E("1600"), costtype: "flares", bought: false, display: "Unlock a few new upgrades here and there. (Not fully implemented)"},
-  IIV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
+  IIV: {cost: E("1e100"), costtype: "flares", bought: false, display: "Unlock the Periodic Table in Matter."},
   IV: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   V: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
   VI: {cost: E("1e100"), costtype: "flares", bought: false, display: "TBD"},
@@ -88,7 +88,7 @@ export let upgrades = {
   
   starryeyes: {cost: E("1e12700"), costtype: "stardust", bought: false, display: "Matter Tiers!"},
   power: {cost: E("1e14800"), costtype: "stardust", bought: false, display: " Incrementallist effect is tetrated: "},
-  breakthrough: {cost: E("1e20280"), costtype: "stardust", bought: false, display: " (ENDGAME, NON-FUNCTIONAL) Unlock more features in the Gravity menu."},
+  breakthrough: {cost: E("1e20280"), costtype: "stardust", bought: false, display: " (ENDGAME, NON-FUNCTIONAL) Unlock Light."},
 };
 
 export function upgradeeffects(n) {

@@ -88,6 +88,8 @@ function loadfunctions() {
   if (isNaN(unlockedsubtabs.TributeMain)) {unlockedsubtabs.TributeMain = generalunlocks.tribute}
   if (isNaN(player.tributes)) {player.tributes = E("0")}
   if (isNaN(player.flares)) {player.flares = E("0")}
+  if (isNaN(player.photons)) {player.photons = E("0")}
+  if (isNaN(player.bestphotons)) {player.bestphotons = E("0")}
   if (isNaN(player.bestflares)) {player.bestflares = E("0")}
   if (isNaN(player.besttributesthisflare)) {player.besttributesthisflare = E("0")}
   if (isNaN(player.bestflaresthist4)) {player.bestflaresthist4 = E("0")}
@@ -250,6 +252,8 @@ let player = {
   besttributesthisflare: E("0"),
   bestflaresthist4: E("0"),
   cinders: E("0"),
+  photons: E("0"),
+  bestphotons: E("0"),
 };
 
 import { Labors } from './labors.js'
@@ -266,6 +270,7 @@ function checkbest() {
   if (player.tributes.gte(player.besttributesthisflare)) {player.besttributesthisflare = player.tributes}
   if (player.flares.gte(player.bestflares)) {player.bestflares = player.flares}
   if (player.flares.gte(player.bestflaresthist4)) {player.bestflaresthist4 = player.flares}
+  if (player.photons.gte(player.bestphotons)) {player.bestphotons = player.photons}
 }
 
 
@@ -292,6 +297,13 @@ function vfx() {
   for (var i = 0; i < elements.length; i++) {
   elements[i].style.border = '2px solid rgb(0,' + String(sinresult122) + ',255)';
   elements[i].style.boxShadow = '0 0 ' + String(sinresult12) + 'px 2px rgba(0,' + String(sinresult122) + ',255)'
+  }
+  //255, 238, 143
+  var elements = document.querySelectorAll('.light');
+  for (var i = 0; i < elements.length; i++) {
+  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+0.75)*255)+','+String((Math.sin(tick/25)/4+0.75)*238)+','+String((Math.sin(tick/25)/4+0.75)*143)+')';
+  elements[i].style.backgroundColor = 'rgb('+String((Math.sin(tick/25)/4+0.35)*255)+','+String((Math.sin(tick/25)/4+0.35)*238)+','+String((Math.sin(tick/25)/4+0.35)*143)+')';
+  elements[i].style.boxShadow = '0 0 10px 2px rgb('+String((Math.sin(tick/25)/4+0.75)*255)+','+String((Math.sin(tick/25)/4+0.75)*238)+','+String((Math.sin(tick/25)/4+0.75)*143)+')'
   }
   
 }
@@ -632,6 +644,8 @@ function load() {
     player.playtime = E(String(loadedData.player.playtime));
     player.tributes = E(String(loadedData.player.tributes));
     player.flares = E(String(loadedData.player.flares));
+    player.photons = E(String(loadedData.player.photons));
+    player.bestphotons = E(String(loadedData.player.bestphotons));
     player.beststardust = E(String(loadedData.player.beststardust));
     player.bestmatter = E(String(loadedData.player.bestmatter));
     player.besttributes = E(String(loadedData.player.besttributes));

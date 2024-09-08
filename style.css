@@ -237,6 +237,12 @@ background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
   font-family: "Lucida Console", Monospace;
   text-align: center;
 }
+.light {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Lucida Console", Monospace;
+  text-align: center;
+}
 .aqua {
   font-size: 16px;
   box-sizing: border-box;
