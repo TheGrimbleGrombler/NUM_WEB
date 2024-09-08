@@ -307,6 +307,11 @@ function vfx() {
   elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
   }
   
+  var elements = document.querySelectorAll('.node');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.transform =" rotate("+String(tick)+"deg)";
+  }
+  
 }
 
 import { guitick } from './guihandler.js'
