@@ -50,7 +50,7 @@ export function displaynodes() {
 
 function prereq(n) {
   var temp = nodes[n].Connection
-  if (temp != null) {
+  if (!isNaN(temp)) {
     temp = nodes[temp]
   }
   return temp;
@@ -71,26 +71,33 @@ export function clearnodes() {
 export function displaynode(nodeid) {
   var prer = prereq(nodeid)
   var pre = NaN
-  if (prer != NaN) {
-    pre = nodes[prer]
+  if (!isNaN(prer)) {
+    pre = prer
   }
   var a = false
-  if (isNaN(pre)) {a = true} else {
+  if (isNaN(prer)) {a = true} else {
     if (pre.bought == true) {a = true}
+    a = false
   }
   if (a == true) {
     if (nodes[nodeid].bought == true) {
-      document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 25px 5px rgba(0, 255, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.borderRadius = "25px";
+        document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(0,255,0)";
     } else {
       if (player["photons"].gte(nodes[nodeid].cost)) {
-        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 25px 5px rgba(255, 255, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.borderRadius = "25px";
+        document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(255,255,0)";
       } else {
-        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 10px 5px rgba(255, 0, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 25px 5px rgba(255, 0, 0, 1)";
         document.getElementById(String(nodeid) + "Node").style.borderRadius = "25px";
         document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(255,0,0)";
       }
     }
   } else {
-      document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(56, 56, 56, 0.5)";
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 25px 5px rgba(56, 56, 56, 1)";
+        document.getElementById(String(nodeid) + "Node").style.borderRadius = "25px";
+        document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(56,56,56)";
   }
 }
