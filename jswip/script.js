@@ -842,3 +842,6 @@ document.addEventListener("DOMContentLoaded", function() {
   if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
   setInterval(updateText, 16);
 });
+window.addEventListener('beforeunload', function () {
+  save();
+});
