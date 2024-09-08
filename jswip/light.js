@@ -11,6 +11,7 @@ const circleimg = "https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c28
 const triangleimg = "https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/TriangleT.png?v=1725819267768"
 
 import { player } from './script.js'
+import { generalunlocks } from './script.js'
 
 export function buynode(n) {
   var c = nodes[n].cost
@@ -26,8 +27,8 @@ export function buynode(n) {
 }
 
 export let nodes = {
-  1: {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",Connection:NaN},
-  2: {cost: E("100"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",Connection:1},
+  1: {cost: E("25"), bought: false, description: "Triple Light gain", name: "Root",Connection:NaN},
+  2: {cost: E("250"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",Connection:1},
 };
 
 export function nodeeffects(n) {
@@ -50,9 +51,6 @@ export function displaynodes() {
 
 function prereq(n) {
   var temp = nodes[n].Connection
-  if (!isNaN(temp)) {
-    temp = nodes[temp]
-  }
   return temp;
 }
 
@@ -68,11 +66,19 @@ export function clearnodes() {
   
 }
 
+export function getlightgain() {
+  if (generalunlocks["Light"] == true) {
+  var temp = E("1")
+  
+  player.photons = player.photons.add(temp.div(E("60")))
+  }
+}
+
 export function displaynode(nodeid) {
   var prer = prereq(nodeid)
   var pre = NaN
   if (!isNaN(prer)) {
-    pre = prer
+    pre = nodes[prer]
   }
   var a = false
   if (isNaN(prer)) {a = true} else {
@@ -101,3 +107,7 @@ export function displaynode(nodeid) {
         document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(56,56,56)";
   }
 }
+
+document.getElementById('1Node').addEventListener('click', function() {
+  buynode(1)  
+});

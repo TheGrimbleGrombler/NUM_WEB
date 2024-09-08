@@ -52,6 +52,7 @@ import { cindereffects } from './cinders.js'
 
 import { achievements } from './achievements.js'
 
+import { getlightgain } from './light.js'
 
 function gettimespeed() {
   var temp = E("1")
@@ -375,6 +376,7 @@ function updateText() {
   
   displaynodes()
   guitick()
+  getlightgain()
   
 }
 

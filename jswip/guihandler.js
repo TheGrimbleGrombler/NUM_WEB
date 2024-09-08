@@ -64,6 +64,10 @@ var FlareDisplay = document.getElementById('FlareDisplay');
 var CinderDisplay = document.getElementById('CinderDisplay');
 var CatalystDisplay = document.getElementById("CatalystDisplay");
 var CatalystButton = document.getElementById("CatalystButton");
+var PhotonsDisplay = document.getElementById("PhotonsDisplay");
+var PhotonsDisplay2 = document.getElementById("PhotonsDisplay2");
+var PhotonsDisplay3 = document.getElementById("PhotonsDisplay3");
+var PhotonsDisplay4 = document.getElementById("PhotonsDisplay4");
 var ScrollX = 0;
 var ScrollY = 0;
 
@@ -777,6 +781,8 @@ export function guitick() {
   
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 
+  PhotonsDisplay.innerHTML = String(fix2(player.photons,2))
+  
 }
 
 document.addEventListener("DOMContentLoaded", function() {
