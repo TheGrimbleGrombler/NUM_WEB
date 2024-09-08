@@ -757,32 +757,6 @@ document.getElementById('loadbutton').addEventListener('click', function() {
   load()
 });
 
-document.onkeydown = function (e) {
-   if (e.key == "t") {
-    if (gettributesonreset().gte(E("1"))) {
-      if (gettributesonreset().gte(E("1234"))) {
-        if (achievements.indexOf('Arbitrary1') == -1) {
-          achievements.push("Arbitrary1");
-        }
-      }
-    player.tributes = player.tributes.add(gettributesonreset())
-    doreset(2)
-    }
-  }
-   if (e.key == "m") {
-    if (getmatteronreset().gte(E("1"))) {
-    player.matter = player.matter.add(getmatteronreset())
-    doreset(1)
-    }
-  }
-   if (e.key == "f") {
-    if (getflaresonreset().gte(E("1000"))) {
-    player.flares = player.flares.add(getflaresonreset())
-    doreset(3)
-    }
-  }
-};
-
 export { E };
 export { player };
 export { Labors };
@@ -813,6 +787,29 @@ document.getElementById('automation2button').addEventListener('click', function(
 });
 
 document.onkeydown = function (e) {
+   if (e.key == "t") {
+    if (gettributesonreset().gte(E("1"))) {
+      if (gettributesonreset().gte(E("1234"))) {
+        if (achievements.indexOf('Arbitrary1') == -1) {
+          achievements.push("Arbitrary1");
+        }
+      }
+    player.tributes = player.tributes.add(gettributesonreset())
+    doreset(2)
+    }
+  }
+   if (e.key == "m") {
+    if (getmatteronreset().gte(E("1"))) {
+    player.matter = player.matter.add(getmatteronreset())
+    doreset(1)
+    }
+  }
+   if (e.key == "f") {
+    if (getflaresonreset().gte(E("1000"))) {
+    player.flares = player.flares.add(getflaresonreset())
+    doreset(3)
+    }
+  }
    if (e.key == "w") {
      WDown = true
     }
