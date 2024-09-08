@@ -488,36 +488,36 @@ import { buy } from './upgrades.js'
 
 function displayunlocksonload() {
   if (generalunlocks.theunknown == true) {
-    document.getElementById("matterdisplaycontainer").style = "display: block;"
-    document.getElementById("matterupgrades1").style = "display: block;"
+    document.getElementById("matterdisplaycontainer").style.display = "block"
+    document.getElementById("matterupgrades1").style.display = "block"
   };
   if (generalunlocks.matterupgrades2 == true) {
-    document.getElementById("matterupgrades2").style = "display: block;"
+    document.getElementById("matterupgrades2").style.display = "block"
   };
   if (generalunlocks.dlc == true) {
-    document.getElementById("stardustupgrades2").style = "display: block;"
+    document.getElementById("stardustupgrades2").style.display = "block"
   };
   if (generalunlocks.tribute == true) {
     unlockedsubtabs.TributeMain = true
-    document.getElementById("tributedisplaycontainer").style = "display: block;"
+    document.getElementById("tributedisplaycontainer").style.display = "block"
     //document.getElementById("tributesubtab1").style = "display: block;"
   };
   if (generalunlocks.tributeupgrades1 == true) {
-    document.getElementById("tributeupgrades1").style = "display: block;"
+    document.getElementById("tributeupgrades1").style.display = "block"
   };
   if (generalunlocks.flares == true) {
-    document.getElementById("flaredisplaycontainer").style = "display: block;"
+    document.getElementById("flaredisplaycontainer").style.display = "block"
   };
   if (generalunlocks.flareupgrades1 == true) {
-    document.getElementById("flareupgrades1").style = "display: block;"
+    document.getElementById("flareupgrades1").style.display = "block"
   };
   if (generalunlocks.stardustupgrades3 == true) {
-    document.getElementById("stardustupgrades3").style = "display: block;"
+    document.getElementById("stardustupgrades3").style.display = "block"
   };
   if (generalunlocks.MatterTiers == true) {
-    document.getElementById("MatterTier").style = "display: block;"
+    document.getElementById("MatterTier").style.display = "block"
   } else {
-    document.getElementById("MatterTier").style = "display: none;"
+    document.getElementById("MatterTier").style.display = "none"
   };
   
   
