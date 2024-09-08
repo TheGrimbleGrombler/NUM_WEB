@@ -322,6 +322,11 @@ background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
        width: 32px;
        height: auto;
      }
+     .small-image-container:hover span{
+        background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 100px),
+        
+     }
      .small-image-container img {
        width: 100%;
        height: 100%;

@@ -10,7 +10,7 @@ function animmain() {
     
     object.addEventListener("mouseenter", function() {
       
-      
+       document.getElementById("tab2").style.top = String(250 + t)+"px"
       
     });
     
