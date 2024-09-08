@@ -302,11 +302,16 @@ function vfx() {
   elements[i].style.border = '2px solid rgb(0,' + String(sinresult122) + ',255)';
   elements[i].style.boxShadow = '0 0 ' + String(sinresult12) + 'px 2px rgba(0,' + String(sinresult122) + ',255)'
   }
-  //255, 238, 143
   var elements = document.querySelectorAll('.light');
   for (var i = 0; i < elements.length; i++) {
   elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+')';
   elements[i].style.backgroundColor = 'rgb('+String((Math.sin(tick/25)/4+0.5)*255)+','+String((Math.sin(tick/25)/4+0.5)*238)+','+String((Math.sin(tick/25)/4+0.5)*143)+')';
+  elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
+  }
+  var elements = document.querySelectorAll('.lightborder');
+  for (var i = 0; i < elements.length; i++) {
+  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+')';
+  elements[i].style.backgroundColor = 'transparent'
   elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
   }
   

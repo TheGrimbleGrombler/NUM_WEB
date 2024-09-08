@@ -141,6 +141,14 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.largelighttext {
+  font-size: 24px;
+  color: rgb(255, 238, 143);
+  font-family: "Lucida Console", Monospace;
+  text-align: center;
+  display: block;
+  text-overflow: ellipsis;
+}
 .funnybg {
 background-color:black;
 background-image:
@@ -252,6 +260,21 @@ background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, 
   font-family: "Lucida Console", Monospace;
   text-align: center;
   color: rgb(255,255,255);
+}
+.lightborder {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Lucida Console", Monospace;
+  text-align: center;
+  color: rgb(255,255,255);
+}
+.lighttext {
+  font-size: 16px;
+  font-family: "Lucida Console", Monospace;
+  text-align: center;
+  color: rgb(255, 238, 143);
+  display: block;
+  text-overflow: ellipsis;
 }
 .aqua {
   font-size: 16px;
