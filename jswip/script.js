@@ -291,16 +291,16 @@ import { guitick } from './guihandler.js'
 function scrollgui() {
   
   if (WDown == true) {
-    ScrollVelY -= 1
-  }
-  if (SDown == true) {
     ScrollVelY += 1
   }
+  if (SDown == true) {
+    ScrollVelY -= 1
+  }
   if (ADown == true) {
-    ScrollVelX -= 1
+    ScrollVelX += 1
   }
   if (DDown == true) {
-    ScrollVelX += 1
+    ScrollVelX -= 1
   }
   
   ScrollX = ScrollX + ScrollVelX
@@ -308,6 +308,9 @@ function scrollgui() {
   ScrollVelX *= 0.95
   ScrollVelY *= 0.95
   document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollY)+"px; left:"+String(250 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("matterupgrades1").style = "display: block; position: absolute; top:"+String(0 + ScrollY)+"px; left:"+String(350 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("matterupgrades2").style = "display: block; position: absolute; top:"+String(150 + ScrollY)+"px; left:"+String(500 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("stardustupgrades2").style = "display: block; position: absolute; top:"+String(350 + ScrollY)+"px; left:"+String(0 + ScrollX)+"px; width:32px; height:32px;"
   
 }
 
