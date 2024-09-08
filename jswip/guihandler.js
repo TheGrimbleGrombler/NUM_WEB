@@ -773,7 +773,5 @@ export function guitick() {
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
-  
-  document.getElementById('stars').style.backgroundPosition = "0 0, 40px 60px, 130px 270px, 70px 100px";
 
 }

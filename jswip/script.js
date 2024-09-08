@@ -13,6 +13,11 @@ var ScrollY = 0;
 var ScrollVelX = 0;
 var ScrollVelY = 0;
 
+var WDown = false;
+var ADown = false;
+var SDown = false;
+var DDown = false;
+
 var automation1button = document.getElementById("automation1button");
 var automation2button = document.getElementById("automation2button");
 
@@ -282,6 +287,30 @@ function vfx() {
 }
 
 import { guitick } from './guihandler.js'
+
+function scrollgui() {
+  
+  if (WDown == true) {
+    ScrollVelY -= 1
+  }
+  if (SDown == true) {
+    ScrollVelY += 1
+  }
+  if (ADown == true) {
+    ScrollVelX -= 1
+  }
+  if (DDown == true) {
+    ScrollVelX += 1
+  }
+  
+  ScrollX = ScrollX + ScrollVelX
+  ScrollY = ScrollY + ScrollVelY
+  ScrollVelX *= 0.95
+  ScrollVelY *= 0.95
+  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollY)+"px; left:"+String(250 + ScrollX)+"px; width:32px; height:32px;"
+  
+}
+
 function updateText() {
   var timespeed = gettimespeed()
   gainbuyables()
@@ -301,13 +330,10 @@ function updateText() {
   getcindereffects()
   tick = tick + 1
   
+  scrollgui()
+  
   guitick()
   
-  ScrollX = ScrollX + ScrollVelX
-  ScrollY = ScrollY + ScrollVelY
-  ScrollVelX *= 0.95
-  ScrollVelY *= 0.95
-  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollY)+"px; left:"+String(250 + ScrollX)+"px; width:32px; height:32px;"
 }
 
 function getmatteronreset() {
@@ -757,16 +783,30 @@ document.getElementById('automation2button').addEventListener('click', function(
 
 document.onkeydown = function (e) {
    if (e.key == "w") {
-     ScrollVelY = ScrollVelY + 5
+     WDown = true
     }
    if (e.key == "d") {
-     ScrollVelX = ScrollVelX - 5
+     DDown = true
     }
    if (e.key == "s") {
-     ScrollVelY = ScrollVelY - 5
+     SDown = true
     }
    if (e.key == "a") {
-     ScrollVelX = ScrollVelX + 5
+     ADown = true
+    }
+};
+document.onkeyup = function (e) {
+   if (e.key == "w") {
+     WDown = false
+    }
+   if (e.key == "d") {
+     DDown = false
+    }
+   if (e.key == "s") {
+     SDown = false
+    }
+   if (e.key == "a") {
+     ADown = false
     }
 };
 
