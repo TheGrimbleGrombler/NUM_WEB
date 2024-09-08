@@ -38,6 +38,11 @@ export function nodeeffects(n) {
        temp = E("3")
     }
   }
+  if (n==2) {
+    if (nodes[2].bought == true) {
+       temp = player.photons.pow(E("0.5"))
+    }
+  }
   
   return temp
 }
@@ -71,6 +76,7 @@ export function getlightgain() {
     var temp = E("1")
     
     if (nodes[1].bought == true) {temp = temp.mul(nodeeffects(1))}
+    if (nodes[2].bought == true) {temp = temp.mul(nodeeffects(2))}
     
     player.photons = player.photons.add(temp.div(E("60")))
   }
