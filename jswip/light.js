@@ -26,8 +26,8 @@ export function buynode(n) {
 }
 
 export let nodes = {
-  1: {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",image: novaimg,X:500,Y:500,Connection:NaN},
-  2: {cost: E("100"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",image: triangleimg,X:500,Y:750,Connection:1},
+  1: {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",Connection:NaN},
+  2: {cost: E("100"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",Connection:1},
 };
 
 export function nodeeffects(n) {
@@ -74,7 +74,6 @@ export function displaynode(nodeid) {
   if (prer != NaN) {
     pre = nodes[prer]
   }
-  document.getElementById(String(nodeid)+"NodeImg").src = nodes[nodeid].image
   var a = false
   if (isNaN(pre)) {a = true} else {
     if (pre.bought == true) {a = true}
