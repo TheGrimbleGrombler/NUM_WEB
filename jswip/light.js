@@ -26,7 +26,7 @@ export function buynode(n) {
 }
 
 export let nodes = [
-  {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",image: novaimg},
+  {cost: E("100"), bought: false, description: "Triple Light gain", name: "Root",image: novaimg,X:500,Y:500,Connection:null},
 ];
 
 export function nodeeffects(n) {
@@ -40,23 +40,44 @@ export function nodeeffects(n) {
   return temp
 }
 
-export function displayupgrades() {
+export function displaynodes() {
   
-  displaynode("Incrementallist","incrementallist")
+  displaynode(1)
   
 }
 
+function prereq(n) {
+  var temp = nodes[n].Connection
+  if (temp != null) {
+    temp = nodes[temp]
+  }
+  return temp;
+}
 
+export function clearnodes() {
+  
+  var remaining = document.getElementsByClassName("lightnode");
+  
+  for (var i = 0; i < remaining.length; i++) {
+    
+    remaining[i].remove();
+    
+  }
+  
+}
 
-
-export function displaynode(idname,upname) {
-  if (upgrades[upname].bought == true) {
-    document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
-  } else {
-    if (player[upgrades[upname].costtype].gte(upgrades[upname].cost)) {
-      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
+export function displaynode(nodeid) {
+  if (nodes[prereq(nodeid)].bought == true) {
+    if (nodes[nodeid].bought == true) {
+      document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(0, 255, 0, 1)";
     } else {
-      document.getElementById(idname + "Button").style.boxShadow = "0 0 3px 2px rgba(255, 0, 0, 1)";
+      if (player["photons"].gte(nodes[nodeid].cost)) {
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
+      } else {
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(255, 0, 0, 1)";
+      }
     }
+  } else {
+    
   }
 }
