@@ -52,7 +52,6 @@ import { cindereffects } from './cinders.js'
 
 import { achievements } from './achievements.js'
 
-import { displaynodes } from './light.js'
 
 function gettimespeed() {
   var temp = E("1")
@@ -545,6 +544,7 @@ function displayunlocksonload() {
   
 }
 
+import { displaynodes } from './light.js'
 import { displayupgrades } from './upgrades.js'
 
 function save() {
@@ -866,5 +866,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setInterval(updateText, 16);
 });
 window.addEventListener('beforeunload', function () {
-  save();
+  if (!isNaN(player.stardust)) {
+    save();
+  }
 });
