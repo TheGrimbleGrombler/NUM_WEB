@@ -8,6 +8,7 @@ import { player } from './script.js'
 import { Labors } from './labors.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
+import { unlockedsubtabs } from './script.js'
 import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
 import { buyables } from './buyables.js'
@@ -93,6 +94,20 @@ export function purge(x) {
   }
   if (x==12) {
     doreset(3)
+  }
+  if (x==13) {
+    generalunlocks = {
+      stardust: true,
+      
+      
+    }
+    
+    unlockedsubtabs = {
+      "Main": true,
+      "MassMain": true,
+      "TributeMain": true,
+      
+    }
   }
   
 }

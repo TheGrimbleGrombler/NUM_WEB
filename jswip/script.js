@@ -218,6 +218,7 @@ let unlockedsubtabs = {
   "TributeMain": true,
   
 }
+
 let player = {
   stardust: E("1"),
   gravitational_waves: E("0"),
@@ -313,7 +314,7 @@ function scrollgui() {
   document.getElementById("stardustupgrades2").style = "display: block; position: absolute; top:"+String(350 + ScrollY)+"px; left:"+String(0 + ScrollX)+"px; width:32px; height:32px;"
   document.getElementById("tributeupgrades1").style = "display: block; position: absolute; top:"+String(25 + ScrollY)+"px; left:"+String(25 + ScrollX)+"px; width:32px; height:32px;"
   document.getElementById("flareupgrades1").style = "display: block; position: absolute; top:"+String(500 + ScrollY)+"px; left:"+String(200 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("stardustupgrades3").style = "display: block; position: absolute; top:"+String(500 + ScrollY)+"px; left:"+String(200 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("stardustupgrades3").style = "display: block; position: absolute; top:"+String(200 + ScrollY)+"px; left:"+String(-100 + ScrollX)+"px; width:32px; height:32px;"
   
 }
 
