@@ -219,6 +219,11 @@ let unlockedsubtabs = {
   
 }
 
+document.getElementById('PurgeProgressionFlagsButton').addEventListener('click', function() {
+  generalunlocks = {}
+  unlockedsubtabs = {}
+});
+
 let player = {
   stardust: E("1"),
   gravitational_waves: E("0"),
@@ -308,13 +313,20 @@ function scrollgui() {
   ScrollY = ScrollY + ScrollVelY
   ScrollVelX *= 0.95
   ScrollVelY *= 0.95
-  document.getElementById("stardustupgrades1").style = "display: block; position: absolute; top:"+String(250 + ScrollY)+"px; left:"+String(250 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("matterupgrades1").style = "display: block; position: absolute; top:"+String(0 + ScrollY)+"px; left:"+String(350 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("matterupgrades2").style = "display: block; position: absolute; top:"+String(150 + ScrollY)+"px; left:"+String(500 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("stardustupgrades2").style = "display: block; position: absolute; top:"+String(350 + ScrollY)+"px; left:"+String(0 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("tributeupgrades1").style = "display: block; position: absolute; top:"+String(25 + ScrollY)+"px; left:"+String(25 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("flareupgrades1").style = "display: block; position: absolute; top:"+String(500 + ScrollY)+"px; left:"+String(200 + ScrollX)+"px; width:32px; height:32px;"
-  document.getElementById("stardustupgrades3").style = "display: block; position: absolute; top:"+String(200 + ScrollY)+"px; left:"+String(-100 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("stardustupgrades1").style.top = String(250 + ScrollY)+"px"
+  document.getElementById("stardustupgrades1").style.left = String(250 + ScrollX)+"px"
+  document.getElementById("matterupgrades1").style.top = String(0 + ScrollY)+"px"
+  document.getElementById("matterupgrades1").style.left = String(350 + ScrollX)+"px"
+  document.getElementById("matterupgrades2").style.top = String(150 + ScrollY)+"px"
+  document.getElementById("matterupgrades2").style.left = String(500 + ScrollX)+"px"
+  document.getElementById("stardustupgrades2").style.top = String(350 + ScrollY)+"px"
+  document.getElementById("stardustupgrades2").style.left = String(0 + ScrollX)+"px"
+  document.getElementById("tributeupgrades1").style.top = String(25 + ScrollY)+"px"
+  document.getElementById("tributeupgrades1").style.left = String(25 + ScrollX)+"px"
+  document.getElementById("flareupgrades1").style.top = String(500 + ScrollY)+"px"
+  document.getElementById("flareupgrades1").style.left = String(200 + ScrollX)+"px"
+  document.getElementById("stardustupgrades3").style.top = String(200 + ScrollY)+"px"
+  document.getElementById("stardustupgrades3").style.left = String(-100 + ScrollX)+"px"
   
 }
 

@@ -26,7 +26,7 @@
   </head>
   <body>
     <img class="banner" src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Banner.png?v=1709904290329" style="display: block; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" id="Banner">  
-    <button class="aqua buttonwhite banner" id="CloseBannerButton" style="display: block; position: absolute; top: 75%; left: 45%;  width: 10%; height: 5%;" >Play</button>
+    <button class="aqua buttonwhite banner backgroundblue" id="CloseBannerButton" style="display: block; position: absolute; top: 75%; left: 45%;  width: 10%; height: 5%;" >Play</button>
     <!-- this is the start of content -->
     
     <!-- Your tab structure -->
@@ -48,21 +48,21 @@
       <div class="buttonwhite" style="display: block; position: absolute; top: 10%; width:0%; left:10%; height:90%;"></div>
       <div class="buttonwhite" style="display: block; position: absolute; top: 10%; width:0%; left:90%; height:90%;"></div>
       
-      <div style="display: block;" id="matterdisplaycontainer">
+      <div style="display: none;" id="matterdisplaycontainer">
           <div class="image-container centered image-auto" style="display: block; position: absolute; top: 16%; left: 90.5%; width: 2%;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Density.png?v=1702936399281" style="display: block;"> </div>
           <span class="numberblue" id="MatterPreDisplay" style="display: block; position: absolute; top: 16%; left: 92.5%; width: 7.5%; height: 1%" >Matter:</span>
           <span class="numberblue" id="MatterDisplay" style="display: block; position: absolute; top: 17.5%; left: 92.5%; width: 7.5%; height: 1%" > YOU ARE NOT MEANT TO SEE THIS </span>
           <button class="buttonblue centered backgroundblue" id="tab3button" style="display: block; position: absolute; top: 20.25%; left: 0%;  width: 10%; height: 5%;" >Matter</button>
       </div>
       
-      <div style="display: block;" id="tributedisplaycontainer">
+      <div style="display: none;" id="tributedisplaycontainer">
           <div class="image-container centered image-auto" style="display: block; position: absolute; top: 21%; left: 90.5%; width: 2%;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Tribute.png?v=1704217941065" style="display: block;"> </div>
           <span class="numbergreen" id="TributePreDisplay" style="display: block; position: absolute; top: 21%; left: 92.5%; width: 7.5%; height: 1%">Tributes:</span>
           <span class="numbergreen" id="TributeDisplay" style="display: block; position: absolute; top: 22.5%; left: 92.5%; width: 7.5%; height: 1%" > YOU ARE NOT MEANT TO SEE THIS </span>
           <button class="buttongreen centered backgroundgreen" id="tab6button" style="display: block; position: absolute; top: 25.25%; left: 0%;  width: 10%; height: 5%;" >Tributes</button>
       </div>
       
-      <div style="display: block;" id="flaredisplaycontainer">
+      <div style="display: none;" id="flaredisplaycontainer">
           <div class="image-container centered image-auto" style="display: block; position: absolute; top: 26%; left: 90.5%; width: 2%;" > <img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Flares.png?v=1709685661639" style="display: block;"> </div>
           <span class="numberorange" id="FlarePreDisplay" style="display: block; position: absolute; top: 26%; left: 92.5%; width: 7.5%; height: 1%" >Flares:</span>
           <span class="numberorange" id="FlareDisplay" style="display: block; position: absolute; top: 27.5%; left: 92.5%; width: 7.5%; height: 1%" > YOU ARE NOT MEANT TO SEE THIS </span>
@@ -163,19 +163,19 @@
          <button id="UnknownButton" style="display: block; position: absolute; top: 64px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container centered image-auto" style="width: 32px;"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/The%20Unknown.png?v=1702946045669"></div> </button>
       </div>
       
-      <div class="number-container" id="matterupgrades1" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="matterupgrades1" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="InfusionButton" style="display: block; position: absolute; top: 0px; left: 32px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Infusion.png?v=1703355128435"></div> </button>
          <button id="SacredTextsButton" style="display: block; position: absolute; top: 64px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Sacred%20Texts.png?v=1703360788846"></div> </button>
          <button id="GravitonCatalystButton" style="display: block; position: absolute; top: 64px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Graviton%20Catalyst.png?v=1703436688107"></div> </button>
       </div>
       
-      <div class="number-container" id="matterupgrades2" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="matterupgrades2" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="DiscoveryButton" style="display: block; position: absolute; top: 0px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/AgeOfDiscovery.png?v=1704153804144"></div> </button>
          <button id="DLCButton" style="display: block; position: absolute; top: 64px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/DLC.png?v=1704154383918"></div> </button>
          <button id="AutomatonsButton" style="display: block; position: absolute; top: 32px; left: 32px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Automatons.png?v=1703947773797"></div> </button>
       </div>
       
-      <div class="number-container" id="stardustupgrades2" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="stardustupgrades2" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="SpacetimeButton" style="display: block; position: absolute; top: 0px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Spacetime%20Rupture.png?v=1704155236202"></div> </button>
          <button id="MinMaxButton" style="display: block; position: absolute; top: 0px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Min-Max.png?v=1704161853476"></div> </button>
          <button id="HeavierButton" style="display: block; position: absolute; top: 32px; left: 32px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Heavier.png?v=1704211359102"></div> </button>
@@ -183,7 +183,7 @@
          <button id="ReplicationButton" style="display: block; position: absolute; top: 64px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Repication.png?v=1704211623455"></div> </button>
       </div>
       
-      <div class="number-container" id="tributeupgrades1" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="tributeupgrades1" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="ScramboblingCromjomblesButton" style="display: block; position: absolute; top: 0px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Scrambobling%20Cromjombles.png?v=1709410390879"></div> </button>
          <button id="TaxEvasionButton" style="display: block; position: absolute; top: 64px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/TaxEvasion.png?v=1709423428490"></div> </button>
          <button id="RealityShiftButton" style="display: block; position: absolute; top: 64px; left: 128px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/RealityShift.png?v=1709434091365"></div> </button>
@@ -195,7 +195,7 @@
          <button id="SlothButton" style="display: block; position: absolute; top: 496px; left: 400px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/SlothTotem.png?v=1709482382380"></div> </button>
       </div>
       
-      <div class="number-container" id="flareupgrades1" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="flareupgrades1" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="1Button" style="display: block; position: absolute; top: -64px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/1.png?v=1709773799121"></div> </button>
          <button id="2Button" style="display: block; position: absolute; top: -49px; left: 41px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/2.png?v=1709773797341"></div> </button>
          <button id="3Button" style="display: block; position: absolute; top: -11px; left: 63px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/3.png?v=1709773797570"></div> </button>
@@ -207,7 +207,7 @@
          <button id="9Button" style="display: block; position: absolute; top: -49px; left: -41px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/9.png?v=1709773798890"></div> </button>
       </div>
       
-      <div class="number-container" id="stardustupgrades3" style="display: block; position: absolute; top:250px; left:250px; width:96px; height:96px;">
+      <div class="number-container" id="stardustupgrades3" style="display: none; position: absolute; top:250px; left:250px; width:96px; height:96px;">
          <button id="StarryEyesButton" style="display: block; position: absolute; top: 0px; left: 32px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Stareyes.png?v=1709920217917"></div> </button>
          <button id="PowerButton" style="display: block; position: absolute; top: 64px; left: 0px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Power.png?v=1709920217616"></div> </button>
          <button id="BreakthroughButton" style="display: block; position: absolute; top: 64px; left: 64px; width: 32px; height: 32px;"> <div class="small-image-container"><img src="https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c283/Breakthrough.png?v=1715810793388"></div> </button>
