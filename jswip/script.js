@@ -220,8 +220,8 @@ let unlockedsubtabs = {
 }
 
 document.getElementById('PurgeProgressionFlagsButton').addEventListener('click', function() {
-  generalunlocks = {}
-  unlockedsubtabs = {}
+  generalunlocks = {stardust: true}
+  unlockedsubtabs = {"Main": true,"MassMain": true,"TributeMain": true}
 });
 
 let player = {
@@ -610,6 +610,9 @@ function save() {
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
 
+function wipe() {
+  localStorage.setItem('gameData', null);
+}
 import { setAchievements } from './achievements.js'
 
 function load() {
@@ -739,6 +742,11 @@ import { togglelabor } from './labors.js'
 
 document.getElementById('savebutton').addEventListener('click', function() {
   save()
+});
+
+document.getElementById('wipebutton').addEventListener('click', function() {
+  wipe()
+  load()
 });
 
 document.getElementById('loadbutton').addEventListener('click', function() {
