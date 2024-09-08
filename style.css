@@ -321,12 +321,13 @@ background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
      .small-image-container {
        width: 32px;
        height: auto;
+       left: 0%;
+       top: -100%;
+       background-color: transparent;
      }
      .small-image-container:hover {
-       width: 150%;
-       height: auto;
-       transition: 0.5s;
-        
+        box-shadow: 0px 0px 25px 5px rgba(255,255,255,0.75);
+        transition: 0.5s;
      }
      .small-image-container img {
        width: 100%;
@@ -334,9 +335,7 @@ background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
        image-rendering: pixelated;
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
-       position: relative;
-       top: -3px;
-       left: -8px;
+       position: absolute;
        background-color: rgb(0,0,255,0.5)
      }
 
