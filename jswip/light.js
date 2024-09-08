@@ -85,7 +85,9 @@ export function displaynode(nodeid) {
       if (player["photons"].gte(nodes[nodeid].cost)) {
         document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(255, 255, 0, 1)";
       } else {
-        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 3px 2px rgba(255, 0, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.boxShadow = "0 0 10px 5px rgba(255, 0, 0, 1)";
+        document.getElementById(String(nodeid) + "Node").style.borderRadius = "25px";
+        document.getElementById(String(nodeid) + "Node").style.borderColor = "rgb(255,0,0)";
       }
     }
   } else {
