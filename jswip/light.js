@@ -28,7 +28,7 @@ export function buynode(n) {
 
 export let nodes = {
   1: {cost: E("25"), bought: false, description: "Triple Photon gain", name: "Root",Connection:NaN},
-  2: {cost: E("250"), bought: false, description: "Photons boost their own production at a reduced rate", name: "Self Improvement",Connection:1},
+  2: {cost: E("250"), bought: false, description: "Photons boost their own production at a reduced rate", name: "Alpha-1",Connection:1},
 };
 
 export function nodeeffects(n) {
