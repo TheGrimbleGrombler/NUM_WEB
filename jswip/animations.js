@@ -18,6 +18,8 @@ function animmain() {
   }
   document.getElementById("tab2").style.backgroundPosition = String(ScrollX/10)+"px "+String(ScrollY/10)+"px"
   
+  document.getElementById("subtab3").style.backgroundPosition = String(t/10)+"px "+String(t/10)+"px"
+  
 }
 
 document.addEventListener("DOMContentLoaded", function() {

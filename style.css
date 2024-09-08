@@ -149,11 +149,10 @@ background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
 background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 .funnybg2 {
-background: linear-gradient(315deg, transparent 75%, #d45d55 0)-10px 0,
-    linear-gradient(45deg, transparent 75%, #d45d55 0)-10px 0,
-    linear-gradient(135deg, #a7332b 50%, transparent 0) 0 0,
-    linear-gradient(45deg, #6a201b 50%, #561a16 0) 0 0 #561a16;
-    background-size: 20px 20px;
+background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, #25251E 0),
+    linear-gradient(135deg, transparent 37%, #525242 0, #525242 63%, transparent 0),
+    linear-gradient(45deg, transparent 37%, #25251E 0, #25251E 63%, transparent 0) #343429;
+    background-size: 10px 10px;
 }
 .largenumberorange {
   font-size: 24px;
