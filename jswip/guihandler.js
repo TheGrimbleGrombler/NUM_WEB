@@ -775,3 +775,8 @@ export function guitick() {
   if (upgrades.power.bought == true) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  openTab("tab1")
+  openSubtab("subtab1")
+});
