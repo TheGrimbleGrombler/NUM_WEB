@@ -26,6 +26,7 @@ import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
 import { particleeffects } from './gravity.js'
 import { achievements } from './achievements.js'
+import { nodes } from './light.js'
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
@@ -733,7 +734,19 @@ document.getElementById('BreakthroughButton').addEventListener('mouseover', func
     UpgradeCost.innerHTML = "Cost: " + String(upgrades.breakthrough.cost) + " Stardust"
 });
 
-  
+
+document.getElementById('1Node').addEventListener('mouseover', function(event) {
+    if (nodes[1].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[1].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[1].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[1].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[1].cost) + " Photons"
+});
+document.getElementById('2Node').addEventListener('mouseover', function(event) {
+    if (nodes[2].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[1].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[2].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[2].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[2].cost) + " Photons"
+});
+
+
 export function guitick() {
   
   StardustDisplay.innerHTML = String(fix2(player.stardust,5));

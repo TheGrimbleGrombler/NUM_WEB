@@ -27,8 +27,8 @@ export function buynode(n) {
 }
 
 export let nodes = {
-  1: {cost: E("25"), bought: false, description: "Triple Light gain", name: "Root",Connection:NaN},
-  2: {cost: E("250"), bought: false, description: "Light boosts it's own production at a reduced rate", name: "Self Improvement",Connection:1},
+  1: {cost: E("25"), bought: false, description: "Triple Photon gain", name: "Root",Connection:NaN},
+  2: {cost: E("250"), bought: false, description: "Photons boost their own production at a reduced rate", name: "Self Improvement",Connection:1},
 };
 
 export function nodeeffects(n) {
@@ -68,9 +68,11 @@ export function clearnodes() {
 
 export function getlightgain() {
   if (generalunlocks["Light"] == true) {
-  var temp = E("1")
-  
-  player.photons = player.photons.add(temp.div(E("60")))
+    var temp = E("1")
+    
+    if (nodes[1].bought == true) {temp = temp.mul(nodeeffects(1))}
+    
+    player.photons = player.photons.add(temp.div(E("60")))
   }
 }
 
@@ -83,7 +85,6 @@ export function displaynode(nodeid) {
   var a = false
   if (isNaN(prer)) {a = true} else {
     if (pre.bought == true) {a = true}
-    a = false
   }
   if (a == true) {
     if (nodes[nodeid].bought == true) {
@@ -110,4 +111,7 @@ export function displaynode(nodeid) {
 
 document.getElementById('1Node').addEventListener('click', function() {
   buynode(1)  
+});
+document.getElementById('2Node').addEventListener('click', function() {
+  buynode(2)  
 });

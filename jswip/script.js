@@ -131,6 +131,8 @@ function loadfunctions() {
   if (isNaN(player.matterrank)) {player.matterrank = E("0")}
   if (isNaN(player.mattertier)) {player.mattertier = E("0")}
   if (isNaN(player.cinders)) {player.cinders = E("0")}
+  if (isNaN(nodes[1].bought)) {nodes[1].bought = false}
+  if (isNaN(nodes[2].bought)) {nodes[2].bought = false}
   //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
@@ -553,6 +555,7 @@ function displayunlocksonload() {
 
 import { displaynodes } from './light.js'
 import { displayupgrades } from './upgrades.js'
+import { nodes } from './light.js'
 
 function save() {
   const dataToSave = {
@@ -636,6 +639,8 @@ function save() {
     fl4: Labors.FL4,
     fl5: Labors.FL5,
     fl1: Labors.FL6,
+    n1: nodes[1].bought,
+    n2: nodes[2].bought,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -745,6 +750,9 @@ function load() {
     Labors.FL4 = loadedData.fl4
     Labors.FL5 = loadedData.fl5
     Labors.FL6 = loadedData.fl6
+    
+    nodes[1].bought = loadedData.n1
+    nodes[2].bought = loadedData.n2
     
     loadfunctions()
     
