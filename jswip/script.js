@@ -312,6 +312,8 @@ function scrollgui() {
   document.getElementById("matterupgrades2").style = "display: block; position: absolute; top:"+String(150 + ScrollY)+"px; left:"+String(500 + ScrollX)+"px; width:32px; height:32px;"
   document.getElementById("stardustupgrades2").style = "display: block; position: absolute; top:"+String(350 + ScrollY)+"px; left:"+String(0 + ScrollX)+"px; width:32px; height:32px;"
   document.getElementById("tributeupgrades1").style = "display: block; position: absolute; top:"+String(25 + ScrollY)+"px; left:"+String(25 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("flareupgrades1").style = "display: block; position: absolute; top:"+String(500 + ScrollY)+"px; left:"+String(200 + ScrollX)+"px; width:32px; height:32px;"
+  document.getElementById("stardustupgrades3").style = "display: block; position: absolute; top:"+String(500 + ScrollY)+"px; left:"+String(200 + ScrollX)+"px; width:32px; height:32px;"
   
 }
 
