@@ -12,6 +12,10 @@ var ScrollX = 0;
 var ScrollY = 0;
 var ScrollVelX = 0;
 var ScrollVelY = 0;
+export { ScrollX };
+export { ScrollY };
+export { ScrollVelX };
+export { ScrollVelY };
 
 var WDown = false;
 var ADown = false;
