@@ -26,6 +26,7 @@ import { unlockedsubtabs } from './script.js'
 import { Labors } from './labors.js'
 import { timespeed } from './script.js'
 import { GlobalResourceMultiplier } from './script.js'
+import { nodeeffects } from './light.js'
 
 export function particleeffects(a,b) {
   var temp = E("0")
@@ -78,7 +79,7 @@ export function particleeffects(a,b) {
       if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}
     }
     if (b==2) {
-      temp = player.c_particles.log10().add(E("1")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5")).pow(E("0.5"))
+      temp = player.c_particles.log10().add(E("1")).log10().pow(E("0.015625"))
       if (upgrades.gravitoncatalyst.bought==true) {temp = temp.pow(upgradeeffects(8))}
       if (Labors.TL1 == true) {temp = temp.pow(E("2"))}
       if (upgrades.gazeehlingjoombahmbalaeze.bought==true) {temp = temp.pow(upgradeeffects(22))}

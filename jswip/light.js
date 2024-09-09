@@ -12,6 +12,7 @@ const triangleimg = "https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c
 
 import { player } from './script.js'
 import { generalunlocks } from './script.js'
+import { particleeffects } from './gravity.js'
 
 export function buynode(n) {
   var c = nodes[n].cost
@@ -29,6 +30,8 @@ export function buynode(n) {
 export let nodes = {
   1: {cost: E("25"), bought: false, description: "Triple Photon gain", name: "Root",Connection:NaN},
   2: {cost: E("250"), bought: false, description: "Photons boost their own production at a reduced rate", name: "Alpha-1",Connection:1},
+  3: {cost: E("5000"), bought: false, description: "C-Particles boost Photon gain at a heavily reduced rate", name: "Beta-1",Connection:1},
+  4: {cost: E("20000"), bought: false, description: "Photons boost A-Particle gain", name: "Gamma-1",Connection:1},
 };
 
 export function nodeeffects(n) {
@@ -43,6 +46,16 @@ export function nodeeffects(n) {
        temp = player.photons.pow(E("0.5"))
     }
   }
+  if (n==3) {
+    if (nodes[3].bought == true) {
+       temp = particleeffects(3,2)
+    }
+  }
+  if (n==4) {
+    if (nodes[4].bought == true) {
+       temp = player.photons.pow(E("2"))
+    }
+  }
   
   return temp
 }
@@ -51,6 +64,8 @@ export function displaynodes() {
   
   displaynode(1)
   displaynode(2)
+  displaynode(3)
+  displaynode(4)
   
 }
 
@@ -120,4 +135,10 @@ document.getElementById('1Node').addEventListener('click', function() {
 });
 document.getElementById('2Node').addEventListener('click', function() {
   buynode(2)  
+});
+document.getElementById('3Node').addEventListener('click', function() {
+  buynode(3)  
+});
+document.getElementById('4Node').addEventListener('click', function() {
+  buynode(4)  
 });

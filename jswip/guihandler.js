@@ -749,6 +749,18 @@ document.getElementById('2Node').addEventListener('mouseover', function(event) {
     PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[2].cost) + " Photons"
     PhotonsDisplay5.innerHTML = "Effect: x" + String(nodeeffects(2))
 });
+document.getElementById('3Node').addEventListener('mouseover', function(event) {
+    if (nodes[3].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[3].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[3].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[3].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[3].cost) + " Photons"
+    PhotonsDisplay5.innerHTML = "Effect: x" + String(particleeffects(3,2))
+});
+document.getElementById('4Node').addEventListener('mouseover', function(event) {
+    if (nodes[4].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[4].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[4].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[4].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[4].cost) + " Photons"
+    PhotonsDisplay5.innerHTML = "Effect: x" + String(nodeeffects(4))
+});
 
 
 export function guitick() {
