@@ -133,6 +133,8 @@ function loadfunctions() {
   if (isNaN(player.cinders)) {player.cinders = E("0")}
   if (isNaN(nodes[1].bought)) {nodes[1].bought = false}
   if (isNaN(nodes[2].bought)) {nodes[2].bought = false}
+  if (isNaN(nodes[3].bought)) {nodes[3].bought = false}
+  if (isNaN(nodes[4].bought)) {nodes[4].bought = false}
   //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
@@ -646,6 +648,8 @@ function save() {
     fl1: Labors.FL6,
     n1: nodes[1].bought,
     n2: nodes[2].bought,
+    n3: nodes[3].bought,
+    n4: nodes[4].bought,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -758,6 +762,8 @@ function load() {
     
     nodes[1].bought = loadedData.n1
     nodes[2].bought = loadedData.n2
+    nodes[3].bought = loadedData.n3
+    nodes[4].bought = loadedData.n4
     
     loadfunctions()
     

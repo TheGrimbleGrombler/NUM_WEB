@@ -27,6 +27,7 @@ import { Labors } from './labors.js'
 import { timespeed } from './script.js'
 import { GlobalResourceMultiplier } from './script.js'
 import { nodeeffects } from './light.js'
+import { nodes } from './light.js'
 
 export function particleeffects(a,b) {
   var temp = E("0")
@@ -105,6 +106,7 @@ export function gainparticles(){
   if (upgrades.Gravity.bought == false) {gain = E("0")}
   if (upgrades.gravitoncatalyst.bought == true) {gain = gain.pow(upgradeeffects(8))}
   if (player.tributemilestone >= 5) {gain = gain.pow(E("2"))}
+  if (nodes[4].bought == true) {gain = gain.pow(nodeeffects(4))}
   if (player.labor == 4) {gain = E("0")}
   if (player.labor == 5) {gain = E("0")}
   if (player.labor == 8) {gain = gain.pow(E("0.03125"))}
