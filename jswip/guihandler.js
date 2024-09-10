@@ -759,7 +759,7 @@ document.getElementById('4Node').addEventListener('mouseover', function(event) {
     if (nodes[4].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[4].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[4].name)+" (Unbought)"}
     PhotonsDisplay3.innerHTML = nodes[4].description;
     PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[4].cost) + " Photons"
-    PhotonsDisplay5.innerHTML = "Effect: x" + String(nodeeffects(4))
+    PhotonsDisplay5.innerHTML = "Effect: ^" + String(nodeeffects(4))
 });
 
 
