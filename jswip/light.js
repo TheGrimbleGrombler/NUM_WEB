@@ -35,7 +35,10 @@ export let nodes = {
   4: {cost: E("20000"), bought: false, description: "Photons boost A-Particle gain", name: "Gamma-1",Connection:1},
   5: {cost: E("100000"), bought: false, description: "10x Photon gain.", name: "Alpha-2",Connection:2},
   6: {cost: E("1e6"), bought: false, description: "Weights multiply Photon gain at a reduced rate.", name: "Beta-2",Connection:3},
-  7: {cost: E("1e10"), bought: false, description: "Matter Rank cost ^0.5.", name: "Gamma-2",Connection:4},
+  7: {cost: E("1e10"), bought: false, description: "Matter Rank cost ^0.25.", name: "Gamma-2",Connection:4},
+  8: {cost: E("1e14"), bought: false, description: "Photon gain ^1.1", name: "Alpha-3",Connection:5},
+  9: {cost: E("5e12"), bought: false, description: "Unspent Tributes boost Photon gain at a reduced rate", name: "Beta-3",Connection:6},
+  10: {cost: E("1e12"), bought: false, description: "Matter Tier cost is reduced by a flat 100", name: "Gamma-3",Connection:7},
 };
 
 export function nodeeffects(n) {
@@ -78,6 +81,11 @@ export function nodeeffects(n) {
        temp = E("0.25")
     }
   }
+  if (n==8) {
+    if (nodes[8].bought == true) {
+       temp = E("1.1")
+    }
+  }
   
   return temp
 }
@@ -91,6 +99,9 @@ export function displaynodes() {
   displaynode(5)
   displaynode(6)
   displaynode(7)
+  displaynode(8)
+  displaynode(9)
+  displaynode(10)
   
 }
 
@@ -120,6 +131,7 @@ export function getlightgain() {
     if (nodes[3].bought == true) {temp = temp.mul(nodeeffects(3))}
     if (nodes[5].bought == true) {temp = temp.mul(nodeeffects(5))}
     if (nodes[6].bought == true) {temp = temp.mul(nodeeffects(6))}
+    if (nodes[8].bought == true) {temp = temp.mul(nodeeffects(8))}
     
     player.photons = player.photons.add(temp.div(E("60")))
   }
@@ -158,10 +170,33 @@ export function displaynode(nodeid) {
   }
 }
 
-
-
-  document.getElementById(String(i)+'Node').addEventListener('click', function() {
-  
-    buynode(i)  
-  
-  });
+document.getElementById('1Node').addEventListener('click', function() { 
+  buynode(1)    
+});
+document.getElementById('2Node').addEventListener('click', function() { 
+  buynode(2)    
+});
+document.getElementById('3Node').addEventListener('click', function() { 
+  buynode(3)    
+});
+document.getElementById('4Node').addEventListener('click', function() { 
+  buynode(4)    
+});
+document.getElementById('5Node').addEventListener('click', function() { 
+  buynode(5)    
+});
+document.getElementById('6Node').addEventListener('click', function() { 
+  buynode(6)    
+});
+document.getElementById('7Node').addEventListener('click', function() { 
+  buynode(7)    
+});
+document.getElementById('8Node').addEventListener('click', function() { 
+  buynode(8)    
+});
+document.getElementById('9Node').addEventListener('click', function() { 
+  buynode(9)    
+});
+document.getElementById('10Node').addEventListener('click', function() { 
+  buynode(10)    
+});

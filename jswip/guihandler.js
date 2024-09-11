@@ -807,7 +807,11 @@ export function guitick() {
   
   CParticleDisplay.innerHTML = (fix(player.c_particles,0))
   CPE1D.innerHTML = "A-Particle gain x" + String(fix(particleeffects(3,1)))
-  CPE2D.innerHTML = "??? x" + String(fix(particleeffects(3,2)))
+  if (nodes[4].bought == true) {
+    CPE2D.innerHTML = "Photon gain x" + String(fix(particleeffects(3,2)))
+  } else {
+    CPE2D.innerHTML = "??? x" + String(fix(particleeffects(3,2)))
+  }
   CPE3D.innerHTML = ""
   
   MassResetButton.innerHTML ="Reset all previous progress for " + String(fix(getmatteronreset(),2)) + " Matter"
