@@ -848,7 +848,7 @@ export function guitick() {
   CatalystDisplay.innerHTML = "You have " + String(fix(buyables.catalyst.amount,0)) + " (" + String(fix(buyables.catalyst.manuals,0)) +") Catalysts, Generating cinders: " + String(fix2(buyableeffects(5),10)) + "/s";
   CatalystButton.innerHTML = "Cost: " + String(fix(getbuyablecost(5),0)) + " Flares";
   
-  if (player.photons.gte(E("5000"))) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
+  if (player.photons.gte(E("1e15"))) {endgametext.innerHTML = "You have reached the current endgame!"} else {endgametext.innerHTML = " "}
 
   PhotonsDisplay.innerHTML = String(fix2(player.photons,2))
   

@@ -37,8 +37,8 @@ export let nodes = {
   6: {cost: E("1e6"), bought: false, description: "Weights multiply Photon gain at a reduced rate.", name: "Beta-2",Connection:3},
   7: {cost: E("1e10"), bought: false, description: "Matter Rank cost ^0.25.", name: "Gamma-2",Connection:4},
   8: {cost: E("1e12"), bought: false, description: "Photon gain ^1.1", name: "Alpha-3",Connection:5},
-  9: {cost: E("2e11"), bought: false, description: "Unspent Tributes boost Photon gain at a reduced rate", name: "Beta-3",Connection:6},
-  10: {cost: E("5e11"), bought: false, description: "Matter Tier cost is reduced by a flat 100", name: "Gamma-3",Connection:7},
+  9: {cost: E("1e11"), bought: false, description: "Unspent Tributes boost Photon gain at a reduced rate", name: "Beta-3",Connection:6},
+  10: {cost: E("5e10"), bought: false, description: "Matter Tier cost is reduced by a flat 100", name: "Gamma-3",Connection:7},
 };
 
 export function nodeeffects(n) {
@@ -88,7 +88,7 @@ export function nodeeffects(n) {
   }
   if (n==9) {
     if (nodes[9].bought == true) {
-       temp = player.tributes.pow("0.0625")
+       temp = player.tributes.pow("0.25")
     }
   }
   if (n==10) {
@@ -143,8 +143,9 @@ export function getlightgain() {
     if (nodes[3].bought == true) {temp = temp.mul(nodeeffects(3))}
     if (nodes[5].bought == true) {temp = temp.mul(nodeeffects(5))}
     if (nodes[6].bought == true) {temp = temp.mul(nodeeffects(6))}
-    if (nodes[8].bought == true) {temp = temp.pow(nodeeffects(8))}
     if (nodes[9].bought == true) {temp = temp.mul(nodeeffects(9))}
+    
+    if (nodes[8].bought == true) {temp = temp.pow(nodeeffects(8))}
     
     player.photons = player.photons.add(temp.div(E("60")))
   }
