@@ -13,6 +13,7 @@ const triangleimg = "https://cdn.glitch.global/46c3a8b6-be2f-412f-a363-0daba898c
 import { player } from './script.js'
 import { generalunlocks } from './script.js'
 import { particleeffects } from './gravity.js'
+import { buyables } from './buyables.js'
 
 export function buynode(n) {
   var c = nodes[n].cost
@@ -32,6 +33,9 @@ export let nodes = {
   2: {cost: E("250"), bought: false, description: "Photons boost their own production at a reduced rate", name: "Alpha-1",Connection:1},
   3: {cost: E("5000"), bought: false, description: "C-Particles boost Photon gain at a heavily reduced rate", name: "Beta-1",Connection:1},
   4: {cost: E("20000"), bought: false, description: "Photons boost A-Particle gain", name: "Gamma-1",Connection:1},
+  5: {cost: E("100000"), bought: false, description: "10x Photon gain.", name: "Alpha-2",Connection:2},
+  6: {cost: E("1e6"), bought: false, description: "Weights multiply Photon gain at a reduced rate.", name: "Beta-2",Connection:3},
+  7: {cost: E("1e10"), bought: false, description: "Matter Rank cost ^0.5.", name: "Gamma-2",Connection:4},
 };
 
 export function nodeeffects(n) {
@@ -59,6 +63,21 @@ export function nodeeffects(n) {
       }
     }
   }
+  if (n==5) {
+    if (nodes[5].bought == true) {
+       temp = E("10")
+    }
+  }
+  if (n==6) {
+    if (nodes[6].bought == true) {
+       temp = buyables.weight.amount.pow(E("0.25"))
+    }
+  }
+  if (n==7) {
+    if (nodes[7].bought == true) {
+       temp = E("0.25")
+    }
+  }
   
   return temp
 }
@@ -69,6 +88,9 @@ export function displaynodes() {
   displaynode(2)
   displaynode(3)
   displaynode(4)
+  displaynode(5)
+  displaynode(6)
+  displaynode(7)
   
 }
 
@@ -96,6 +118,8 @@ export function getlightgain() {
     if (nodes[1].bought == true) {temp = temp.mul(nodeeffects(1))}
     if (nodes[2].bought == true) {temp = temp.mul(nodeeffects(2))}
     if (nodes[3].bought == true) {temp = temp.mul(nodeeffects(3))}
+    if (nodes[5].bought == true) {temp = temp.mul(nodeeffects(5))}
+    if (nodes[6].bought == true) {temp = temp.mul(nodeeffects(6))}
     
     player.photons = player.photons.add(temp.div(E("60")))
   }

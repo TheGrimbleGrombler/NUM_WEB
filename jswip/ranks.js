@@ -9,6 +9,8 @@ import { Labors } from './labors.js'
 import { fix } from './script.js'
 import { generalunlocks } from './script.js'
 import { achievements } from './achievements.js'
+import { nodeeffects } from './light.js'
+import { nodes } from './light.js'
 
 export function getrankreq(modifier) {
   var temp = E("1e5")
@@ -24,6 +26,8 @@ export function getrankreq(modifier) {
   if (player.matterrank.gte(E("100"))) {temp = temp.pow(player.matterrank.div(E("100").mul(scalingmult)))}
   if (player.matterrank.gte(E("1000"))) {temp = temp.pow(player.matterrank.div(E("1000").mul(scalingmult)))}
   if (player.matterrank.gte(E("1000000"))) {temp = temp.pow(player.matterrank.div(E("1000000").mul(scalingmult)))}
+  
+  if (nodes[7].bought == true) {temp = temp.pow(nodeeffects(7))}
   
   return temp
 }
