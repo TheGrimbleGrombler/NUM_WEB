@@ -39,6 +39,9 @@ export let nodes = {
   8: {cost: E("1e12"), bought: false, description: "Photon gain ^1.1", name: "Alpha-3",Connection:5},
   9: {cost: E("1e11"), bought: false, description: "Unspent Tributes boost Photon gain at a reduced rate", name: "Beta-3",Connection:6},
   10: {cost: E("5e10"), bought: false, description: "Matter Tier cost is reduced by a flat 100", name: "Gamma-3",Connection:7},
+  11: {cost: E("1e16"), bought: false, description: "", name: "Alpha-4",Connection:8},
+  12: {cost: E("1e11"), bought: false, description: "Unspent Tributes boost Photon gain at a reduced rate", name: "Beta-4",Connection:9},
+  13: {cost: E("5e10"), bought: false, description: "Matter Tier cost is reduced by a flat 100", name: "Gamma-4",Connection:10},
 };
 
 export function nodeeffects(n) {
