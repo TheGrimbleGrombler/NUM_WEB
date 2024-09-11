@@ -158,15 +158,14 @@ export function displaynode(nodeid) {
   }
 }
 
-document.getElementById('1Node').addEventListener('click', function() {
-  buynode(1)  
-});
-document.getElementById('2Node').addEventListener('click', function() {
-  buynode(2)  
-});
-document.getElementById('3Node').addEventListener('click', function() {
-  buynode(3)  
-});
-document.getElementById('4Node').addEventListener('click', function() {
-  buynode(4)  
-});
+
+
+for (var i = 1; i < nodes.length; i++) {
+  
+  document.getElementById(String(i)+'Node').addEventListener('click', function() {
+    
+    buynode(i)  
+  
+  });
+   
+}
