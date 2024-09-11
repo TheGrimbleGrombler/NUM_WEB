@@ -160,12 +160,8 @@ export function displaynode(nodeid) {
 
 
 
-for (var i = 1; i < nodes.length; i++) {
-  
   document.getElementById(String(i)+'Node').addEventListener('click', function() {
-    
+  
     buynode(i)  
   
   });
-   
-}
