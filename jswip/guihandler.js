@@ -779,6 +779,24 @@ document.getElementById('7Node').addEventListener('mouseover', function(event) {
     PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[7].cost) + " Photons"
     PhotonsDisplay5.innerHTML = "Effect: ^" + String(nodeeffects(7))
 });
+document.getElementById('8Node').addEventListener('mouseover', function(event) {
+    if (nodes[8].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[8].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[8].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[8].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[8].cost) + " Photons"
+    PhotonsDisplay5.innerHTML = "Effect: ^" + String(nodeeffects(8))
+});
+document.getElementById('9Node').addEventListener('mouseover', function(event) {
+    if (nodes[9].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[9].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[9].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[9].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[9].cost) + " Photons"
+    PhotonsDisplay5.innerHTML = "Effect: x" + String(nodeeffects(9))
+});
+document.getElementById('10Node').addEventListener('mouseover', function(event) {
+    if (nodes[10].bought == true) {PhotonsDisplay2.innerHTML = String(nodes[10].name)+" (Bought)"} else {PhotonsDisplay2.innerHTML = String(nodes[10].name)+" (Unbought)"}
+    PhotonsDisplay3.innerHTML = nodes[10].description;
+    PhotonsDisplay4.innerHTML = "Cost: " + String(nodes[10].cost) + " Photons"
+    PhotonsDisplay5.innerHTML = "Effect: -" + String(nodeeffects(10))
+});
 
 
 export function guitick() {

@@ -135,6 +135,12 @@ function loadfunctions() {
   if (isNaN(nodes[2].bought)) {nodes[2].bought = false}
   if (isNaN(nodes[3].bought)) {nodes[3].bought = false}
   if (isNaN(nodes[4].bought)) {nodes[4].bought = false}
+  if (isNaN(nodes[5].bought)) {nodes[5].bought = false}
+  if (isNaN(nodes[6].bought)) {nodes[6].bought = false}
+  if (isNaN(nodes[7].bought)) {nodes[7].bought = false}
+  if (isNaN(nodes[8].bought)) {nodes[8].bought = false}
+  if (isNaN(nodes[9].bought)) {nodes[9].bought = false}
+  if (isNaN(nodes[10].bought)) {nodes[10].bought = false}
   //player.matterrank = E("0")
   //if (!Array.isArray(achievements)) {let achievements = []}
   
@@ -650,6 +656,12 @@ function save() {
     n2: nodes[2].bought,
     n3: nodes[3].bought,
     n4: nodes[4].bought,
+    n5: nodes[5].bought,
+    n6: nodes[6].bought,
+    n7: nodes[7].bought,
+    n8: nodes[8].bought,
+    n9: nodes[9].bought,
+    n10: nodes[10].bought,
     
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
@@ -763,7 +775,13 @@ function load() {
     nodes[1].bought = loadedData.n1
     nodes[2].bought = loadedData.n2
     nodes[3].bought = loadedData.n3
-    nodes[4].bought = loadedData.n4
+    nodes[4].bought = loadedData.n4    
+    nodes[5].bought = loadedData.n5
+    nodes[6].bought = loadedData.n6
+    nodes[7].bought = loadedData.n7
+    nodes[8].bought = loadedData.n8 
+    nodes[9].bought = loadedData.n9
+    nodes[10].bought = loadedData.n10
     
     loadfunctions()
     

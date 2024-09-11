@@ -39,6 +39,10 @@ export function gettierreq(modifier) {
   
   temp = temp.mul(E("3").pow(player.mattertier))
   
+  if (nodes[10].bought == true) {temp = temp.sub(E("100"))}
+  
+  temp = temp.clamp(E("0"),E("1e999"))
+  
   return temp
 }
 
