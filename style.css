@@ -118,8 +118,18 @@ body {
 .btn_tab {
 	width: calc(100% - 5px);
 	min-height: 40px;
+  border-width: 3px;
+  border-color: #FFFFFF;
 }
 
 .btn_tab:hover {
-	background-color: #444444
+	background-color: #444444;
+  transition-duration: 500ms;
+}
+.btn_tab:not(:hover) {
+	background-color: transparent;
+  transition-duration: 500ms;
+}
+.btn_tab.chosen {
+  border-left-width: 10px;
 }
