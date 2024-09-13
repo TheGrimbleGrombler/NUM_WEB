@@ -10,14 +10,12 @@ body {
 .number-container {
   text-align: center; /* Align the text to the right */
   position: absolute;
-  font-family: "Lucida Console", Monospace;
   text-align: center;
   text-overflow: ellipsis;
 }
 .number-container-hidden {
   text-align: center; /* Align the text to the right */
   position: absolute;
-  font-family: "Lucida Console", Monospace;
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -32,7 +30,6 @@ body {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(255,0,255);
-  font-family: "Lucida Console", Monospace;
   text-align: center;
   text-overflow: ellipsis;
 }
@@ -40,7 +37,6 @@ body {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(255,255,255);
-  font-family: "Lucida Console", Monospace;
   text-align: center;
   text-overflow: ellipsis;
 }
@@ -61,7 +57,6 @@ body {
   font-size: 24px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
   color: rgb(255,255,255);
-  font-family: "Lucida Console", Monospace;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -86,19 +81,16 @@ body {
   color: rgb(255,255,255);
   box-sizing: border-box;
   box-shadow: 0 0 10px 2px rgba(255,255,255);
-  font-family: "Lucida Console", Monospace;
   text-align: center;
 }
 .fire {
   font-size: 16px;
   box-sizing: border-box;
-  font-family: "Lucida Console", Monospace;
   text-align: center;
 }
 .aqua {
   font-size: 16px;
   box-sizing: border-box;
-  font-family: "Lucida Console", Monospace;
   text-align: center;
 }
      .image-container {
@@ -118,17 +110,18 @@ body {
 .btn_tab {
 	width: calc(100% - 5px);
 	min-height: 40px;
-  border: 3px solid;
+  border: 2px solid;
   border-color: #FFFFFF;
 }
 
 .btn_tab:hover {
 	background-color: #444444;
-  transition-duration: 500ms;
+  border-left-width: 10px;
+  transition-duration: 250ms;
 }
 .btn_tab:not(:hover) {
 	background-color: transparent;
-  transition-duration: 500ms;
+  transition-duration: 250ms;
 }
 .btn_tab.chosen {
   border-left-width: 10px;
@@ -141,10 +134,31 @@ body {
 }
 * {
 	text-align: center;
+  font-family: "Lucida Handwriting", Monospace;
   color: white;
 }
 .ghost {
   border: 0px;
   background-color: transparent;
-  padding: 5px 3px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height for demo */
+    background-color: #282c34; /* Background color */
+}
+
+h1 {
+    color: white; /* Text color */
+    margin-bottom: 20px; /* Space below text */
+}
+
+.gradient-bar {
+    width: 200px; /* Width of the bar */
+    height: 10px; /* Height of the bar */
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 1), transparent);
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
