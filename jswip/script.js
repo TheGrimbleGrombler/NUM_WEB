@@ -22,9 +22,6 @@ var ADown = false;
 var SDown = false;
 var DDown = false;
 
-var automation1button = document.getElementById("automation1button");
-var automation2button = document.getElementById("automation2button");
-
 var timespeed = E("1")
 
 function fix(n,e) {
@@ -39,177 +36,45 @@ function fix2(n,e) {
   
 }
 
-import { buyables } from './buyables.js'
-import { buyableeffects } from './buyables.js'
-
 import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
 
-import { getbuyablecost } from './buyables.js'
-
-import { getcindereffects } from './cinders.js'
-import { cindereffects } from './cinders.js'
-
-import { achievements } from './achievements.js'
-
-import { getlightgain } from './light.js'
-
+// A function to calculate the speed of time
 function gettimespeed() {
   var temp = E("1")
-  if (upgrades.discovery.bought == true) {temp = temp.mul(E("3"))}
-  
   
   return temp
 }
 
-function loadfunctions() {
+// Un-NaNs any values that it deems fit upon loading.
+function unNaN() {
   
   //if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
   
 }
 
+// General Automation script, Nothing yet.
 function Automation() {
   
   
-    if (player.tributemilestone >= 8) {
-      player.matter = player.matter.add(getmatteronreset().div(E("6000")))
-    }
-  
-  
-    function auto(a,b,c) {
-    var a1 = buyables[String(a)].manuals
-    if (a1.gte(E("1")) == true) {
-      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("1"))))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("1"))))
-        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("1")))
-        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("1")))
-      }
-    var a1 = buyables[String(a)].manuals
-      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("10"))))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("10"))))
-        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("10")))
-        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("10")))
-      }
-    var a1 = buyables[String(a)].manuals
-      if (player[String(b)].gte(getbuyablecost(c,a1.div(E("100"))))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c,a1.div(E("100"))))
-        buyables[String(a)].amount = buyables[String(a)].amount.add(a1.div(E("100")))
-        buyables[String(a)].manuals = buyables[String(a)].manuals.add(a1.div(E("100")))
-      }
-    var a1 = buyables[String(a)].manuals
-      if (player[String(b)].gte(getbuyablecost(c))) {
-        player[String(b)] = player[String(b)].sub(getbuyablecost(c))
-        buyables[String(a)].amount = buyables[String(a)].amount.add(E("1"))
-        buyables[String(a)].manuals = buyables[String(a)].manuals.add(E("1"))
-      }
-    }
-    }
-  
-  if (upgrades.automatons.bought) {
-    if (automation1 == true) {
-      auto("syphon","stardust",1)
-      auto("collector","stardust",2)
-      auto("field","stardust",3)
-    }
-  }
-    if (upgrades.mechanized.bought) {
-      if (automation2 == true) {
-        auto("weight","matter",4)
-      }
-    }
-  
-  if (player.tributemilestone >= 3) {
-    buy("incrementallist") 
-    buy("Gravity")  
-    buy("MEM")
-    buy("feedbackloop") 
-    buy("theunknown")  
-    buy("spacetimerupture") 
-    buy("minmax")   
-    buy("heavier") 
-    buy("crushing") 
-    buy("replication")   
-  }
-  if (upgrades.sloth.bought == true) {
-    buy("Infusion")  
-    buy("SacredTexts")  
-    buy("gravitoncatalyst")  
-    buy("discovery")  
-    buy("dlc")  
-  }
   
 }
-
-import { doreset } from './doreset.js'
-
-let generalunlocks = {
-  stardust: true,
-  
-  
-}
-
-let unlockedsubtabs = {
-  "Main": true,
-  "MassMain": true,
-  "TributeMain": true,
-  
-}
-
-document.getElementById('PurgeProgressionFlagsButton').addEventListener('click', function() {
-  generalunlocks = {stardust: true}
-  unlockedsubtabs = {"Main": true,"MassMain": true,"TributeMain": true}
-});
 
 let player = {
-  stardust: E("1"),
-  gravitational_waves: E("0"),
-  a_particles: E("1"),
-  b_particles: E("1"),
-  c_particles: E("1"),
-  matter: E("0"),
-  playtime: 0,
-  tributes: E("0"),
-  beststardust: E("0"),
-  bestmatter: E("0"),
-  besttributes: E("0"),
-  tributemilestone: 0,
-  flaremilestone: 0,
-  labor: 0,
-  matterrank: E("0"),
-  mattertier: E("0"),
-  flares: E("0"),
-  bestflares: E("0"),
-  besttributesthisflare: E("0"),
-  bestflaresthist4: E("0"),
-  cinders: E("0"),
-  photons: E("0"),
-  bestphotons: E("0"),
+  data: E("0"),
+  dataBest: E("0"),
+  simulationTier: E("0"),
+  simulationTierBest: E("01"),
+  progression: 1,
 };
 
-import { Labors } from './labors.js'
-
-var x = new Decimal().fromString("1e100")
 var GlobalResourceMultiplier = E("1")
 var automation1 = true
 var automation2 = true
 
 function checkbest() {
-  if (player.stardust.gte(player.beststardust)) {player.beststardust = player.stardust}
-  if (player.matter.gte(player.bestmatter)) {player.bestmatter = player.matter}
-  if (player.tributes.gte(player.besttributes)) {player.besttributes = player.tributes}
-  if (player.tributes.gte(player.besttributesthisflare)) {player.besttributesthisflare = player.tributes}
-  if (player.flares.gte(player.bestflares)) {player.bestflares = player.flares}
-  if (player.flares.gte(player.bestflaresthist4)) {player.bestflaresthist4 = player.flares}
-  if (player.photons.gte(player.bestphotons)) {player.bestphotons = player.photons}
-}
-
-
-import { particleeffects } from './gravity.js'
-
-function Debug() {
-  
-  document.getElementById("DEBUG").innerHTML = String(E("2").pow(E("1.1579e77")))
-  
+  if (player.data.gte(player.dataBest)) {player.dataBest = player.data}
+  if (player.simulationTier.gte(player.simulationTierBest)) {player.simulationTierBest = player.simulationTier}
 }
 
 function vfx() {
@@ -247,8 +112,6 @@ function vfx() {
   }
   
 }
-
-import { guitick } from './guihandler.js'
 
 function scrollgui() {
   
@@ -288,145 +151,23 @@ function scrollgui() {
 
 function updateText() {
   var timespeed = gettimespeed()
-  gainbuyables()
-  gainstardust()
-  gaingravitationalwaves()
-  gainparticles()
-  gaincinders()
+  gainData()
   timedunlocks()
   Automation()
   //Debug()
   displayupgrades()
   checkbest()
-  milestones()
-  calibratelabors()
-  renderrank()
   vfx()
-  getcindereffects()
   tick = tick + 1
   
   scrollgui()
   
-  displaynodes()
-  guitick()
-  getlightgain()
-  
 }
 
-function getmatteronreset() {
-  
+function gainData(){
   var gain = E("0")
   
-  gain = player.stardust.div(E("1e9")).pow(E("0.5"))
   
-  if (Labors.TL3 == true) {gain = gain.pow(E("1.35"))}
-  if (player.labor == 3) {gain = gain.pow(E("0.25"))}
-  if (player.labor == 4) {gain = E("0")}
-  if (player.labor == 5) {gain = E("0")}
-  if (player.labor == 7) {gain = E("0")}
-  if (player.labor == 9) {gain = E("0")}
-  if (player.labor == 12) {gain = E("0")}
-  if (player.bestflares.gte(E("1000"))) {gain = gain.mul(cindereffects[3])}
-  
-  if (gain.gte(E("1e10000"))) {gain = E("1e10000").mul(gain.div(E("1e10000")).pow(E("0.25")))}
-  
-  return gain.floor()
-  
-}
-
-function gettributesonreset() {
-  
-  var gain = E("0")
-  
-  gain = player.stardust.div(E("1e80")).log10().div(E("80")).add(E("1")).floor()
-  
-  if (Labors.TL6 == true) {gain = gain.mul(E("5"))}
-  
-  return gain
-  
-}
-
-function getflaresonreset() {
-  
-  var gain = E("0")
-  
-  gain = player.tributes.sub(E("400000"))
-  if (gain.lte(E("99999"))) {return E("0")}
-  gain = gain.log10().sub(E("4")).mul(E("1000")).floor()
-  
-  return gain
-  
-}
-
-function playtimeupdate() {player.playtime = player.playtime + 1; renderachievements()}
-
-setInterval(playtimeupdate, 1000);
-
-import { gainbuyables } from './buyables.js'
-function gainbuyables2(){
-  
-  var temp = buyableeffects(3)
-  temp = temp.div(E("60"))
-  temp = temp.mul(timespeed)
-  buyables.collector.amount = buyables.collector.amount.add(temp)
-  var temp = buyableeffects(2)
-  temp = temp.mul(timespeed)
-  temp = temp.div(E("60"))
-  buyables.syphon.amount = buyables.syphon.amount.add(temp)
-  
-  
-}
-
-import { gaingravitationalwaves } from './gravity.js'
-function gaincinders(){
-  var gain = E("0")
-  
-  gain = gain.add(buyableeffects(5))
-  
-  player.cinders = player.cinders.add(gain.div(E("60")))
-}
-function gainstardust(){
-  var gain = E("0")
-  
-  var temp = buyables.syphon.amount
-  if (upgrades.incrementallist.bought == true) {temp = temp.mul(upgradeeffects(1))}
-  gain = gain.add(temp)
-  
-  if (player.a_particles.gte(E("1"))) {gain = gain.mul(particleeffects(1,2))}
-  
-  if (buyables.weight.amount.gte(E("1"))) {gain = gain.mul(buyableeffects(4))}
-  
-  if (upgradeeffects(6).gte(E("1"))) {gain = gain.mul(upgradeeffects(6))}
-  
-  if (upgrades.spacetimerupture.bought==true) {gain = gain.mul(upgradeeffects(12))}
-  if (upgrades.minmax.bought==true) {gain = gain.mul(upgradeeffects(13))}
-  
-  if (player.tributemilestone >= 2) {gain = gain.mul(E("5"))}
-  
-  if (upgrades.I.bought==true) {gain = gain.mul(upgradeeffects(24))}
-  
-  if (player.cinders.gte(E("0.000000001"))) {gain = gain.mul(cindereffects[1])}
-  
-  if (upgrades.taxevasion.bought==true) {
-    gain = gain.pow(upgradeeffects(20))
-    if (Labors.TL4 == true) {gain = gain.pow(upgradeeffects(20))}
-  }
-  
-  if (Labors.TL2 == true) {gain = gain.pow(E("1.115"))}
-  
-  if (upgrades.tomfoolery.bought==true) { if (player.labor == 0) { gain = gain.add(upgradeeffects(23).mul(60)) }}
-  if (player.tributemilestone >= 12) { if (player.labor == 0) { gain = gain.add(E("1e2000").mul(60)) }}
-  if (player.tributemilestone >= 13) { if (player.labor == 0) { gain = gain.add(E("1e3000").mul(60)) }}
-  if (player.matterrank.gte(E("1"))) {gain = gain.mul(getrankeffect())}
-  if (player.mattertier.gte(E("1"))) {gain = gain.pow(gettiereffect())}
-  
-  if (player.labor == 4) { gain = gain.pow(E("0.9")) }
-  if (player.labor == 5) { gain = gain.pow(E("0.52")) }
-  if (player.labor == 6) { gain = gain.pow(E("0.195")) }
-  if (player.labor == 7) { gain = gain.pow(E("0.755")) }
-  if (player.labor == 9) { gain = gain.pow(E("0.755")) }
-  if (player.labor == 10) { gain = gain.pow(E("0.19")) }
-  if (player.labor == 11) { gain = gain.pow(E("0.09")) }
   
   gain = gain.mul(timespeed)
   
@@ -440,147 +181,11 @@ import { gainparticles } from './gravity.js'
 
 import { buy } from './upgrades.js'
 
-function displayunlocksonload() {
-  if (generalunlocks.theunknown == true) {
-    document.getElementById("matterdisplaycontainer").style.display = "block"
-    document.getElementById("matterupgrades1").style.display = "block"
-  };
-  if (generalunlocks.matterupgrades2 == true) {
-    document.getElementById("matterupgrades2").style.display = "block"
-  };
-  if (generalunlocks.dlc == true) {
-    document.getElementById("stardustupgrades2").style.display = "block"
-  };
-  if (generalunlocks.tribute == true) {
-    unlockedsubtabs.TributeMain = true
-    document.getElementById("tributedisplaycontainer").style.display = "block"
-    //document.getElementById("tributesubtab1").style = "display: block;"
-  };
-  if (generalunlocks.tributeupgrades1 == true) {
-    document.getElementById("tributeupgrades1").style.display = "block"
-  };
-  if (generalunlocks.flares == true) {
-    document.getElementById("flaredisplaycontainer").style.display = "block"
-  };
-  if (generalunlocks.flareupgrades1 == true) {
-    document.getElementById("flareupgrades1").style.display = "block"
-  };
-  if (generalunlocks.stardustupgrades3 == true) {
-    document.getElementById("stardustupgrades3").style.display = "block"
-  };
-  if (generalunlocks.MatterTiers == true) {
-    document.getElementById("MatterTier").style.display = "block"
-  } else {
-    document.getElementById("MatterTier").style.display = "none"
-  };
-  if (generalunlocks.Light == true) {
-    document.getElementById("Light").style.display = "block"
-  } else {
-    document.getElementById("Light").style.display = "none"
-  };
-  
-  
-  
-  
-}
-
-import { displaynodes } from './light.js'
 import { displayupgrades } from './upgrades.js'
-import { nodes } from './light.js'
 
 function save() {
   const dataToSave = {
     player: player,
-    achievements: achievements,
-    unlockedsubtabs: unlockedsubtabs,
-    syphonamount: buyables.syphon.amount,
-    syphonmanuals: buyables.syphon.manuals,
-    collectoramount: buyables.collector.amount,
-    collectormanuals: buyables.collector.manuals,
-    fieldamount: buyables.field.amount,
-    fieldmanuals: buyables.field.manuals,
-    weightamount: buyables.weight.amount,
-    weightmanuals: buyables.weight.manuals,
-    catalystamount: buyables.catalyst.amount,
-    catalystmanuals: buyables.catalyst.manuals,
-    buyables: buyables,
-    upgrades: upgrades,
-    incrementallist: upgrades.incrementallist.bought,
-    Gravity: upgrades.Gravity.bought,
-    MEM: upgrades.MEM.bought,
-    feedbackloop: upgrades.feedbackloop.bought,
-    theunknown: upgrades.theunknown.bought,
-    Infusion: upgrades.Infusion.bought,
-    SacredTexts: upgrades.SacredTexts.bought,
-    gravitoncatalyst: upgrades.gravitoncatalyst.bought,
-    automatons: upgrades.automatons.bought,
-    discovery: upgrades.discovery.bought,
-    dlc: upgrades.dlc.bought,
-    spacetimerupture: upgrades.spacetimerupture.bought,
-    minmax: upgrades.minmax.bought,
-    heavier: upgrades.heavier.bought,
-    crushing: upgrades.crushing.bought,
-    replication: upgrades.replication.bought,
-    scramboblingcromjombles: upgrades.scramboblingcromjombles.bought,
-    scaler1: upgrades.scaler1.bought,
-    scaler2: upgrades.scaler2.bought,
-    taxevasion: upgrades.taxevasion.bought,
-    realityshift: upgrades.realityshift.bought,
-    mechanized: upgrades.mechanized.bought,
-    sloth: upgrades.sloth.bought,
-    gazeehlingjoombahmbalaeze: upgrades.gazeehlingjoombahmbalaeze.bought,
-    tomfoolery: upgrades.tomfoolery.bought,
-    starryeyes: upgrades.starryeyes.bought,
-    power: upgrades.power.bought,
-    breakthrough: upgrades.breakthrough.bought,
-    I: upgrades.I.bought,
-    II: upgrades.II.bought,
-    IIV: upgrades.IIV.bought,
-    IV: upgrades.IV.bought,
-    V: upgrades.V.bought,
-    VI: upgrades.VI.bought,
-    VII: upgrades.VII.bought,
-    IIX: upgrades.IIX.bought,
-    IX: upgrades.IX.bought,
-    generalunlocks: generalunlocks,
-    beststardust: player.beststardust,
-    bestmatter: player.bestmatter,
-    besttributes: player.besttributes,
-    besttributesthisflare: player.besttributesthisflare,
-    bestflaresthist4: player.bestflaresthist4,
-    labor: player.labor,
-    cinders: player.cinders,
-    matterrank: player.matterrank,
-    mattertier: player.mattertier,
-    tl1: Labors.TL1,
-    tl2: Labors.TL2,
-    tl3: Labors.TL3,
-    tl4: Labors.TL4,
-    tl5: Labors.TL5,
-    tl6: Labors.TL6, 
-    tl7: Labors.TL7,
-    tl8: Labors.TL8,
-    tl9: Labors.TL9,
-    tl10: Labors.TL10,
-    tl11: Labors.TL11,
-    tl12: Labors.TL12,
-    fl1: Labors.FL1,
-    fl2: Labors.FL2,
-    fl3: Labors.FL3,
-    fl4: Labors.FL4,
-    fl5: Labors.FL5,
-    fl1: Labors.FL6,
-    n1: nodes[1].bought,
-    n2: nodes[2].bought,
-    n3: nodes[3].bought,
-    n4: nodes[4].bought,
-    n5: nodes[5].bought,
-    n6: nodes[6].bought,
-    n7: nodes[7].bought,
-    n8: nodes[8].bought,
-    n9: nodes[9].bought,
-    n10: nodes[10].bought,
-    
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -594,139 +199,14 @@ function load() {
   const loadedData = JSON.parse(localStorage.getItem('gameData'));
   if (loadedData) {
     
-    player.stardust = E(String(loadedData.player.stardust));
-    player.gravitational_waves = E(String(loadedData.player.gravitational_waves));
-    player.a_particles = E(String(loadedData.player.a_particles));
-    player.b_particles = E(String(loadedData.player.b_particles));
-    player.c_particles = E(String(loadedData.player.c_particles));
-    player.matter = E(String(loadedData.player.matter));
-    player.playtime = E(String(loadedData.player.playtime));
-    player.tributes = E(String(loadedData.player.tributes));
-    player.flares = E(String(loadedData.player.flares));
-    player.photons = E(String(loadedData.player.photons));
-    player.bestphotons = E(String(loadedData.player.bestphotons));
-    player.beststardust = E(String(loadedData.player.beststardust));
-    player.bestmatter = E(String(loadedData.player.bestmatter));
-    player.besttributes = E(String(loadedData.player.besttributes));
-    player.bestflares = E(String(loadedData.player.bestflares));
-    player.labor = String(loadedData.player.labor);
-    player.cinders = E(String(loadedData.player.cinders));
-    player.matterrank = E(String(loadedData.player.matterrank));
-    player.mattertier = E(String(loadedData.player.mattertier));
-    player.besttributesthisflare = E(String(loadedData.player.besttributesthisflare));
-    player.bestflaresthist4 = E(String(loadedData.player.bestflaresthist4));
+    player.data = E(String(loadedData.player.data));
+    player.dataBest = E(String(loadedData.player.dataBest));
+    player.simulationTier = E(String(loadedData.player.simulationTier));
+    player.simulationTierBest = E(String(loadedData.player.simulationTierBest));
     
-    if (!isNaN(loadedData.achievements)) {}
-    setAchievements(loadedData.achievements);
-    
-    unlockedsubtabs = loadedData.unlockedsubtabs;
-    buyables.syphon.amount = E(String(loadedData.syphonamount))
-    buyables.syphon.manuals = E(String(loadedData.syphonmanuals))
-    buyables.collector.amount = E(String(loadedData.collectoramount))
-    buyables.collector.manuals = E(String(loadedData.collectormanuals))
-    buyables.field.amount = E(String(loadedData.fieldamount))
-    buyables.field.manuals = E(String(loadedData.fieldmanuals))
-    buyables.weight.amount = E(String(loadedData.weightamount))
-    buyables.weight.manuals = E(String(loadedData.weightmanuals))
-    buyables.catalyst.amount = E(String(loadedData.catalystamount))
-    buyables.catalyst.manuals = E(String(loadedData.catalystmanuals))
-    
-    //upgrades = loadedData.upgrades
-    
-    upgrades.incrementallist.bought = loadedData.incrementallist,
-    upgrades.Gravity.bought = loadedData.Gravity,
-    upgrades.MEM.bought = loadedData.MEM,
-    upgrades.feedbackloop.bought = loadedData.feedbackloop,
-    upgrades.theunknown.bought = loadedData.theunknown,
-    upgrades.Infusion.bought = loadedData.Infusion,
-    upgrades.SacredTexts.bought = loadedData.SacredTexts,
-    upgrades.gravitoncatalyst.bought = loadedData.gravitoncatalyst,
-    upgrades.automatons.bought = loadedData.automatons,
-    upgrades.discovery.bought = loadedData.discovery
-    upgrades.dlc.bought = loadedData.dlc
-    upgrades.spacetimerupture.bought = loadedData.spacetimerupture
-    upgrades.minmax.bought = loadedData.minmax
-    upgrades.heavier.bought = loadedData.heavier
-    upgrades.crushing.bought = loadedData.crushing
-    upgrades.replication.bought = loadedData.replication
-    upgrades.scramboblingcromjombles.bought = loadedData.scramboblingcromjombles
-    upgrades.scaler1.bought = loadedData.scaler1
-    upgrades.scaler2.bought = loadedData.scaler2
-    upgrades.taxevasion.bought = loadedData.taxevasion
-    upgrades.realityshift.bought = loadedData.realityshift
-    upgrades.mechanized.bought = loadedData.mechanized
-    upgrades.sloth.bought = loadedData.sloth
-    upgrades.gazeehlingjoombahmbalaeze.bought = loadedData.gazeehlingjoombahmbalaeze
-    upgrades.tomfoolery.bought = loadedData.tomfoolery
-    upgrades.starryeyes.bought = loadedData.starryeyes
-    upgrades.power.bought = loadedData.power
-    upgrades.breakthrough.bought = loadedData.breakthrough
-    upgrades.I.bought = loadedData.I
-    upgrades.II.bought = loadedData.II
-    upgrades.IIV.bought = loadedData.IIV
-    upgrades.IV.bought = loadedData.IV
-    upgrades.V.bought = loadedData.V
-    upgrades.VI.bought = loadedData.VI
-    upgrades.VII.bought = loadedData.VII
-    upgrades.IIX.bought = loadedData.IIX
-    upgrades.IX.bought = loadedData.IX
-    
-    Labors.TL1 = loadedData.tl1
-    Labors.TL2 = loadedData.tl2
-    Labors.TL3 = loadedData.tl3
-    Labors.TL4 = loadedData.tl4
-    Labors.TL5 = loadedData.tl5
-    Labors.TL6 = loadedData.tl6
-    Labors.TL7 = loadedData.tl7
-    Labors.TL8 = loadedData.tl8
-    Labors.TL9 = loadedData.tl9
-    Labors.TL10 = loadedData.tl10
-    Labors.TL11 = loadedData.tl11
-    Labors.TL12 = loadedData.tl12
-    Labors.FL1 = loadedData.fl1
-    Labors.FL2 = loadedData.fl2
-    Labors.FL3 = loadedData.fl3
-    Labors.FL4 = loadedData.fl4
-    Labors.FL5 = loadedData.fl5
-    Labors.FL6 = loadedData.fl6
-    
-    nodes[1].bought = loadedData.n1
-    nodes[2].bought = loadedData.n2
-    nodes[3].bought = loadedData.n3
-    nodes[4].bought = loadedData.n4    
-    nodes[5].bought = loadedData.n5
-    nodes[6].bought = loadedData.n6
-    nodes[7].bought = loadedData.n7
-    nodes[8].bought = loadedData.n8 
-    nodes[9].bought = loadedData.n9
-    nodes[10].bought = loadedData.n10
-    
-    loadfunctions()
-    
-    generalunlocks = loadedData.generalunlocks
-    
-    
-    
-    displayunlocksonload()
+    unNaN()
   }
 }
-
-import { getrankreq } from './ranks.js'
-import { gettierreq } from './ranks.js'
-import { getrankeffect } from './ranks.js'
-import { gettiereffect } from './ranks.js'
-import { renderrank } from './ranks.js'
-import { buymatterrank } from './ranks.js'
-import { buymattertier } from './ranks.js'
-
-import { purge } from './purge.js'
-import { renderachievements } from './achievements.js'
-import { milestones } from './milestones.js'
-
-import { timedunlocks } from './achievements.js'
-
-import { calibratelabors } from './labors.js'
-import { togglelabor } from './labors.js'
 
 document.getElementById('savebutton').addEventListener('click', function() {
   save()
@@ -743,34 +223,13 @@ document.getElementById('loadbutton').addEventListener('click', function() {
 
 export { E };
 export { player };
-export { Labors };
-export { generalunlocks };
 export { fix };
 export { fix2 };
 export { timespeed };
-export { automation1 };
-export { automation2 };
-export { getmatteronreset };
-export { gettributesonreset };
-export { getflaresonreset };
 export { GlobalResourceMultiplier };
-export { unlockedsubtabs };
-
-document.getElementById('CloseBannerButton').addEventListener('click', function() {
-  document.getElementById('CloseBannerButton').style.display = "none"
-  document.getElementById('Banner').style.display = "none"
-});
-
-document.getElementById('automation1button').addEventListener('click', function() {
-  automation1 = !automation1
-  document.getElementById('automation1button').innerHTML = "Automation: " + String(automation1)
-});
-document.getElementById('automation2button').addEventListener('click', function() {
-  automation2 = !automation2
-  document.getElementById("automation2button").innerHTML = "Automation: " + String(automation2)
-});
 
 document.onkeydown = function (e) {
+  /*
    if (e.key == "t") {
     if (gettributesonreset().gte(E("1"))) {
       if (gettributesonreset().gte(E("1234"))) {
@@ -794,6 +253,7 @@ document.onkeydown = function (e) {
     doreset(3)
     }
   }
+  */
    if (e.key == "w") {
      WDown = true
     }
