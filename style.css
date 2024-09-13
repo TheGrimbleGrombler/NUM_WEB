@@ -1,28 +1,8 @@
-/* a minimalist set of CSS resets */
-
-/* default to border-box */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/* adjust typography defaults */
 body {
   margin: 1rem;
   font-family: sans-serif;
   line-height: 1.5;
   background-color: rgb(0, 0, 0); /* RGB value */
-}
-
-/* images and videos max out at full width */
-img,
-video {
-  height: auto;
-  max-width: 100%;
 }
 .banner {
   z-index: 9999;
@@ -56,46 +36,6 @@ video {
   text-align: center;
   text-overflow: ellipsis;
 }
-.numbergreen {
-  font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(0,255,0);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  text-overflow: ellipsis;
-}
-.numberred {
-  font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(255,0,0);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  text-overflow: ellipsis;
-}
-.numberorange {
-  font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(255,160,0);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  text-overflow: ellipsis;
-}
-.numberyellow {
-  font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(255,255,0);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  text-overflow: ellipsis;
-}
-.numberblue {
-  font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(0,0,255);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  text-overflow: ellipsis;
-}
 .numberwhite {
   font-size: 16px;
   display: block; /* Make the number a block element so it takes up the full width of the container */
@@ -114,21 +54,6 @@ video {
 .backgroundblack {
   background-color: rgb(0,0,0);
 }
-.backgroundred {
-  background-color: rgb(102,0,0);
-}
-.backgroundgreen {
-  background-color: rgb(0,102,0);
-}
-.backgroundpink {
-  background-color: rgb(102,0,102);
-}
-.backgroundyellow {
-  background-color: rgb(102,102,0);
-}
-.backgroundblue {
-  background-color: rgb(0,0,102);
-}
 .centered {
   text-align: center;
 }
@@ -141,94 +66,21 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.largelighttext {
-  font-size: 24px;
-  color: rgb(255, 238, 143);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  display: block;
-  text-overflow: ellipsis;
-}
 .funnybg {
-background-color:black;
-background-image:
-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-color:black;
+  background-image:
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 .funnybg2 {
-background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, #25251E 0),
-    linear-gradient(135deg, transparent 37%, #525242 0, #525242 63%, transparent 0),
-    linear-gradient(45deg, transparent 37%, #25251E 0, #25251E 63%, transparent 0) #343429;
-    background-size: 10px 10px;
-}
-.largenumberorange {
-  font-size: 24px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
-  color: rgb(255,160,0);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.buttonblue {
-  border: 2px solid rgb(0,0,255);
-  font-size: 16px;
-  color: rgb(255,255,255);
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(0,0,255,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.buttonred {
-  border: 2px solid rgb(255,0,0);
-  font-size: 16px;
-  color: rgb(255,255,255);
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(255,0,0,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.outlinered {
-  border: 4px solid rgb(255,0,0);
-  box-shadow: 0 0 10px 2px rgba(255,0,0,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.outlineorange {
-  border: 4px solid rgb(255,122.5,0);
-  box-shadow: 0 0 10px 2px rgba(255,122.5,0,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.outlineyellow {
-  border: 4px solid rgb(255,255,0);
-  box-shadow: 0 0 10px 2px rgba(255,255,0,0.75);
-}
-.outlinegreen {
-  border: 4px solid rgb(0,255,0);
-  box-shadow: 0 0 10px 2px rgba(0,255,0,0.75);
-}
-.buttonyellow {
-  border: 2px solid rgb(255,255,0);
-  font-size: 16px;
-  color: rgb(255,255,255);
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(255,255,0,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.buttonpink {
-  border: 2px solid rgb(255,0,255);
-  font-size: 16px;
-  color: rgb(255,255,255);
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(255,0,255,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
+  background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, #25251E 0),
+  linear-gradient(135deg, transparent 37%, #525242 0, #525242 63%, transparent 0),
+  linear-gradient(45deg, transparent 37%, #25251E 0, #25251E 63%, transparent 0) #343429;
+  background-size: 10px 10px;
 }
 .buttonwhite {
   border: 2px solid rgb(255,255,255);
@@ -239,42 +91,11 @@ background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, 
   font-family: "Lucida Console", Monospace;
   text-align: center;
 }
-.buttongreen {
-  border: 2px solid rgb(0,255,0);
-  font-size: 16px;
-  color: rgb(255,255,255);
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(0,255,0,0.75);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
 .fire {
   font-size: 16px;
   box-sizing: border-box;
   font-family: "Lucida Console", Monospace;
   text-align: center;
-}
-.light {
-  font-size: 16px;
-  box-sizing: border-box;
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  color: rgb(255,255,255);
-}
-.lightborder {
-  font-size: 16px;
-  box-sizing: border-box;
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  color: rgb(255,255,255);
-}
-.lighttext {
-  font-size: 16px;
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-  color: rgb(255, 238, 143);
-  display: block;
-  text-overflow: ellipsis;
 }
 .aqua {
   font-size: 16px;
@@ -282,69 +103,6 @@ background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, 
   font-family: "Lucida Console", Monospace;
   text-align: center;
 }
-.achievement{
-  background-color: rgb(127.5,0,0);
-  padding: 0; /* Remove any default padding */
-  border: none; /* Remove any default border */
-}
-.achievementclaimed{
-  background-color: rgb(0,127.5,0);
-  padding: 0; /* Remove any default padding */
-  border: none; /* Remove any default border */
-  box-shadow: 0 0 10px 2px rgba(0,255,0,0.5);
-}
-.milestone{
-  background-color: rgb(127.5,0,0);
-  padding: 0; /* Remove any default padding */
-  border: 2px solid rgb(0,255,0);
-  box-shadow: 0 0 10px 2px rgba(255,0,0,0.5);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.milestonebreached{
-  background-color: rgb(0,127.5,0);
-  padding: 0; /* Remove any default padding */
-  border: 2px solid rgb(0,255,0);
-  box-shadow: 0 0 10px 2px rgba(0,255,0,0.5);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.weakmilestone{
-  background-color: rgb(75,0,0);
-  padding: 0; /* Remove any default padding */
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.weakmilestonebreached{
-  background-color: rgb(150,75,0);
-  padding: 0; /* Remove any default padding */
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.laboryellow{
-  background-color: rgb(127.5,127.5,0);
-  padding: 0; /* Remove any default padding */
-  border: 2px solid rgb(0,255,0);
-  box-shadow: 0 0 10px 2px rgba(255,255,0,0.5);
-  font-family: "Lucida Console", Monospace;
-  text-align: center;
-}
-.achievement img {
-  width: 100%;
-  height: 100%;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges; /* Firefox */
-  image-rendering: crisp-edges;
-}
-.achievementclaimed img {
-  width: 100%;
-  height: 100%;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges; /* Firefox */
-  image-rendering: crisp-edges;
-}
-
-
      .image-container {
        height: auto;
         padding: 5px; /* Remove any default padding */
@@ -356,34 +114,3 @@ background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, 
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
      }
-
-     .small-image-container {
-       width: 32px;
-       height: auto;
-     }
-     .small-image-container img {
-       width: 32px;
-       height: auto;
-       left: -8px;
-       top: -3px;
-       image-rendering: pixelated;
-       image-rendering: -moz-crisp-edges; /* Firefox */
-       image-rendering: crisp-edges;
-       position: relative;
-       background-color: rgb(0,0,255,0.5)
-     }
-     .small-image-container:hover img {
-        box-shadow: 0 0 25px 0px rgba(255,255,255,0.75);
-        transition: 0.5s;
-     }
-
-.small-image-container:after {
-     /*content: "";
-     /*position: absolute;
-     /*  top: -0px;
-     /*  left: -0px;
-     /*width: 120%;
-     /*height: 120%;
-     /*background: rgba(0, 0, 0, 0.2); /* This will create a semi-transparent layer to darken the image */
-     /*pointer-events: none; /* This ensures that the overlay does not interfere with the button's interactivity */
-}

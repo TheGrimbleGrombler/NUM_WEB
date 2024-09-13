@@ -6,7 +6,6 @@ function E(n) {
 }
 import { player } from './script.js'
 import { fix } from './script.js'
-import { generalunlocks } from './script.js'
 
 export function buy(n) {
   var c = upgrades[n].cost

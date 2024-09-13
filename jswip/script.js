@@ -152,7 +152,6 @@ function scrollgui() {
 function updateText() {
   var timespeed = gettimespeed()
   gainData()
-  timedunlocks()
   Automation()
   //Debug()
   displayupgrades()
@@ -174,10 +173,8 @@ function gainData(){
   gain = gain.mul(GlobalResourceMultiplier)
   
   var gain = gain.div(E("60"))
-  player.stardust = player.stardust.add(gain)
+  player.data = player.data.add(gain)
 }
-
-import { gainparticles } from './gravity.js'
 
 import { buy } from './upgrades.js'
 
@@ -193,7 +190,6 @@ function save() {
 function wipe() {
   localStorage.setItem('gameData', null);
 }
-import { setAchievements } from './achievements.js'
 
 function load() {
   const loadedData = JSON.parse(localStorage.getItem('gameData'));
@@ -288,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setInterval(updateText, 16);
 });
 window.addEventListener('beforeunload', function () {
-  if (!isNaN(player.stardust)) {
+  if (!isNaN(player.data)) {
     save();
   }
 });
