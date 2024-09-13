@@ -133,3 +133,13 @@ body {
 .btn_tab.chosen {
   border-left-width: 10px;
 }
+#tabs {
+  
+  width: 200px;
+  height: 100%;
+  
+}
+* {
+	text-align: center;
+  color: white;
+}

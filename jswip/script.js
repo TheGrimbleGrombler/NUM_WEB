@@ -208,11 +208,6 @@ document.getElementById('savebutton').addEventListener('click', function() {
   save()
 });
 
-document.getElementById('wipebutton').addEventListener('click', function() {
-  wipe()
-  load()
-});
-
 document.getElementById('loadbutton').addEventListener('click', function() {
   load()
 });
