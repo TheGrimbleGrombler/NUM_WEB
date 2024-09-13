@@ -6,28 +6,11 @@ function E(n) {
 }
 import { player } from './script.js'
 import { buy } from './upgrades.js'
-import { togglelabor } from './labors.js'
-import { purge } from './purge.js'
-import { doreset } from './doreset.js'
-import { automation1 } from './script.js'
-import { automation2 } from './script.js'
-import { getmatteronreset } from './script.js'
-import { gettributesonreset } from './script.js'
-import { getflaresonreset } from './script.js'
-import { buymatterrank } from './ranks.js'
-import { buymattertier } from './ranks.js'
 import { upgrades } from './upgrades.js'
 import { upgradeeffects } from './upgrades.js'
-import { buyables } from './buyables.js'
-import { getbuyablecost } from './buyables.js'
-import { buyableeffects } from './buyables.js'
 import { fix } from './script.js'
 import { fix2 } from './script.js'
 import { unlockedsubtabs } from './script.js'
-import { particleeffects } from './gravity.js'
-import { achievements } from './achievements.js'
-import { nodes } from './light.js'
-import { nodeeffects } from './light.js'
 
 
 var StardustDisplay = document.getElementById("StardustDisplay");
