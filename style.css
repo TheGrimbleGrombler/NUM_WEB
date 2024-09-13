@@ -77,10 +77,8 @@ body {
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 .funnybg2 {
-  background: linear-gradient(45deg, #25251E 12%, transparent 0, transparent 88%, #25251E 0),
-  linear-gradient(135deg, transparent 37%, #525242 0, #525242 63%, transparent 0),
-  linear-gradient(45deg, transparent 37%, #25251E 0, #25251E 63%, transparent 0) #343429;
-  background-size: 10px 10px;
+  background-color: black;
+  background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(100,100,100,.5) 35px, rgba(100,100,100,.5) 70px);
 }
 .buttonwhite {
   border: 2px solid rgb(255,255,255);
@@ -114,3 +112,14 @@ body {
        image-rendering: -moz-crisp-edges; /* Firefox */
        image-rendering: crisp-edges;
      }
+
+
+
+.btn_tab {
+	width: calc(100% - 5px);
+	min-height: 40px;
+}
+
+.btn_tab:hover {
+	background-color: #444444
+}
