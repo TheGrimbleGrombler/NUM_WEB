@@ -1,5 +1,9 @@
+const TABS = {
+  choose(n) {
+    
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-  openTab("tab1")
-  openSubtab("subtab1")
+  TABS.choose(1)
 });
