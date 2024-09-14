@@ -1,27 +1,37 @@
 var tick = 0;
 
 const newstexts = [
-  "HEY HEY HEY!!!!",
+  "Breaking news: Disease outbreak crates laser zebras.",
   "What the rizz?",
   "Back in my day we didn't have these darn videogames.",
-  "Breaking news: Florginshammerinkledroohashlir."
+  "Rat infestation found to be a leading cause of child labor.",
+  "League of Legends players' brain found to be missing.",
+  "Asteroid heading to",
+  "Rat infestation found to be a leading cause of child labor.",
+  "Rat infestation found to be a leading cause of child labor.",
+  "Rat infestation found to be a leading cause of child labor.",
+  "Rat infestation found to be a leading cause of child labor.",
+  "Rat infestation found to be a leading cause of child labor.",
+  "Rat infestation found to be a leading cause of child labor.",
 ]
+
+function Random(m) {
+  return Math.floor(m*Math.random());
+}
 
 var current = 3
 
-var textbox = document.getElementById("NewsText")
+var textbox = document.getElementById("newsText")
 
 function news() {
   tick += 1;
-  if (tick == 1) {
-    current = 3
-  }
   
-  textbox.style.left = String(100 - tick) + "%"
+  textbox.style.left = String(100 - tick/10) + "%"
   textbox.innerHTML = newstexts[current]
   
-  if (tick >= 200) {
+  if (tick >= 2000) {
     tick = 0
+    current = Random(3)
   }
   
 }
