@@ -139,11 +139,22 @@ body {
   overflow: hidden;
   z-index: -9999;
   width: calc(100% - 400px);
-  height: calc(100vh - 100px);
+  height: calc(100vh - 30px);
   left: 200px;
-  top: 100px;
+  top: 30px;
   background-color: black;
   background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(35,35,35,.5) 35px, rgba(35,35,35,.5) 70px);
+  position: absolute;
+  
+}
+#newsFrame {
+  
+  overflow: hidden;
+  z-index: -9999;
+  width: calc(100% - 400px);
+  height: 30px;
+  left: 200px;
+  top: 0px;
   position: absolute;
   
 }
