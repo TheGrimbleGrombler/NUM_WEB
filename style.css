@@ -120,7 +120,7 @@ body {
   transition-duration: 250ms;
 }
 .btn_tab:not(:hover) {
-	background-color: transparent;
+	background-color: #000000;
   transition-duration: 250ms;
 }
 .btn_tab.chosen {
@@ -137,9 +137,9 @@ body {
   overflow: hidden;
   z-index: -9999;
   width: calc(100% - 400px);
-  height: calc(100vh - 5px);
+  height: calc(100vh - 100px);
   left: 200px;
-  top: 0px;
+  top: 100px;
   background-color: black;
   background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(35,35,35,.5) 35px, rgba(35,35,35,.5) 70px);
   position: absolute;
@@ -164,22 +164,4 @@ body {
 .uiborderWhite {
   border: 2px solid rgba(255,255,255);
   box-shadow: 0 0 10px 2px rgba(255,255,255);
-}
-.uiborderRed {
-  border: 2px solid rgba(255,0,0);
-  display: block;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(255,0,0);
-}
-.uiborderGreen {
-  border: 2px solid rgba(0,255,0);
-  display: block;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(0,255,0);
-}
-.uiborderBlue {
-  border: 2px solid rgba(0,0,255);
-  display: block;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 2px rgba(0,0,255);
 }
