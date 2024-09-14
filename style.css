@@ -132,6 +132,19 @@ body {
   height: 100%;
   
 }
+#background {
+  
+  overflow: hidden;
+  z-index: -9999;
+  width: calc(100% - 400px);
+  height: calc(100vh - 5px);
+  left: 200px;
+  top: 0px;
+  background-color: black;
+  background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(35,35,35,.5) 35px, rgba(35,35,35,.5) 70px);
+  position: absolute;
+  
+}
 * {
 	text-align: center;
   font-family: "Lucida Handwriting", Monospace;
@@ -142,9 +155,9 @@ body {
   background-color: transparent;
 }
 .gradient-bar {
-    width: 80%; /* Width of the bar */
-    height: 1px; /* Height of the bar */
+    width: 80%;
+    height: 1px;
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
-    border-radius: 2px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
