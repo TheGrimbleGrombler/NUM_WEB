@@ -2,7 +2,7 @@
 var chosen = null
 var chosenS = null
 
-const TABS = {
+export const TABS = {
   choose(tabN,subtab) {
     
     if (subtab == true) {
