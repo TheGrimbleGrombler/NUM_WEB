@@ -108,9 +108,11 @@ body {
 
 
 .btn_tab {
-	width: calc(100% - 5px);
+  text-align: left;
+  padding-left: 3px;
+	width: calc(100% - 1px);
 	min-height: 40px;
-  border: 2px solid;
+  border: 1px solid;
   border-color: #FFFFFF;
 }
 
@@ -161,6 +163,6 @@ body {
     box-shadow: 0 4px 10px rgba(10, 10, 10, 0.5);
 }
 .uiborderWhite {
-  border: 2px solid rgba(255,255,255);
-  box-shadow: 0 0 25px 1px rgba(255,255,255);
+  border: 1px solid rgba(255,255,255);
+  box-shadow: 0 0 2px 0px rgba(255,255,255);
 }
