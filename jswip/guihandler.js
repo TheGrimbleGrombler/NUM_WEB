@@ -2,8 +2,8 @@
 var chosen = null
 var chosenS = null
 
-export const TABS = {
-  choose(tabN,subtab) {
+const TABS = {
+  choose(tabN,subtab=false) {
     
     if (subtab == true) {
       if (chosenS != null) {
@@ -29,5 +29,5 @@ export const TABS = {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  TABS.choose("0", false)
+  window.TABS.choose("0", false)
 });
