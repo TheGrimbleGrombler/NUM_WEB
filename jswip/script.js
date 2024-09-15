@@ -60,13 +60,15 @@ function Automation() {
   
 }
 
-let player = {
+window.player = {
   data: E("0"),
   dataBest: E("0"),
   simulationTier: E("0"),
-  simulationTierBest: E("01"),
+  simulationTierBest: E("0"),
   progression: 1,
 };
+
+var player = window.player
 
 var GlobalResourceMultiplier = E("1")
 var automation1 = true
@@ -75,42 +77,6 @@ var automation2 = true
 function checkbest() {
   if (player.data.gte(player.dataBest)) {player.dataBest = player.data}
   if (player.simulationTier.gte(player.simulationTierBest)) {player.simulationTierBest = player.simulationTier}
-}
-
-function vfx() {
-  var sinresult63 = (Math.sin(tick/25)*63.75)+63.75
-  var sinresult122 = (Math.sin(tick/25)*122)+122
-  var sinresult12 = (Math.sin(tick/25)*5)+7.5
-  
-  var elements = document.querySelectorAll('.fire');
-  for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb(255,' + String(sinresult63) + ',0)';
-  elements[i].style.boxShadow = '0 0 10px 2px rgba(255,' + String(sinresult63) + ',0)'
-  }
-  
-  var elements = document.querySelectorAll('.aqua');
-  for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb(0,' + String(sinresult122) + ',255)';
-  elements[i].style.boxShadow = '0 0 ' + String(sinresult12) + 'px 2px rgba(0,' + String(sinresult122) + ',255)'
-  }
-  var elements = document.querySelectorAll('.light');
-  for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+')';
-  elements[i].style.backgroundColor = 'rgb('+String((Math.sin(tick/25)/4+0.5)*255)+','+String((Math.sin(tick/25)/4+0.5)*238)+','+String((Math.sin(tick/25)/4+0.5)*143)+')';
-  elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
-  }
-  var elements = document.querySelectorAll('.lightborder');
-  for (var i = 0; i < elements.length; i++) {
-  elements[i].style.border = '2px solid rgb('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+')';
-  elements[i].style.backgroundColor = 'transparent'
-  elements[i].style.boxShadow = '0 0 10px 2px rgba('+String((Math.sin(tick/25)/4+1)*255)+','+String((Math.sin(tick/25)/4+1)*238)+','+String((Math.sin(tick/25)/4+1)*143)+',0)';
-  }
-  
-  var elements = document.querySelectorAll('.node');
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.transform =" rotate("+String(tick)+"deg)";
-  }
-  
 }
 
 function scrollgui() {
@@ -140,9 +106,8 @@ function updateText() {
   gainData()
   Automation()
   //Debug()
-  displayupgrades()
   checkbest()
-  vfx()
+  
   tick = tick + 1
   
   scrollgui()
@@ -163,8 +128,6 @@ function gainData(){
 }
 
 import { buy } from './upgrades.js'
-
-import { displayupgrades } from './upgrades.js'
 
 function save() {
   const dataToSave = {

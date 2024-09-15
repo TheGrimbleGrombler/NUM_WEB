@@ -5,6 +5,8 @@ var chosenS = null
 var chosenSbutton = null
 var chosenstabs = null
 
+const upg = window.UPGRADES
+
 window.TABS = {
   choose: function(tabN,subtab) {
     
