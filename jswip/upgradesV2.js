@@ -1,3 +1,3 @@
-const UPGRADES = {
-  
+window.UPGRADES = {
+  1:
 }
