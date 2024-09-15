@@ -4,6 +4,11 @@ body {
   line-height: 1.5;
   background-color: rgb(10, 10, 10); /* RGB value */
 }
+body img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: crisp-edges;
+}
 .banner {
   z-index: 9999;
 }
@@ -256,6 +261,20 @@ body {
   height: auto;
   vertical-align: middle;
 }
+.achievement:hover {
+  box-shadow: 0 0 8px 2px rgba(255,255,255,0.5);
+  transition-duration: 250ms;
+  width: 96px;
+  height: auto;
+  vertical-align: middle;
+}
+.achievement:not(:hover) {
+  box-shadow: 0 0 0px 0px rgba(255,255,255,0);
+  transition-duration: 1000ms;
+  width: 64px;
+  height: auto;
+  vertical-align: middle;
+}
 .upgrade:not(:hover) {
   box-shadow: 0 0 0px 0px rgba(255,255,255,0);
   transition-duration: 1000ms;
@@ -269,6 +288,14 @@ body {
   height: 160; 
   width: 100%; 
   left: -25%;
+  text-align: center;
+}
+#achievementinfo {
+  top: 160px; 
+  position: absolute;
+  height: 160px; 
+  width: 100%; 
+  left: 0%;
   text-align: center;
 }
 #dataDisplay {
