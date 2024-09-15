@@ -3,6 +3,7 @@ var chosen = null
 var chosenbutton = null
 var chosenS = null
 var chosenSbutton = null
+var chosenstabs = null
 
 window.TABS = {
   choose: function(tabN,subtab) {
@@ -26,9 +27,13 @@ window.TABS = {
           chosenbutton.className = "btn_tab"
           chosenbutton = null
         }
+        if (chosenstabs != null) {
+          chosenstabs.style.display = "none"
+        }
       }
       chosen = document.getElementById("tab" + tabN)
       chosenbutton = document.getElementById("tab" + tabN + "button")
+      chosenstabs = document.getElementById("stabs" + tabN)
     }
     
     if (chosen != null) {
@@ -36,6 +41,9 @@ window.TABS = {
     }
     if (chosenbutton != null) {
       chosenbutton.className = "btn_tab chosen"
+    }
+    if (chosenstabs != null) {
+      chosenstabs.style.display = ""
     }
     if (chosenS != null) {
       chosenS.style.display = ""
