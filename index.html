@@ -13,7 +13,7 @@
 
     <!-- import the webpage's javascript file -->
     <script type="module" src="break_eternity.js"></script>
-    <script type="module" src="jswip/script.js" defer></script>
+    <script type="module" src="jswip/main.js" defer></script>
     <script type="module" src="jswip/upgradesV2.js" defer></script>
     <script type="module" src="jswip/news.js" defer></script>
     <script type="module" src="jswip/guihandler.js" defer></script>
@@ -29,6 +29,7 @@
         <div class="btn_tab ghost" ><button id="tab0button" onclick="window.TABS.choose('0',false)" class="btn_tab">Data</button></div>
         <div class="btn_tab ghost" ><button id="tab3button" onclick="window.TABS.choose('3',false)" class="btn_tab">Upgrades</button></div>
         <div class="btn_tab ghost" ><button id="tab1button" onclick="window.TABS.choose('1',false)" class="btn_tab">Stats</button></div>
+        <div class="btn_tab ghost" ><button id="tab4button" onclick="window.TABS.choose('4',false)" class="btn_tab">Achievements</button></div>   
         <div class="btn_tab ghost" ><button id="tab2button" onclick="window.TABS.choose('2',false)" class="btn_tab">Options</button></div>   
         
         <div class="uiborderWhite" style="z-index: 1; position: absolute; top: 30px; left:200px; width:calc(100vw - 400px); min-top: 30px;"></div>
@@ -57,6 +58,11 @@
         
         <div id="stabs3" class="table_center" style="display:none">
           <div class="btn_stab ghost table_center" ><button id="subtab9button" onclick="window.TABS.choose('9',true)" class="btn_stab" style="">Data</button></div>
+        </div>
+        
+        <div id="stabs4" class="table_center" style="display:none">
+          <div class="btn_stab ghost table_center" ><button id="subtab10button" onclick="window.TABS.choose('10',true)" class="btn_stab" style="">General</button></div>
+          <div class="btn_stab ghost table_center" ><button id="subtab11button" onclick="window.TABS.choose('11',true)" class="btn_stab" style="">Secret</button></div>
         </div>
       </div>
       
@@ -142,7 +148,19 @@
             
           </div>
           
-        </div>       
+        </div> 
+        
+        <div id="tab4" class="ghost" style="display: none">
+          
+          <div id="subtab10" class="ghost" style="display: none">
+            
+          </div>
+          
+          <div id="subtab11" class="ghost" style="display: none">
+            
+          </div>
+          
+        </div>        
       </div>
       
       <div id="newsFrame">
