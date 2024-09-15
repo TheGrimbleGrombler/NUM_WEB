@@ -152,6 +152,27 @@ window.UPGRADES = {
         
       }
     }
+  },
+  buy: function(n,m) {
+    var category = window.UPGRADES[String(m)]
+    if (category != null) {
+      var upgrade = category[String(n)]
+      if (upgrade != null) {
+        var bought = upgrade.bought
+        
+        if (bought == false) {
+          
+          if (player[String(upgrade.costType)].gte(upgrade.costAmount)) {
+            
+            upgrade.bought = true
+            player[String(upgrade.costType)] = player[String(upgrade.costType)].sub(upgrade.costAmount)
+            
+          }
+          
+        }
+        
+      }
+    }
   }
 }
 
