@@ -258,9 +258,10 @@ body {
   vertical-align: middle;
 }
 #upgradeinfo {
-  top:-50px; 
-  height: 80px; 
-  width: 50%; 
-  left: 25%;
+  top:-145px; 
+  position: absolute;
+  height: 160; 
+  width: 100%; 
+  left: -25%;
   text-align: middle;
 }

@@ -7,6 +7,7 @@ function E(n) {
 }
 
 const player = window.player;
+var upgradeinfo = document.getElementById("upgradeinfo")
 
 window.UPGRADES = {
   0: {
@@ -48,6 +49,15 @@ window.UPGRADES = {
         return temp;
       },
     },
+  },
+  display: function(n,m) {
+    var category = window.UPGRADES[String(m)]
+    if (category != null) {
+      var upgrade = category[String(n)]
+      if (upgrade != null) {
+        var nam = upgrade
+      }
+    }
   }
 }
 
