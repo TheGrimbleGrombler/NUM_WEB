@@ -30,6 +30,8 @@ function news() {
     current = Random(3)
   }
   
+  document.getElementById("background").style.backgroundPosition = String(tick/5)+"px "+String(tick/5)+"px"
+  
 }
 
 
