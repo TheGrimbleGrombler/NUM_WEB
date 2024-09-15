@@ -6,6 +6,8 @@ function E(n) {
   
 }
 
+const player = window.player;
+
 window.UPGRADES = {
   0: {
     efficiencyI: {
@@ -14,38 +16,38 @@ window.UPGRADES = {
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
       costType: "Data",
       costAmount: function() {
-        var temp = E("1000")
+        var temp = E("10")
         
         return temp;
       },
       effectPrefix: "Currently: Data x",
-      effectSuffix: "!",
+      effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
         if (this.bought == true) {temp = E("2")}
         return temp;
       },
-    }
+    },
     efficiencyII: {
       displayName: "Efficency - II",
-      description: "Double Data gain",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
+      description: "Data gain boosts itself at a reduced rate",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "Data",
       costAmount: function() {
-        var temp = E("1000")
+        var temp = E("25")
         
         return temp;
       },
       effectPrefix: "Currently: Data x",
-      effectSuffix: "!",
+      effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = E("2")}
+        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
         return temp;
       },
-    }
+    },
   }
 }
 
