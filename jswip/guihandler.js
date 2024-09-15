@@ -3,7 +3,7 @@ var chosen = null
 var chosenS = null
 
 window.TABS = {
-  choose: function(tabN,subtab=false) {
+  choose: function(tabN,subtab) {
     
     if (subtab == true) {
       if (chosenS != null) {
@@ -29,4 +29,5 @@ window.TABS = {
 }
 document.addEventListener("DOMContentLoaded", function() {
   window.TABS.choose("0", false)
+  window.TABS.choose("0", true)
 });

@@ -190,14 +190,6 @@ function load() {
   }
 }
 
-document.getElementById('savebutton').addEventListener('click', function() {
-  save()
-});
-
-document.getElementById('loadbutton').addEventListener('click', function() {
-  load()
-});
-
 export { E };
 export { player };
 export { fix };
