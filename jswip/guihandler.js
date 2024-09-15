@@ -12,7 +12,7 @@ window.TABS = {
         chosenS.style.display = "none"
         chosenS = null
         if (chosenSbutton != null) {
-          chosenSbutton.class = "btn_tab"
+          chosenSbutton.className = "btn_tab"
           chosenSbutton = null
         }
       }
@@ -23,7 +23,7 @@ window.TABS = {
         chosen.style.display = "none"
         chosen = null
         if (chosenbutton != null) {
-          chosenbutton.class = "btn_tab"
+          chosenbutton.className = "btn_tab"
           chosenbutton = null
         }
       }
@@ -35,18 +35,17 @@ window.TABS = {
       chosen.style.display = ""
     }
     if (chosenbutton != null) {
-      chosenbutton.class = "btn_tab chosen"
+      chosenbutton.className = "btn_tab chosen"
     }
     if (chosenS != null) {
       chosenS.style.display = ""
     }
     if (chosenSbutton != null) {
-      chosenSbutton.class = "btn_tab chosen"
+      chosenSbutton.className = "btn_tab chosen"
     }
   }
 }
 document.addEventListener("DOMContentLoaded", function() {
   window.TABS.choose("0", false)
   window.TABS.choose("0", true)
-  document.getElementById("tab0button").class = "btn_tab chosen"
 });

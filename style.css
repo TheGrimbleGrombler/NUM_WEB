@@ -118,7 +118,6 @@ body {
 
 .btn_tab:hover {
 	background-color: #444444;
-  border-left-width: 10px;
   transition-duration: 250ms;
 }
 .btn_tab:not(:hover) {
