@@ -8,8 +8,6 @@ function E(n) {
   
 }
 
-var upgrades = window.UPGRADES
-
 var ScrollX = 0;
 var ScrollY = 0;
 var ScrollVelX = 0;
@@ -22,13 +20,7 @@ var DDown = false;
 
 var timespeed = E("1")
 
-function fix(n,e) {
-  
-  return n.toFixed(5)
-  
-}
-
-function fix2(n,e) {
+window.format = function(n,e) {
   
   return n.toFixed(e)
   
@@ -58,7 +50,7 @@ function unNaN() {
   if (isNaN(player.dataBest)) {player.dataBest = E("0")}
   if (isNaN(player.simulationTier)) {player.simulationTier = E("0")}
   if (isNaN(player.simulationTierBest)) {player.simulationTierBest = E("0")}
-  if (isNaN(player.progression)) {player.progression = E("0")}
+  if (isNaN(player.progression)) {player.progression = 1}
   
 }
 
@@ -116,7 +108,7 @@ function updateText() {
 function gainData(){
   var gain = E("1")
   
-  if (upgrades[0].efficiencyI.bought == true) {gain = gain.mul(upgrades[0].efficiency1.effect())}
+  if (window.UPGRADES.main.efficiencyI.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiency1.effect())}
   
   gain = gain.mul(timespeed)
   
@@ -126,12 +118,8 @@ function gainData(){
   player.data = player.data.add(gain)
 }
 
-import { buy } from './upgrades.js'
-
 export { E };
 export { player };
-export { fix };
-export { fix2 };
 export { timespeed };
 export { GlobalResourceMultiplier };
 

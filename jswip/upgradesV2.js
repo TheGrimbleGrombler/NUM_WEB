@@ -10,7 +10,7 @@ const player = window.player;
 var upgradeinfo = document.getElementById("upgradeinfo")
 
 window.UPGRADES = {
-  0: {
+  main: {
     efficiencyI: {
       displayName: "Efficency - I",
       description: "Double Data gain",

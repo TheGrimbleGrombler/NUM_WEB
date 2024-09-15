@@ -30,7 +30,7 @@ function UPDATE() {
       if (chosenS != null) {
         if (chosenS.id == "subtab0") {
           
-          document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(player.data)
+          document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(window.format(player.data))
           
         }
       }
