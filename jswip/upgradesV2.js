@@ -50,12 +50,44 @@ window.UPGRADES = {
       },
     },
   },
+  update: function(n,m) {
+    var elem = document.getElementById(n)
+    if (elem != null) {
+      var category = window.UPGRADES[String(m)]
+      if (category != null) {
+        var upgrade = category[String(n)]
+        if (upgrade != null) {
+          var bought = upgrade.bought
+          
+          if (bought == true) {
+            elem.className = "upgrade bought"
+          } else {
+            elem.className = "upgrade bought"
+          }
+          
+        }
+      }
+    }
+  },
   display: function(n,m) {
     var category = window.UPGRADES[String(m)]
     if (category != null) {
       var upgrade = category[String(n)]
       if (upgrade != null) {
-        var nam = upgrade
+        var bought = upgrade.bought
+        
+        var nam = upgrade.displayName
+        var desc = upgrade.description
+        var effdisplay = upgrade.effectPrefix + String(upgrade.effect()) + upgrade.effectSuffix
+        var costdisplay = null
+        if (bought == false) {
+          costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType
+        } else {
+          costdisplay = effdisplay
+        }
+        
+        upgradeinfo.innerHTML = nam + "<br>" + desc + "<br>" + costdisplay
+        
       }
     }
   }
