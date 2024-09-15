@@ -6,6 +6,7 @@ var chosenSbutton = null
 var chosenstabs = null
 
 const upg = window.UPGRADES
+const ach = window.ACHIEVEMENTS
 const player = window.player
 
 function UPDATE() {
@@ -29,11 +30,11 @@ function UPDATE() {
       if (chosenS != null) {
         if (chosenS.id == "subtab10") {
           
-          upg.update("efficiencyI","main")
-          upg.update("efficiencyII","main")
-          upg.update("efficiencyIII","main")
-          upg.update("efficiencyIV","main")
-          upg.update("efficiencyV","main")
+          ach.update("datacollector","main")
+          ach.update("datacollector2","main")
+          ach.update("datacollector3","main")
+          ach.update("datacollector4","main")
+          ach.update("datacollector5","main")
           
         }
       }
