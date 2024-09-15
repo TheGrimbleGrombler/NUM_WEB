@@ -140,7 +140,7 @@ window.UPGRADES = {
         
         var nam = upgrade.displayName
         var desc = upgrade.description
-        var effdisplay = upgrade.effectPrefix + String(upgrade.effect()) + upgrade.effectSuffix
+        var effdisplay = upgrade.effectPrefix + String(window.format(upgrade.effect(),5)) + upgrade.effectSuffix
         var costdisplay = null
         if (bought == false) {
           costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType

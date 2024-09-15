@@ -128,20 +128,20 @@ export { timespeed };
 export { GlobalResourceMultiplier };
 
 function Sformat(n,m) {
-  return (window.upgrades[m][n].bought == true)
+  return window.UPGRADES[m][n].bought
 }
 function Lformat(n,m,s) {
-  window.upgrades[m][n].bought = s
+  if (s != null) {
+  window.UPGRADES[m][n].bought = s
+  }
 }
 
 function save() {
   const dataToSave = {
     player: player,
-    upgs: [
-      Sformat("efficiencyI","main"),\
-    ],
-    upg0_1: ,
-    upg0_2: ,
+    
+    upg0_1: Sformat("efficiencyI","main"),
+    upg0_2: Sformat("efficiencyII","main"),
     upg0_3: Sformat("efficiencyIII","main"),
     upg0_4: Sformat("efficiencyIV","main"),
     upg0_5: Sformat("efficiencyV","main"),
@@ -162,7 +162,11 @@ function load() {
     player.simulationTier = E(String(loadedData.player.simulationTier));
     player.simulationTierBest = E(String(loadedData.player.simulationTierBest));
     
-    
+    Lformat("efficiencyI","main",loadedData.upg0_1)
+    Lformat("efficiencyII","main",loadedData.upg0_2)
+    Lformat("efficiencyIII","main",loadedData.upg0_3)
+    Lformat("efficiencyIV","main",loadedData.upg0_4)
+    Lformat("efficiencyV","main",loadedData.upg0_5)
     
     unNaN()
   }
