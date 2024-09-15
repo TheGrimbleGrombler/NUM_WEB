@@ -31,9 +31,9 @@
         <div class="btn_tab ghost" ><button id="tab1button" onclick="window.TABS.choose('1',false)" class="btn_tab">Stats</button></div>
         <div class="btn_tab ghost" ><button id="tab2button" onclick="window.TABS.choose('2',false)" class="btn_tab">Options</button></div>   
         
-        <div class="uiborderWhite" style="position: absolute; top: 30px; left:200px; width:calc(100vw - 400px); min-top: 30px;"></div>
-        <div class="uiborderWhite" style="position: absolute; top: 0px; left:200px; height:100vh; min-left: 200px;"></div>
-        <div class="uiborderWhite" style="position: absolute; top: 0px; left:calc(100vw - 200px); height:100vh; min-left: calc(100% - 200px);"></div>
+        <div class="uiborderWhite" style="z-index: 1; position: absolute; top: 30px; left:200px; width:calc(100vw - 400px); min-top: 30px;"></div>
+        <div class="uiborderWhite" style="z-index: 1; position: absolute; top: 0px; left:200px; height:100vh; min-left: 200px;"></div>
+        <div class="uiborderWhite" style="z-index: 1; position: absolute; top: 0px; left:calc(100vw - 200px); height:100vh; min-left: calc(100% - 200px);"></div>
 
       </div>
       <div id="stabs" class="table_center">
@@ -117,12 +117,14 @@
           
           <div id="subtab9" class="ghost" style="display: none">
             
+            <div class="gradient-barV" style="position: absolute; top:-250px; height: 300px; width: 1px; left: 5%;"></div>
+            
             <tbody id="UpgradesTable1" class="UpgradeTable">
-              <tr id="Upgrades0">
                 <div class="gradient-bar" style="position: absolute; top:-9px; height: 1px; width: 100%; left: 0%;"></div>
                 <div class="gradient-bar" style="position: absolute; top:40px; height: 1px; width: 100%; left: 0%;"></div>
+              <tr id="Upgrades0">
                 <td>
-                  <image class="upgrade" id="efficiencyI" loading="lazy" src="https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499"></image>
+                  <image class="upgrade bought" id="efficiencyI" loading="lazy" src="https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499"></image>
                 </td>
                 <td>
                   <image class="upgrade" id="efficiencyII" loading="lazy" src="https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652"></image>
