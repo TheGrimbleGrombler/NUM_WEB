@@ -257,3 +257,9 @@ body {
   height: auto;
   vertical-align: middle;
 }
+#upgradeinfo {
+  top:-50px; 
+  height: 300px; 
+  width: 250px; 
+  left: 5%;
+}
