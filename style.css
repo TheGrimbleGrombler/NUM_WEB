@@ -115,6 +115,25 @@ body {
   border: 1px solid;
   border-color: #FFFFFF;
 }
+.btn_stab {
+  text-align: left;
+  padding-top: 3px;
+	height: calc(100% - 1px);
+	min-width: 160px;
+  border: 1px solid;
+  border-color: #FFFFFF;
+}
+.btn_stab:hover {
+	background-color: #444444;
+  transition-duration: 250ms;
+}
+.btn_stab:not(:hover) {
+	background-color: #000000;
+  transition-duration: 250ms;
+}
+.btn_stab.chosen {
+  border-top-width: 10px;
+}
 
 .btn_tab:hover {
 	background-color: #444444;
@@ -131,6 +150,12 @@ body {
   
   width: 200px;
   height: 100%;
+  
+}
+#stabs0 {
+  
+  height: 100px;
+  width: 100%;
   
 }
 #background {

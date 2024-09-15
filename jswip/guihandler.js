@@ -12,7 +12,7 @@ window.TABS = {
         chosenS.style.display = "none"
         chosenS = null
         if (chosenSbutton != null) {
-          chosenSbutton.className = "btn_tab"
+          chosenSbutton.className = "btn_stab"
           chosenSbutton = null
         }
       }
@@ -41,7 +41,7 @@ window.TABS = {
       chosenS.style.display = ""
     }
     if (chosenSbutton != null) {
-      chosenSbutton.className = "btn_tab chosen"
+      chosenSbutton.className = "btn_stab chosen"
     }
   }
 }
