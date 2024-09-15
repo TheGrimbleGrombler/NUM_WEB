@@ -2,7 +2,7 @@
 var chosen = null
 var chosenS = null
 
-const TABS = {
+window.TABS = {
   choose(tabN,subtab=false) {
     
     if (subtab == true) {
@@ -28,5 +28,5 @@ const TABS = {
   }
 }
 document.addEventListener("DOMContentLoaded", function() {
-  TABS.choose("0", false)
+  window.TABS.choose("0", false)
 });
