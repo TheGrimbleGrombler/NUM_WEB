@@ -89,20 +89,20 @@ window.UPGRADES = {
     },
     efficiencyV: {
       displayName: "Efficency - V",
-      description: "Data gain boosts itself at a reduced rate",
+      description: "Data gain is slightly exponentiated.",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("25")
+        var temp = E("5000")
         
         return temp;
       },
-      effectPrefix: "Currently: Data x",
+      effectPrefix: "Currently: Data ^",
       effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        if (this.bought == true) {temp = E("1.1")}
         return temp;
       },
     },

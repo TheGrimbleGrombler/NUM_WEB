@@ -108,7 +108,11 @@ function updateText() {
 function gainData(){
   var gain = E("1")
   
-  if (window.UPGRADES.main.efficiencyI.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiency1.effect())}
+  if (window.UPGRADES.main.efficiencyI.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyI.effect())}
+  if (window.UPGRADES.main.efficiencyII.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyII.effect())}
+  if (window.UPGRADES.main.efficiencyIII.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyIII.effect())}
+  if (window.UPGRADES.main.efficiencyIV.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyIV.effect())}
+  if (window.UPGRADES.main.efficiencyV.bought == true) {gain = gain.pow(window.UPGRADES.main.efficiencyV.effect())}
   
   gain = gain.mul(timespeed)
   
@@ -123,9 +127,24 @@ export { player };
 export { timespeed };
 export { GlobalResourceMultiplier };
 
+function Sformat(n,m) {
+  return (window.upgrades[m][n].bought == true)
+}
+function Lformat(n,m,s) {
+  window.upgrades[m][n].bought = s
+}
+
 function save() {
   const dataToSave = {
     player: player,
+    upgs: [
+      Sformat("efficiencyI","main"),\
+    ],
+    upg0_1: ,
+    upg0_2: ,
+    upg0_3: Sformat("efficiencyIII","main"),
+    upg0_4: Sformat("efficiencyIV","main"),
+    upg0_5: Sformat("efficiencyV","main"),
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -142,6 +161,8 @@ function load() {
     player.dataBest = E(String(loadedData.player.dataBest));
     player.simulationTier = E(String(loadedData.player.simulationTier));
     player.simulationTierBest = E(String(loadedData.player.simulationTierBest));
+    
+    
     
     unNaN()
   }
