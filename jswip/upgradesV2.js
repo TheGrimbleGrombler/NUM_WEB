@@ -15,7 +15,7 @@ window.UPGRADES = {
       displayName: "Efficency - I",
       description: "Double Data gain",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
-      costType: "Data",
+      costType: "data",
       costAmount: function() {
         var temp = E("10")
         
@@ -34,7 +34,7 @@ window.UPGRADES = {
       displayName: "Efficency - II",
       description: "Data gain boosts itself at a reduced rate",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
-      costType: "Data",
+      costType: "data",
       costAmount: function() {
         var temp = E("25")
         
@@ -62,7 +62,12 @@ window.UPGRADES = {
           if (bought == true) {
             elem.className = "upgrade bought"
           } else {
-            elem.className = "upgrade bought"
+            var playercur = player[upgrade.costType]
+            if (playercur.gte(upgrade.costAmount)) {
+              elem.className = "upgrade canbuy"
+            } else {
+              elem.className = "upgrade unbought"
+            }
           }
           
         }

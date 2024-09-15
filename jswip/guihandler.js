@@ -7,6 +7,22 @@ var chosenstabs = null
 
 const upg = window.UPGRADES
 
+function UPDATE() {
+  if (chosen != null) {
+    if (chosen.id == "tab3") {
+      if (chosenS != null) {
+        if (chosenS.id == "subtab9") {
+          upg.update("efficiencyI",0)
+          upg.update("efficiencyII",0)
+          upg.update("efficiencyIII",0)
+          upg.update("efficiencyIV",0)
+          upg.update("efficiencyV",0)
+        }
+      }
+    }
+  }
+}
+
 window.TABS = {
   choose: function(tabN,subtab) {
     
@@ -58,4 +74,5 @@ window.TABS = {
 document.addEventListener("DOMContentLoaded", function() {
   window.TABS.choose("0", false)
   window.TABS.choose("0", true)
+  setInterval(UPDATE, 16);
 });
