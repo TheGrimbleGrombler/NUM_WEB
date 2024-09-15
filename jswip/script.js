@@ -8,14 +8,12 @@ function E(n) {
   
 }
 
+var upgrades = window.UPGRADES
+
 var ScrollX = 0;
 var ScrollY = 0;
 var ScrollVelX = 0;
 var ScrollVelY = 0;
-export { ScrollX };
-export { ScrollY };
-export { ScrollVelX };
-export { ScrollVelY };
 
 var WDown = false;
 var ADown = false;
@@ -36,8 +34,15 @@ function fix2(n,e) {
   
 }
 
-import { upgrades } from './upgrades.js'
-import { upgradeeffects } from './upgrades.js'
+window.player = {
+  data: E("0"),
+  dataBest: E("0"),
+  simulationTier: E("0"),
+  simulationTierBest: E("0"),
+  progression: 1,
+};
+
+var player = window.player
 
 // A function to calculate the speed of time
 function gettimespeed() {
@@ -49,7 +54,11 @@ function gettimespeed() {
 // Un-NaNs any values that it deems fit upon loading.
 function unNaN() {
   
-  //if (isNaN(upgrades.theunknown.cost)) {upgrades.theunknown.cost = E("5e8")}
+  if (isNaN(player.data)) {player.data = E("0")}
+  if (isNaN(player.dataBest)) {player.dataBest = E("0")}
+  if (isNaN(player.simulationTier)) {player.simulationTier = E("0")}
+  if (isNaN(player.simulationTierBest)) {player.simulationTierBest = E("0")}
+  if (isNaN(player.progression)) {player.progression = E("0")}
   
 }
 
@@ -59,16 +68,6 @@ function Automation() {
   
   
 }
-
-window.player = {
-  data: E("0"),
-  dataBest: E("0"),
-  simulationTier: E("0"),
-  simulationTierBest: E("0"),
-  progression: 1,
-};
-
-var player = window.player
 
 var GlobalResourceMultiplier = E("1")
 var automation1 = true
@@ -115,9 +114,9 @@ function updateText() {
 }
 
 function gainData(){
-  var gain = E("0")
+  var gain = E("1")
   
-  
+  if (upgrades[0].efficiencyI.bought == true) {gain = gain.mul(upgrades[0].efficiency1.effect())}
   
   gain = gain.mul(timespeed)
   
@@ -128,6 +127,13 @@ function gainData(){
 }
 
 import { buy } from './upgrades.js'
+
+export { E };
+export { player };
+export { fix };
+export { fix2 };
+export { timespeed };
+export { GlobalResourceMultiplier };
 
 function save() {
   const dataToSave = {
@@ -152,13 +158,6 @@ function load() {
     unNaN()
   }
 }
-
-export { E };
-export { player };
-export { fix };
-export { fix2 };
-export { timespeed };
-export { GlobalResourceMultiplier };
 
 document.onkeydown = function (e) {
   /*

@@ -32,7 +32,7 @@ window.UPGRADES = {
     },
     efficiencyII: {
       displayName: "Efficency - II",
-      description: "Data gain boosts itself at a reduced rate",
+      description: "Data gain is tripled",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
@@ -45,17 +45,17 @@ window.UPGRADES = {
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        if (this.bought == true) {temp = E("3")}
         return temp;
       },
     },
     efficiencyIII: {
       displayName: "Efficency - III",
-      description: "Data gain boosts itself at a reduced rate",
+      description: "Data gain is quadrupled",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("25")
+        var temp = E("100")
         
         return temp;
       },
@@ -64,7 +64,7 @@ window.UPGRADES = {
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        if (this.bought == true) {temp = E("4")}
         return temp;
       },
     },
@@ -74,7 +74,7 @@ window.UPGRADES = {
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("25")
+        var temp = E("500")
         
         return temp;
       },
@@ -83,7 +83,7 @@ window.UPGRADES = {
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        if (this.bought == true) {temp = player.data.add(E("1")).pow(E("0.25"))}
         return temp;
       },
     },
