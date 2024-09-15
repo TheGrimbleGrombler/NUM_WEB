@@ -120,6 +120,7 @@ body {
   padding-bottom: 3px;
 	height: calc(100% - 1px);
 	min-width: 160px;
+  width: 160px;
   border: 1px solid;
   border-color: #FFFFFF;
   z-index: 200;
