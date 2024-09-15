@@ -7,7 +7,7 @@ function E(n) {
 }
 
 window.UPGRADES = {
-  1: {
+  9: {
     efficiencyI: {
       displayName: "Efficency - I",
       description: "Double Data gain",
