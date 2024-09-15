@@ -3,7 +3,7 @@ var chosen = null
 var chosenS = null
 
 window.TABS = {
-  choose(tabN,subtab=false) {
+  choose: function(tabN,subtab=false) {
     
     if (subtab == true) {
       if (chosenS != null) {
