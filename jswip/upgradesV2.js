@@ -49,6 +49,63 @@ window.UPGRADES = {
         return temp;
       },
     },
+    efficiencyIII: {
+      displayName: "Efficency - III",
+      description: "Data gain boosts itself at a reduced rate",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("25")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data x",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        return temp;
+      },
+    },
+    efficiencyIV: {
+      displayName: "Efficency - IV",
+      description: "Data gain boosts itself at a reduced rate",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("25")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data x",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        return temp;
+      },
+    },
+    efficiencyV: {
+      displayName: "Efficency - V",
+      description: "Data gain boosts itself at a reduced rate",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("25")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data x",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = player.data.pow(E("0.25"))}
+        return temp;
+      },
+    },
   },
   update: function(n,m) {
     var elem = document.getElementById(n)
@@ -63,7 +120,7 @@ window.UPGRADES = {
             elem.className = "upgrade bought"
           } else {
             var playercur = player[upgrade.costType]
-            if (playercur.gte(upgrade.costAmount)) {
+            if (playercur.gte(upgrade.costAmount())) {
               elem.className = "upgrade canbuy"
             } else {
               elem.className = "upgrade unbought"

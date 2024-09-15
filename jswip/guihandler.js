@@ -6,20 +6,36 @@ var chosenSbutton = null
 var chosenstabs = null
 
 const upg = window.UPGRADES
+const player = window.player
 
 function UPDATE() {
+  
   if (chosen != null) {
+    
     if (chosen.id == "tab3") {
       if (chosenS != null) {
         if (chosenS.id == "subtab9") {
+          
           upg.update("efficiencyI",0)
           upg.update("efficiencyII",0)
           upg.update("efficiencyIII",0)
           upg.update("efficiencyIV",0)
           upg.update("efficiencyV",0)
+          
         }
       }
     }
+    
+    if (chosen.id == "tab0") {
+      if (chosenS != null) {
+        if (chosenS.id == "subtab0") {
+          
+          document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(player.data)
+          
+        }
+      }
+    }
+    
   }
 }
 

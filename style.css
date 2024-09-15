@@ -269,5 +269,11 @@ body {
   height: 160; 
   width: 100%; 
   left: -25%;
-  text-align: middle;
+  text-align: center;
+}
+#dataDisplay {
+  top:200px; 
+  position: absolute;
+  height: 160px; 
+  width: 100%;
 }
