@@ -25,6 +25,19 @@ function UPDATE() {
         }
       }
     }
+    if (chosen.id == "tab4") {
+      if (chosenS != null) {
+        if (chosenS.id == "subtab10") {
+          
+          upg.update("efficiencyI","main")
+          upg.update("efficiencyII","main")
+          upg.update("efficiencyIII","main")
+          upg.update("efficiencyIV","main")
+          upg.update("efficiencyV","main")
+          
+        }
+      }
+    }
     
     if (chosen.id == "tab0") {
       if (chosenS != null) {

@@ -264,14 +264,14 @@ body img {
 .achievement:hover {
   box-shadow: 0 0 8px 2px rgba(255,255,255,0.5);
   transition-duration: 250ms;
-  width: 96px;
+  width: 48px;
   height: auto;
   vertical-align: middle;
 }
 .achievement:not(:hover) {
   box-shadow: 0 0 0px 0px rgba(255,255,255,0);
   transition-duration: 1000ms;
-  width: 64px;
+  width: 32px;
   height: auto;
   vertical-align: middle;
 }
