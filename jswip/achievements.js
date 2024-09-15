@@ -27,7 +27,7 @@ window.ACHIEVEMENTS = {
       tip: "",
       achieved: false,
     },
-    datacollector2: {
+    datacollector3: {
       displayName: "Data Collector III",
       description: "Collect 10000000 Data",
       reqType: "data",
@@ -35,7 +35,7 @@ window.ACHIEVEMENTS = {
       tip: "",
       achieved: false,
     },
-    datacollector2: {
+    datacollector4: {
       displayName: "Data Collector IV",
       description: "Collect 1000000000 Data",
       reqType: "data",
@@ -43,7 +43,7 @@ window.ACHIEVEMENTS = {
       tip: "",
       achieved: false,
     },
-    datacollector2: {
+    datacollector5: {
       displayName: "Data Collector V",
       description: "Collect 100000000000 Data",
       reqType: "data",
@@ -64,7 +64,7 @@ window.ACHIEVEMENTS = {
           if (bought == false) {
             if (upgrade.reqType != "Special") {
               if (player[upgrade.reqType].gte(upgrade.reqAmount)) {
-                upgrade.achieved = true
+                upgrade.achieved = true                
               }
             }
           }
@@ -72,7 +72,7 @@ window.ACHIEVEMENTS = {
           if (bought == true) {
             elem.className = "achievement achieved"
           } else {
-            elem.className = "achievement"
+            elem.className = "achievement unachieved"
           }
           
         }
