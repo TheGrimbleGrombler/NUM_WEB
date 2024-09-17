@@ -12,23 +12,26 @@ var upgradeinfo = document.getElementById("upgradeinfo")
 window.BUYABLES = {
   data: {
     
-    efficiencyI: {
-      displayName: "Efficency - I",
-      description: "Double Data gain",
+    compressor: {
+      displayName: "Compressor",
+      description: "5x Data gain each",
       costType: "data",
       costAmount: function() {
-        var temp = E("10")
+        var temp = E("50000")
+        
+        temp = temp.mul(E("10").pow(this.bought))
         
         return temp;
       },
       effectPrefix: "Currently: Data x",
       effectSuffix: ".",
-      bought: false,
+      bought: E("0"),
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = E("2")}
+        if (this.bought.gte(E("1"))) {temp = E("5").pow(this.bought)}
         return temp;
       },
+      
     },
     
   },
