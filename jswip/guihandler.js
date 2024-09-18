@@ -5,11 +5,15 @@ var chosenS = null
 var chosenSbutton = null
 var chosenstabs = null
 
+var Tick = 0
+
 const upg = window.UPGRADES
 const ach = window.ACHIEVEMENTS
 const player = window.player
 
 function UPDATE() {
+  
+  Tick += 1
   
   if (chosen != null) {
     
@@ -45,6 +49,11 @@ function UPDATE() {
         if (chosenS.id == "subtab0") {
           
           document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(window.format(player.data))
+          
+        }
+        if (chosenS.id == "subtab1") {
+          
+          document.getElementById("spinner").style.rotate = String(Tick) + "deg"
           
         }
       }
