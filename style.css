@@ -326,10 +326,10 @@ body img {
   width: 100%;
 }
 #spinner {
-  width: 100%;
-  height: calc(100vh - 200px);
-  top: 200px;
-  left: 0%;
+  width: 200vw;
+  height: 200vh;
+  top: -66vh;
+  left: -66vw;
   rotate: 0deg;
   position: absolute;
   background-color:transparent;
@@ -338,6 +338,6 @@ body img {
   radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
   radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
   radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-  background-size: 1000px 1000px, 1000px 1000px, 1000px 1000px, 1000px 1000px;
+  background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
