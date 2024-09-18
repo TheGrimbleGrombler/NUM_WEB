@@ -86,14 +86,10 @@ window.BUYABLES = {
       if (upgrade != null) {
         var bought = upgrade.bought
         
-        if (bought == false) {
+        if (player[String(upgrade.costType)].gte(upgrade.costAmount())) {
           
-          if (player[String(upgrade.costType)].gte(upgrade.costAmount)) {
-            
-            upgrade.bought = true
-            player[String(upgrade.costType)] = player[String(upgrade.costType)].sub(upgrade.costAmount)
-            
-          }
+          player[String(upgrade.costType)] = player[String(upgrade.costType)].sub(upgrade.costAmount())
+          upgrade.bought = upgrade.bought.add(E("1"))
           
         }
         

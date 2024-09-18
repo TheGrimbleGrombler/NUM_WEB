@@ -52,6 +52,8 @@ function unNaN() {
   if (isNaN(player.simulationTierBest)) {player.simulationTierBest = E("0")}
   if (isNaN(player.progression)) {player.progression = 1}
   
+  if (isNaN(window.BUYABLES.data.compressor.bought)) {window.BUYABLES.data.compressor.bought = E("0")}
+  
 }
 
 // General Automation script, Nothing yet.
@@ -114,6 +116,8 @@ function gainData(){
   if (window.UPGRADES.main.efficiencyIV.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyIV.effect())}
   if (window.UPGRADES.main.efficiencyV.bought == true) {gain = gain.pow(window.UPGRADES.main.efficiencyV.effect())}
   
+  if (window.BUYABLES.data.compressor.bought.gte(E("1"))) {gain = gain.mul(window.BUYABLES.data.compressor.effect())}
+  
   gain = gain.mul(timespeed)
   
   gain = gain.mul(GlobalResourceMultiplier)
@@ -145,6 +149,8 @@ function save() {
     upg0_3: Sformat("efficiencyIII","main"),
     upg0_4: Sformat("efficiencyIV","main"),
     upg0_5: Sformat("efficiencyV","main"),
+    
+    bya0_1: String(window.BUYABLES.data.compressor.bought),
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -167,6 +173,8 @@ function load() {
     Lformat("efficiencyIII","main",loadedData.upg0_3)
     Lformat("efficiencyIV","main",loadedData.upg0_4)
     Lformat("efficiencyV","main",loadedData.upg0_5)
+    
+    window.BUYABLES.data.compressor.bought = E(String(loadedData.bya0_1))
     
     unNaN()
   }
