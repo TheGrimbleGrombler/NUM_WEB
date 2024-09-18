@@ -130,6 +130,24 @@ body img {
   border-color: #FFFFFF;
   z-index: 200;
 }
+.btn_buyable {
+  text-align: center;
+	height: 80px;
+  min-height: 80px;
+	min-width: 160px;
+  width: 160px;
+  border: 1px solid;
+  border-color: #FFFFFF;
+  z-index: 200;
+}
+.btn_buyable:hover {
+	background-color: #444444;
+  transition-duration: 250ms;
+}
+.btn_buyable:not(:hover) {
+	background-color: #000000;
+  transition-duration: 250ms;
+}
 .btn_stab:hover {
 	background-color: #444444;
   transition-duration: 250ms;
