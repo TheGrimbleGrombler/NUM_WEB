@@ -132,10 +132,10 @@ body img {
 }
 .btn_buyable {
   text-align: center;
-	height: 80px;
-  min-height: 80px;
-	min-width: 160px;
-  width: 160px;
+	height: 120px;
+  min-height: 120px;
+	min-width: 240px;
+  width: 240px;
   border: 1px solid;
   border-color: #FFFFFF;
   z-index: 200;

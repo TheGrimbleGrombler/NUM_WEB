@@ -23,7 +23,7 @@ window.BUYABLES = {
         
         return temp;
       },
-      effectPrefix: "Currently: Data x",
+      effectPrefix: "Data x",
       effectSuffix: ".",
       bought: E("0"),
       effect: function() {
