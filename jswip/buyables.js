@@ -14,7 +14,7 @@ window.BUYABLES = {
     
     compressor: {
       displayName: "Compressor",
-      description: "5x Data gain each",
+      description: "Data x 5^n",
       costType: "data",
       costAmount: function() {
         var temp = E("50000")
@@ -38,51 +38,49 @@ window.BUYABLES = {
   update: function(n,m) {
     var elem = document.getElementById(n)
     if (elem != null) {
-      var category = window.UPGRADES[String(m)]
+      var category = window.BUYABLES[String(m)]
       if (category != null) {
         var upgrade = category[String(n)]
         if (upgrade != null) {
+          
+          var nam = upgrade.displayName
+          var desc = upgrade.description
+          var amm = upgrade.bought
+          var effdisplay = upgrade.effectPrefix + String(window.format(upgrade.effect(),5)) + upgrade.effectSuffix
+          var costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType
+          
+          elem.innerHTML = nam + "<br>" + desc + "<br>" + amm + "<br>" + effdisplay + "<br>" + costdisplay
+          
           var bought = upgrade.bought
           
-          if (bought == true) {
-            elem.className = "upgrade bought"
-          } else {
             var playercur = player[upgrade.costType]
             if (playercur.gte(upgrade.costAmount())) {
-              elem.className = "upgrade canbuy"
+              elem.className = "btn_buyable buyable canbuy"
             } else {
-              elem.className = "upgrade unbought"
+
+              if (bought.gte(E("1"))) {
+                elem.className = "btn_buyable buyable bought"
+              } else {
+                elem.className = "btn_buyable buyable unbought"
+              }
+              
             }
-          }
           
         }
       }
     }
   },
   display: function(n,m) {
-    var category = window.UPGRADES[String(m)]
+    var category = window.BUYABLES[String(m)]
     if (category != null) {
       var upgrade = category[String(n)]
       if (upgrade != null) {
-        var bought = upgrade.bought
-        
-        var nam = upgrade.displayName
-        var desc = upgrade.description
-        var effdisplay = upgrade.effectPrefix + String(window.format(upgrade.effect(),5)) + upgrade.effectSuffix
-        var costdisplay = null
-        if (bought == false) {
-          costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType
-        } else {
-          costdisplay = effdisplay
-        }
-        
-        upgradeinfo.innerHTML = nam + "<br>" + desc + "<br>" + costdisplay
         
       }
     }
   },
   buy: function(n,m) {
-    var category = window.UPGRADES[String(m)]
+    var category = window.BUYABLES[String(m)]
     if (category != null) {
       var upgrade = category[String(n)]
       if (upgrade != null) {

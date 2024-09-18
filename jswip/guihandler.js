@@ -9,6 +9,7 @@ var Tick = 0
 
 const upg = window.UPGRADES
 const ach = window.ACHIEVEMENTS
+const bya = window.BUYABLES
 const player = window.player
 
 function UPDATE() {
@@ -49,11 +50,13 @@ function UPDATE() {
         if (chosenS.id == "subtab0") {
           
           document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(window.format(player.data))
+          bya.update("compressor","data")
           
         }
         if (chosenS.id == "subtab1") {
           
           document.getElementById("spinner").style.rotate = String(Tick) + "deg"
+          
           
         }
       }
