@@ -21,6 +21,8 @@ window.BUYABLES = {
         
         temp = temp.mul(E("10").pow(this.bought))
         
+        //if (temp.gte(E("10"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("9"))))}
+        
         return temp;
       },
       effectPrefix: "Data x",
@@ -44,6 +46,8 @@ window.BUYABLES = {
         var temp = E("2000000")
         
         temp = temp.mul(E("100").pow(this.bought))
+        
+        //if (temp.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
         
         return temp;
       },
