@@ -53,6 +53,7 @@ function unNaN() {
   if (isNaN(player.progression)) {player.progression = 1}
   
   if (isNaN(window.BUYABLES.data.compressor.bought)) {window.BUYABLES.data.compressor.bought = E("0")}
+  if (isNaN(window.BUYABLES.data.compounder.bought)) {window.BUYABLES.data.compounder.bought = E("0")}
   
 }
 
@@ -151,6 +152,7 @@ function save() {
     upg0_5: Sformat("efficiencyV","main"),
     
     bya0_1: String(window.BUYABLES.data.compressor.bought),
+    bya0_2: String(window.BUYABLES.data.compounder.bought),
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -175,6 +177,7 @@ function load() {
     Lformat("efficiencyV","main",loadedData.upg0_5)
     
     window.BUYABLES.data.compressor.bought = E(String(loadedData.bya0_1))
+    window.BUYABLES.data.compounder.bought = E(String(loadedData.bya0_2))
     
     unNaN()
   }

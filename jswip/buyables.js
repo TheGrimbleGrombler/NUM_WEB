@@ -28,29 +28,31 @@ window.BUYABLES = {
       bought: E("0"),
       effect: function() {
         var temp = E("1")
-        if (this.bought.gte(E("1"))) {temp = E("5").pow(this.bought)}
+        var base = E("5")
+        if (window.BUYABLES.data.compounder.bought.gte(E("1"))) {base = base.add(window.BUYABLES.data.compounder.effect())}
+        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
         return temp;
       },
       
     },
     
-    compressor: {
-      displayName: "Compressor",
-      description: "Data x 5^n",
+    compounder: {
+      displayName: "Compounder",
+      description: "Previous buyable base + n",
       costType: "data",
       costAmount: function() {
-        var temp = E("50000")
+        var temp = E("2000000")
         
-        temp = temp.mul(E("10").pow(this.bought))
+        temp = temp.mul(E("100").pow(this.bought))
         
         return temp;
       },
-      effectPrefix: "Data x",
+      effectPrefix: "Previous buyable base + ",
       effectSuffix: ".",
       bought: E("0"),
       effect: function() {
-        var temp = E("1")
-        if (this.bought.gte(E("1"))) {temp = E("5").pow(this.bought)}
+        var temp = E("0")
+        if (this.bought.gte(E("1"))) {temp = this.bought}
         return temp;
       },
       
