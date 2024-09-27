@@ -34,6 +34,28 @@ window.BUYABLES = {
       
     },
     
+    compressor: {
+      displayName: "Compressor",
+      description: "Data x 5^n",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("50000")
+        
+        temp = temp.mul(E("10").pow(this.bought))
+        
+        return temp;
+      },
+      effectPrefix: "Data x",
+      effectSuffix: ".",
+      bought: E("0"),
+      effect: function() {
+        var temp = E("1")
+        if (this.bought.gte(E("1"))) {temp = E("5").pow(this.bought)}
+        return temp;
+      },
+      
+    },
+    
   },
   update: function(n,m) {
     var elem = document.getElementById(n)
