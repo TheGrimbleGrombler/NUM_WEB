@@ -78,7 +78,7 @@ body img {
 }
 .funnybg2 {
   background-color: black;
-  background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(30,30,30,.5) 35px, rgba(30,30,30,.5) 70px);
+  background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(15,15,15,.5) 35px, rgba(15,15,15,.5) 70px);
 }
 .buttonwhite {
   border: 2px solid rgb(255,255,255);
@@ -204,7 +204,7 @@ body img {
   left: 200px;
   top: 30px;
   background-color: black;
-  background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(25,25,25,.5) 35px, rgba(25,25,25,.5) 70px);
+  background-image: repeating-linear-gradient(135deg, transparent, transparent 25px, rgba(15,15,15,.5) 50px);
   position: absolute;
   
 }
