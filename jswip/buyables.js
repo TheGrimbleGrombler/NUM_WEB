@@ -8,6 +8,7 @@ function E(n) {
 
 const player = window.player;
 var upgradeinfo = document.getElementById("upgradeinfo")
+const format = window.format;
 
 window.BUYABLES = {
   data: {
@@ -75,8 +76,8 @@ window.BUYABLES = {
           var nam = upgrade.displayName
           var desc = upgrade.description
           var amm = upgrade.bought
-          var effdisplay = upgrade.effectPrefix + String(window.format(upgrade.effect(),5)) + upgrade.effectSuffix
-          var costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType
+          var effdisplay = upgrade.effectPrefix + String(format(upgrade.effect(),5)) + upgrade.effectSuffix
+          var costdisplay = "Cost: " + String(format(upgrade.costAmount(),5)) + " " + upgrade.costType
           
           elem.innerHTML = nam + "<br>" + desc + "<br>" + amm + "<br>" + effdisplay + "<br>" + costdisplay
           
