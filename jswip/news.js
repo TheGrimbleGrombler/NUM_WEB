@@ -9,6 +9,7 @@ var newstexts = [
   "Asteroid mining accident causes $8.4Qd in damages.",
   "Pinapple on pizza found to cause cancer in new study.",
   "The One Piece Is Real",
+  "Chicken jockey"
 ]
 
 function Random(m) {

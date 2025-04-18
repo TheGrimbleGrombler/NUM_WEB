@@ -111,13 +111,16 @@ function updateText() {
 function gainData(){
   var gain = E("1")
   
-  if (window.UPGRADES.main.efficiencyI.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyI.effect())}
-  if (window.UPGRADES.main.efficiencyII.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyII.effect())}
-  if (window.UPGRADES.main.efficiencyIII.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyIII.effect())}
-  if (window.UPGRADES.main.efficiencyIV.bought == true) {gain = gain.mul(window.UPGRADES.main.efficiencyIV.effect())}
-  if (window.UPGRADES.main.efficiencyV.bought == true) {gain = gain.pow(window.UPGRADES.main.efficiencyV.effect())}
+  var upgmain = window.UPGRADES.main;
+  var buydata = window.BUYABLES.data;
   
-  if (window.BUYABLES.data.compressor.bought.gte(E("1"))) {gain = gain.mul(window.BUYABLES.data.compressor.effect())}
+  if (upgmain.efficiencyI.bought == true) {gain = gain.mul(upgmain.efficiencyI.effect())}
+  if (upgmain.efficiencyII.bought == true) {gain = gain.mul(upgmain.efficiencyII.effect())}
+  if (upgmain.efficiencyIII.bought == true) {gain = gain.mul(upgmain.efficiencyIII.effect())}
+  if (upgmain.efficiencyIV.bought == true) {gain = gain.mul(upgmain.efficiencyIV.effect())}
+  if (upgmain.efficiencyV.bought == true) {gain = gain.pow(upgmain.efficiencyV.effect())}
+  
+  if (buydata.compressor.bought.gte(E("1"))) {gain = gain.mul(buydata.compressor.effect())}
   
   gain = gain.mul(timespeed)
   
