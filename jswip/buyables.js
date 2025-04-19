@@ -23,6 +23,7 @@ window.BUYABLES = {
         temp = temp.mul(E("5").pow(this.bought))
         
         if (this.bought.gte(E("10"))) {temp = temp.mul(E("5").pow(this.bought.sub(E("4"))))}
+        if (this.bought.gte(E("20"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("19"))))}
         //if (temp.gte(E("10"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("9"))))}
         
         return temp;
