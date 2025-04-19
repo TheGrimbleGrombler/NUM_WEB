@@ -45,11 +45,11 @@ window.BUYABLES = {
       description: "Previous buyable base + n",
       costType: "data",
       costAmount: function() {
-        var temp = E("2000000")
+        var temp = E("25000000000000")
         
-        temp = temp.mul(E("100").pow(this.bought))
+        temp = temp.mul(E("20").pow(this.bought))
         
-        //if (temp.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
+        if (this.bought.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
         
         return temp;
       },

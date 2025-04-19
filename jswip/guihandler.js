@@ -51,7 +51,7 @@ function UPDATE() {
       if (chosenS != null) {
         if (chosenS.id == "subtab0") {
           
-          document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(format(player.data))
+          document.getElementById("dataDisplay").innerHTML = "Data:<br>" + String(format(player.data,5))
           bya.update("compressor","data")
           bya.update("compounder","data")
           
