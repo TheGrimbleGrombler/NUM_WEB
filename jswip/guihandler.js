@@ -29,6 +29,11 @@ function UPDATE() {
           upg.update("efficiencyIII","main")
           upg.update("efficiencyIV","main")
           upg.update("efficiencyV","main")
+          upg.update("realpowerI","main")
+          upg.update("realpowerII","main")
+          upg.update("realpowerIII","main")
+          upg.update("realpowerIV","main")
+          upg.update("realpowerV","main")
           
         }
       }
