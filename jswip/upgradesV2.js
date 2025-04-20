@@ -85,6 +85,7 @@ window.UPGRADES = {
       effect: function() {
         var temp = E("1")
         if (this.bought == true) {temp = player.data.add(E("1")).pow(E("0.25"))}
+        if (temp.gte(E("1e100"))) {temp = E("1e100").add(temp.sub(E("1e100")).pow(E("0.05")))}
         return temp;
       },
     },
@@ -130,68 +131,11 @@ window.UPGRADES = {
     },
     realpowerII: {
       displayName: "Real Power - II",
-      description: "Data gain is tripled",
+      description: "TBD",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("25")
-        
-        return temp;
-      },
-      effectPrefix: "Currently: Data x",
-      effectSuffix: ".",
-      bought: false,
-      effect: function() {
-        var temp = E("1")
-        if (this.bought == true) {temp = E("3")}
-        return temp;
-      },
-    },
-    realpowerIII: {
-      displayName: "Real Power - III",
-      description: "Data gain is quadrupled",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
-      costType: "data",
-      costAmount: function() {
-        var temp = E("100")
-        
-        return temp;
-      },
-      effectPrefix: "Currently: Data x",
-      effectSuffix: ".",
-      bought: false,
-      effect: function() {
-        var temp = E("1")
-        if (this.bought == true) {temp = E("4")}
-        return temp;
-      },
-    },
-    realpowerIV: {
-      displayName: "Real Power - IV",
-      description: "Data gain boosts itself at a reduced rate",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
-      costType: "data",
-      costAmount: function() {
-        var temp = E("500")
-        
-        return temp;
-      },
-      effectPrefix: "Currently: Data x",
-      effectSuffix: ".",
-      bought: false,
-      effect: function() {
-        var temp = E("1")
-        if (this.bought == true) {temp = player.data.add(E("1")).pow(E("0.25"))}
-        return temp;
-      },
-    },
-    realpowerV: {
-      displayName: "Real Power - V",
-      description: "Data gain is slightly exponentiated.",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
-      costType: "data",
-      costAmount: function() {
-        var temp = E("5000")
+        var temp = E("1e100")
         
         return temp;
       },
@@ -200,7 +144,60 @@ window.UPGRADES = {
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = E("1.1")}
+        return temp;
+      },
+    },
+    realpowerIII: {
+      displayName: "Real Power - III",
+      description: "TBD",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        return temp;
+      },
+    },
+    realpowerIV: {
+      displayName: "Real Power - IV",
+      description: "TBD",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        return temp;
+      },
+    },
+    realpowerV: {
+      displayName: "Real Power - V",
+      description: "TBD",
+      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Data ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
         return temp;
       },
     },

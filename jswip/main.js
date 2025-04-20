@@ -153,6 +153,11 @@ function save() {
     upg0_3: Sformat("efficiencyIII","main"),
     upg0_4: Sformat("efficiencyIV","main"),
     upg0_5: Sformat("efficiencyV","main"),
+    upg1_1: Sformat("realpowerI","main"),
+    upg1_2: Sformat("realpowerII","main"),
+    upg1_3: Sformat("realpowerIII","main"),
+    upg1_4: Sformat("realpowerIV","main"),
+    upg1_5: Sformat("realpowerV","main"),
     
     bya0_1: String(window.BUYABLES.data.compressor.bought),
     bya0_2: String(window.BUYABLES.data.compounder.bought),
@@ -178,6 +183,11 @@ function load() {
     Lformat("efficiencyIII","main",loadedData.upg0_3)
     Lformat("efficiencyIV","main",loadedData.upg0_4)
     Lformat("efficiencyV","main",loadedData.upg0_5)
+    Lformat("realpowerI","main",loadedData.upg1_1)
+    Lformat("realpowerII","main",loadedData.upg1_2)
+    Lformat("realpowerIII","main",loadedData.upg1_3)
+    Lformat("realpowerIV","main",loadedData.upg1_4)
+    Lformat("realpowerV","main",loadedData.upg1_5)
     
     window.BUYABLES.data.compressor.bought = E(String(loadedData.bya0_1))
     window.BUYABLES.data.compounder.bought = E(String(loadedData.bya0_2))

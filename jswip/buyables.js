@@ -59,7 +59,37 @@ window.BUYABLES = {
       bought: E("0"),
       effect: function() {
         var temp = E("0")
-        if (this.bought.gte(E("1"))) {temp = this.bought}
+        var base = E("1")
+        
+        if (window.UPGRADES.main.realpowerI.bought) {base = base.add(window.UPGRADES.main.realpowerI.effect())}
+        
+        if (this.bought.gte(E("1"))) {temp = this.bought.mul(base)}
+        return temp;
+      },
+    
+    compounder: {
+      displayName: "Compounder",
+      description: "Previous buyable base + n",
+      costType: "data",
+      costAmount: function() {
+        var temp = E("25000000000000")
+        
+        temp = temp.mul(E("20").pow(this.bought))
+        
+        if (this.bought.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
+        
+        return temp;
+      },
+      effectPrefix: "Previous buyable base + ",
+      effectSuffix: ".",
+      bought: E("0"),
+      effect: function() {
+        var temp = E("0")
+        var base = E("1")
+        
+        if (window.UPGRADES.main.realpowerI.bought) {base = base.add(window.UPGRADES.main.realpowerI.effect())}
+        
+        if (this.bought.gte(E("1"))) {temp = this.bought.mul(base)}
         return temp;
       },
       
