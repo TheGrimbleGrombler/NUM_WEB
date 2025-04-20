@@ -46,14 +46,19 @@ function gettimespeed() {
 // Un-NaNs any values that it deems fit upon loading.
 function unNaN() {
   
+  function checkbuyable(m) {
+    if (isNaN(window.BUYABLES.data[m].bought)) {window.BUYABLES.data[m].bought = E("0")}
+  }
+  
   if (isNaN(player.data)) {player.data = E("0")}
   if (isNaN(player.dataBest)) {player.dataBest = E("0")}
   if (isNaN(player.simulationTier)) {player.simulationTier = E("0")}
   if (isNaN(player.simulationTierBest)) {player.simulationTierBest = E("0")}
   if (isNaN(player.progression)) {player.progression = 1}
   
-  if (isNaN(window.BUYABLES.data.compressor.bought)) {window.BUYABLES.data.compressor.bought = E("0")}
-  if (isNaN(window.BUYABLES.data.compounder.bought)) {window.BUYABLES.data.compounder.bought = E("0")}
+  checkbuyable("compressor")
+  checkbuyable("compounder")
+  checkbuyable("incrementallist")
   
 }
 
@@ -161,6 +166,7 @@ function save() {
     
     bya0_1: String(window.BUYABLES.data.compressor.bought),
     bya0_2: String(window.BUYABLES.data.compounder.bought),
+    bya0_3: String(window.BUYABLES.data.incrementallist.bought),
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -191,6 +197,7 @@ function load() {
     
     window.BUYABLES.data.compressor.bought = E(String(loadedData.bya0_1))
     window.BUYABLES.data.compounder.bought = E(String(loadedData.bya0_2))
+    window.BUYABLES.data.incrementallist.bought = E(String(loadedData.bya0_3))
     
     unNaN()
   }

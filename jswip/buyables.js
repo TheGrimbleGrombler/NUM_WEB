@@ -52,6 +52,8 @@ window.BUYABLES = {
         
         if (this.bought.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
         
+        if (window.BUYABLES.data.incrementallist.bought.gte(E("1"))) {temp = temp.mul(window.BUYABLES.data.incrementallist.effect())}
+        
         return temp;
       },
       effectPrefix: "Previous buyable base + ",
@@ -64,32 +66,35 @@ window.BUYABLES = {
         if (window.UPGRADES.main.realpowerI.bought) {base = base.add(window.UPGRADES.main.realpowerI.effect())}
         
         if (this.bought.gte(E("1"))) {temp = this.bought.mul(base)}
+        
+        if (window.BUYABLES.data.incrementallist.bought.gte(E("1"))) {temp = temp.mul(window.BUYABLES.data.incrementallist.effect())}
+        
         return temp;
       },
-    
-    compounder: {
-      displayName: "Compounder",
-      description: "Previous buyable base + n",
+    },
+      
+    incrementallist: {
+      displayName: "Incrementallist",
+      description: "Both previous buyables' effect + 10^n %",
       costType: "data",
       costAmount: function() {
-        var temp = E("25000000000000")
+        var temp = E("2.5e38")
         
-        temp = temp.mul(E("20").pow(this.bought))
+        temp = temp.mul(E("1e6").pow(this.bought))
         
-        if (this.bought.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
+        if (this.bought.gte(E("100"))) {temp = temp.mul(E("1e50").pow(this.bought.sub(E("99"))))}
         
         return temp;
       },
-      effectPrefix: "Previous buyable base + ",
+      effectPrefix: "Previous buyables effect * ",
       effectSuffix: ".",
       bought: E("0"),
       effect: function() {
         var temp = E("0")
-        var base = E("1")
+        var base = E("1.1")
         
-        if (window.UPGRADES.main.realpowerI.bought) {base = base.add(window.UPGRADES.main.realpowerI.effect())}
+        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
         
-        if (this.bought.gte(E("1"))) {temp = this.bought.mul(base)}
         return temp;
       },
       
