@@ -123,7 +123,7 @@ function updateText() {
   tick = tick + 1
   
   scrollgui()
-  
+  updateprogression()
 }
 
 function gainData(){
