@@ -102,10 +102,14 @@ function scrollgui() {
 
 function updateprogression() {
   
+  var progression = 1
+  
   var upgs = window.UPGRADES
   var buys = window.BUYABLES
   
-  if (upgs.main.realpowerV.bought) {}
+  if (upgs.main.realpowerV.bought) {progression = 2}
+  
+  if (window.player.progression < progression) {window.player.progression = progression}
   
 }
 

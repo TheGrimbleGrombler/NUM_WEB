@@ -16,6 +16,15 @@ const format = window.format
 
 function UPDATE() {
   
+  
+  //Reveal tabs and subtabs
+  if (player.progression >= 2) {
+    document.getElementById("subtab1button").style.display = ""
+  } else {
+    document.getElementById("subtab1button").style.display = "none"
+  }
+  
+  
   Tick += 1
   
   if (chosen != null) {
