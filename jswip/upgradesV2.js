@@ -111,7 +111,7 @@ window.UPGRADES = {
     
     
     realpowerI: {
-      displayName: "Real Power - I",
+      displayName: "Breakthrough - I",
       description: "Add 1 to the compounder base",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
       costType: "data",
@@ -130,56 +130,79 @@ window.UPGRADES = {
       },
     },
     realpowerII: {
-      displayName: "Real Power - II",
-      description: "TBD",
+      displayName: "Breakthrough - II",
+      description: "For each compressor, +10% to their effect multiplicatively.",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("5e38")
         
         return temp;
       },
-      effectPrefix: "Currently: Data ^",
+      effectPrefix: "Currently: x",
       effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
+        var factor = window.BUYABLES.data.compressor.bought;
+        
+        
+        if (this.bought) {
+          if (factor.gte(E("1"))) {temp = E("1.1").pow(factor)}
+        }
+        
         return temp;
       },
     },
     realpowerIII: {
-      displayName: "Real Power - III",
-      description: "TBD",
+      displayName: "Breakthrough - III",
+      description: "For each compounder, +20% to their effect multiplicatively.",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("1e43")
         
         return temp;
       },
-      effectPrefix: "Currently: Data ^",
+      effectPrefix: "Currently: x",
       effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
+        var base = E("1.1")
+        var factor = window.BUYABLES.data.compounder.bought;
+        
+        
+        if (this.bought) {
+          if (factor.gte(E("1"))) {temp = base.pow(factor)}
+        }
+        
         return temp;
       },
     },
     realpowerIV: {
-      displayName: "Real Power - IV",
-      description: "TBD",
+      displayName: "Breakthrough - IV",
+      description: "For each level of incrementallist, +1 to its base.",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("5e38999")
         
         return temp;
       },
-      effectPrefix: "Currently: Data ^",
+      effectPrefix: "Currently: x",
       effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
+        var base = E("1")
+        var factor = window.BUYABLES.data.incrementallist.bought;
+        
+        
+        if (this.bought) {
+          if (factor.gte(E("1"))) {temp = }
+        }
+        
         return temp;
       },
     },

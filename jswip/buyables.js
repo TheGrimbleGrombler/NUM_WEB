@@ -34,8 +34,11 @@ window.BUYABLES = {
       effect: function() {
         var temp = E("1")
         var base = E("5")
+        
         if (window.BUYABLES.data.compounder.bought.gte(E("1"))) {base = base.add(window.BUYABLES.data.compounder.effect())}
         if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
+        if (window.UPGRADES.main.realpowerII.bought) {temp = temp.mul(window.UPGRADES.main.realpowerII.effect())}
+        
         return temp;
       },
       
@@ -69,6 +72,8 @@ window.BUYABLES = {
         
         if (window.BUYABLES.data.incrementallist.bought.gte(E("1"))) {temp = temp.mul(window.BUYABLES.data.incrementallist.effect())}
         
+        if (window.UPGRADES.main.realpowerIII.bought) {temp = temp.mul(window.UPGRADES.main.realpowerIII.effect())}
+        
         return temp;
       },
     },
@@ -94,6 +99,8 @@ window.BUYABLES = {
         var base = E("1.1")
         
         if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
+        
+        if (window.UPGRADES.main.realpowerIV.bought) {temp = temp.mul(window.UPGRADES.main.realpowerIV.effect())}
         
         return temp;
       },
