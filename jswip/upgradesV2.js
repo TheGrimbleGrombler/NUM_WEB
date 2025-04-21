@@ -208,19 +208,20 @@ window.UPGRADES = {
     },
     realpowerV: {
       displayName: "Breakthrough - V",
-      description: "TBD",
+      description: "Unlock Computation",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("1e103")
         
         return temp;
       },
-      effectPrefix: "Currently: Data ^",
+      effectPrefix: "Active: ",
       effectSuffix: ".",
       bought: false,
       effect: function() {
-        var temp = E("1")
+        var temp = E("0")
+        if (this.bought) {temp = E("1")}
         return temp;
       },
     },

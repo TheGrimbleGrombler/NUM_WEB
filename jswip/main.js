@@ -100,6 +100,15 @@ function scrollgui() {
   
 }
 
+function updateprogression() {
+  
+  var upgs = window.UPGRADES
+  var buys = window.BUYABLES
+  
+  if (upgs.main.realpowerV.bought) {}
+  
+}
+
 function updateText() {
   var timespeed = gettimespeed()
   gainData()
