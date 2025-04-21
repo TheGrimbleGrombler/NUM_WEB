@@ -25,6 +25,7 @@ window.BUYABLES = {
         if (this.bought.gte(E("10"))) {temp = temp.mul(E("5").pow(this.bought.sub(E("4"))))}
         if (this.bought.gte(E("20"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("19"))))}
         //if (temp.gte(E("10"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("9"))))}
+        if (this.bought.gte(E("25"))) {temp = temp.pow(E("2"))}
         
         return temp;
       },
@@ -54,8 +55,7 @@ window.BUYABLES = {
         temp = temp.mul(E("20").pow(this.bought))
         
         if (this.bought.gte(E("5"))) {temp = temp.mul(E("1e10").pow(this.bought.sub(E("4"))))}
-        
-        if (window.BUYABLES.data.incrementallist.bought.gte(E("1"))) {temp = temp.mul(window.BUYABLES.data.incrementallist.effect())}
+        if (this.bought.gte(E("11"))) {temp = temp.pow(E("2"))}
         
         return temp;
       },
@@ -87,7 +87,7 @@ window.BUYABLES = {
         
         temp = temp.mul(E("1e6").pow(this.bought))
         
-        if (this.bought.gte(E("100"))) {temp = temp.mul(E("1e50").pow(this.bought.sub(E("99"))))}
+        if (this.bought.gte(E("8"))) {temp = temp.pow(E("2"))}
         
         return temp;
       },
@@ -98,9 +98,9 @@ window.BUYABLES = {
         var temp = E("0")
         var base = E("1.1")
         
-        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
+        if (window.UPGRADES.main.realpowerIV.bought) {base = base.add(window.UPGRADES.main.realpowerIV.effect().mul(E("0.01")))}
         
-        if (window.UPGRADES.main.realpowerIV.bought) {temp = temp.mul(window.UPGRADES.main.realpowerIV.effect())}
+        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
         
         return temp;
       },

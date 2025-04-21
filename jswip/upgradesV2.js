@@ -182,11 +182,11 @@ window.UPGRADES = {
     },
     realpowerIV: {
       displayName: "Breakthrough - IV",
-      description: "For each level of incrementallist, +1 to its base.",
+      description: "For each level of incrementallist, +3 to its base.",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
       costAmount: function() {
-        var temp = E("5e38999")
+        var temp = E("5e57")
         
         return temp;
       },
@@ -195,19 +195,19 @@ window.UPGRADES = {
       bought: false,
       effect: function() {
         var temp = E("1")
-        var base = E("1")
+        var base = E("3")
         var factor = window.BUYABLES.data.incrementallist.bought;
         
         
         if (this.bought) {
-          if (factor.gte(E("1"))) {temp = }
+          if (factor.gte(E("1"))) {temp = factor.mul(base)}
         }
         
         return temp;
       },
     },
     realpowerV: {
-      displayName: "Real Power - V",
+      displayName: "Breakthrough - V",
       description: "TBD",
       image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
       costType: "data",
