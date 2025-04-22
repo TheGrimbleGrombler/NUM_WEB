@@ -13,6 +13,7 @@ const bya = window.BUYABLES
 const player = window.player
 
 const format = window.format
+var upgradeinfo = document.getElementById("upgradeinfo")
 
 function UPDATE() {
   
@@ -32,6 +33,37 @@ function UPDATE() {
     if (chosen.id == "tab3") {
       if (chosenS != null) {
         if (chosenS.id == "subtab9") {
+          
+          
+          var n = window.UPGRADES.lastdisplay;
+          var m = window.UPGRADES.lastdisplay2;
+          
+          if (n != "NONE") {
+            if (m != "NONE") {
+              
+              var category = window.UPGRADES[String(m)]
+              if (category != null) {
+                var upgrade = category[String(n)]
+                if (upgrade != null) {
+                  var bought = upgrade.bought
+
+                  var nam = upgrade.displayName
+                  var desc = upgrade.description
+                  var effdisplay = upgrade.effectPrefix + String(window.format(upgrade.effect(),5)) + upgrade.effectSuffix
+                  var costdisplay = null
+                  if (bought == false) {
+                    costdisplay = "Cost: " + String(upgrade.costAmount()) + " " + upgrade.costType
+                  } else {
+                    costdisplay = effdisplay
+                  }
+
+                  upgradeinfo.innerHTML = nam + "<br>" + desc + "<br>" + costdisplay
+
+                }
+              }
+              
+            }
+          }
           
           upg.update("efficiencyI","main")
           upg.update("efficiencyII","main")

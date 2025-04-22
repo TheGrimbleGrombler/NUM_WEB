@@ -1,15 +1,16 @@
 var tick = 0;
 
 var newstexts = [
-  "Breaking news: Disease outbreak crates laser zebras.",
-  "What the rizz?",
-  "Back in my day we didn't have these darn videogames.",
-  "Rat infestation found to be a leading cause of child labor.",
-  "League of Legends players' brain found to be missing.",
-  "Asteroid mining accident causes $8.4Qd in damages.",
-  "Pinapple on pizza found to cause cancer in new study.",
+  "Lab-Grown Meta Bacteria Causes Evolution Of Laser-Zebras",
+  "Wow so rizzy",
+  "Back in my day we didnt have videogames",
+  "Rat Infestation Causes Child Labor Spike",
+  "Study Finds League Of Legends May Reduce Neural Activity Levels",
+  "Lunatic Causes Asteroid Mining Accident Totalling 8.4Qd In Damages",
+  "Study Finds Pineapple On Pizza May Cure Cancer",
   "The One Piece Is Real",
-  "Chicken jockey"
+  "Chicken jockey",
+  "Man's Consciousness Merges With Star In Freak Accident"
 ]
 
 function Random(m) {

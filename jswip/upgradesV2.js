@@ -11,6 +11,9 @@ var upgradeinfo = document.getElementById("upgradeinfo")
 
 window.UPGRADES = {
   
+  lastdisplay: "NONE",
+  lastdisplay2: "NONE",
+  
   main: {
     efficiencyI: {
       displayName: "Efficency - I",
@@ -251,6 +254,10 @@ window.UPGRADES = {
     }
   },
   display: function(n,m) {
+    
+    window.UPGRADES.lastdisplay = n;
+    window.UPGRADES.lastdisplay2 = m;
+    
     var category = window.UPGRADES[String(m)]
     if (category != null) {
       var upgrade = category[String(n)]
