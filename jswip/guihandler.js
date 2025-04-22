@@ -105,7 +105,9 @@ function UPDATE() {
         }
         if (chosenS.id == "subtab1") {
           
-          document.getElementById("spinner").style.rotate = String(Tick) + "deg"
+          document.getElementById("spinner").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
+          document.getElementById("spinner2").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
+          document.getElementById("spinner3").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
           
           
         }
