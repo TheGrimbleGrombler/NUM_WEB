@@ -108,6 +108,14 @@ function UPDATE() {
           document.getElementById("spinner").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
           document.getElementById("spinner2").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
           document.getElementById("spinner3").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
+          document.getElementById("spinner4").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
+          document.getElementById("spinner5").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
+          
+          document.getElementById("spinner").style.rotate = String(Math.sin(Tick/300*3.14)*10) + "deg"
+          document.getElementById("spinner2").style.rotate = String(22.5+Math.sin(0.785+Tick/300*3.14)*10) + "deg"
+          document.getElementById("spinner3").style.rotate = String(45+Math.sin(1.57+Tick/300*3.14)*10) + "deg"
+          document.getElementById("spinner4").style.rotate = String(67.5+Math.sin(2.355+Tick/300*3.14)*10) + "deg"
+          document.getElementById("spinner5").style.rotate = String(90+Math.sin(3.14+Tick/300*3.14)*10) + "deg"
           
           
         }

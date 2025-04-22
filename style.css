@@ -361,7 +361,7 @@ body img {
   position: absolute;
   background-color:transparent;
   background-image:
-  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
   background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
@@ -370,11 +370,11 @@ body img {
   height: 300vh;
   top: -100vh;
   left: -100vw;
-  rotate: 30deg;
+  rotate: 22.5deg;
   position: absolute;
   background-color:transparent;
   background-image:
-  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
   background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
@@ -383,11 +383,37 @@ body img {
   height: 300vh;
   top: -100vh;
   left: -100vw;
-  rotate: 60deg;
+  rotate: 45deg;
   position: absolute;
   background-color:transparent;
   background-image:
-  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
+  background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+#spinner4 {
+  width: 300vw;
+  height: 300vh;
+  top: -100vh;
+  left: -100vw;
+  rotate: 67.5deg;
+  position: absolute;
+  background-color:transparent;
+  background-image:
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
+  background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+#spinner5 {
+  width: 300vw;
+  height: 300vh;
+  top: -100vh;
+  left: -100vw;
+  rotate: 90deg;
+  position: absolute;
+  background-color:transparent;
+  background-image:
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
   background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
