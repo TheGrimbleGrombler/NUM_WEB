@@ -12,6 +12,7 @@ var ScrollX = 0;
 var ScrollY = 0;
 var ScrollVelX = 0;
 var ScrollVelY = 0;
+var DOCLOADED = false
 
 var WDown = false;
 var ADown = false;
@@ -135,6 +136,7 @@ function updateText() {
   
   scrollgui()
   updateprogression()
+  DOCLOADED = true
 }
 
 function gainData(){
@@ -280,12 +282,10 @@ document.onkeyup = function (e) {
      ADown = false
     }
 };
-var DOCLOADED = false
 document.addEventListener("DOMContentLoaded", function() {
   updateText();
   if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
   setInterval(updateText, 16);
-  DOCLOADED = true
 });
 window.addEventListener('beforeunload', function () {
   if (!isNaN(player.data)) {

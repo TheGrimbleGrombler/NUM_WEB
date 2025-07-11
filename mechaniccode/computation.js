@@ -19,10 +19,10 @@ var computationMax = E("1e10")
 //Computation, A system based around a gradual increase that eventually culminates enough that it reaches its variable cap that then lets you reset for another currency in the same tab, Significant Data. Think replicanti from Antimatter Dimensions.
 
 window.COMPUTATION = {
-    
+
     gainComputation: function() {
 
-        if (player.computation.lt(E("100"))) {player.computation = E("100")}
+        if (!player.computation.gte(E("100"))) {player.computation = E("100")}
 
         var gain = player.computation.div(E("10"))
 
