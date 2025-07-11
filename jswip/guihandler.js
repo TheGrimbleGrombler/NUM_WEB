@@ -18,18 +18,24 @@ var upgradeinfo = document.getElementById("upgradeinfo")
 function UPDATE() {
   
   
-  //Reveal tabs and subtabs
-  if (player.progression >= 2) {
-    document.getElementById("subtab1button").style.display = ""
-  } else {
-    document.getElementById("subtab1button").style.display = "none"
-  }
   
   
   Tick += 1
   
   if (chosen != null) {
     
+    if (chosen.id == "tab1") {
+
+      //Reveal subtabs
+      if (player.progression >= 2) {
+        document.getElementById("subtab1button").style.display = ""
+      } else {
+        document.getElementById("subtab1button").style.display = "none"
+      }
+      document.getElementById("subtab2button").style.display = "none"
+
+    }
+
     if (chosen.id == "tab3") {
       if (chosenS != null) {
         if (chosenS.id == "subtab9") {
@@ -117,6 +123,8 @@ function UPDATE() {
           document.getElementById("spinner4").style.rotate = String(67.5+Math.sin(2.355+Tick/300*3.14)*10) + "deg"
           document.getElementById("spinner5").style.rotate = String(90+Math.sin(3.14+Tick/300*3.14)*10) + "deg"
           
+          document.getElementById("computationDisplay").innerHTML = "Computation:" + String(format(player.computation,5))
+          document.getElementById("significantDataDisplay").innerHTML = "Significant Data:" + String(format(player.significantData,5))
           
         }
       }

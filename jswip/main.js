@@ -32,6 +32,10 @@ window.player = {
   simulationTier: E("0"),
   simulationTierBest: E("0"),
   progression: 1,
+  computation: 0,
+  computationBest: 0,
+  significantData: 0,
+  significantDataBest: 0
 };
 
 var player = window.player
@@ -55,6 +59,10 @@ function unNaN() {
   if (isNaN(player.simulationTier)) {player.simulationTier = E("0")}
   if (isNaN(player.simulationTierBest)) {player.simulationTierBest = E("0")}
   if (isNaN(player.progression)) {player.progression = 1}
+  if (isNaN(player.computation)) {player.computation = E("0")}
+  if (isNaN(player.computationBest)) {player.computationBest = E("0")}
+  if (isNaN(player.significantData)) {player.significantData = E("0")}
+  if (isNaN(player.significantDataBest)) {player.significantDataBest = E("0")}
   
   checkbuyable("compressor")
   checkbuyable("compounder")
@@ -76,6 +84,8 @@ var automation2 = true
 function checkbest() {
   if (player.data.gte(player.dataBest)) {player.dataBest = player.data}
   if (player.simulationTier.gte(player.simulationTierBest)) {player.simulationTierBest = player.simulationTier}
+  if (player.computation.gte(player.computationBest)) {player.computationBest = player.computation}
+  if (player.significantData.gte(player.significantDataBest)) {player.significantDataBest = player.significantData}
 }
 
 function scrollgui() {
@@ -116,6 +126,7 @@ function updateprogression() {
 function updateText() {
   var timespeed = gettimespeed()
   gainData()
+  if (DOCLOADED == true) {window.COMPUTATION.gainComputation()}
   Automation()
   //Debug()
   checkbest()
@@ -269,11 +280,12 @@ document.onkeyup = function (e) {
      ADown = false
     }
 };
-
+var DOCLOADED = false
 document.addEventListener("DOMContentLoaded", function() {
   updateText();
   if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
   setInterval(updateText, 16);
+  DOCLOADED = true
 });
 window.addEventListener('beforeunload', function () {
   if (!isNaN(player.data)) {
