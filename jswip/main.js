@@ -209,6 +209,10 @@ function load() {
     player.dataBest = E(String(loadedData.player.dataBest));
     player.simulationTier = E(String(loadedData.player.simulationTier));
     player.simulationTierBest = E(String(loadedData.player.simulationTierBest));
+    player.computation = E(String(loadedData.player.computation));
+    player.computationBest = E(String(loadedData.player.computationBest));
+    player.significantData = E(String(loadedData.player.significantData));
+    player.significantDataBest = E(String(loadedData.player.significantDataBest));
     
     Lformat("efficiencyI","main",loadedData.upg0_1)
     Lformat("efficiencyII","main",loadedData.upg0_2)

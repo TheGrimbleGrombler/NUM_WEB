@@ -22,7 +22,7 @@ window.COMPUTATION = {
 
     gainComputation: function() {
 
-        if (!player.computation.gte(E("100"))) {player.computation = E("100")}
+        if (player.computation.sub(E("100")).lt(E("0"))) {player.computation = E("100")}
 
         var gain = player.computation.div(E("10"))
 
