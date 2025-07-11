@@ -4,7 +4,7 @@ body {
   line-height: 1.5;
   background-color: rgb(10, 10, 10); /* RGB value */
 }
-body img {
+body img { 
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges; /* Firefox */
   image-rendering: crisp-edges;
