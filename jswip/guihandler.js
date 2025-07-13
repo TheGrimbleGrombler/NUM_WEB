@@ -173,12 +173,6 @@ window.TABS = {
       chosen = document.getElementById("tab" + tabN)
       chosenbutton = document.getElementById("tab" + tabN + "button")
       chosenstabs = document.getElementById("stabs" + tabN)
-
-      if (tabN == 0) {this.choose("0",true)}
-      if (tabN == 1) {this.choose("3",true)}
-      if (tabN == 2) {this.choose("8",true)}
-      if (tabN == 3) {this.choose("9",true)}
-      if (tabN == 4) {this.choose("10",true)}
     }
     
     if (chosen != null) {
@@ -196,6 +190,12 @@ window.TABS = {
     if (chosenSbutton != null) {
       chosenSbutton.className = "btn_stab chosen"
     }
+
+    if (tabN == 0) {this.choose("0",true)}
+    if (tabN == 1) {this.choose("3",true)}
+    if (tabN == 2) {this.choose("8",true)}
+    if (tabN == 3) {this.choose("9",true)}
+    if (tabN == 4) {this.choose("10",true)}
   }
 }
 
