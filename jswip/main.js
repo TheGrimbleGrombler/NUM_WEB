@@ -125,17 +125,18 @@ function updateprogression() {
 }
 
 function updateText() {
-  var timespeed = gettimespeed()
-  gainData()
-  if (DOCLOADED == true) {window.COMPUTATION.gainComputation()}
-  Automation()
-  //Debug()
-  checkbest()
-  
-  tick = tick + 1
-  
-  scrollgui()
-  updateprogression()
+  if (DOCLOADED == true) {
+    var timespeed = gettimespeed()
+    gainData()
+    window.COMPUTATION.gainComputation()
+    Automation()
+    checkbest()
+    
+    tick = tick + 1
+    
+    scrollgui()
+    updateprogression()
+  }
   DOCLOADED = true
 }
 
