@@ -122,7 +122,7 @@ function updateVisuals() {
   if (chosen != null) {
     if (chosenS != null) {
 
-      if (chosen.id = "tab0") {
+      if (chosen.id == "tab0") {
         if (chosenS.id == "subtab1") {
               document.getElementById("spinner").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
               document.getElementById("spinner2").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
@@ -161,13 +161,13 @@ window.TABS = {
       if (chosen != null) {
         chosen.style.display = "none"
         chosen = null
-        if (chosenbutton != null) {
-          chosenbutton.className = "btn_tab"
-          chosenbutton = null
-        }
-        if (chosenstabs != null) {
-          chosenstabs.style.display = "none"
-        }
+      }
+      if (chosenbutton != null) {
+        chosenbutton.className = "btn_tab"
+        chosenbutton = null
+      }
+      if (chosenstabs != null) {
+        chosenstabs.style.display = "none"
       }
 
       chosen = document.getElementById("tab" + tabN)
