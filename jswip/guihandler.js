@@ -23,7 +23,7 @@ function UPDATE() {
 
       //Reveal subtabs
       if (player.progression >= 2) {
-        document.getElementById("subtab1button").style.display = ""
+        document.getElementById("subtab1button").style.display = "block"
       } else {
         document.getElementById("subtab1button").style.display = "none"
       }
