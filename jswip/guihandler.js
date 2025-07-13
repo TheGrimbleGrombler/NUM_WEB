@@ -111,6 +111,20 @@ function UPDATE() {
         }
         if (chosenS.id == "subtab1") {
           
+          document.getElementById("computationDisplay").innerHTML = "Computation: " + String(format(player.computation,5))
+          document.getElementById("significantDataDisplay").innerHTML = "Significant Data: " + String(format(player.significantData,5))
+          
+        }
+      }
+    }
+    
+  }
+}
+
+function updateVisuals() {
+
+  if (chosen.id = "tab0") {
+    if (chosenS.id == "subtab1") {
           document.getElementById("spinner").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
           document.getElementById("spinner2").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
           document.getElementById("spinner3").style.backgroundPosition = String(Tick) + "px " + String(Tick) + "px"
@@ -122,15 +136,9 @@ function UPDATE() {
           document.getElementById("spinner3").style.rotate = String(45+Math.sin(1.57+Tick/300*3.14)*10) + "deg"
           document.getElementById("spinner4").style.rotate = String(67.5+Math.sin(2.355+Tick/300*3.14)*10) + "deg"
           document.getElementById("spinner5").style.rotate = String(90+Math.sin(3.14+Tick/300*3.14)*10) + "deg"
-          
-          document.getElementById("computationDisplay").innerHTML = "Computation: " + String(format(player.computation,5))
-          document.getElementById("significantDataDisplay").innerHTML = "Significant Data: " + String(format(player.significantData,5))
-          
-        }
-      }
     }
-    
   }
+
 }
 
 window.TABS = {
@@ -159,6 +167,13 @@ window.TABS = {
           chosenstabs.style.display = "none"
         }
       }
+
+      if (tabN == 0) {this.choose("0",true)}
+      if (tabN == 1) {this.choose("3",true)}
+      if (tabN == 2) {this.choose("8",true)}
+      if (tabN == 3) {this.choose("9",true)}
+      if (tabN == 4) {this.choose("10",true)}
+
       chosen = document.getElementById("tab" + tabN)
       chosenbutton = document.getElementById("tab" + tabN + "button")
       chosenstabs = document.getElementById("stabs" + tabN)
@@ -181,9 +196,11 @@ window.TABS = {
     }
   }
 }
+
 document.addEventListener("DOMContentLoaded", function() {
   window.TABS.choose("0", false)
   window.TABS.choose("0", true)
   UPDATE();
   setInterval(UPDATE, 200);
+  setInterval(updateVisuals, 16);
 });

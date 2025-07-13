@@ -352,6 +352,18 @@ body img {
   height: 160px; 
   width: 100%;
 }
+#computationDisplay {
+  top:200px; 
+  position: absolute;
+  height: 160px; 
+  width: 100%;
+}
+#significantDataDisplay {
+  top:264px; 
+  position: absolute;
+  height: 160px; 
+  width: 100%;
+}
 #spinner {
   width: 300vw;
   height: 300vh;
