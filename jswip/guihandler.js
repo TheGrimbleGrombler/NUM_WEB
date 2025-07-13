@@ -123,8 +123,8 @@ function UPDATE() {
           document.getElementById("spinner4").style.rotate = String(67.5+Math.sin(2.355+Tick/300*3.14)*10) + "deg"
           document.getElementById("spinner5").style.rotate = String(90+Math.sin(3.14+Tick/300*3.14)*10) + "deg"
           
-          document.getElementById("computationDisplay").innerHTML = "Computation:" + String(format(player.computation,5))
-          document.getElementById("significantDataDisplay").innerHTML = "Significant Data:" + String(format(player.significantData,5))
+          document.getElementById("computationDisplay").innerHTML = "Computation: " + String(format(player.computation,5))
+          document.getElementById("significantDataDisplay").innerHTML = "Significant Data: " + String(format(player.significantData,5))
           
         }
       }
@@ -185,5 +185,5 @@ document.addEventListener("DOMContentLoaded", function() {
   window.TABS.choose("0", false)
   window.TABS.choose("0", true)
   UPDATE();
-  setInterval(UPDATE, 16);
+  setInterval(UPDATE, 200);
 });

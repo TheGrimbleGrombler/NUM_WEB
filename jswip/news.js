@@ -10,7 +10,9 @@ var newstexts = [
   "Study Finds Pineapple On Pizza May Cure Cancer",
   "The One Piece Is Real",
   "Chicken jockey",
-  "Man's Consciousness Merges With Star In Freak Accident"
+  "Man's Consciousness Merges With Star In Freak Accident",
+  "These news tips are generally pointless to read",
+  "Does anyone even read these?"
 ]
 
 function Random(m) {
@@ -35,8 +37,6 @@ function news() {
   document.getElementById("background").style.backgroundPosition = String(tick/5)+"px "+String(tick/5)+"px"
   
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
   news();

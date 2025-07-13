@@ -34,6 +34,7 @@ window.player = {
   simulationTierBest: E("0"),
   progression: 1,
   computation: 0,
+  computationMax: E("1e10"),
   computationBest: 0,
   significantData: 0,
   significantDataBest: 0
@@ -64,6 +65,7 @@ function unNaN() {
   if (isNaN(player.computationBest)) {player.computationBest = E("0")}
   if (isNaN(player.significantData)) {player.significantData = E("0")}
   if (isNaN(player.significantDataBest)) {player.significantDataBest = E("0")}
+  if (isNaN(player.computationMax)) {player.computationMax = E("1e10")}
   
   checkbuyable("compressor")
   checkbuyable("compounder")
@@ -125,19 +127,16 @@ function updateprogression() {
 }
 
 function updateText() {
-  if (DOCLOADED == true) {
-    var timespeed = gettimespeed()
-    gainData()
-    window.COMPUTATION.gainComputation()
-    Automation()
-    checkbest()
-    
-    tick = tick + 1
-    
-    scrollgui()
-    updateprogression()
-  }
-  DOCLOADED = true
+  var timespeed = gettimespeed()
+  gainData()
+  window.COMPUTATION.computationLogic()
+  Automation()
+  checkbest()
+  
+  tick = tick + 1
+  
+  scrollgui()
+  updateprogression()
 }
 
 function gainData(){
@@ -211,6 +210,7 @@ function load() {
     player.simulationTier = E(String(loadedData.player.simulationTier));
     player.simulationTierBest = E(String(loadedData.player.simulationTierBest));
     player.computation = E(String(loadedData.player.computation));
+    player.computationMax = E(String(loadedData.player.computationMax));
     player.computationBest = E(String(loadedData.player.computationBest));
     player.significantData = E(String(loadedData.player.significantData));
     player.significantDataBest = E(String(loadedData.player.significantDataBest));
@@ -288,8 +288,8 @@ document.onkeyup = function (e) {
     }
 };
 document.addEventListener("DOMContentLoaded", function() {
-  updateText();
   if (typeof localStorage.getItem('gameData') !== 'undefined') {load();}
+  DOCLOADED = true
   setInterval(updateText, 16);
 });
 window.addEventListener('beforeunload', function () {

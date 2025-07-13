@@ -14,11 +14,16 @@ const player = window.player
 const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
 
-var computationMax = E("1e10")
-
 //Computation, A system based around a gradual increase that eventually culminates enough that it reaches its variable cap that then lets you reset for another currency in the same tab, Significant Data. Think replicanti from Antimatter Dimensions.
 
 window.COMPUTATION = {
+
+    computationLogic: function() {
+
+      this.calculateComputationMax()
+      this.gainComputation()
+
+    },
 
     gainComputation: function() {
 
@@ -31,7 +36,15 @@ window.COMPUTATION = {
         gain = gain.div(E("60"))
         player.computation = player.computation.add(gain)
 
-        if (player.computation.gte(computationMax)) {player.computation = player.computationMax}
+        if (player.computation.gte(player.computationMax)) {player.computation = player.computationMax}
+
+    },
+
+    calculateComputationMax: function() {
+
+      var temp = E("1e10")
+
+      player.computationMax = temp
 
     }
 
