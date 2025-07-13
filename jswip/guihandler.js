@@ -4,6 +4,7 @@ var chosenbutton = null
 var chosenS = null
 var chosenSbutton = null
 var chosenstabs = null
+var chosenSdiv = null
 
 var Tick = 0
 
@@ -147,16 +148,20 @@ window.TABS = {
   choose: function(tabN,subtab) {
     
     if (subtab == true) {
+      if (chosenSdiv != null) {
+        chosenSdiv.style.display = "none"
+        chosenSdiv = null
+      }
       if (chosenS != null) {
-        chosenS.style.display = "none"
         chosenS = null
-        if (chosenSbutton != null) {
-          chosenSbutton.className = "btn_stab"
-          chosenSbutton = null
-        }
+      }
+      if (chosenSbutton != null) {
+        chosenSbutton.className = "btn_stab"
+        chosenSbutton = null
       }
       chosenS = document.getElementById("subtab" + tabN)
       chosenSbutton = document.getElementById("subtab" + tabN + "button")
+      chosenSdiv = document.getElementById("subtab" + tabN + "div")
     } else {
       if (chosen != null) {
         chosen.style.display = "none"
@@ -190,6 +195,18 @@ window.TABS = {
     if (chosenSbutton != null) {
       chosenSbutton.className = "btn_stab chosen"
     }
+    if (chosenSdiv != null) {
+      chosenSdiv.style.display = ""
+    }
+    
+    if (subtab == false) {
+      if (tabN == 0) {this.choose("0",true)}
+      if (tabN == 1) {this.choose("3",true)}
+      if (tabN == 2) {this.choose("8",true)}
+      if (tabN == 3) {this.choose("9",true)}
+      if (tabN == 4) {this.choose("10",true)}
+    }
+
   }
 }
 
