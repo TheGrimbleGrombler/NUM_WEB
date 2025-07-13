@@ -18,8 +18,14 @@ window.RESETS = {
     reset: function(n) {
 
         if (n == 0) { // Computation to SignificantData
+            
+            var ret = this.calculateReturn(0)
 
-            player.computation = E("100")
+            if (ret.gte(E("1"))) {
+                player.significantData = player.significantData.add(ret)
+
+                player.computation = E("100")
+            }
 
         }
 

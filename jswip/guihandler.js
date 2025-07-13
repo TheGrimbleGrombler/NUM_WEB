@@ -12,6 +12,7 @@ const upg = window.UPGRADES
 const ach = window.ACHIEVEMENTS
 const bya = window.BUYABLES
 const player = window.player
+const resets = window.RESETS
 
 const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
@@ -106,10 +107,14 @@ function UPDATE() {
           
         }
         if (chosenS.id == "subtab1") {
-          
+
+          //resetComputation" onclick="window.RESETS.reset(0)" class="btn_buyable buyable unbought">Collapse computation for<br>AMOUNT<br>Significant Data</button></div>
+
           document.getElementById("computationDisplay").innerHTML = "Computation: " + String(format(player.computation,5))
           document.getElementById("significantDataDisplay").innerHTML = "Significant Data: " + String(format(player.significantData,5))
           
+          document.getElementById("resetComputation").innerHTML = "Collapse Computation for:<br>" + format(resets.calculateReturn(0),1) + "<br>Significant Data"
+
         }
       }
     }

@@ -11,6 +11,8 @@ var player = window.player
 
 window.ACHIEVEMENTS = {
   main: {
+
+
     datacollector: {
       displayName: "Data Collector I",
       description: "Collect 1000 Data",
@@ -51,6 +53,50 @@ window.ACHIEVEMENTS = {
       tip: "",
       achieved: false,
     },
+
+
+    computationSpecialist1: {
+      displayName: "Computation Specialist I",
+      description: "Surpass 9000 Computation",
+      reqType: "computation",
+      reqAmount: E("9000"),
+      tip: "",
+      achieved: false,
+    },
+    computationSpecialist2: {
+      displayName: "Computation Specialist II",
+      description: "Reach 1e20 Computation",
+      reqType: "computation",
+      reqAmount: E("1e20"),
+      tip: "",
+      achieved: false,
+    },
+    computationSpecialist3: {
+      displayName: "Computation Specialist III",
+      description: "Reach 1e100 Computation",
+      reqType: "computation",
+      reqAmount: E("1e100"),
+      tip: "",
+      achieved: false,
+    },
+    computationSpecialist4: {
+      displayName: "Computation Specialist IV",
+      description: "Reach 1e200 Computation",
+      reqType: "computation",
+      reqAmount: E("1e200"),
+      tip: "",
+      achieved: false,
+    },
+    computationSpecialist5: {
+      displayName: "Computation Specialist V",
+      description: "Reach an infinite quantity of Computation",
+      reqType: "computation",
+      reqAmount: E("1.8e308"),
+      tip: "",
+      achieved: false,
+    },
+
+
   },
   update: function(n,m) {
     var elem = document.getElementById(n)
