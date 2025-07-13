@@ -2,7 +2,7 @@ body {
   margin: 1rem;
   font-family: sans-serif;
   line-height: 1.5;
-  background-color: rgb(10, 10, 10); /* RGB value */
+  background-color: rgb(10, 10, 10); 
 }
 body img { 
   image-rendering: pixelated;
@@ -13,13 +13,13 @@ body img {
   z-index: 9999;
 }
 .number-container {
-  text-align: center; /* Align the text to the right */
+  text-align: center; 
   position: absolute;
   text-align: center;
   text-overflow: ellipsis;
 }
 .number-container-hidden {
-  text-align: center; /* Align the text to the right */
+  text-align: center; 
   position: absolute;
   text-align: center;
   text-overflow: ellipsis;
@@ -27,20 +27,20 @@ body img {
 }
 .number-container button {
   color: rgb(255,255,255);
-  background-color: rgb(55, 0, 55); /* RGB value */
+  background-color: rgb(55, 0, 55); 
   text-overflow: ellipsis;
 }
 
 .number {
   font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
+  display: block; 
   color: rgb(255,0,255);
   text-align: center;
   text-overflow: ellipsis;
 }
 .numberwhite {
   font-size: 16px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
+  display: block; 
   color: rgb(255,255,255);
   text-align: center;
   text-overflow: ellipsis;
@@ -60,7 +60,7 @@ body img {
 }
 .largenumberwhite {
   font-size: 24px;
-  display: block; /* Make the number a block element so it takes up the full width of the container */
+  display: block; 
   color: rgb(255,255,255);
   text-align: center;
   overflow: hidden;
@@ -100,7 +100,7 @@ body img {
 }
      .image-container {
        height: auto;
-        padding: 5px; /* Remove any default padding */
+        padding: 5px;
      }
      .image-container img {
        width: 100%;

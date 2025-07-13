@@ -23,5 +23,16 @@ window.RESETS = {
 
         }
 
+    },
+    calculateReturn: function(n) {
+
+        if (n == 0) { // SIGNIFICANTDATA RESET
+
+            var temp = player.computation.log(E("10")).sub(E("10"))
+
+            return temp
+
+        }
+
     }
 }
