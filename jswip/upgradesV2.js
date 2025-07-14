@@ -18,7 +18,7 @@ window.UPGRADES = {
     efficiencyI: {
       displayName: "Efficency - I",
       description: "Double Data gain",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
+      image: "Assets/Eff1.png",
       costType: "data",
       costAmount: function() {
         var temp = E("10")
@@ -37,7 +37,7 @@ window.UPGRADES = {
     efficiencyII: {
       displayName: "Efficency - II",
       description: "Data gain is tripled",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Eff2.png",
       costType: "data",
       costAmount: function() {
         var temp = E("25")
@@ -56,7 +56,7 @@ window.UPGRADES = {
     efficiencyIII: {
       displayName: "Efficency - III",
       description: "Data gain is quadrupled",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Eff3.png",
       costType: "data",
       costAmount: function() {
         var temp = E("100")
@@ -75,7 +75,7 @@ window.UPGRADES = {
     efficiencyIV: {
       displayName: "Efficency - IV",
       description: "Data gain boosts itself at a reduced rate",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Eff4.png",
       costType: "data",
       costAmount: function() {
         var temp = E("500")
@@ -95,7 +95,7 @@ window.UPGRADES = {
     efficiencyV: {
       displayName: "Efficency - V",
       description: "Data gain is slightly exponentiated.",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Eff5.png",
       costType: "data",
       costAmount: function() {
         var temp = E("5000")
@@ -116,7 +116,7 @@ window.UPGRADES = {
     realpowerI: {
       displayName: "Breakthrough - I",
       description: "Add 1 to the compounder base",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff1.png?v=1726407804499",
+      image: "Assets/Rp1.png",
       costType: "data",
       costAmount: function() {
         var temp = E("2.5e32")
@@ -135,7 +135,7 @@ window.UPGRADES = {
     realpowerII: {
       displayName: "Breakthrough - II",
       description: "For each compressor, +10% to their effect multiplicatively.",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Rp2.png",
       costType: "data",
       costAmount: function() {
         var temp = E("5e38")
@@ -160,7 +160,7 @@ window.UPGRADES = {
     realpowerIII: {
       displayName: "Breakthrough - III",
       description: "For each compounder, +20% to their effect multiplicatively.",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Rp3.png",
       costType: "data",
       costAmount: function() {
         var temp = E("1e43")
@@ -186,7 +186,7 @@ window.UPGRADES = {
     realpowerIV: {
       displayName: "Breakthrough - IV",
       description: "For each level of incrementallist, +3 to its base.",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Rp4.png",
       costType: "data",
       costAmount: function() {
         var temp = E("5e57")
@@ -212,7 +212,7 @@ window.UPGRADES = {
     realpowerV: {
       displayName: "Breakthrough - V",
       description: "Unlock Computation",
-      image: "https://cdn.glitch.global/5ecf2822-9c4a-4be8-9d23-05f1ff302473/Eff2.png?v=1726407804652",
+      image: "Assets/Rp5.png",
       costType: "data",
       costAmount: function() {
         var temp = E("1e103")
@@ -225,6 +225,103 @@ window.UPGRADES = {
       effect: function() {
         var temp = E("0")
         if (this.bought) {temp = E("1")}
+        return temp;
+      },
+    },
+    
+    
+    capacityI: {
+      displayName: "Capacity - I",
+      description: "Square the computation cap",
+      image: "Assets/Cap1.png",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("25")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Computation cap ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = E("2")}
+        return temp;
+      },
+    },
+    capacityII: {
+      displayName: "Capacity - II",
+      description: "Square the computation cap again.",
+      image: "Assets/Cap2.png",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("250")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Computation cap ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = E("2")}
+        return temp;
+      },
+    },
+    capacityIII: {
+      displayName: "Capacity - III",
+      description: "TBD",
+      image: "Assets/Cap3.png",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Computation cap ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = E("2")}
+        return temp;
+      },
+    },
+    capacityIV: {
+      displayName: "Capacity - IV",
+      description: "TBD",
+      image: "Assets/Cap4.png",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Computation cap ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = E("2")}
+        return temp;
+      },
+    },
+    capacityV: {
+      displayName: "Capacity - V",
+      description: "TBD",
+      image: "Assets/Cap5.png",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("1e100")
+        
+        return temp;
+      },
+      effectPrefix: "Currently: Computation cap ^",
+      effectSuffix: ".",
+      bought: false,
+      effect: function() {
+        var temp = E("1")
+        if (this.bought == true) {temp = E("2")}
         return temp;
       },
     },

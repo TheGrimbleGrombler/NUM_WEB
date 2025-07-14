@@ -32,7 +32,12 @@ function UPDATE() {
       if (chosenS != null) {
         if (chosenS.id == "subtab9") {
           
-          
+          if (player.progression >= 2) {
+            document.getElementById("Upgrades2").style.display = "block"
+          } else {
+            document.getElementById("Upgrades2").style.display = "none"
+          }
+
           var n = window.UPGRADES.lastdisplay;
           var m = window.UPGRADES.lastdisplay2;
           
