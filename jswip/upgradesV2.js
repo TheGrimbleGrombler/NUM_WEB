@@ -270,20 +270,20 @@ window.UPGRADES = {
     },
     capacityIII: {
       displayName: "Capacity - III",
-      description: "TBD",
+      description: "Increase the computation cap by 80 OoMs",
       image: "Assets/Cap3.png",
       costType: "significantData",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("1000")
         
         return temp;
       },
-      effectPrefix: "Currently: Computation cap ^",
+      effectPrefix: "Currently: Computation cap *",
       effectSuffix: ".",
       bought: false,
       effect: function() {
         var temp = E("1")
-        if (this.bought == true) {temp = E("2")}
+        if (this.bought == true) {temp = E("1e80")}
         return temp;
       },
     },
