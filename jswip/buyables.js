@@ -17,6 +17,7 @@ window.BUYABLES = {
       displayName: "Compressor",
       description: "Data x 5^n",
       costType: "data",
+      costmask: "",
       costAmount: function() {
         var temp = E("50000")
         
@@ -49,6 +50,7 @@ window.BUYABLES = {
       displayName: "Compounder",
       description: "Previous buyable base + n",
       costType: "data",
+      costmask: "",
       costAmount: function() {
         var temp = E("25000000000000")
         
@@ -82,6 +84,7 @@ window.BUYABLES = {
       displayName: "Incrementallist",
       description: "Both previous buyables' effect + 10^n %",
       costType: "data",
+      costmask: "",
       costAmount: function() {
         var temp = E("2.5e38")
         
@@ -114,6 +117,7 @@ window.BUYABLES = {
       displayName: "Co-Processor",
       description: "Computation gain is doubled",
       costType: "significantData",
+      costmask: "Significant Data",
       costAmount: function() {
         var temp = E("1")
         
@@ -138,6 +142,7 @@ window.BUYABLES = {
       displayName: "Multithreader",
       description: "Computation gain is tripled",
       costType: "significantData",
+      costmask: "Significant Data",
       costAmount: function() {
         var temp = E("2")
         
@@ -172,7 +177,12 @@ window.BUYABLES = {
           var desc = upgrade.description
           var amm = upgrade.bought
           var effdisplay = upgrade.effectPrefix + String(format(upgrade.effect(),5)) + upgrade.effectSuffix
-          var costdisplay = "Cost: " + String(format(upgrade.costAmount(),5)) + " " + upgrade.costType
+          var costmask = upgrade.costmask
+          if (costmask == "") {
+            var costdisplay = "Cost: " + String(format(upgrade.costAmount(),5)) + " " + upgrade.costType
+          } else {
+            var costdisplay = "Cost: " + String(format(upgrade.costAmount(),5)) + " " + costmask
+          }
           
           elem.innerHTML = nam + "<br>" + desc + "<br>" + amm + "<br>" + effdisplay + "<br>" + costdisplay
           

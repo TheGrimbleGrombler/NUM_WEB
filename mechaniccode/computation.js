@@ -31,7 +31,8 @@ window.COMPUTATION = {
 
         var gain = player.computation.div(E("10"))
 
-
+        if (bya.significantData.coProcessor.bought.gte(E("1"))) {gain = gain.mul(bya.significantData.coProcessor.effect())}
+        if (bya.significantData.multithreader.bought.gte(E("1"))) {gain = gain.mul(bya.significantData.multithreader.effect())}
 
         gain = gain.div(E("60"))
         player.computation = player.computation.add(gain)
