@@ -18,20 +18,15 @@ const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
 
 function UPDATE() {
-  
-  if (chosen != null) {
-    
-    if (chosen.id == "tab1") {
 
-      //Reveal subtabs
       if (player.progression >= 2) {
         document.getElementById("subtab1div").style.display = "block"
       } else {
         document.getElementById("subtab1div").style.display = "none"
       }
       document.getElementById("subtab2div").style.display = "none"
-
-    }
+  
+  if (chosen != null) {
 
     if (chosen.id == "tab3") {
       if (chosenS != null) {
