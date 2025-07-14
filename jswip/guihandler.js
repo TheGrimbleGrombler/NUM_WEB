@@ -25,11 +25,11 @@ function UPDATE() {
 
       //Reveal subtabs
       if (player.progression >= 2) {
-        document.getElementById("subtab1button").style.display = "block"
+        document.getElementById("subtab1div").style.display = "block"
       } else {
-        document.getElementById("subtab1button").style.display = "none"
+        document.getElementById("subtab1div").style.display = "none"
       }
-      document.getElementById("subtab2button").style.display = "none"
+      document.getElementById("subtab2div").style.display = "none"
 
     }
 
@@ -91,6 +91,12 @@ function UPDATE() {
           ach.update("datacollector3","main")
           ach.update("datacollector4","main")
           ach.update("datacollector5","main")
+          
+          ach.update("computationspecialist1","main")
+          ach.update("computationspecialist2","main")
+          ach.update("computationspecialist3","main")
+          ach.update("computationspecialist4","main")
+          ach.update("computationspecialist5","main")
           
         }
       }
