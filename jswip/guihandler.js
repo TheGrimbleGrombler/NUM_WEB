@@ -33,17 +33,9 @@ function UPDATE() {
         if (chosenS.id == "subtab9") {
           
           if (player.progression >= 2) {
-            document.getElementById("capacityI").style.display = "block"
-            document.getElementById("capacityII").style.display = "block"
-            document.getElementById("capacityIII").style.display = "block"
-            document.getElementById("capacityIV").style.display = "block"
-            document.getElementById("capacityV").style.display = "block"
+            document.getElementById("UpgradeSet2").style.display = "block"
           } else {
-            document.getElementById("capacityI").style.display = "none"
-            document.getElementById("capacityII").style.display = "none"
-            document.getElementById("capacityIII").style.display = "none"
-            document.getElementById("capacityIV").style.display = "none"
-            document.getElementById("capacityV").style.display = "none"
+            document.getElementById("UpgradeSet2").style.display = "none"
           }
 
           var n = window.UPGRADES.lastdisplay;

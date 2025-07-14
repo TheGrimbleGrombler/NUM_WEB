@@ -47,6 +47,7 @@ window.COMPUTATION = {
 
       if (upg.main.capacityI.bought == true) {temp = temp.pow(upg.main.capacityI.effect())}
       if (upg.main.capacityII.bought == true) {temp = temp.pow(upg.main.capacityII.effect())}
+      if (upg.main.capacityIII.bought == true) {temp = temp.mul(upg.main.capacityIII.effect())}
 
       player.computationMax = temp
 
