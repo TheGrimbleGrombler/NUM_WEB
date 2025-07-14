@@ -45,6 +45,9 @@ window.COMPUTATION = {
 
       var temp = E("1e5")
 
+      if (upg.main.capacityI.bought == true) {temp = temp.pow(upg.main.capacityI.effect())}
+      if (upg.main.capacityII.bought == true) {temp = temp.pow(upg.main.capacityII.effect())}
+
       player.computationMax = temp
 
     }
