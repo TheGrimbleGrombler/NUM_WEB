@@ -154,10 +154,10 @@ window.TABS = {
     
     if (subtab == true) {
       if (chosenSdiv != null) {
-        chosenSdiv.style.display = "none"
         chosenSdiv = null
       }
       if (chosenS != null) {
+        chosenS.style.display = "none"
         chosenS = null
       }
       if (chosenSbutton != null) {
