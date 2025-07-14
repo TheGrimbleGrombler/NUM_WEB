@@ -71,7 +71,7 @@ function unNaN() {
   checkbuyable("compounder")
   checkbuyable("incrementallist")
   checkbuyable("coProcessor")
-  checkbuyable("Multithreader")
+  checkbuyable("multithreader")
   
 }
 
