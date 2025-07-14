@@ -330,6 +330,12 @@ body img {
   height: auto;
   vertical-align: middle;
 }
+.resourceDisplay {
+  box-shadow: 0 0 0px 0px rgba(255,255,255,0);
+  width: 64px;
+  height: auto;
+  vertical-align: middle;
+}
 #upgradeinfo {
   top:-145px; 
   position: absolute;

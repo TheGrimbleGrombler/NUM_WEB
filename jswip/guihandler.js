@@ -120,6 +120,16 @@ function UPDATE() {
     }
     
   }
+
+  document.getElementById("primaryDisplayData").innerHTML = toString(player.data.toFixed(5))
+  if (player.progression >= 2) {
+    document.getElementById("displayCluster0").style.display = "block"
+    document.getElementById("primaryDisplayComputation").innerHTML = toString(player.computation.toFixed(5))
+    document.getElementById("primaryDisplaySignificantData").innerHTML = toString(player.significantData.toFixed(5))
+  } else {
+    document.getElementById("displayCluster0").style.display = "none"
+  }
+
 }
 
 function updateVisuals() {

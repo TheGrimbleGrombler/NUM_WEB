@@ -212,6 +212,7 @@
               </tr>
                 <div class="gradient-bar" style="position: relative; top:9px; height: 1px; width: 100%; left: 0%;"></div>
               <tr>
+                <br>
                 <td>
                   <image class="achievement unachieved" id="computationSpecialist1" loading="lazy" onmouseover="window.ACHIEVEMENTS.display('computationSpecialist1','main')" src="Assets/computationSpecialist1.png"></image>
                 </td>
@@ -251,9 +252,21 @@
       
       <div id="sidebarRight">
 
-        <image class="upgrade" style="z-index: 1; position: absolute; top: 64px; left:calc(100vw - 200px); height:32px; min-left: calc(100% - 200px);" id="resourceData" loading="lazy" src="Assets/Data.png"></image>
-        <image class="upgrade" style="z-index: 1; position: absolute; top: 128px; left:calc(100vw - 200px); height:32px; min-left: calc(100% - 200px);" id="resourceComputation" loading="lazy" src="Assets/Computation.png"></image>
-        <image class="upgrade" style="z-index: 1; position: absolute; top: 192px; left:calc(100vw - 200px); height:32px; min-left: calc(100% - 200px);" id="resourceSignificantData" loading="lazy" src="Assets/SignificantData.png"></image>
+        <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 64px; left:calc(100vw - 195px); height:64px; min-left: calc(100% - 195px);" id="resourceData" loading="lazy" src="Assets/Data.png"></image>
+        <div style="z-index: 1; position: absolute; top: 64px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);">Data:</div>
+        <div style="z-index: 1; position: absolute; top: 96px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);" id="primaryDisplayData">NUMBER</div>
+
+        <div id="displayCluster0" style="display:block">
+
+          <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 128px; left:calc(100vw - 195px); height:64px; min-left: calc(100% - 195px);" id="resourceComputation" loading="lazy" src="Assets/Computation.png"></image>
+          <div style="z-index: 1; position: absolute; top: 128px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);">Computation:</div>
+          <div style="z-index: 1; position: absolute; top: 160px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);" id="primaryDisplayComputation">NUMBER</div>
+
+          <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 192px; left:calc(100vw - 195px); height:64px; min-left: calc(100% - 195px);" id="resourceSignificantData" loading="lazy" src="Assets/SignificantData.png"></image>
+          <div style="z-index: 1; position: absolute; top: 192px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);">Significant Data:</div>
+          <div style="z-index: 1; position: absolute; top: 224px; left:calc(100vw - 168px); height:32px; min-left: calc(100% - 163px);" id="primaryDisplaySignificantData">NUMBER</div>
+
+        </div>
 
       </div>
       
