@@ -33,7 +33,7 @@ function UPDATE() {
         if (chosenS.id == "subtab9") {
           
           if (player.progression >= 2) {
-            document.getElementById("UpgradeSet2").style.display = "block"
+            document.getElementById("UpgradeSet2").style.display = "default"
           } else {
             document.getElementById("UpgradeSet2").style.display = "none"
           }
