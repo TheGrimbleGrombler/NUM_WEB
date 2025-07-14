@@ -33,7 +33,7 @@ window.player = {
   simulationTier: E("0"),
   simulationTierBest: E("0"),
   progression: 1,
-  computation: 0,
+  computation: E("0"),
   computationMax: E("1e10"),
   computationBest: 0,
   significantData: 0,
