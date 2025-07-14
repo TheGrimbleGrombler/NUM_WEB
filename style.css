@@ -435,16 +435,6 @@ body img {
   background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
-.btn_color {
-  text-align: center;
-	height: 120px;
-  min-height: 120px;
-	min-width: 320px;
-  width: 320px;
-  border: 1px solid;
-  border-color: #FFFFFF;
-  z-index: 200;
-}
 .btn_reset:hover {
 	background-color: #444444;
   transition-duration: 250ms;
@@ -452,13 +442,4 @@ body img {
 .btn_reset:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
-}
-.btn_color.green {
-  background-color: rgba(0,255,0,0.5);
-}
-.btn_color.red {
-  background-color: rgba(255,0,0,0.5);
-}
-.btn_color.yellow {
-  background-color: rgba(255,255,0,0.5);
 }
