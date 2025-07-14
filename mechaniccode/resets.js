@@ -18,7 +18,7 @@ window.RESETS = {
     reset: function(n) {
 
         if (n == 0) { // Computation to SignificantData
-            
+
             var ret = this.calculateReturn(0)
 
             if (ret.gte(E("1"))) {
@@ -34,7 +34,7 @@ window.RESETS = {
 
         if (n == 0) { // SIGNIFICANTDATA RESET
 
-            var temp = player.computation.log(E("10")).sub(E("10"))
+            var temp = player.computation.log(E("10")).sub(E("9"))
 
             return temp
 
