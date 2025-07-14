@@ -70,6 +70,8 @@ function unNaN() {
   checkbuyable("compressor")
   checkbuyable("compounder")
   checkbuyable("incrementallist")
+  checkbuyable("coProcessor")
+  checkbuyable("Multithreader")
   
 }
 
@@ -193,6 +195,8 @@ function save() {
     bya0_1: String(window.BUYABLES.data.compressor.bought),
     bya0_2: String(window.BUYABLES.data.compounder.bought),
     bya0_3: String(window.BUYABLES.data.incrementallist.bought),
+    bya1_1: String(window.BUYABLES.data.coProcessor.bought),
+    bya1_2: String(window.BUYABLES.data.multithreader.bought),
   };
   localStorage.setItem('gameData', JSON.stringify(dataToSave));
 }
@@ -229,6 +233,8 @@ function load() {
     window.BUYABLES.data.compressor.bought = E(String(loadedData.bya0_1))
     window.BUYABLES.data.compounder.bought = E(String(loadedData.bya0_2))
     window.BUYABLES.data.incrementallist.bought = E(String(loadedData.bya0_3))
+    window.BUYABLES.data.coProcessor.bought = E(String(loadedData.bya1_1))
+    window.BUYABLES.data.multithreader.bought = E(String(loadedData.bya1_2))
     
     unNaN()
   }

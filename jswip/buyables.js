@@ -108,6 +108,58 @@ window.BUYABLES = {
     },
     
   },
+  significantData: {
+    
+    coProcessor: {
+      displayName: "Co-Processor",
+      description: "Computation gain is doubled",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("1")
+        
+        temp = temp.mul(E("4").pow(this.bought))
+        
+        return temp;
+      },
+      effectPrefix: "Computation gain x",
+      effectSuffix: ".",
+      bought: E("0"),
+      effect: function() {
+        var temp = E("1")
+        var base = E("2")
+
+        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
+        
+        return temp;
+      },
+      
+    },
+    multithreader: {
+      displayName: "Multithreader",
+      description: "Computation gain is tripled",
+      costType: "significantData",
+      costAmount: function() {
+        var temp = E("2")
+        
+        temp = temp.mul(E("4").pow(this.bought))
+        
+        return temp;
+      },
+      effectPrefix: "Computation gain x",
+      effectSuffix: ".",
+      bought: E("0"),
+      effect: function() {
+        var temp = E("1")
+        var base = E("3")
+
+        if (this.bought.gte(E("1"))) {temp = base.pow(this.bought)}
+        
+        return temp;
+      },
+      
+    },
+    
+  },
   update: function(n,m) {
     var elem = document.getElementById(n)
     if (elem != null) {

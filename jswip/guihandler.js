@@ -87,11 +87,13 @@ function UPDATE() {
           ach.update("datacollector4","main")
           ach.update("datacollector5","main")
           
-          ach.update("computationspecialist1","main")
-          ach.update("computationspecialist2","main")
-          ach.update("computationspecialist3","main")
-          ach.update("computationspecialist4","main")
-          ach.update("computationspecialist5","main")
+          if (player.progression >= 2) {
+            ach.update("computationspecialist1","main")
+            ach.update("computationspecialist2","main")
+            ach.update("computationspecialist3","main")
+            ach.update("computationspecialist4","main")
+            ach.update("computationspecialist5","main")
+          }
           
         }
       }
@@ -115,6 +117,9 @@ function UPDATE() {
           document.getElementById("significantDataDisplay").innerHTML = "Significant Data: " + String(format(player.significantData,5))
           
           document.getElementById("resetComputation").innerHTML = "Collapse Computation for:<br>" + format(resets.calculateReturn(0),1) + "<br>Significant Data"
+          
+          bya.update("coProcessor","significantData")
+          bya.update("multithreader","significantData")
 
         }
       }
