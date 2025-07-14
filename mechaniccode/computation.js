@@ -43,7 +43,7 @@ window.COMPUTATION = {
 
     calculateComputationMax: function() {
 
-      var temp = E("1e10")
+      var temp = E("1e5")
 
       player.computationMax = temp
 

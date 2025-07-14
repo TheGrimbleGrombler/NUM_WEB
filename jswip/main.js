@@ -65,7 +65,7 @@ function unNaN() {
   if (isNaN(player.computationBest)) {player.computationBest = E("0")}
   if (isNaN(player.significantData)) {player.significantData = E("0")}
   if (isNaN(player.significantDataBest)) {player.significantDataBest = E("0")}
-  if (isNaN(player.computationMax)) {player.computationMax = E("1e10")}
+  if (isNaN(player.computationMax)) {player.computationMax = E("1e5")}
   
   checkbuyable("compressor","data")
   checkbuyable("compounder","data")
