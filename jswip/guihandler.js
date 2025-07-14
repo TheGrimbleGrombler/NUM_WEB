@@ -21,8 +21,10 @@ function UPDATE() {
 
       if (player.progression >= 2) {
         document.getElementById("subtab1div").style.display = "block"
+            document.getElementById("UpgradeSet2").style.display = "default"
       } else {
         document.getElementById("subtab1div").style.display = "none"
+            document.getElementById("UpgradeSet2").style.display = "none"
       }
       document.getElementById("subtab2div").style.display = "none"
   
@@ -31,12 +33,6 @@ function UPDATE() {
     if (chosen.id == "tab3") {
       if (chosenS != null) {
         if (chosenS.id == "subtab9") {
-          
-          if (player.progression >= 2) {
-            document.getElementById("UpgradeSet2").style.display = "default"
-          } else {
-            document.getElementById("UpgradeSet2").style.display = "none"
-          }
 
           var n = window.UPGRADES.lastdisplay;
           var m = window.UPGRADES.lastdisplay2;
