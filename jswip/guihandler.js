@@ -19,6 +19,8 @@ var upgradeinfo = document.getElementById("upgradeinfo")
 
 function UPDATE() {
   
+  var plrprogression = player.progression
+
   if (chosen != null) {
 
     if (chosen.id == "tab3") {
@@ -76,27 +78,6 @@ function UPDATE() {
         }
       }
     }
-    if (chosen.id == "tab4") {
-      if (chosenS != null) {
-        if (chosenS.id == "subtab10") {
-          
-          ach.update("datacollector","main")
-          ach.update("datacollector2","main")
-          ach.update("datacollector3","main")
-          ach.update("datacollector4","main")
-          ach.update("datacollector5","main")
-          
-          if (player.progression >= 2) {
-            ach.update("computationspecialist1","main")
-            ach.update("computationspecialist2","main")
-            ach.update("computationspecialist3","main")
-            ach.update("computationspecialist4","main")
-            ach.update("computationspecialist5","main")
-          }
-          
-        }
-      }
-    }
     
     if (chosen.id == "tab0") {
       if (chosenS != null) {
@@ -127,7 +108,7 @@ function UPDATE() {
   }
 
   document.getElementById("primaryDisplayData").innerHTML = String(player.data.toFixed(5))
-  if (player.progression >= 2) {
+  if (plrprogression >= 2) {
     document.getElementById("displayCluster0").style.display = "block"
     document.getElementById("primaryDisplayComputation").innerHTML = String(player.computation.toFixed(5))
     document.getElementById("primaryDisplaySignificantData").innerHTML = String(player.significantData.toFixed(5))
@@ -169,6 +150,19 @@ function updateVisuals() {
     }
   }
 
+}
+
+function updateAchievements() {
+    ach.update("datacollector","main")
+    ach.update("datacollector2","main")
+    ach.update("datacollector3","main")
+    ach.update("datacollector4","main")
+    ach.update("datacollector5","main")
+    ach.update("computationspecialist1","main")
+    ach.update("computationspecialist2","main")
+    ach.update("computationspecialist3","main")
+    ach.update("computationspecialist4","main")
+    ach.update("computationspecialist5","main")
 }
 
 window.TABS = {
@@ -243,4 +237,5 @@ document.addEventListener("DOMContentLoaded", function() {
   UPDATE();
   setInterval(UPDATE, 200);
   setInterval(updateVisuals, 16);
+  setInterval(updateAchievements, 5000);
 });
