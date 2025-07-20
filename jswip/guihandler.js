@@ -18,15 +18,6 @@ const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
 
 function UPDATE() {
-
-      if (player.progression >= 2) {
-        document.getElementById("subtab1div").style.display = "block"
-            document.getElementById("UpgradeSet2").style.display = "default"
-      } else {
-        document.getElementById("subtab1div").style.display = "none"
-            document.getElementById("UpgradeSet2").style.display = "none"
-      }
-      document.getElementById("subtab2div").style.display = "none"
   
   if (chosen != null) {
 
@@ -140,9 +131,16 @@ function UPDATE() {
     document.getElementById("displayCluster0").style.display = "block"
     document.getElementById("primaryDisplayComputation").innerHTML = String(player.computation.toFixed(5))
     document.getElementById("primaryDisplaySignificantData").innerHTML = String(player.significantData.toFixed(5))
+
+    document.getElementById("subtab1div").style.display = "block"
+    document.getElementById("UpgradeSet2").style.display = "block"
   } else {
     document.getElementById("displayCluster0").style.display = "none"
+
+        document.getElementById("subtab1div").style.display = "none"
+        document.getElementById("UpgradeSet2").style.display = "none"
   }
+  document.getElementById("subtab2div").style.display = "none"
 
 }
 
