@@ -15,6 +15,10 @@ function CONVERT(thm) {
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_tab ghost " + theme + "_TABBTN"
     }
+    var list = document.getElementsByClassName("btn_tabinner")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "btn_tabinner " + theme + "_TABBTNINNER"
+    }
     var list = document.getElementsByClassName("btn_stab")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_stab " + theme + "_SUBTABBTN"
