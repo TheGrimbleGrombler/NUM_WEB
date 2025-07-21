@@ -108,6 +108,11 @@
   z-index: 200;
 }
 
+.spinnerdracula {
+  background-image:
+  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
+}
+
 .dracula_SUBTABBTN:hover {
 	background-color: #490000;
   transition-duration: 250ms;

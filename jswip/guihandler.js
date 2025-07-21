@@ -177,7 +177,7 @@ window.TABS = {
         chosenS = null
       }
       if (chosenSbutton != null) {
-        chosenSbutton.className = "btn_stab "+theme+"_SUBTABBTN"
+        chosenSbutton.className = "btn_stabinner "+theme+"_SUBTABBTNINNER"
         chosenSbutton = null
       }
       chosenS = document.getElementById("subtab" + tabN)
@@ -208,7 +208,7 @@ window.TABS = {
       chosenS.style.display = "block"
     }
     if (chosenSbutton != null) {
-      chosenSbutton.className = "btn_stab chosen "+theme+"_SUBTABBTN"
+      chosenSbutton.className = "btn_stabinner chosen "+theme+"_SUBTABBTNINNER"
     }
     if (chosenSdiv != null) {
       chosenSdiv.style.display = "block"

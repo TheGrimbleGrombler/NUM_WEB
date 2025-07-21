@@ -32,6 +32,10 @@ window.UPDATETHEME = function() {
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_buyable ghost " + theme + "_BUYABLE"
     }
+    var list = document.getElementsByClassName("spinner")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "spinner spinner" + theme
+    }
 
     document.getElementById("BODY").className = "BODY" + theme
     document.getElementById("MAINDIV").className = "MAIN_" + theme
