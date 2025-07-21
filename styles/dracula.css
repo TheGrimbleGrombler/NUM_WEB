@@ -103,7 +103,7 @@
   width: 160px;
   border: 0px solid;
   border-color: #ff0000;
-  background-color:#180000;
+  background-color: rgba(0,0,0,0);
   z-index: 200;
 }
 

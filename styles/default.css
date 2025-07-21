@@ -135,6 +135,7 @@ body img {
 	min-height: 40px;
   border: 0px solid;
   border-color: #FFFFFF;
+  background-color: rgba(0,0,0,0);
 }
 .default_SUBTABBTNINNER {
   text-align: center;
@@ -144,6 +145,7 @@ body img {
   width: 160px;
   border: 0px solid;
   border-color: #FFFFFF;
+  background-color: rgba(0,0,0,0);
   z-index: 200;
 }
 .btn_buyable {
