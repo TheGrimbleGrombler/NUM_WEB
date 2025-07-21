@@ -23,7 +23,11 @@ var timespeed = E("1")
 
 window.format = function(n,e) {
   
-  return n.toFixed(e)
+  if (n.log(E("10")).gte(E("6"))) { // Enforce scientific notation
+    return E(String( n.div(E("10").pow(n.log(E("10")).floor())).mul(E("100")).floor().div(E("100")) ) + "e" + String( n.log(E("10")).floor() ))
+  } else {
+    return n.toFixed(e)
+  }
   
 }
 
