@@ -36,6 +36,10 @@ window.UPDATETHEME = function() {
     for (let i = 0; i < list.length; i++) {
         list[i].className = "spinner spinner" + theme
     }
+    var list = document.getElementsByClassName("gradient-bar")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "gradient-bar gradient-bar-" + theme
+    }
 
     document.getElementById("BODY").className = "BODY" + theme
     document.getElementById("MAINDIV").className = "MAIN_" + theme

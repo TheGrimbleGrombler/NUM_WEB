@@ -110,7 +110,7 @@
 
 .spinnerdracula {
   background-image:
-  radial-gradient(rgba(255,255,255,.3), rgba(255,255,255,.05) 1px, transparent 80px);
+  radial-gradient(rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.05) 1px, transparent 80px);
 }
 
 .dracula_SUBTABBTN:hover {
@@ -149,4 +149,11 @@
   background-image: repeating-linear-gradient(90deg, transparent, transparent 1%, rgba(30,0,0,.5) 2%);
   position: absolute;
   
+}
+
+.gradient-bar-dracula {
+    height: 1px;
+    background: radial-gradient(circle, rgb(255, 0, 0) 0%, rgba(255, 0, 0, 0) 60%);
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(10, 0, 0, 0.5);
 }
