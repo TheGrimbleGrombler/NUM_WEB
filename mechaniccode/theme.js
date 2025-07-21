@@ -11,7 +11,7 @@ window.UPDATETHEME = function() {
     THEMEHASTICKED = true
     PREVIOUSTHEME = theme
 }
-CHECKTHEME = function() {
+function CHECKTHEME() {
     var theme = window.THEME
     var dropdown = document.getElementById("SITE_THEME_SELECT")
     var value = dropdown.options[dropdown.selectedIndex].value
