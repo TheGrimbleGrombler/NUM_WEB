@@ -202,22 +202,22 @@ window.TABS = {
     }
     
     if (chosen != null) {
-      chosen.style.display = "default"
+      chosen.style.display = "block"
     }
     if (chosenbutton != null) {
       chosenbutton.className = "btn_tab chosen THEME_TABBTN"
     }
     if (chosenstabs != null) {
-      chosenstabs.style.display = "default"
+      chosenstabs.style.display = "block"
     }
     if (chosenS != null) {
-      chosenS.style.display = "default"
+      chosenS.style.display = "block"
     }
     if (chosenSbutton != null) {
       chosenSbutton.className = "btn_stab chosen THEME_SUBTABBTN"
     }
     if (chosenSdiv != null) {
-      chosenSdiv.style.display = "default"
+      chosenSdiv.style.display = "block"
     }
     
     if (subtab == false) {
