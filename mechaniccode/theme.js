@@ -11,6 +11,18 @@ window.UPDATETHEME = function() {
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_reset ghost " + theme + "_RESET"
     }
+    var list = document.getElementsByClassName(PREVIOUSTHEME + "_TABBTN")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "btn_tab ghost " + theme + "_TABBTN"
+    }
+    var list = document.getElementsByClassName(PREVIOUSTHEME + "_SUBTABBTN")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "btn_stab " + theme + "_SUBTABBTN"
+    }
+    var list = document.getElementsByClassName(PREVIOUSTHEME + "_BUYABLE")
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "btn_buyable ghost " + theme + "_BUYABLE"
+    }
 
     document.getElementById("BODY").className = "BODY" + theme
     document.getElementById("MAINDIV").className = "MAIN_" + theme

@@ -439,11 +439,11 @@ body img {
   background-size: 133px 133px, 150px 150px, 187px 187px, 100px 100px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
-.btn_reset:hover {
+.default_RESET:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.btn_reset:not(:hover) {
+.default_RESET:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }

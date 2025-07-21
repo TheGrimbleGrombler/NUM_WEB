@@ -57,3 +57,12 @@
 .MAIN_dracula {
     font-family: "Monaco", Monospace;
 }
+
+.dracula_RESET:hover {
+	background-color: #440000;
+  transition-duration: 250ms;
+}
+.dracula_RESET:not(:hover) {
+	background-color: #000000;
+  transition-duration: 250ms;
+}
