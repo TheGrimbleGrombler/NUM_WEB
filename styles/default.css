@@ -183,7 +183,7 @@ body img {
 	background-color: #000000;
   transition-duration: 250ms;
 }
-.default_SUBTABBTN.chosen {
+.default_SUBTABBTNINNER.chosen {
   border-bottom-width: 10px;
 }
 
@@ -195,7 +195,7 @@ body img {
 	background-color: #000000;
   transition-duration: 250ms;
 }
-.default_TABBTN.chosen {
+.default_TABBTNINNER.chosen {
   border-left-width: 10px;
 }
 #tabs {

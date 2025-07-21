@@ -121,7 +121,7 @@
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.dracula_SUBTABBTN.chosen {
+.dracula_SUBTABBTNINNER.chosen {
   border-bottom-width: 10px;
 }
 
@@ -133,7 +133,7 @@
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.dracula_TABBTN.chosen {
+.dracula_TABBTNINNER.chosen {
   border-left-width: 10px;
 }
 
