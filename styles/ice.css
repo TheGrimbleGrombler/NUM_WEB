@@ -106,7 +106,7 @@ ice_BUYABLE {
 }
 
 .ice_SUBTABBTN:hover {
-	background-color: #490000;
+	background-color: #004049;
   transition-duration: 250ms;
 }
 .ice_SUBTABBTN:not(:hover) {
