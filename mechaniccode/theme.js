@@ -3,23 +3,23 @@ var THEMEHASTICKED = false
 var PREVIOUSTHEME = "default"
 function CONVERT(thm) {
     var theme = window.THEME
-    var list = document.getElementsByClassName(thm + "_LARGEBORDER")
+    var list = document.getElementsByClassName("uiborderWhite")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "uiborderWhite " + theme + "_LARGEBORDER"
     }
-    var list = document.getElementsByClassName(thm + "_RESET")
+    var list = document.getElementsByClassName("btn_reset")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_reset ghost " + theme + "_RESET"
     }
-    var list = document.getElementsByClassName(thm + "_TABBTN")
+    var list = document.getElementsByClassName("btn_tab")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_tab ghost " + theme + "_TABBTN"
     }
-    var list = document.getElementsByClassName(thm + "_SUBTABBTN")
+    var list = document.getElementsByClassName("btn_stab")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_stab " + theme + "_SUBTABBTN"
     }
-    var list = document.getElementsByClassName(thm + "_BUYABLE")
+    var list = document.getElementsByClassName("btn_buyable")
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_buyable ghost " + theme + "_BUYABLE"
     }
