@@ -167,7 +167,7 @@ function updateAchievements() {
 
 window.TABS = {
   choose: function(tabN,subtab) {
-    
+    var theme = window.THEME
     if (subtab == true) {
       if (chosenSdiv != null) {
         chosenSdiv = null
@@ -177,7 +177,7 @@ window.TABS = {
         chosenS = null
       }
       if (chosenSbutton != null) {
-        chosenSbutton.className = "btn_stab THEME_SUBTABBTN"
+        chosenSbutton.className = "btn_stab "+theme+"_SUBTABBTN"
         chosenSbutton = null
       }
       chosenS = document.getElementById("subtab" + tabN)
@@ -189,7 +189,7 @@ window.TABS = {
         chosen = null
       }
       if (chosenbutton != null) {
-        chosenbutton.className = "btn_tab THEME_TABBTN"
+        chosenbutton.className = "btn_tab "+theme+"_TABBTN"
         chosenbutton = null
       }
       if (chosenstabs != null) {
@@ -197,24 +197,18 @@ window.TABS = {
       }
 
       chosen = document.getElementById("tab" + tabN)
-      chosenbutton = document.getElementById("tab" + tabN + "button")
-      chosenstabs = document.getElementById("stabs" + tabN)
-    }
-    
-    if (chosen != null) {
       chosen.style.display = "block"
-    }
-    if (chosenbutton != null) {
-      chosenbutton.className = "btn_tab chosen THEME_TABBTN"
-    }
-    if (chosenstabs != null) {
+      chosenbutton = document.getElementById("tab" + tabN + "button")
+      chosenbutton.className = "btn_tab chosen "+theme+"_TABBTN"
+      chosenstabs = document.getElementById("stabs" + tabN)
       chosenstabs.style.display = "default"
     }
+    
     if (chosenS != null) {
       chosenS.style.display = "block"
     }
     if (chosenSbutton != null) {
-      chosenSbutton.className = "btn_stab chosen THEME_SUBTABBTN"
+      chosenSbutton.className = "btn_stab chosen "+theme+"_SUBTABBTN"
     }
     if (chosenSdiv != null) {
       chosenSdiv.style.display = "block"

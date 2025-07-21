@@ -36,6 +36,13 @@
   height: auto;
   vertical-align: middle;
 }
+.dracula_UPGRADE:not(:hover) {
+  box-shadow: 0 0 0px 0px rgba(121, 0, 0, 0.5);
+  transition-duration: 1000ms;
+  width: 32px;
+  height: auto;
+  vertical-align: middle;
+}
 
 .BODYdracula {
     font-family: "Monaco", Monospace;
