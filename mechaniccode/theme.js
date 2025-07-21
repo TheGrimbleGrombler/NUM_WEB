@@ -4,7 +4,7 @@ var PREVIOUSTHEME = "THEME"
 window.UPDATETHEME = function() {
     var theme = window.THEME
     var list = document.getElementsByClassName(PREVIOUSTHEME + "_LARGEBORDER")
-    for (let i = 0; i < LARGEBORDER.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         list[i].className = "uiborderWhite " + theme + "_LARGEBORDER"
     }
 
