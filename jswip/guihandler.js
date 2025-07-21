@@ -189,7 +189,7 @@ window.TABS = {
         chosen = null
       }
       if (chosenbutton != null) {
-        chosenbutton.className = "btn_tabinner "+theme+"_TABBTN"
+        chosenbutton.className = "btn_tabinner "+theme+"_TABBTNINNER"
         chosenbutton = null
       }
       if (chosenstabs != null) {
@@ -199,7 +199,7 @@ window.TABS = {
       chosen = document.getElementById("tab" + tabN)
       chosen.style.display = "block"
       chosenbutton = document.getElementById("tab" + tabN + "button")
-      chosenbutton.className = "btn_tabinner chosen "+theme+"_TABBTN"
+      chosenbutton.className = "btn_tabinner chosen "+theme+"_TABBTNINNER"
       chosenstabs = document.getElementById("stabs" + tabN)
       chosenstabs.style = "display:default"
     }

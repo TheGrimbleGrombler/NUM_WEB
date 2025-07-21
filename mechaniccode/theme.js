@@ -1,7 +1,8 @@
 window.THEME = "default"
 var THEMEHASTICKED = false
 var PREVIOUSTHEME = "default"
-function CONVERT(thm) {
+
+window.UPDATETHEME = function() {
     var theme = window.THEME
     var list = document.getElementsByClassName("uiborderWhite")
     for (let i = 0; i < list.length; i++) {
@@ -27,13 +28,6 @@ function CONVERT(thm) {
     for (let i = 0; i < list.length; i++) {
         list[i].className = "btn_buyable ghost " + theme + "_BUYABLE"
     }
-}
-window.UPDATETHEME = function() {
-    var theme = window.THEME
-
-    CONVERT("default")
-    CONVERT("THEME")
-    CONVERT("dracula")
 
     document.getElementById("BODY").className = "BODY" + theme
     document.getElementById("MAINDIV").className = "MAIN_" + theme
