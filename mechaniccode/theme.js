@@ -25,4 +25,5 @@ function CHECKTHEME() {
 
 document.addEventListener("DOMContentLoaded", function() {
   setInterval(CHECKTHEME,1000)
+  window.UPDATETHEME()
 });

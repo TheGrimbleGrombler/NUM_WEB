@@ -139,21 +139,21 @@ body img {
   border-color: #FFFFFF;
   z-index: 200;
 }
-.btn_buyable:hover {
+.default_BUYABLE:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.btn_buyable:not(:hover) {
+.default_BUYABLE:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
-.btn_buyable.bought {
+.default_BUYABLE.bought {
   background-color: rgba(0,255,0,0.5);
 }
-.btn_buyable.unbought {
+.default_BUYABLE.unbought {
   background-color: rgba(255,0,0,0.5);
 }
-.btn_buyable.canbuy {
+.default_BUYABLE.canbuy {
   background-color: rgba(255,255,0,0.5);
 }
 .btn_stab:hover {

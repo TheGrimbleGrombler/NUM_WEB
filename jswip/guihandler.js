@@ -208,7 +208,7 @@ window.TABS = {
       chosenbutton.className = "btn_tab chosen THEME_TABBTN"
     }
     if (chosenstabs != null) {
-      chosenstabs.style.display = "block"
+      chosenstabs.style.display = "default"
     }
     if (chosenS != null) {
       chosenS.style.display = "block"

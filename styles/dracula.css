@@ -11,6 +11,14 @@
 .dracula_BUYABLE .unbought {
     background-color: rgb(55,0,0);
 }
+.dracula_BUYABLE:hover {
+	background-color: #444444;
+  transition-duration: 250ms;
+}
+.dracula_BUYABLES:not(:hover) {
+	background-color: #000000;
+  transition-duration: 250ms;
+}
 
 .BODYdracula {
     font-family: "Monaco", Monospace;
