@@ -193,7 +193,7 @@ window.TABS = {
         chosenbutton = null
       }
       if (chosenstabs != null) {
-        chosenstabs.style.display = "none"
+        chosenstabs.style = "display:none"
       }
 
       chosen = document.getElementById("tab" + tabN)
@@ -201,9 +201,9 @@ window.TABS = {
       chosenbutton = document.getElementById("tab" + tabN + "button")
       chosenbutton.className = "btn_tab chosen "+theme+"_TABBTN"
       chosenstabs = document.getElementById("stabs" + tabN)
-      chosenstabs.style.display = "default"
+      chosenstabs.style = "display:default"
     }
-    
+
     if (chosenS != null) {
       chosenS.style.display = "block"
     }
