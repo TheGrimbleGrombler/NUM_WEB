@@ -110,7 +110,7 @@ body img {
 
 
 
-.btn_tab {
+.default_TABBTN {
   text-align: left;
   padding-left: 3px;
 	width: calc(100% - 1px);
@@ -118,7 +118,7 @@ body img {
   border: 1px solid;
   border-color: #FFFFFF;
 }
-.btn_stab {
+.default_SUBTABBTN {
   text-align: center;
   padding-bottom: 3px;
 	height: calc(100% - 1px);
@@ -155,27 +155,27 @@ body img {
 .default_BUYABLE.canbuy {
   background-color: rgba(255,255,0,0.5);
 }
-.btn_stab:hover {
+.default_SUBTABBTN:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.btn_stab:not(:hover) {
+.default_SUBTABBTN:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
-.btn_stab.chosen {
+.default_SUBTABBTN.chosen {
   border-bottom-width: 10px;
 }
 
-.btn_tab:hover {
+.default_TABBTN:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.btn_tab:not(:hover) {
+.default_TABBTN:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
-.btn_tab.chosen {
+.default_TABBTN.chosen {
   border-left-width: 10px;
 }
 #tabs {
@@ -193,7 +193,7 @@ body img {
   left: 200px;
   
 }
-#background {
+.generalBackgrounddefault {
   
   overflow: hidden;
   z-index: 0;

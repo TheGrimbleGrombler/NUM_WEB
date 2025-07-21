@@ -66,3 +66,60 @@
 	background-color: #000000;
   transition-duration: 250ms;
 }
+
+.dracula_TABBTN {
+  text-align: left;
+  padding-left: 3px;
+	width: calc(100% - 1px);
+	min-height: 40px;
+  border: 1px solid;
+  border-color: #ff0000;
+}
+.dracula_SUBTABBTN {
+  text-align: center;
+  padding-bottom: 3px;
+	height: calc(100% - 1px);
+	min-width: 160px;
+  width: 160px;
+  border: 1px solid;
+  border-color: #ff0000;
+  z-index: 200;
+}
+
+.default_SUBTABBTN:hover {
+	background-color: #490000;
+  transition-duration: 250ms;
+}
+.default_SUBTABBTN:not(:hover) {
+	background-color: #180000;
+  transition-duration: 250ms;
+}
+.default_SUBTABBTN.chosen {
+  border-bottom-width: 10px;
+}
+
+.default_TABBTN:hover {
+	background-color: #490000;
+  transition-duration: 250ms;
+}
+.default_TABBTN:not(:hover) {
+	background-color: #180000;
+  transition-duration: 250ms;
+}
+.default_TABBTN.chosen {
+  border-left-width: 10px;
+}
+
+.generalBackgrounddracula {
+  
+  overflow: hidden;
+  z-index: 0;
+  width: calc(100% - 400px);
+  height: calc(100vh - 30px);
+  left: 200px;
+  top: 30px;
+  background-color: black;
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 1%, rgba(15,15,15,.5) 2%);
+  position: absolute;
+  
+}
