@@ -327,6 +327,7 @@ window.UPGRADES = {
     },
   },
   update: function(n,m) {
+    var theme = window.THEME
     var elem = document.getElementById(n)
     if (elem != null) {
       var category = window.UPGRADES[String(m)]
@@ -336,13 +337,13 @@ window.UPGRADES = {
           var bought = upgrade.bought
           
           if (bought == true) {
-            elem.className = "upgrade bought"
+            elem.className = "upgrade bought " + theme + "_UPGRADE"
           } else {
             var playercur = player[upgrade.costType]
             if (playercur.gte(upgrade.costAmount())) {
-              elem.className = "upgrade canbuy"
+              elem.className = "upgrade canbuy " + theme + "_UPGRADE"
             } else {
-              elem.className = "upgrade unbought"
+              elem.className = "upgrade unbought " + theme + "_UPGRADE"
             }
           }
           

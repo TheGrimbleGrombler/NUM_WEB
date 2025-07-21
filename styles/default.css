@@ -1,6 +1,5 @@
 body {
   margin: 1rem;
-  font-family: sans-serif;
   line-height: 1.5;
   background-color: rgb(10, 10, 10); 
 }
@@ -256,7 +255,6 @@ body img {
 }
 * {
 	text-align: center;
-  font-family: "Lucida Handwriting", Monospace;
   color: white;
 }
 .ghost {
@@ -442,4 +440,13 @@ body img {
 .btn_reset:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
+}
+#SITE_THEME_SELECT {
+    top:10%;
+    left:10%;
+    height:50px;
+    width:30%;
+    background-color: #000000;
+    color: #ffffff;
+    border: #ffffff 1px;
 }

@@ -166,6 +166,7 @@ window.BUYABLES = {
     
   },
   update: function(n,m) {
+    var theme = window.THEME
     var elem = document.getElementById(n)
     if (elem != null) {
       var category = window.BUYABLES[String(m)]
@@ -190,13 +191,13 @@ window.BUYABLES = {
           
             var playercur = player[upgrade.costType]
             if (playercur.gte(upgrade.costAmount())) {
-              elem.className = "btn_buyable buyable canbuy"
+              elem.className = "btn_buyable buyable canbuy " + theme + "_BUYABLE"
             } else {
 
               if (bought.gte(E("1"))) {
-                elem.className = "btn_buyable buyable bought"
+                elem.className = "btn_buyable buyable bought " + theme + "_BUYABLE"
               } else {
-                elem.className = "btn_buyable buyable unbought"
+                elem.className = "btn_buyable buyable unbought " + theme + "_BUYABLE"
               }
               
             }

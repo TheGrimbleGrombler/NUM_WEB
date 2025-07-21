@@ -1,0 +1,13 @@
+.dracula_BUYABLE {
+    border: rgb(255,0,0) 1px;
+    color: rgb(255,255,255);
+}
+.dracula_BUYABLE .canbuy {
+    background-color: rgb(155,50,0);
+}
+.dracula_BUYABLE .bought {
+    background-color: rgb(200,0,0);
+}
+.dracula_BUYABLE .unbought {
+    background-color: rgb(55,0,0);
+}

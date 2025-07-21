@@ -177,7 +177,7 @@ window.TABS = {
         chosenS = null
       }
       if (chosenSbutton != null) {
-        chosenSbutton.className = "btn_stab"
+        chosenSbutton.className = "btn_stab THEME_SUBTABBTN"
         chosenSbutton = null
       }
       chosenS = document.getElementById("subtab" + tabN)
@@ -189,7 +189,7 @@ window.TABS = {
         chosen = null
       }
       if (chosenbutton != null) {
-        chosenbutton.className = "btn_tab"
+        chosenbutton.className = "btn_tab THEME_TABBTN"
         chosenbutton = null
       }
       if (chosenstabs != null) {
@@ -202,22 +202,22 @@ window.TABS = {
     }
     
     if (chosen != null) {
-      chosen.style.display = ""
+      chosen.style.display = "default"
     }
     if (chosenbutton != null) {
-      chosenbutton.className = "btn_tab chosen"
+      chosenbutton.className = "btn_tab chosen THEME_TABBTN"
     }
     if (chosenstabs != null) {
-      chosenstabs.style.display = ""
+      chosenstabs.style.display = "default"
     }
     if (chosenS != null) {
-      chosenS.style.display = ""
+      chosenS.style.display = "default"
     }
     if (chosenSbutton != null) {
-      chosenSbutton.className = "btn_stab chosen"
+      chosenSbutton.className = "btn_stab chosen THEME_SUBTABBTN"
     }
     if (chosenSdiv != null) {
-      chosenSdiv.style.display = ""
+      chosenSdiv.style.display = "default"
     }
     
     if (subtab == false) {

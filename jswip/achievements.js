@@ -99,6 +99,7 @@ window.ACHIEVEMENTS = {
 
   },
   update: function(n,m) {
+    var theme = window.THEME
     var elem = document.getElementById(n)
     if (elem != null) {
       var category = window.ACHIEVEMENTS[String(m)]
@@ -116,9 +117,9 @@ window.ACHIEVEMENTS = {
           }
           
           if (bought == true) {
-            elem.className = "achievement achieved"
+            elem.className = "achievement achieved " + theme + "_ACHIEVEMENT"
           } else {
-            elem.className = "achievement unachieved"
+            elem.className = "achievement unachieved " + theme + "_ACHIEVEMENT"
           }
           
         }
