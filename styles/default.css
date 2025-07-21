@@ -253,8 +253,11 @@ body img {
   background-color: transparent;
   position: absolute;
 }
+.BODYdefault {
+    font-family: "Lucida Handwriting", Monospace;
+}
 * {
-	text-align: center;
+  text-align: center;
   color: white;
 }
 .ghost {

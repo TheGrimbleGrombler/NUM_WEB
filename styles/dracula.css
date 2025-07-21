@@ -11,3 +11,7 @@
 .dracula_BUYABLE .unbought {
     background-color: rgb(55,0,0);
 }
+
+.BODYdracula {
+    font-family: "Monaco", Monospace;
+}

@@ -8,6 +8,8 @@ window.UPDATETHEME = function() {
         list[i].className = "uiborderWhite " + theme + "_LARGEBORDER"
     }
 
+    document.getElementById("BODY").className = "BODY" + theme
+
     THEMEHASTICKED = true
     PREVIOUSTHEME = theme
 }
@@ -22,5 +24,5 @@ function CHECKTHEME() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  setinterval(CHECKTHEME,1000)
+  setInterval(CHECKTHEME,1000)
 });
