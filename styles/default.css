@@ -185,6 +185,11 @@ body img {
 }
 .default_SUBTABBTNINNER.chosen {
   border-bottom-width: 10px;
+  transition-duration: 250ms;
+}
+.default_SUBTABBTNINNER:not(chosen) {
+  border-bottom-width: 1px;
+  transition-duration: 250ms;
 }
 
 .default_TABBTN:hover {
@@ -197,7 +202,13 @@ body img {
 }
 .default_TABBTNINNER.chosen {
   border-left-width: 10px;
+  transition-duration: 250ms;
 }
+.default_TABBTNINNER:not(chosen) {
+  border-left-width: 1px;
+  transition-duration: 250ms;
+}
+
 #tabs {
   
   width: 200px;
