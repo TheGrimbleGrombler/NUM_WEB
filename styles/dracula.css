@@ -6,10 +6,10 @@
     background-color: rgb(155,50,0);
 }
 .dracula_BUYABLE .bought {
-    background-color: rgb(200,0,0);
+    background-color: rgb(156, 0, 0);
 }
 .dracula_BUYABLE .unbought {
-    background-color: rgb(55,0,0);
+    background-color: rgb(70, 45, 0);
 }
 .dracula_BUYABLE:hover {
 	background-color: #444444;
@@ -17,9 +17,36 @@
 }
 .dracula_BUYABLES:not(:hover) {
 	background-color: #000000;
+    transition-duration: 250ms;
+}
+
+.dracula_UPGRADE.bought {
+  background-color: rgb(156, 0, 0);
+}
+.dracula_UPGRADE.unbought {
+  background-color: rgb(70, 45, 0);
+}
+.dracula_UPGRADE.canbuy {
+  background-color: rgb(155,50,0);
+}
+.dracula_UPGRADE:hover {
+  box-shadow: 0 0 8px 2px rgba(255, 0, 0, 0.5);
   transition-duration: 250ms;
+  width: 48px;
+  height: auto;
+  vertical-align: middle;
 }
 
 .BODYdracula {
+    font-family: "Monaco", Monospace;
+    background-color: rgb(14, 0, 0);    
+}
+
+.dracula_LARGEBORDER {
+  border: 1px solid rgb(255, 0, 0);
+  box-shadow: 0 0 2px 0px rgb(255, 0, 0);
+}
+
+.MAIN_dracula {
     font-family: "Monaco", Monospace;
 }

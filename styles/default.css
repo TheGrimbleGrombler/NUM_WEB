@@ -1,7 +1,6 @@
 body {
   margin: 1rem;
   line-height: 1.5;
-  background-color: rgb(10, 10, 10); 
 }
 body img { 
   image-rendering: pixelated;
@@ -255,6 +254,10 @@ body img {
 }
 .BODYdefault {
     font-family: "Lucida Handwriting", Monospace;
+    background-color: rgb(10, 10, 10); 
+}
+.MAIN_default {
+    font-family: "Lucida Handwriting", Monospace;
 }
 * {
   text-align: center;
@@ -276,7 +279,7 @@ body img {
     border-radius: 2px;
     box-shadow: 0 4px 10px rgba(10, 10, 10, 0.5);
 }
-.uiborderWhite {
+.default_LARGEBORDER {
   border: 1px solid rgba(255,255,255);
   box-shadow: 0 0 2px 0px rgba(255,255,255);
 }
@@ -289,16 +292,16 @@ body img {
   text-align: center;
   justify-content: center;
 }
-.upgrade.bought {
+.default_UPGRADE.bought {
   background-color: rgba(0,255,0,0.5);
 }
-.upgrade.unbought {
+.default_UPGRADE.unbought {
   background-color: rgba(255,0,0,0.5);
 }
-.upgrade.canbuy {
+.default_UPGRADE.canbuy {
   background-color: rgba(255,255,0,0.5);
 }
-.upgrade:hover {
+.default_UPGRADE:hover {
   box-shadow: 0 0 8px 2px rgba(255,255,255,0.5);
   transition-duration: 250ms;
   width: 48px;
@@ -324,7 +327,7 @@ body img {
   height: auto;
   vertical-align: middle;
 }
-.upgrade:not(:hover) {
+.default_UPGRADE:not(:hover) {
   box-shadow: 0 0 0px 0px rgba(255,255,255,0);
   transition-duration: 1000ms;
   width: 32px;

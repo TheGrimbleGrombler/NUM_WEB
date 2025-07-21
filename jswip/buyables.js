@@ -168,6 +168,7 @@ window.BUYABLES = {
   update: function(n,m) {
     var theme = window.THEME
     var elem = document.getElementById(n)
+    var elemdiv = document.getElementById(n + "div")
     if (elem != null) {
       var category = window.BUYABLES[String(m)]
       if (category != null) {
@@ -201,6 +202,7 @@ window.BUYABLES = {
               }
               
             }
+            elemdiv.className = "btn_buyable ghost " + theme + "_BUYABLE"
           
         }
       }
