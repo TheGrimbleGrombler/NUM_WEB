@@ -95,28 +95,39 @@
   border: 0px solid;
   background-color:rgba(0,0,0,0);
 }
+.dracula_SUBTABBTNINNER {
+  text-align: center;
+  padding-bottom: 3px;
+	height: calc(100% - 1px);
+	min-width: 160px;
+  width: 160px;
+  border: 0px solid;
+  border-color: #ff0000;
+  background-color:#180000;
+  z-index: 200;
+}
 
-.default_SUBTABBTN:hover {
+.dracula_SUBTABBTN:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.default_SUBTABBTN:not(:hover) {
+.dracula_SUBTABBTN:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.default_SUBTABBTN.chosen {
+.dracula_SUBTABBTN.chosen {
   border-bottom-width: 10px;
 }
 
-.default_TABBTN:hover {
+.dracula_TABBTN:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.default_TABBTN:not(:hover) {
+.dracula_TABBTN:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.default_TABBTN.chosen {
+.dracula_TABBTN.chosen {
   border-left-width: 10px;
 }
 
