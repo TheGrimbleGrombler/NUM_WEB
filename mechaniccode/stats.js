@@ -9,7 +9,7 @@ var statsSoftcaps = document.getElementById("statsSoftcaps")
 var statsScaling = document.getElementById("statsScaling")
 
 window.STATINDEX = {
-    DISPLAY: function(statName, category) {
+    display: function(statName, category) {
         if (statName == "data") {
 
             if (category == "overview") {
