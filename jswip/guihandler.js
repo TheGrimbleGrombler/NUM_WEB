@@ -13,9 +13,12 @@ const ach = window.ACHIEVEMENTS
 const bya = window.BUYABLES
 const player = window.player
 const resets = window.RESETS
+const stats = window.STATINDEX
 
 const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
+
+window.SUBTABNAME = 0
 
 function UPDATE() {
   
@@ -169,6 +172,7 @@ window.TABS = {
   choose: function(tabN,subtab) {
     var theme = window.THEME
     if (subtab == true) {
+      window.SUBTABNAME = tabN
       if (chosenSdiv != null) {
         chosenSdiv = null
       }

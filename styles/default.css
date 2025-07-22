@@ -175,11 +175,11 @@ body img {
 .default_BUYABLE.canbuy {
   background-color: rgba(255,255,0,0.5);
 }
-.default_SUBTABBTN:hover {
+.default_SUBTABBTNINNER:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.default_SUBTABBTN:not(:hover) {
+.default_SUBTABBTNINNER:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
@@ -192,11 +192,11 @@ body img {
   transition-duration: 250ms;
 }
 
-.default_TABBTN:hover {
+.default_TABBTNINNER:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.default_TABBTN:not(:hover) {
+.default_TABBTNINNER:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }

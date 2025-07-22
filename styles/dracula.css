@@ -113,11 +113,11 @@
   radial-gradient(rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.05) 1px, transparent 80px);
 }
 
-.dracula_SUBTABBTN:hover {
+.dracula_SUBTABBTNINNER:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.dracula_SUBTABBTN:not(:hover) {
+.dracula_SUBTABBTNINNER:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }
@@ -130,11 +130,11 @@
   transition-duration: 250ms;
 }
 
-.dracula_TABBTN:hover {
+.dracula_TABBTNINNER:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.dracula_TABBTN:not(:hover) {
+.dracula_TABBTNINNER:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }

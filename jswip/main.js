@@ -140,7 +140,7 @@ function updateText() {
   checkbest()
   
   tick = tick + 1
-  
+   
   scrollgui()
   updateprogression()
 }

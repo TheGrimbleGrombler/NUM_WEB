@@ -113,11 +113,11 @@
   radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 1px, transparent 80px);
 }
 
-.void_SUBTABBTN:hover {
+.void_SUBTABBTNINNER:hover {
 	background-color: #202020;
   transition-duration: 250ms;
 }
-.void_SUBTABBTN:not(:hover) {
+.void_SUBTABBTNINNER:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
@@ -130,11 +130,11 @@
   transition-duration: 250ms;
 }
 
-.void_TABBTN:hover {
+.void_TABBTNINNER:hover {
 	background-color: #222222;
   transition-duration: 250ms;
 }
-.void_TABBTN:not(:hover) {
+.void_TABBTNINNER:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
@@ -163,7 +163,7 @@
 
 .gradient-bar-void {
     height: 1px;
-    background: radial-gradient(circle, rgb(27, 27, 27) 0%, rgba(24, 24, 24, 0) 60%);
+    background: radial-gradient(circle, rgb(117, 117, 117) 0%, rgba(24, 24, 24, 0) 60%);
     border-radius: 2px;
     box-shadow: 0 4px 10px rgba(10, 10, 10, 0.5);
 }

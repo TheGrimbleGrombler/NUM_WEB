@@ -22,6 +22,7 @@
     <script type="module" src="jswip/news.js" defer></script>
     <script type="module" src="mechaniccode/computation.js" defer></script>
     <script type="module" src="mechaniccode/resets.js" defer></script>
+    <script type="module" src="mechaniccode/stats.js" defer></script>
     <script type="module" src="jswip/guihandler.js" defer></script>
 
 
@@ -51,11 +52,10 @@
         </div>
 
         <div id="stabs1" class="table_center" style="display:none">
-          <div id="subtab3div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab3button" onclick="window.TABS.choose('3',true)" class="btn_stabinner default_SUBTABBTNINNER">Primary</button></div>
-          <div id="subtab4div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab4button" onclick="window.TABS.choose('4',true)" class="btn_stabinner default_SUBTABBTNINNER">Secondary</button></div>
-          <div id="subtab5div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab5button" onclick="window.TABS.choose('5',true)" class="btn_stabinner default_SUBTABBTNINNER">Boosts</button></div>
-          <div id="subtab6div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab6button" onclick="window.TABS.choose('6',true)" class="btn_stabinner default_SUBTABBTNINNER">Softcaps</button></div>
-          <div id="subtab7div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab7button" onclick="window.TABS.choose('7',true)" class="btn_stabinner default_SUBTABBTNINNER">Scaling</button></div>
+          <div id="subtab3div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab3button" onclick="window.TABS.choose('3',true)" class="btn_stabinner default_SUBTABBTNINNER">Overview</button></div>
+          <div id="subtab4div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab4button" onclick="window.TABS.choose('4',true)" class="btn_stabinner default_SUBTABBTNINNER">Boosts</button></div>
+          <div id="subtab5div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab5button" onclick="window.TABS.choose('5',true)" class="btn_stabinner default_SUBTABBTNINNER">Softcaps</button></div>
+          <div id="subtab6div" style="display:block" class="btn_stab ghost table_center" ><button id="subtab6button" onclick="window.TABS.choose('6',true)" class="btn_stabinner default_SUBTABBTNINNER">Scaling</button></div>
         </div>
 
         <div id="stabs2" class="table_center" style="display:none">
@@ -109,23 +109,22 @@
         <div id="tab1" class="ghost" style="display: none">
              
           <div id="subtab3" class="ghost" style="display: none">
-            EXAMPLE TEXT TO SHOW THAT STUFF CHANGES #2_3
+            <div id="statsOverview" style="text-align:center; display:default; width:90%; left: 5%; height: 70%; top: 30%;">Select a stat in the right sidebar</div>
           </div>
           
           <div id="subtab4" class="ghost" style="display: none">
-            EXAMPLE TEXT TO SHOW THAT STUFF CHANGES #2_4
+            <div id="statsBoosts" style="text-align:center; display:default; width:90%; left: 5%; height: 70%; top: 30%;">Select a stat in the right sidebar</div>
+
           </div>
           
           <div id="subtab5" class="ghost" style="display: none">
-            EXAMPLE TEXT TO SHOW THAT STUFF CHANGES #2_5
+            <div id="statsSoftcaps" style="text-align:center; display:default; width:90%; left: 5%; height: 70%; top: 30%;">Select a stat in the right sidebar</div>
+
           </div>
           
           <div id="subtab6" class="ghost" style="display: none">
-            EXAMPLE TEXT TO SHOW THAT STUFF CHANGES #2_6
-          </div>
-          
-          <div id="subtab7" class="ghost" style="display: none">
-            EXAMPLE TEXT TO SHOW THAT STUFF CHANGES #2_7
+            <div id="statsScaling" style="text-align:center; display:default; width:90%; left: 5%; height: 70%; top: 30%;">Select a stat in the right sidebar</div>
+
           </div>
           
         </div>
@@ -287,17 +286,17 @@
       
       <div id="sidebarRight">
 
-        <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 5px; left:calc(100vw - 34px); height:32px; width:32px; min-left: calc(100% - 34px);" id="resourceData" loading="lazy" src="Assets/Data.png"></image>
+        <image onclick="window.AUTODISPLAY('data')" class="resourceDisplay" style="z-index: 1; position: absolute; top: 5px; left:calc(100vw - 34px); height:32px; width:32px; min-left: calc(100% - 34px);" id="resourceData" loading="lazy" src="Assets/Data.png"></image>
         <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 5px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;">Data:</div>
         <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 21px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;" id="primaryDisplayData">NUMBER</div>
 
         <div id="displayCluster0" style="display:block">
 
-          <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 42px; left:calc(100vw - 37px); height:32px; width:32px; min-left: calc(100% - 37px);" id="resourceComputation" loading="lazy" src="Assets/Computation.png"></image>
+          <image onclick="window.AUTODISPLAY('computation')" class="resourceDisplay" style="z-index: 1; position: absolute; top: 42px; left:calc(100vw - 37px); height:32px; width:32px; min-left: calc(100% - 37px);" id="resourceComputation" loading="lazy" src="Assets/Computation.png"></image>
           <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 42px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;">Computation:</div>
           <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 58px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;" id="primaryDisplayComputation">NUMBER</div>
 
-          <image class="resourceDisplay" style="z-index: 1; position: absolute; top: 79px; left:calc(100vw - 37px); height:32px; width:32px; min-left: calc(100% - 37px);" id="resourceSignificantData" loading="lazy" src="Assets/SignificantData.png"></image>
+          <image onclick="window.AUTODISPLAY('significantData')" class="resourceDisplay" style="z-index: 1; position: absolute; top: 79px; left:calc(100vw - 37px); height:32px; width:32px; min-left: calc(100% - 37px);" id="resourceSignificantData" loading="lazy" src="Assets/SignificantData.png"></image>
           <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 79px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;">Significant Data:</div>
           <div style="font-size: 12px; text-align: right; z-index: 1; position: absolute; top: 95px; left:calc(100vw - 187px); height:16px; min-left: calc(100% - 187px); width:145px;" id="primaryDisplaySignificantData">NUMBER</div>
 
