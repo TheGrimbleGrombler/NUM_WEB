@@ -124,7 +124,7 @@ window.STATINDEX = {
 }
 
 window.AUTODISPLAY = function(name) {
-    
+
     window.STATINDEX.display(name,"overview")
     window.STATINDEX.display(name,"boosts")
     window.STATINDEX.display(name,"softcaps")
@@ -135,7 +135,7 @@ window.AUTODISPLAY = function(name) {
 
 function updatedisplay() {
     if (CURRENTSTAT != "none" && window.TABNAME == 1) {
-        window.AUTODISPLAY(chosen)
+        window.AUTODISPLAY(CURRENTSTAT)
     }
 }
 
