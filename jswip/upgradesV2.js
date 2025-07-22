@@ -16,7 +16,7 @@ window.UPGRADES = {
   
   main: {
     efficiencyI: {
-      displayName: "Efficency - I",
+      displayName: "Efficiency - I",
       description: "Double Data gain",
       image: "Assets/Eff1.png",
       costType: "data",
@@ -35,7 +35,7 @@ window.UPGRADES = {
       },
     },
     efficiencyII: {
-      displayName: "Efficency - II",
+      displayName: "Efficiency - II",
       description: "Data gain is tripled",
       image: "Assets/Eff2.png",
       costType: "data",
@@ -54,7 +54,7 @@ window.UPGRADES = {
       },
     },
     efficiencyIII: {
-      displayName: "Efficency - III",
+      displayName: "Efficiency - III",
       description: "Data gain is quadrupled",
       image: "Assets/Eff3.png",
       costType: "data",
@@ -73,7 +73,7 @@ window.UPGRADES = {
       },
     },
     efficiencyIV: {
-      displayName: "Efficency - IV",
+      displayName: "Efficiency - IV",
       description: "Data gain boosts itself at a reduced rate",
       image: "Assets/Eff4.png",
       costType: "data",
@@ -93,7 +93,7 @@ window.UPGRADES = {
       },
     },
     efficiencyV: {
-      displayName: "Efficency - V",
+      displayName: "Efficiency - V",
       description: "Data gain is slightly exponentiated.",
       image: "Assets/Eff5.png",
       costType: "data",
