@@ -19,6 +19,7 @@ const format = window.format
 var upgradeinfo = document.getElementById("upgradeinfo")
 
 window.SUBTABNAME = 0
+window.TABNAME = 0
 
 function UPDATE() {
   
@@ -188,6 +189,7 @@ window.TABS = {
       chosenSbutton = document.getElementById("subtab" + tabN + "button")
       chosenSdiv = document.getElementById("subtab" + tabN + "div")
     } else {
+      window.TABNAME = tabN
       if (chosen != null) {
         chosen.style.display = "none"
         chosen = null

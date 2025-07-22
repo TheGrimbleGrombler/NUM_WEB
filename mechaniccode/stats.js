@@ -4,6 +4,8 @@ var plr = window.player
 var ach = window.ACHIEVEMENTS
 const Decimal = window.Decimal
 
+var CURRENTSTAT = "none"
+
 function E(n) {
   
   return new Decimal().fromString(n)
@@ -122,16 +124,21 @@ window.STATINDEX = {
 }
 
 window.AUTODISPLAY = function(name) {
-    if (window.SUBTABNAME == 3) {
-        window.STATINDEX.display(name,"overview")
-    }
-    if (window.SUBTABNAME == 4) {
-        window.STATINDEX.display(name,"boosts")
-    }
-    if (window.SUBTABNAME == 5) {
-        window.STATINDEX.display(name,"softcaps")
-    }
-    if (window.SUBTABNAME == 6) {
-        window.STATINDEX.display(name,"scaling")
+    
+    window.STATINDEX.display(name,"overview")
+    window.STATINDEX.display(name,"boosts")
+    window.STATINDEX.display(name,"softcaps")
+    window.STATINDEX.display(name,"scaling")
+
+    CURRENTSTAT = name
+}
+
+function updatedisplay() {
+    if (CURRENTSTAT != "none" && window.TABNAME == 1) {
+        window.AUTODISPLAY(chosen)
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  setInterval(updatedisplay, 200);
+});
