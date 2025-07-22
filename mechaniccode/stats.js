@@ -14,7 +14,7 @@ window.STATINDEX = {
 
             if (category == "overview") {
 
-                statsOverview.innerHTML += "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
+                statsOverview.innerHTML = "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
                 if (upg.main.efficiencyI.bought == true) {statsOverview.innerHTML += "Efficiency 1: x" + String(upgmain.efficiencyI.effect())}
                 if (upg.main.efficiencyII.bought == true) {statsOverview.innerHTML += "Efficiency 2: x" + String(upgmain.efficiencyII.effect())}
                 if (upg.main.efficiencyIII.bought == true) {statsOverview.innerHTML += "Efficiency 3: x" + String(upgmain.efficiencyIII.effect())}
@@ -26,7 +26,7 @@ window.STATINDEX = {
 
             if (category == "boosts") {
 
-                statsBoosts.innerHTML += "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
+                statsBoosts.innerHTML = "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
                 if (upg.main.efficiencyI.bought == true) {statsBoosts.innerHTML += "Efficiency 1: x" + String(upgmain.efficiencyI.effect())}
                 if (upg.main.efficiencyII.bought == true) {statsBoosts.innerHTML += "Efficiency 2: x" + String(upgmain.efficiencyII.effect())}
                 if (upg.main.efficiencyIII.bought == true) {statsBoosts.innerHTML += "Efficiency 3: x" + String(upgmain.efficiencyIII.effect())}
@@ -38,13 +38,13 @@ window.STATINDEX = {
 
             if (category == "softcaps") {
 
-                statsSoftcaps.innerHTML += "<br><br><br><br><br><br><br><br>No softcaps yet"
+                statsSoftcaps.innerHTML = "<br><br><br><br><br><br><br><br>No softcaps yet"
 
             }
 
             if (category == "scaling") {
 
-                statsScaling.innerHTML += "<br><br><br><br><br><br><br><br>No scaling changes yet"
+                statsScaling.innerHTML = "<br><br><br><br><br><br><br><br>No scaling changes yet"
 
             }
 
@@ -54,7 +54,7 @@ window.STATINDEX = {
 
             if (category == "overview") {
 
-                statsOverview.innerHTML += "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
+                statsOverview.innerHTML = "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
 
                 if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsOverview.innerHTML += "CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
                 if (bya.significantData.multithreader.bought.gte(E("1"))) {statsOverview.innerHTML += "Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
@@ -63,7 +63,7 @@ window.STATINDEX = {
 
             if (category == "boosts") {
 
-                statsBoosts.innerHTML += "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
+                statsBoosts.innerHTML = "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
 
                 if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsBoosts.innerHTML += "CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
                 if (bya.significantData.multithreader.bought.gte(E("1"))) {statsBoosts.innerHTML += "Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
@@ -72,13 +72,13 @@ window.STATINDEX = {
 
             if (category == "softcaps") {
 
-                statsSoftcaps.innerHTML += "<br><br><br><br><br><br><br><br>No softcaps yet"
+                statsSoftcaps.innerHTML = "<br><br><br><br><br><br><br><br>No softcaps yet"
 
             }
 
             if (category == "scaling") {
 
-                statsScaling.innerHTML += "<br><br><br><br><br><br><br><br>No scaling changes yet"
+                statsScaling.innerHTML = "<br><br><br><br><br><br><br><br>No scaling changes yet"
 
             }
 
@@ -88,25 +88,25 @@ window.STATINDEX = {
 
             if (category == "overview") {
 
-                statsOverview.innerHTML += "<br><br><br><br><br><br><br><br>Base: Floor(Log10(computation) - 4)"
+                statsOverview.innerHTML = "<br><br><br><br><br><br><br><br>Base: Floor(Log10(computation) - 4)"
  
             }
 
             if (category == "boosts") {
 
-                statsBoosts.innerHTML += "<br><br><br><br><br><br><br><br>Base: Floor(Log10(computation) - 4)"
+                statsBoosts.innerHTML = "<br><br><br><br><br><br><br><br>Base: Floor(Log10(computation) - 4)"
 
             }
 
             if (category == "softcaps") {
 
-                statsSoftcaps.innerHTML += "<br><br><br><br><br><br><br><br>No softcaps yet"
+                statsSoftcaps.innerHTML = "<br><br><br><br><br><br><br><br>No softcaps yet"
 
             }
 
             if (category == "scaling") {
 
-                statsScaling.innerHTML += "<br><br><br><br><br><br><br><br>No scaling changes yet"
+                statsScaling.innerHTML = "<br><br><br><br><br><br><br><br>No scaling changes yet"
 
             }
 
