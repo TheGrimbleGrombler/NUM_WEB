@@ -39,9 +39,9 @@ window.player = {
   progression: 1,
   computation: E("0"),
   computationMax: E("1e10"),
-  computationBest: 0,
-  significantData: 0,
-  significantDataBest: 0
+  computationBest: E("0"),
+  significantData: E("0"),
+  significantDataBest: E("0")
 };
 
 var player = window.player
