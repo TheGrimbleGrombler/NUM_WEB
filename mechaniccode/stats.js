@@ -22,24 +22,24 @@ window.STATINDEX = {
             if (category == "overview") {
 
                 statsOverview.innerHTML = "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
-                if (upg.main.efficiencyI.bought == true) {statsOverview.innerHTML += "Efficiency 1: x" + String(upg.main.efficiencyI.effect())}
-                if (upg.main.efficiencyII.bought == true) {statsOverview.innerHTML += "Efficiency 2: x" + String(upg.main.efficiencyII.effect())}
-                if (upg.main.efficiencyIII.bought == true) {statsOverview.innerHTML += "Efficiency 3: x" + String(upg.main.efficiencyIII.effect())}
-                if (upg.main.efficiencyIV.bought == true) {statsOverview.innerHTML += "Efficiency 4: x" + String(upg.main.efficiencyIV.effect())}
-                if (upg.main.efficiencyV.bought == true) {statsOverview.innerHTML += "Efficiency 5: ^" + String(upg.main.efficiencyV.effect())}
-                if (bya.data.compressor.bought.gte(E("1"))) {statsOverview.innerHTML += "Compressors: x" + String(bya.data.compressor.effect())}
+                if (upg.main.efficiencyI.bought == true) {statsOverview.innerHTML += "<br>Efficiency 1: x" + String(upg.main.efficiencyI.effect())}
+                if (upg.main.efficiencyII.bought == true) {statsOverview.innerHTML += "<br>Efficiency 2: x" + String(upg.main.efficiencyII.effect())}
+                if (upg.main.efficiencyIII.bought == true) {statsOverview.innerHTML += "<br>Efficiency 3: x" + String(upg.main.efficiencyIII.effect())}
+                if (upg.main.efficiencyIV.bought == true) {statsOverview.innerHTML += "<br>Efficiency 4: x" + String(upg.main.efficiencyIV.effect())}
+                if (upg.main.efficiencyV.bought == true) {statsOverview.innerHTML += "<br>Efficiency 5: ^" + String(upg.main.efficiencyV.effect())}
+                if (bya.data.compressor.bought.gte(E("1"))) {statsOverview.innerHTML += "<br>Compressors: x" + String(bya.data.compressor.effect())}
  
             }
 
             if (category == "boosts") {
 
                 statsBoosts.innerHTML = "<br><br><br><br><br><br><br><br>Base: 1/s<br>"
-                if (upg.main.efficiencyI.bought == true) {statsBoosts.innerHTML += "Efficiency 1: x" + String(upg.main.efficiencyI.effect())}
-                if (upg.main.efficiencyII.bought == true) {statsBoosts.innerHTML += "Efficiency 2: x" + String(upg.main.efficiencyII.effect())}
-                if (upg.main.efficiencyIII.bought == true) {statsBoosts.innerHTML += "Efficiency 3: x" + String(upg.main.efficiencyIII.effect())}
-                if (upg.main.efficiencyIV.bought == true) {statsBoosts.innerHTML += "Efficiency 4: x" + String(upg.main.efficiencyIV.effect())}
-                if (upg.main.efficiencyV.bought == true) {statsBoosts.innerHTML += "Efficiency 5: ^" + String(upg.main.efficiencyV.effect())}
-                if (bya.data.compressor.bought.gte(E("1"))) {statsBoosts.innerHTML += "Compressors: x" + String(bya.data.compressor.effect())}
+                if (upg.main.efficiencyI.bought == true) {statsBoosts.innerHTML += "<br>Efficiency 1: x" + String(upg.main.efficiencyI.effect())}
+                if (upg.main.efficiencyII.bought == true) {statsBoosts.innerHTML += "<br>Efficiency 2: x" + String(upg.main.efficiencyII.effect())}
+                if (upg.main.efficiencyIII.bought == true) {statsBoosts.innerHTML += "<br>Efficiency 3: x" + String(upg.main.efficiencyIII.effect())}
+                if (upg.main.efficiencyIV.bought == true) {statsBoosts.innerHTML += "<br>Efficiency 4: x" + String(upg.main.efficiencyIV.effect())}
+                if (upg.main.efficiencyV.bought == true) {statsBoosts.innerHTML += "<br>Efficiency 5: ^" + String(upg.main.efficiencyV.effect())}
+                if (bya.data.compressor.bought.gte(E("1"))) {statsBoosts.innerHTML += "<br>Compressors: x" + String(bya.data.compressor.effect())}
 
             }
 
@@ -63,8 +63,8 @@ window.STATINDEX = {
 
                 statsOverview.innerHTML = "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
 
-                if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsOverview.innerHTML += "CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
-                if (bya.significantData.multithreader.bought.gte(E("1"))) {statsOverview.innerHTML += "Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
+                if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsOverview.innerHTML += "<br>CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
+                if (bya.significantData.multithreader.bought.gte(E("1"))) {statsOverview.innerHTML += "<br>Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
  
             }
 
@@ -72,8 +72,8 @@ window.STATINDEX = {
 
                 statsBoosts.innerHTML = "<br><br><br><br><br><br><br><br>Base: +n*m per second where m starts as 0.1"
 
-                if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsBoosts.innerHTML += "CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
-                if (bya.significantData.multithreader.bought.gte(E("1"))) {statsBoosts.innerHTML += "Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
+                if (bya.significantData.coProcessor.bought.gte(E("1"))) {statsBoosts.innerHTML += "<br>CoProcessors: m * " + String(bya.significantData.coProcessor.effect())}
+                if (bya.significantData.multithreader.bought.gte(E("1"))) {statsBoosts.innerHTML += "<br>Multithreaders: m * " + String(bya.significantData.multithreader.effect())}
 
             }
 
@@ -129,9 +129,9 @@ window.AUTODISPLAY = function(name) {
         window.STATINDEX.display(name,"boosts")
     }
     if (window.SUBTABNAME == 5) {
-        window.STATINDEX.display(name,"scaling")
+        window.STATINDEX.display(name,"softcaps")
     }
     if (window.SUBTABNAME == 6) {
-        window.STATINDEX.display(name,"softcaps")
+        window.STATINDEX.display(name,"scaling")
     }
 }

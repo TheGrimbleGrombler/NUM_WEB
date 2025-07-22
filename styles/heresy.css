@@ -1,42 +1,42 @@
-.dracula_BUYABLE {
+.heresy_BUYABLE {
     border: rgb(255,0,0) 1px;
     color: rgb(255,255,255);
 }
-.dracula_BUYABLE .canbuy {
+.heresy_BUYABLE .canbuy {
     background-color: rgb(155,50,0);
 }
-.dracula_BUYABLE .bought {
+.heresy_BUYABLE .bought {
     background-color: rgb(156, 0, 0);
 }
-.dracula_BUYABLE .unbought {
+.heresy_BUYABLE .unbought {
     background-color: rgb(70, 45, 0);
 }
-.dracula_BUYABLE:hover {
+.heresy_BUYABLE:hover {
 	background-color: #444444;
   transition-duration: 250ms;
 }
-.dracula_BUYABLES:not(:hover) {
+.heresy_BUYABLES:not(:hover) {
 	background-color: #000000;
     transition-duration: 250ms;
 }
 
-.dracula_UPGRADE.bought {
+.heresy_UPGRADE.bought {
   background-color: rgb(156, 0, 0);
 }
-.dracula_UPGRADE.unbought {
+.heresy_UPGRADE.unbought {
   background-color: rgb(70, 45, 0);
 }
-.dracula_UPGRADE.canbuy {
+.heresy_UPGRADE.canbuy {
   background-color: rgb(155,50,0);
 }
-.dracula_UPGRADE:hover {
+.heresy_UPGRADE:hover {
   box-shadow: 0 0 8px 2px rgba(255, 0, 0, 0.5);
   transition-duration: 250ms;
   width: 48px;
   height: auto;
   vertical-align: middle;
 }
-.dracula_UPGRADE:not(:hover) {
+.heresy_UPGRADE:not(:hover) {
   box-shadow: 0 0 0px 0px rgba(121, 0, 0, 0.5);
   transition-duration: 1000ms;
   width: 32px;
@@ -44,30 +44,30 @@
   vertical-align: middle;
 }
 
-.BODYdracula {
+.BODYheresy {
     font-family: "Monaco", Monospace;
     background-color: rgb(14, 0, 0);    
 }
 
-.dracula_LARGEBORDER {
+.heresy_LARGEBORDER {
   border: 1px solid rgb(255, 0, 0);
   box-shadow: 0 0 2px 0px rgb(255, 0, 0);
 }
 
-.MAIN_dracula {
+.MAIN_heresy {
     font-family: "Monaco", Monospace;
 }
 
-.dracula_RESET:hover {
+.heresy_RESET:hover {
 	background-color: #440000;
   transition-duration: 250ms;
 }
-.dracula_RESET:not(:hover) {
+.heresy_RESET:not(:hover) {
 	background-color: #000000;
   transition-duration: 250ms;
 }
 
-.dracula_TABBTN {
+.heresy_TABBTN {
   text-align: left;
   padding-left: 3px;
 	width: calc(100% - 1px);
@@ -76,7 +76,7 @@
   border-color: #ff0000;
   background-color:#180000;
 }
-.dracula_SUBTABBTN {
+.heresy_SUBTABBTN {
   text-align: center;
   padding-bottom: 3px;
 	height: calc(100% - 1px);
@@ -87,7 +87,7 @@
   background-color:#180000;
   z-index: 200;
 }
-.dracula_TABBTNINNER {
+.heresy_TABBTNINNER {
   text-align: left;
   padding-left: 3px;
 	width: calc(100% - 1px);
@@ -96,7 +96,7 @@
   border-color: #ff0000;
   background-color:rgba(0,0,0,0);
 }
-.dracula_SUBTABBTNINNER {
+.heresy_SUBTABBTNINNER {
   text-align: center;
   padding-bottom: 3px;
 	height: calc(100% - 1px);
@@ -108,46 +108,46 @@
   z-index: 200;
 }
 
-.spinnerdracula {
+.spinnerheresy {
   background-image:
   radial-gradient(rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.05) 1px, transparent 80px);
 }
 
-.dracula_SUBTABBTNINNER:hover {
+.heresy_SUBTABBTNINNER:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.dracula_SUBTABBTNINNER:not(:hover) {
+.heresy_SUBTABBTNINNER:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.dracula_SUBTABBTNINNER.chosen {
+.heresy_SUBTABBTNINNER.chosen {
   border-bottom-width: 10px;
   transition-duration: 250ms;
 }
-.dracula_SUBTABBTNINNER:not(chosen) {
+.heresy_SUBTABBTNINNER:not(chosen) {
   border-bottom-width: 1px;
   transition-duration: 250ms;
 }
 
-.dracula_TABBTNINNER:hover {
+.heresy_TABBTNINNER:hover {
 	background-color: #490000;
   transition-duration: 250ms;
 }
-.dracula_TABBTNINNER:not(:hover) {
+.heresy_TABBTNINNER:not(:hover) {
 	background-color: #180000;
   transition-duration: 250ms;
 }
-.dracula_TABBTNINNER.chosen {
+.heresy_TABBTNINNER.chosen {
   border-left-width: 10px;
   transition-duration: 250ms;
 }
-.dracula_TABBTNINNER:not(chosen) {
+.heresy_TABBTNINNER:not(chosen) {
   border-bottom-width: 1px;
   transition-duration: 250ms;
 }
 
-.generalBackgrounddracula {
+.generalBackgroundheresy {
   
   overflow: hidden;
   z-index: 0;
@@ -161,7 +161,7 @@
   
 }
 
-.gradient-bar-dracula {
+.gradient-bar-heresy {
     height: 1px;
     background: radial-gradient(circle, rgb(255, 0, 0) 0%, rgba(255, 0, 0, 0) 60%);
     border-radius: 2px;
