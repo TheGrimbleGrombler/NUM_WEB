@@ -38,7 +38,7 @@ window.player = {
   simulationTierBest: E("0"),
   progression: 1,
   computation: E("0"),
-  computationMax: E("1e10"),
+  computationMax: E("1e5"),
   computationBest: E("0"),
   significantData: E("0"),
   significantDataBest: E("0")
@@ -79,10 +79,15 @@ function unNaN() {
   
 }
 
-// General Automation script, Nothing yet.
+// General Automation script.
 function Automation() {
   
-  
+  var UPG = window.UPGRADES
+  if (UPG.main.capacityIV.bought == true) {
+    if (player.computation.gte(player.computationMax)) {
+      window.RESETS.reset(0)
+    }
+  }
   
 }
 

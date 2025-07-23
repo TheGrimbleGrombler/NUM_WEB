@@ -288,21 +288,21 @@ window.UPGRADES = {
       },
     },
     capacityIV: {
-      displayName: "Capacity - IV",
-      description: "TBD",
+      displayName: "What is this? A clicker game?",
+      description: "Computation collapses automatically at maximum",
       image: "Assets/Cap4.png",
       costType: "significantData",
       costAmount: function() {
-        var temp = E("1e100")
+        var temp = E("2500")
         
         return temp;
       },
-      effectPrefix: "Currently: Computation cap ^",
+      effectPrefix: "Currently: ",
       effectSuffix: ".",
       bought: false,
       effect: function() {
-        var temp = E("1")
-        if (this.bought == true) {temp = E("2")}
+        var temp = E("0")
+        if (this.bought == true) {temp = E("1")}
         return temp;
       },
     },
